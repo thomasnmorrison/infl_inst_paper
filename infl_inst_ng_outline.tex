@@ -1,0 +1,68 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[margin=1.in]{geometry}
+
+\linespread{1.3}
+
+\begin{document}
+\section{Outline for Paper on Transverse Instabilities During Inflation and NG}
+\subsection{Overview}
+This is an outline of what I'd like to cover in a first paper on the work we've been doing on nonGaussianity from instabilities during inflation. Specifically I'd like to focus on the situation we've been looking at where $\Delta V$ turns on and off an instability in the transverse direction. And calculate the NG response to varying the parameters of $\Delta V$. Using
+\begin{equation}
+\Delta V(\phi,\chi) = A\left((\chi-\chi_0)^2(\chi+\chi_0)^2 - \chi_0^4 \right)f(\phi-\phi_p)
+\end{equation}
+we can vary the distance between minima, overall depth of the minima, and the profile of how the instability is turned on/off as clocked by $\phi$ (or anything else derivatbly from this form of potential).
+
+The qualitative cases to consider are:
+\begin{itemize}
+  \item $\Delta V$ turns on and off again, or turns on and stays on,
+  \item Time to cross $\Delta V$ long or short compared to dynamical time scale,
+  \item Fields do or don't get trapped by $\Delta V$,
+  \item Kick out of inflation or not.
+\end{itemize}
+
+The main take-away points I'd like a reader to have are:
+\begin{enumerate}
+  \item We have an in-out between equilibrium states with a burst of NG created during the transition,
+  \item Lattice simulations provide a numerical experiment from which the NG can be measured,
+  \item We find the NG to be in the form of prominences which are spatially localized.
+\end{enumerate}
+
+I'd like not to let the scope of the paper creep too much. We can make this two papers if need be.
+
+\subsection{Plots and Results to Show}
+
+I think some key plots we can show to tell the story are:
+\begin{enumerate}
+  \item Surface plot of the potential,
+  \item Coulour map of $\zeta$ on a lattice slice, 
+  \item Connected components of the n-pt functions as a function of time (and response to variations in $\Delta V$),
+  \item Number count of positive/negative peaks as a function of peak height compared to the Gaussian field result (and response to variations in $Delta V$).
+\end{enumerate}
+
+\subsection{Bringing the Reader Up to Speed}
+I think it would be a good idea to bring the reader up to speed on lattice simulations and the nonlinear $\zeta$ definition. Probably stick this in the introduction section.
+
+In particular for lattice simulations emphasising the ways in which they differ from the traditional Fourier-centric approach ie:
+\begin{itemize}
+  \item Simulate and measure on a particular realization, as opposed to calculating ensemble statistics.
+  \item Calculation done in real space, relates to phase information in the Fourier space picture.
+  \item Tracks the nonlinear interactions in a nonperturbative way.
+\end{itemize}
+
+For the nonlinear $\zeta$ definition
+\begin{itemize}
+  \item The perturbative $\zeta$ is insufficient for studying phase transitions as perturbing around a homogeneous background breaks when the trajectories bifurcate.
+  \item Not sure what else should be said here, but probably some justification for calculating $\zeta$ on the FRW used in the lattice calculation.
+\end{itemize}
+
+\subsection{Next Steps}
+Here are the most immediate things to be done in order to get this paper written:
+\begin{enumerate}
+  \item Review and revise outline
+\end{enumerate}
+
+
+\end{document}
