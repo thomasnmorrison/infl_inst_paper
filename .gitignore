@@ -1,0 +1,12 @@
+*~
+
+# Latex auxilliary files
+*.aux
+*.log
+*.toc
+*.end
+*.out
+
+# Binary files
+*.pdf
+*.png
