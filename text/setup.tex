@@ -1,9 +1,121 @@
 % Setting up the problem
 
-\section{Setup}
+\section{Setup} \label{sec:setup}
+We are interested in studying the effects of a localized feature in the inflationary potential.
+\marginpar{
+  Not sure if we want to cast things in terms of features in the potential or tie in more generally to the effects of instabilities.
+}
+In studying these effects it will prove useful to write the potential as a sum of two terms $V(\phi,\chi) = V_0(\phi,\chi) + \Delta V(\phi,\chi)$.
+Conceptually we are starting with a baseline system and applying a stimulus by deforming the potential, $V_0$ being the baseline and $\Delta V$ being the stimulus.
+The system's response can be calculated by taking the difference between two lattice simulations, one run with the deformed potential $V_0+\Delta V$ and the other with the baseline potential $V_0$, both starting from identical initial conditions.
+Of particular interest in the cosmological context is the non-Gaussian component of $\zeta$ sourced by this response.
 
-\subsection{Equations of Motion and Source Terms}
+In this section we setup our system detailing the equations of motion, the form of the potential, and the source terms for $\zeta$.
+
+\subsection{Equations of Motion}
+% Talk about by convention we will choose $\phi$ displaced from the origin and driving inflation
+% Define $H$, $a$, $\alpha$, $M_{Pl}$
+% Define the naming convention $\phi_A$, $A=1,2$ as $\phi$, $\chi$.
+
+The action for a set of scalar fields minimally coupled to gravity is given by
+\begin{equation} \label{eq:action}
+  S = \int \sqrt{-g}\left\{\frac{R}{2M_{Pl}} - \frac{1}{2}g^{\mu\nu}\partial_\mu\phi_A\partial_\nu\phi_A - V \right\}\dd^4x.
+\end{equation} 
+
+\marginpar{
+  Missing some words to define all the terms here. Should mention $\phi_A$, $A=1,2$ are also written $\phi$, $\chi$.
+}  
+
+For our lattice simulations we assume a Friedmann-Robertson-Walker metric $\dd s^2 = -\dd t^2 +a^2(t) \delta_{ij}\dd x^i \dd x^j$ and couple to gravity only at the level of the energy constraint equation applied between a spatially uniform Hubble parameter and the lattice averaged energy density
+\begin{equation} \label{eq:energy constraint}
+  H^2 = \frac{1}{3M_{Pl}}\langle \rho \rangle_{\mathrm{Lattice}},
+\end{equation} 
+where $H = \dot{a}/a$. We will commonly use $\alpha = \ln(a)$ in terms of which we can define the Hubble parameter $H = \dot{\alpha}$ and the slow-roll parameter $\epsilon = -\frac{\dd\ln H}{\dd \alpha}.$
+\marginpar{
+  Is it important to mention the terms we are throwing out of \eqref{eq:energy constraint} and \eqref{eq:fld eom} by imposing the FRW metric?
+}
+
+With the assumption of an FRW metric the canonical momenta of to fields $\phi_A$ are given by $\Pi_{\phi_A} = a^3\dot{\phi_A}$ and their equations of motion are
+\begin{align} \label{eq:fld eom}
+  %0 = \ddot{\phi_A} + 3H\dot{\phi_A} - \frac{\nabla^2}{a^2}\phi_A + V_{,\phi_A}
+  \frac{\dd}{\dd t} \phi_A &= a^{-3}\Pi_{\phi_A} \\
+  \frac{\dd}{\dd t} \Pi_{\phi_A} &= a^3\left(\frac{\nabla^2\phi_A}{a^2} - V_{,\phi_A}\right).
+\end{align} 
 
 \subsection{Potential}
+\Fpotential
 
-\subsection{Variable Measured}
+
+
+\marginpar{
+  I should explain the choice of potential here and what phenomenology we are hoping to capture. And give some motivation of looking at instabilities for generating NG.
+}
+
+The forms of the baseline and stimulus to the potential we use are given by
+\begin{align} \label{eq:potential}
+  &V_0(\phi,\chi) = \frac{1}{2}m^2_\phi\phi^2 + \frac{1}{2}m^2_\chi\chi^2 \\
+  &\Delta V(\phi,\chi) = \frac{1}{2}\mu^2(\phi)\chi^2 + \frac{1}{4}\lambda_\chi\chi^4,
+\end{align} 
+here $\mu^2(\phi)$ modulates the interaction term and controls symmetry breaking/restoration in the $\chi$ direction.
+We have chosen a baseline potential $V_0$ which is quadratic in the fields to avoid nonlinearities in the baseline case and a simple functional form for $\mu^2(\phi)$ with the aim of capturing the phenomenology of a phase transitionduring inflation
+\begin{equation} \label{eq:m2 eff}
+  \mu^2(\phi)
+  \begin{cases}
+    0 & \quad \text{if } |\phi-\phi_p|\ge\phi_w \\
+    m^2_p - m^2_\chi + g^2(\phi-\phi_p)^2 -\frac{g^4}{4(m^2_\chi-m^2_p)}(\phi-\phi_p)^4 & \quad \text{if } |\phi-\phi_p|<\phi_w. \\
+  \end{cases}
+\end{equation} 
+The parameters $\phi_p$ and $\phi_w$ respectively control the position and width of the region where the potential is deformed.
+The parameter $m^2_p$ when negative controls the strength of the symmetry breaking in the $\chi$ direction.
+Requiring continuity of the potential and its first derivative fixes the term $g^2=2(m^2_\chi-m^2_p)/\phi_w^2$.
+
+\marginpar{
+  I haven't mentioned anywhere that inflation is primarily driven by $\phi$ (at least in the baseline case), but that seems like important information to the reader. 
+}
+
+Some reference to figure \ref{fig:potential} and general features of the potential..
+
+\subsection{Sourcing $\zeta$}
+
+\marginpar{
+  I think this subsection should start with some general remarks about $\zeta$ before giving the $zeta$ source on the lattice.
+}
+
+\begin{equation} \label{eq:zeta differential}
+  \delta\zeta = \frac{\delta\rho}{3(\rho + P)} + \delta\alpha
+\end{equation} 
+
+\begin{equation} \label{eq:zeta source T}
+  \dot{\zeta} = \frac{\partial_iT^i_0}{3(\rho+P)} + \delta H % check that this is correct
+\end{equation} 
+
+Computing \eqref{eq:zeta source T} for the fields on our lattice with $H$ spatially homogeneous we arrive at the following source equation for $\dot{\zeta}$
+\begin{equation} \label{eq:zeta source fld}
+  %\dot{\zeta} = \frac{\nabla\cdot(\dot{\phi})\nabla\phi + \nabla\cdot(\dot{\chi})\nabla\chi}{3a^2(\dot{\phi}^2+\dot{\chi}^2 +\frac{1}{3a^2}(\nabla\phi)^2 +\frac{1}{3a^2}(\nabla\chi)^2)}.
+  \dot{\zeta} = \frac{\nabla\cdot(\dot{\phi_A}\nabla\phi_A)}{3a^2(\dot{\phi_A}\dot{\phi_A} +\frac{1}{3a^2}\nabla\phi_A\cdot\nabla\phi_A)}.
+\end{equation} 
+In our lattice simulations the source equation \eqref{eq:zeta source fld} is integrated alongside the field dynamics to compute the quantity $\zeta(t) - \zeta(t_0)$. 
+
+The $\dot{\zeta}$ source \eqref{eq:zeta source fld} can be further divided into four terms
+\begin{align}
+  \dot{\zeta}_{\dot{\phi}\nabla^2\phi} & = \frac{\dot{\phi}\nabla^2\phi}{3a^2(\dot{\phi_A}\dot{\phi_A} +\frac{1}{3a^2}\nabla\phi_A\cdot\nabla\phi_A)}, \\
+  \dot{\zeta}_{\nabla\dot{\phi}\cdot\nabla\phi} & = \frac{\nabla\dot{\phi}\cdot\nabla\phi}{3a^2(\dot{\phi_A}\dot{\phi_A} +\frac{1}{3a^2}\nabla\phi_A\cdot\nabla\phi_A)}, \\
+  \dot{\zeta}_{\dot{\chi}\nabla^2\chi} & = \frac{\dot{\phi}\nabla^2\phi}{3a^2(\dot{\phi_A}\dot{\phi_A} +\frac{1}{3a^2}\nabla\phi_A\cdot\nabla\phi_A)}, \\
+  \dot{\zeta}_{\nabla\dot{\chi}\cdot\nabla\chi} & = \frac{\nabla\dot{\chi}\cdot\nabla\chi}{3a^2(\dot{\phi_A}\dot{\phi_A} +\frac{1}{3a^2}\nabla\phi_A\cdot\nabla\phi_A)}.
+\end{align}
+The details of each of these term contributes to the total $\dot{\zeta}$ will be discussed in detail in section \ref{sec:results}.
+However, it can be noted immediately that of these four terms only $\dot{\zeta}_{\dot{\phi}\nabla^2\phi}$ contributes at the linear level in field fluctuations. % should have a reminder that inflation is along the \phi direction.
+% Mention how the $\dot{\zeta}_{\dot{\phi}\nabla^2\phi}$ is the stocastic inflation term.
+\marginpar{
+  Here I want to point out the stochastic inflation term and emphasize that we are also tracking $\zeta$ production through other channels.
+}
+
+It is worthwhile to note the form of NG and what measure will be sensitive to it are not always known a priori.
+It is for this reason that the ability to make comparisons to a baseline potential on a realization by realization basis proves to be a major advantage of performing these calculations using lattice simulations.
+\marginpar{
+  I'm not sure if this is the place to discuss in detail isolating NG by computing $\Delta\zeta$ or if that fits more in the results section.
+}
+Some talk about $\Delta\zeta$.
+\marginpar{
+  I think we should give some emphasis to the idea that the form of NG that will be produced by a given physical mechanism is not known prior to a full calculation and so in order to properly measure NG the first step is to determine the informative statistics to measure.
+}

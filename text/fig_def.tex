@@ -2,11 +2,27 @@
 
 \graphicspath{{./figures/}}
 
-\newcommand{\figtest}{%
-\begin{figure}
-\includegraphics[width=\textwidth]{potential_plt2_128_2_401.png}
-\caption{This is a test of figure placement}
-\label{fig:testfig}
-\end{figure}
+% Figure of the potential
+\newcommand{\Fpotential}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFpotentialA}
+      \caption{Potential surface}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFpotentialB}
+      \caption{Potential contours}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFpotentialC}
+      \caption{(Un)Stable regions}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFpotentialD}
+      \caption{Potential gradients}
+    \end{subfigure}
+    \caption{Place holder potential figures. Would be more clear if there was a plot showing several transverse slices through the potential.}
+    \label{fig:potential}
+  \end{figure}
 }
-
