@@ -26,3 +26,73 @@
     \label{fig:potential}
   \end{figure}
 }
+
+% Figure of the field and momenta spectra and cross-spectra
+\newcommand{\Fspec}{
+  \begin{figure}
+    \centering
+
+    \caption{Place holder figure}
+    \label{fig:spec}
+  \end{figure}
+}
+
+% Figure of the field and momenta spectra determinant
+\newcommand{\Fspecdet}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFspecdetA}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFspecdetB}
+      \caption{}
+    \end{subfigure}
+    \caption{Determinant of of the fluctuation correlation matrix as function of time (clocked by $\alpha$). This quantity is conserved whenever the systems dynamics are linear.}
+    \label{fig:specdet}
+  \end{figure}
+}
+
+% Figure of a 2d slice of the fields at times before, during, and after nonlinearity as identified in \ref{fig:spec det} showing the foramation and backreaction of the transverese condensate.
+\newcommand{\Fslice}{
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{\FFslice}
+    \caption{Real space field fluctuations $\delta\phi$, $\chi$ and their time derivatives $\delta\dot{\phi}$, $\dot{\chi}$ on a two dimensional slice of a three dimensional lattice, shown at the times slices identidied in figure \ref{fig:specdet}.}
+    \label{fig:slice}
+  \end{figure}
+}
+
+% Figure of phase space projection of the fields and momenta at times before, during, and after nonlineraity as identified in \ref{fig:spec det} showing the correlations that arise.
+\newcommand{\Fphasespace}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceA}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceB}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceC}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceD}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceE}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceF}
+      \caption{}
+    \end{subfigure}
+    \caption{Phase space projections of the fields and their momenta shown athe the time slices identified in figure \ref{fig:specdet}.}
+    \label{fig:phasespace}
+  \end{figure}
+}

@@ -11,6 +11,51 @@
 % particle production (still need to check if this is +k-k pairs or Bremstung)
 
 % Plots to include:
+% (Cross)Spectra: plot of the spectra and cross spectra vs time. overplot with the instability band and horizon.
+% Fluctuation operator determinant: use this plot to show when nonlinearity occurs and to choose time slices to show in other plots, before during and after nonlinearity. Show where in the potential these slices are taken.
+% Real space slices: show surface plots of 2d slices of the fields at the times picked out in the fluctuation operator determinant plots.
+% Phase space projections: show projections of the phase space corresponding to the same time slices
+
+\Fspecdet
+
+% Identifying non-linearity
+We would like to establish a test to determine when the system is undergoing nonlinear evolution.
+This will allow us to determine what times are of interest.
+To do this we start with the observation that if the dynamics of a system are linear, then the system is seperable in terms of it's Fourier modes.
+So when the dynamics are linear Louville's theorem can be applied to each Fourier individually.
+Meaning for linear dynamics the phase space volume for each fourier mode of the system is conserved.
+This implies the following quantity is conserved during linear evolution of the system
+\begin{equation}
+  \det\Re\left[
+    \begin{matrix}
+      |\phi_k^2| & \phi_k^*\Pi_{\phi, k} & \phi_k^*\chi_k & \phi_k^*\Pi_{\chi, k} \\
+      \Pi_{\phi,k}^*\phi_k & |\Pi_{\phi, k}|^2 & \Pi_{\phi,k}^*\chi_k & \Pi_{\phi,k}^*\Pi_{\chi, k} \\
+      \chi_k^*\phi_k & \chi_k^*\Pi_{\phi, k} & |\chi_k|^2 & \phi_k^*\Pi_{\chi, k} \\
+      \Pi_{\chi,k}^*\phi_k & \Pi_{\chi, k}^*\Pi_{\phi, k} & \Pi_{\chi,k}^*\chi_k & |\Pi_{\chi, k}|^2
+    \end{matrix}
+    \right]
+\end{equation}
+%\begin{equation}
+%  \det\Re\left[
+%    \begin{matrix}
+%      |\tilde{\phi}_k^2| & \tilde{\phi}_k^*\tilde{\Pi_{\phi, k}} & \tilde{\phi}_k^*\tilde{\chi}_k & \tilde{\phi}_k^*\tilde{\Pi}_{\chi, k} \\
+%      \tilde{\Pi}_{\phi,k}^*\tilde{\phi}_k & |\tilde{\Pi}_{\phi, k}|^2 & \tilde{\Pi}_{\phi,k}^*\tilde{\chi}_k & \tilde{\Pi}_{\phi,k}^*\tilde{\Pi}_{\chi, k} \\
+%      \tilde{\chi}_k^*\tilde{\phi}_k & \tilde{\chi}_k^*\tilde{\Pi}_{\phi, k} & |\tilde{\chi}_k|^2 & \tilde{\phi}_k^*\tilde{\Pi}_{\chi, k} \\
+%      \tilde{\Pi}_{\chi,k}^*\tilde{\phi}_k & \tilde{\Pi}_{\chi, k}^*\tilde{\Pi}_{\phi, k} & \tilde{\Pi}_{\chi,k}^*\tilde{\chi}_k & |\tilde{\Pi}_{\chi, k}|^2
+%    \end{matrix}
+%    \right]
+%\end{equation}
+\marginpar{
+  This equation is awkwardly busy, write this in a simpler form
+}
+
+\Fphasespace
+\marginpar{
+  I've scaled the axes and colour in each subplot to fit the particular probability density being shown.
+}
+\Fslice
+
+
 
 \subsection{Average Inflation parameters}
 % Discuss things like energy fractions and the slow roll parameters here.
@@ -18,6 +63,9 @@
 \subsection{Sourcing $\zeta$}
 % Explain the regimes of what source term is active
 
+% Plots to include:
+% Have the fluctuation determinant with verical lines denoting time slices before, during, and after nonlinearity.
+% For each of those time slices show a $\dot{\zeta}$ vs fld histogram.
 
 \subsection{$\zeta$ NG}
 % This section will cover the peak statistics and realspace plots of $\Delta\zeta$
