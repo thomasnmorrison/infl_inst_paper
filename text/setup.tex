@@ -19,28 +19,71 @@ In this section we setup our system detailing the equations of motion, the form 
 
 The action for a set of scalar fields minimally coupled to gravity is given by
 \begin{equation} \label{eq:action}
-  S = \int \sqrt{-g}\left\{\frac{R}{2M_{Pl}} - \frac{1}{2}g^{\mu\nu}\partial_\mu\phi_A\partial_\nu\phi_A - V \right\}\dd^4x.
+  S = \int \sqrt{-g}\left\{\frac{R}{2\mpl^2} - \frac{1}{2}g^{\mu\nu}\partial_\mu\phi_A\partial_\nu\phi_A - V \right\}\dd^4x.
 \end{equation} 
+Substuting the ansatz of an FRW metric $\dd s^2 = -a^2(\tau)\left( \dd\tau^2 \delta_{ij}\dd x^i\dd x^j \right)$ into \eqref{eq:action} and integrating by parts we arrive at the action
+\begin{equation} \label{eq:actionFRW}
+  S_{\mathrm{FRW}} = \int a^4\left\{
+  - \frac{3}{\mpl^2}a'^2
+  + \frac{1}{2}a^{-2}\phi_A'\phi_A'
+  - \frac{1}{2}a^{-2}\nabla\phi_A\cdot\nabla\phi_A
+  - V
+  \right\}\dd\tau\dd^3x.
+\end{equation}
+\marginpar{
+  Insert something about this is the action from which we will derive the equations of motion for our lattice simulations.
+}
+This leads to the cannonically conjugate pairs $(a,\Pi_a)$ and $(\phi_A,\Pi_{\phi_A})$ where $\Pi_a = -6a'/\mpl^2$. This gives the Hamiltonian density
+\begin{equation} \label{eq:hamiltonian}
+  \mathscr{H}(a,\Pi_a; \phi_A,\nabla\phi_A,\Pi_{\phi_A}) =
+  - \frac{\mpl^2}{12}\Pi_a^2
+  + \frac{1}{2}a^{-2}\Pi_{\phi_A}\Pi_{\phi_A}
+  + \frac{1}{2}a^2\nabla\phi_A\cdot\nabla\phi_A
+  + a^4V
+\end{equation}
+and the equations of motion
+\begin{align} \label{eq:eom}
+  &\frac{\dd a}{\dd\tau} = -\frac{\mpl^2}{6}\Pi_a \\
+  &\frac{\dd\Pi_a}{\dd\tau}  = -a^{-3}\Pi_{\phi_A}\Pi_{\phi_A} - a\nabla\phi_A\cdot\nabla\phi_A -4a^3V \\
+  &\frac{\dd\phi_A}{\dd\tau}  = a^{-2}\Pi_{\phi_A} \\
+  &\frac{\dd\Pi_{\phi_A}}{\dd\tau}  = a^2\nabla^2\phi_A - a^4V_{,\phi_A}.
+\end{align}
+
+With \eqref{eq:eom} we have arrived at a Hamiltonian system which can be integrated frowards from intial conditions on the lattice using a Yoshida symplectic integrator.
+\marginpar{
+  Give operator splitting (maybe appendix material).
+}
+\marginpar{
+  Now talking about putting these equations on the lattice so need to say how $\nabla$ and $\nabla^2$ are defined on the lattice (maybe appendix material).
+}
+
+\subsection{Initial Conditions}
+In order to evolve the system \eqref{eq:eom} forward in time we must specify initial conditions.
+% What should I be talking about here?
+% Assumption that perturbation theory can be used to set initial conditons for the lattice sim
+% Setting via spectra or convolution
+% Linear calculation
+% 
 
 \marginpar{
   Missing some words to define all the terms here. Should mention $\phi_A$, $A=1,2$ are also written $\phi$, $\chi$.
 }  
 
-For our lattice simulations we assume a Friedmann-Robertson-Walker metric $\dd s^2 = -\dd t^2 +a^2(t) \delta_{ij}\dd x^i \dd x^j$ and couple to gravity only at the level of the energy constraint equation applied between a spatially uniform Hubble parameter and the lattice averaged energy density
+%For our lattice simulations we assume a Friedmann-Robertson-Walker metric $\dd s^2 = -\dd t^2 +a^2(t) \delta_{ij}\dd x^i \dd x^j$ and couple to gravity only at the level of the energy constraint equation applied between a spatially uniform Hubble parameter and the lattice averaged energy density
 \begin{equation} \label{eq:energy constraint}
   H^2 = \frac{1}{3M_{Pl}}\langle \rho \rangle_{\mathrm{Lattice}},
 \end{equation} 
-where $H = \dot{a}/a$. We will commonly use $\alpha = \ln(a)$ in terms of which we can define the Hubble parameter $H = \dot{\alpha}$ and the slow-roll parameter $\epsilon = -\frac{\dd\ln H}{\dd \alpha}.$
-\marginpar{
-  Is it important to mention the terms we are throwing out of \eqref{eq:energy constraint} and \eqref{eq:fld eom} by imposing the FRW metric?
-}
+%where $H = \dot{a}/a$. We will commonly use $\alpha = \ln(a)$ in terms of which we can define the Hubble parameter $H = \dot{\alpha}$ and the slow-roll parameter $\epsilon = -\frac{\dd\ln H}{\dd \alpha}.$
+%\marginpar{
+%  Is it important to mention the terms we are throwing out of \eqref{eq:energy constraint} and \eqref{eq:fld eom} by imposing the FRW metric?
+%}
 
-With the assumption of an FRW metric the canonical momenta of to fields $\phi_A$ are given by $\Pi_{\phi_A} = a^3\dot{\phi_A}$ and their equations of motion are
-\begin{align} \label{eq:fld eom}
-  %0 = \ddot{\phi_A} + 3H\dot{\phi_A} - \frac{\nabla^2}{a^2}\phi_A + V_{,\phi_A}
-  \frac{\dd}{\dd t} \phi_A &= a^{-3}\Pi_{\phi_A} \\
-  \frac{\dd}{\dd t} \Pi_{\phi_A} &= a^3\left(\frac{\nabla^2\phi_A}{a^2} - V_{,\phi_A}\right).
-\end{align} 
+%With the assumption of an FRW metric the canonical momenta of to fields $\phi_A$ are given by $\Pi_{\phi_A} = a^3\dot{\phi_A}$ and their equations of motion are
+%\begin{align} \label{eq:fld eom}
+%  %0 = \ddot{\phi_A} + 3H\dot{\phi_A} - \frac{\nabla^2}{a^2}\phi_A + V_{,\phi_A}
+%  \frac{\dd}{\dd t} \phi_A &= a^{-3}\Pi_{\phi_A} \\
+%  \frac{\dd}{\dd t} \Pi_{\phi_A} &= a^3\left(\frac{\nabla^2\phi_A}{a^2} - V_{,\phi_A}\right).
+%\end{align} 
 
 \subsection{Potential}
 \Fpotential
