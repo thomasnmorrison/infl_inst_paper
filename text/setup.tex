@@ -88,29 +88,43 @@ In order to evolve the system \eqref{eq:eom} forward in time we must specify ini
 \subsection{Potential}
 \Fpotential
 
-
-
 \marginpar{
-  I should explain the choice of potential here and what phenomenology we are hoping to capture. And give some motivation of looking at instabilities for generating NG.
+  I should explain the choice of potential here and what phenomenology we are hoping to capture. And give some motivation of looking at instabilities for generating NG. This is still the old potential
 }
 
 The forms of the baseline and stimulus to the potential we use are given by
 \begin{align} \label{eq:potential}
   &V_0(\phi,\chi) = \frac{1}{2}m^2_\phi\phi^2 + \frac{1}{2}m^2_\chi\chi^2 \\
-  &\Delta V(\phi,\chi) = \frac{1}{2}\mu^2(\phi)\chi^2 + \frac{1}{4}\lambda_\chi\chi^4,
-\end{align} 
-here $\mu^2(\phi)$ modulates the interaction term and controls symmetry breaking/restoration in the $\chi$ direction.
-We have chosen a baseline potential $V_0$ which is quadratic in the fields to avoid nonlinearities in the baseline case and a simple functional form for $\mu^2(\phi)$ with the aim of capturing the phenomenology of a phase transitionduring inflation
-\begin{equation} \label{eq:m2 eff}
-  \mu^2(\phi)
+  &\Delta V(\phi,\chi) = \frac{1}{4}\lambda(\phi)\left[ (\chi^2-v^2)^2 - v^4 \right].
+  %&\Delta V(\phi,\chi) = \frac{1}{2}\mu^2(\phi)\chi^2 + \frac{1}{4}\lambda_\chi\chi^4,
+\end{align}
+The form of $\Delta V$ is a symmetry breaking potential in the transverse field $\chi$. The term $\lambda(\phi)$ uses the longitudinal field $\phi$ as a clock to turn the symmetry breaking term on or off.
+
+We have chosen a baseline potential $V_0$ which is quadratic in the fields to avoid nonlinearities in the baseline case.
+To capture the phenomenology of symmetry breaking and restoration in the transverse direction we require $\lambda(\phi)$ to be a function with compact support.
+For computational simplicity, we have chosen to paramtereize $\lambda(\phi)$ as a piecewise polynomial
+\begin{equation} \label{eq:lambda}
+  \lambda(\phi) =
   \begin{cases}
     0 & \quad \text{if } |\phi-\phi_p|\ge\phi_w \\
-    m^2_p - m^2_\chi + g^2(\phi-\phi_p)^2 -\frac{g^4}{4(m^2_\chi-m^2_p)}(\phi-\phi_p)^4 & \quad \text{if } |\phi-\phi_p|<\phi_w. \\
-  \end{cases}
-\end{equation} 
-The parameters $\phi_p$ and $\phi_w$ respectively control the position and width of the region where the potential is deformed.
-The parameter $m^2_p$ when negative controls the strength of the symmetry breaking in the $\chi$ direction.
-Requiring continuity of the potential and its first derivative fixes the term $g^2=2(m^2_\chi-m^2_p)/\phi_w^2$.
+    \lambda_\chi\left[\left(\frac{\phi-\phi_p}{\phi_w}\right)^2 - 1 \right]^2 & \quad \text{if  } |\phi-\phi_p|<\phi_w
+  \end{cases}.
+\end{equation}
+The parameters $\phi_p$ and $\phi_w$ control the placement and duration of the symmetry breaking and $\lambda_\chi$
+scales its strength.
+
+%here $\mu^2(\phi)$ modulates the interaction term and controls symmetry breaking/restoration in the $\chi$ direction.
+%We have chosen a baseline potential $V_0$ which is quadratic in the fields to avoid nonlinearities in the baseline case and a simple functional form for $\mu^2(\phi)$ with the aim of capturing the phenomenology of a phase transitionduring inflation
+%\begin{equation} \label{eq:m2 eff}
+%  \mu^2(\phi)
+%  \begin{cases}
+%    0 & \quad \text{if } |\phi-\phi_p|\ge\phi_w \\
+%    m^2_p - m^2_\chi + g^2(\phi-\phi_p)^2 -\frac{g^4}{4(m^2_\chi-m^2_p)}(\phi-\phi_p)^4 & \quad \text{if } |\phi-\phi_p|<\phi_w. \\
+%  \end{cases}
+%\end{equation} 
+%The parameters $\phi_p$ and $\phi_w$ respectively control the position and width of the region where the potential is deformed.
+%The parameter $m^2_p$ when negative controls the strength of the symmetry breaking in the $\chi$ direction.
+%Requiring continuity of the potential and its first derivative fixes the term $g^2=2(m^2_\chi-m^2_p)/\phi_w^2$.
 
 \marginpar{
   I haven't mentioned anywhere that inflation is primarily driven by $\phi$ (at least in the baseline case), but that seems like important information to the reader. 
