@@ -16,49 +16,59 @@ In this section we setup our system detailing the equations of motion, the form 
 % Talk about by convention we will choose $\phi$ displaced from the origin and driving inflation
 % Define $H$, $a$, $\alpha$, $M_{Pl}$
 % Define the naming convention $\phi_A$, $A=1,2$ as $\phi$, $\chi$.
+% Discretization of the action
 
 The action for a set of scalar fields minimally coupled to gravity is given by
 \begin{equation} \label{eq:action}
-  S = \int \sqrt{-g}\left\{\frac{R}{2\mpl^2} - \frac{1}{2}g^{\mu\nu}\partial_\mu\phi_A\partial_\nu\phi_A - V \right\}\dd^4x.
+  S = \int \sqrt{-g}\left\{\frac{R}{2\mpl^2} - \frac{1}{2}g^{\mu\nu}\partial_\mu\phi^A\partial_\nu\phi^A - V \right\}\dd^4x.
 \end{equation} 
 Substuting the ansatz of an FRW metric $\dd s^2 = -a^2(\tau)\left( \dd\tau^2 \delta_{ij}\dd x^i\dd x^j \right)$ into \eqref{eq:action} and integrating by parts we arrive at the action
 \begin{equation} \label{eq:actionFRW}
   S_{\mathrm{FRW}} = \int a^4\left\{
   - \frac{3}{\mpl^2}a'^2
-  + \frac{1}{2}a^{-2}\phi_A'\phi_A'
-  - \frac{1}{2}a^{-2}\nabla\phi_A\cdot\nabla\phi_A
+  + \frac{1}{2}a^{-2}\sum_A\left[{{\phi^A}'}^2
+  - \nabla\phi^A\cdot\nabla\phi^A\right]
   - V
   \right\}\dd\tau\dd^3x.
 \end{equation}
-\marginpar{
-  Insert something about this is the action from which we will derive the equations of motion for our lattice simulations.
-}
-This leads to the cannonically conjugate pairs $(a,\Pi_a)$ and $(\phi_A,\Pi_{\phi_A})$ where $\Pi_a = -6a'/\mpl^2$. This gives the Hamiltonian density
-\begin{equation} \label{eq:hamiltonian}
-  \mathscr{H}(a,\Pi_a; \phi_A,\nabla\phi_A,\Pi_{\phi_A}) =
-  - \frac{\mpl^2}{12}\Pi_a^2
-  + \frac{1}{2}a^{-2}\Pi_{\phi_A}\Pi_{\phi_A}
-  + \frac{1}{2}a^2\nabla\phi_A\cdot\nabla\phi_A
-  + a^4V
-\end{equation}
-and the equations of motion
-\begin{align} \label{eq:eom}
-  &\frac{\dd a}{\dd\tau} = -\frac{\mpl^2}{6}\Pi_a \\
-  &\frac{\dd\Pi_a}{\dd\tau}  = -a^{-3}\Pi_{\phi_A}\Pi_{\phi_A} - a\nabla\phi_A\cdot\nabla\phi_A -4a^3V \\
-  &\frac{\dd\phi_A}{\dd\tau}  = a^{-2}\Pi_{\phi_A} \\
-  &\frac{\dd\Pi_{\phi_A}}{\dd\tau}  = a^2\nabla^2\phi_A - a^4V_{,\phi_A}.
-\end{align}
+%\marginpar{
+%  Insert something about this is the action from which we will derive the equations of motion for our lattice simulations.
+%}
 
-With \eqref{eq:eom} we have arrived at a Hamiltonian system which can be integrated frowards from intial conditions on the lattice using a Yoshida symplectic integrator.
-\marginpar{
-  Give operator splitting (maybe appendix material).
-}
-\marginpar{
-  Now talking about putting these equations on the lattice so need to say how $\nabla$ and $\nabla^2$ are defined on the lattice (maybe appendix material).
-}
+Discretizing the action $S_{\mathrm{FRW}}$ on a cubic lattice of side length $l$ with $N$ equally space points along each dimension leads to the equations of motion
+\begin{align} \label{eq:lat eom}
+  & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i\\
+  & \frac{\dd\Pi^A_i}{\dd\tau} = -a^2\nabla^2_\lat(\phi^A_j)_i -a^4\frac{\partial V_i}{\partial \phi^A_i}\\
+  & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a\\
+  & \frac{\dd\Pi^a}{\dd\tau} = -N^{-3}\sum_i\left\{
+  \sum_A\left[-a^{-3}{\Pi^A_i}^2 + a\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i \right]
+  + 4a^3V_i\right\}.
+\end{align}
+Here the subscripts $i$ and $j$ run over lattice sites, $\Pi^A_i \equiv a^2{\phi^a_i}'$ and $\Pi^a \equiv -6\mpl^2a'$ are the momentum densities, and $\nabla_\lat$ and $\nabla^2_\lat$ are discrete gradient and Laplacian operators defined pseudospectrally.
+Full details of the discretization proceedure can be found in the appendix.
+
+%This leads to the cannonically conjugate pairs $(a,\Pi_a)$ and $(\phi_A,\Pi_{\phi_A})$ where $\Pi_a = -6a'/\mpl^2$. This gives the Hamiltonian density
+%\begin{equation} \label{eq:hamiltonian}
+%  \mathscr{H}(a,\Pi_a; \phi_A,\nabla\phi_A,\Pi_{\phi_A}) =
+%  - \frac{\mpl^2}{12}\Pi_a^2
+%  + \frac{1}{2}a^{-2}\Pi_{\phi_A}\Pi_{\phi_A}
+%  + \frac{1}{2}a^2\nabla\phi_A\cdot\nabla\phi_A
+%  + a^4V
+%\end{equation}
+%and the equations of motion
+%\begin{align} \label{eq:eom}
+%  &\frac{\dd a}{\dd\tau} = -\frac{\mpl^2}{6}\Pi_a \\
+%  &\frac{\dd\Pi_a}{\dd\tau}  = -a^{-3}\Pi_{\phi_A}\Pi_{\phi_A} - a\nabla\phi_A\cdot\nabla\phi_A -4a^3V \\
+%  &\frac{\dd\phi_A}{\dd\tau}  = a^{-2}\Pi_{\phi_A} \\
+%  &\frac{\dd\Pi_{\phi_A}}{\dd\tau}  = a^2\nabla^2\phi_A - a^4V_{,\phi_A}.
+%\end{align}
+
+With \eqref{eq:lat eom} we have arrived at a Hamiltonian system which can be integrated frowards from intial conditions.
+The system can be solved with an operator splitting method, the Hamiltonian can be split into three terms each with seperable equations of motion which can be integrated by a Yoshida symplectic integration scheme.
+Details of the Hamiltonian splitting can be found in the appendix.
 
 \subsection{Initial Conditions}
-In order to evolve the system \eqref{eq:eom} forward in time we must specify initial conditions.
+In order to evolve the system \eqref{eq:lat eom} forward in time we must specify initial conditions.
 % What should I be talking about here?
 % Assumption that perturbation theory can be used to set initial conditons for the lattice sim
 % Setting via spectra or convolution
