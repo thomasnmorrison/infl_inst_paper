@@ -16,7 +16,6 @@ In this section we setup our system detailing the equations of motion, the form 
 % Talk about by convention we will choose $\phi$ displaced from the origin and driving inflation
 % Define $H$, $a$, $\alpha$, $M_{Pl}$
 % Define the naming convention $\phi_A$, $A=1,2$ as $\phi$, $\chi$.
-% Discretization of the action
 
 The action for a set of scalar fields minimally coupled to gravity is given by
 \begin{equation} \label{eq:action}
@@ -31,10 +30,11 @@ Substuting the ansatz of a Friedman-robertson-Walker (FRW) metric $\dd s^2 = -a^
   - V
   \right\}\dd\tau\dd^3x.
 \end{equation}
-%\marginpar{
-%  Insert something about this is the action from which we will derive the equations of motion for our lattice simulations.
-%}
-
+\marginpar{
+  Here we need to discuss using the FRW anzats and what that will leave out in terms of metric fluctuations, gauge etc.
+  What we can do is compute the sourced metric fluctuations with no back reaction.
+}
+  
 Discretizing this action on a cubic lattice of side length $l$ with $N$ equally space points along each dimension leads to the equations of motion
 \begin{align}
   & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i  \label{eq:lat eom a}\\
@@ -46,7 +46,9 @@ Discretizing this action on a cubic lattice of side length $l$ with $N$ equally 
 \end{align}
 Here the subscripts $i$ and $j$ run over lattice sites, $\Pi^A_i \equiv a^2{\phi^a_i}'$ and $\Pi^a \equiv -6\mpl^2a'$ are the momentum densities, and $\nabla_\lat$ and $\nabla^2_\lat$ are discrete gradient and Laplacian operators defined pseudospectrally.
 Full details of the discretization proceedure can be found in the appendix.
-
+\marginpar{
+  Need to mention the dimensionless units of the code and give details in the appendix.
+}
 \marginpar{
   Should probably make a note here that for brevity the lattice indicies $i,j$ and subscript ${}_\lat$ will be implied throughout.
 }
