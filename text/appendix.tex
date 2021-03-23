@@ -2,10 +2,10 @@
 
 \section{Appendix}
 
-\subsection{Discretization of the Action}
-The importance of discretizing the action is to find a self-consistent set of equations of motion which can be solved numerically. 
-To do we construct a cubic lattice of side length $l$ with $N$ equally spaced lattice sites along each dimension and label the points on this lattice $x_i$ with the index $i\in[0,N-1]\otimes[0,N-1]\otimes[0,N-1]$.
-The lattice spacing is $\Delta x \equiv l/N$ and the fundamental mode frequency is $\Delta k \equiv 2\pi/l$.
+%\subsection{Discretization of the Action}
+%The importance of discretizing the action is to find a self-consistent set of equations of motion which can be solved numerically. 
+%To do we construct a cubic lattice of side length $l$ with $N$ equally spaced lattice sites along each dimension and label the points on this lattice $x_i$ with the index $i\in[0,N-1]\otimes[0,N-1]\otimes[0,N-1]$.
+%The lattice spacing is $\Delta x \equiv l/N$ and the fundamental mode frequency is $\Delta k \equiv 2\pi/l$.
 %\begin{equation} %\label{eq:actionFRW}
 %  S_{\mathrm{FRW}} = \int a^4\left\{
 %  - \frac{3}{\mpl^2}a'^2
@@ -14,114 +14,258 @@ The lattice spacing is $\Delta x \equiv l/N$ and the fundamental mode frequency 
 %  - V
 %  \right\}\dd\tau\dd^3x.
 %\end{equation}
-By restricting the system onto the lattice sites and making the following replacements
+%By restricting the system onto the lattice sites and making the following replacements
 %$x \to x_i$, $\int \dd^3x \to \sum \Delta x^3$, $\phi^A(x=x_i) \to \phi^A_i$, $V(\phi^A(x=x_i)) \to V_i$, and $\nabla\phi^A(x=x_i) \to \nabla_\lat(\phi^A_j)_i$
-\begin{align}
-  x &\to x_i \\
-  \int \dd^3x &\to \sum \Delta x^3 \\
-  \phi^A(x=x_i) &\to \phi^A_i \\
-  V(\phi^A(x=x_i)) &\to V_i \\
-  \nabla\phi^A(x=x_i) &\to \nabla_\lat(\phi^A_j)_i
-\end{align}
-\begin{align}
-  S_{\mathrm{FRW}} & \to S_\lat \\
-  & = \int\sum_i\left\{ - 3\mpl^2a'^2
-  + \frac{1}{2}a^2\sum_A \left[ {{\phi^A_i}'}^2 - \nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i \right]
-  - a^4 V_i \right\}\Delta x^3 \dd\tau \\
-  & = \int - 3\mpl^2l^3a'^2 
-  + \sum_i\left\{ \frac{1}{2}a^2\sum_A \left[ {{\phi^A_i}'}^2 - \nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i \right]
-  - a^4 V_i \right\}\Delta x^3 \dd\tau.
-\end{align}
-we discretize the action.
-It is from the action $S_\lat$ that we derive the equations of motion on the lattice.
+%\begin{align}
+%  x &\to x_i \\
+%  \int \dd^3x &\to \sum \Delta x^3 \\
+%  \phi^A(x=x_i) &\to \phi^A_i \\
+%  V(\phi^A(x=x_i)) &\to V_i \\
+%  \nabla\phi^A(x=x_i) &\to \nabla_\lat(\phi^A_j)_i
+%\end{align}
+%\begin{align}
+%  S_{\mathrm{FRW}} & \to S_\lat \\
+%  & = \int\sum_i\left\{ - 3\mpl^2a'^2
+%  + \frac{1}{2}a^2\sum_A \left[ {{\phi^A_i}'}^2 - \nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i \right]
+%  - a^4 V_i \right\}\Delta x^3 \dd\tau \\
+%  & = \int - 3\mpl^2l^3a'^2 
+%  + \sum_i\left\{ \frac{1}{2}a^2\sum_A \left[ {{\phi^A_i}'}^2 - \nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i \right]
+%  - a^4 V_i \right\}\Delta x^3 \dd\tau.
+%\end{align}
+%we discretize the action.
+%It is from the action $S_\lat$ that we derive the equations of motion on the lattice.
 %The system described by $S_\lat$ is a system of a finite number of degrees of freedom .
 
 % Computing momenta
-The Lagrangian can be read off from $S_\lat$ and the momenta calculated
-\begin{align}
-  & \frac{\partial L}{\partial a'} = -6\mpl^2l^3a' \equiv \pi^a
-  & \implies a'=-\frac{1}{6\mpl^2l^3}\pi^a \\
-  & \frac{\partial L}{\partial {\phi^A_i}'} = a^2\Delta x^3{\phi^A_i}' \equiv \pi^A_i
-  & \implies {\phi^A_i}' = a^{-2}\delta x^{-3}\pi^A_i.
-\end{align}
+%The Lagrangian can be read off from $S_\lat$ and the momenta calculated
+%\begin{align}
+%  & \frac{\partial L}{\partial a'} = -6\mpl^2l^3a' \equiv \pi^a
+%  & \implies a'=-\frac{1}{6\mpl^2l^3}\pi^a \\
+%  & \frac{\partial L}{\partial {\phi^A_i}'} = a^2\Delta x^3{\phi^A_i}' \equiv \pi^A_i
+%  & \implies {\phi^A_i}' = a^{-2}\delta x^{-3}\pi^A_i.
+%\end{align}
 % Compute Hamiltonian
-The Hamiltonian can then be calculated
-\begin{equation} \label{eq:lat ham}
-  H = -\frac{1}{12\mpl^2l^3}{\pi^a}^2
-  + \sum_i \left\{ \sum_A \left[
-      \frac{1}{2}a^{-2}\Delta x^{-3}{\pi^A_i}^2
-      + \frac{1}{2}a^2\Delta x^3\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i  \right]
-    + a^4\Delta x^3V_i\right\}.
-\end{equation}
+%The Hamiltonian can then be calculated
+%\begin{equation} \label{eq:lat ham}
+%  H = -\frac{1}{12\mpl^2l^3}{\pi^a}^2
+%  + \sum_i \left\{ \sum_A \left[
+%      \frac{1}{2}a^{-2}\Delta x^{-3}{\pi^A_i}^2
+%      + \frac{1}{2}a^2\Delta x^3\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i  \right]
+%    + a^4\Delta x^3V_i\right\}.
+%\end{equation}
 % Computing Poisson brackets
-The Poisson brackets giving the equations of motion are
-\begin{align}
-  & \{\phi^A_i,H\} = a^{-2}\Delta x^{-3}\pi^A_i \\
-  & \{\pi^A_i,H\} = -a^2\Delta x^3 ... \\
-  & \{a,H\} = -\frac{1}{6\mpl^2l^3}\pi^a \\
-  & \{\pi^a,H\} = -\Delta x^3\sum_i\left\{\sum_A\left[ -a^{-3}\Delta x^{-6}{\pi^A_i}^2 + a\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i\right] + 4a^3V_i \right\}.
-\end{align}
+%The Poisson brackets giving the equations of motion are
+%\begin{align}
+%  & \{\phi^A_i,H\} = a^{-2}\Delta x^{-3}\pi^A_i \\
+%  & \{\pi^A_i,H\} = -a^2\Delta x^3 ... \\
+%  & \{a,H\} = -\frac{1}{6\mpl^2l^3}\pi^a \\
+%  & \{\pi^a,H\} = -\Delta x^3\sum_i\left\{\sum_A\left[ -a^{-3}\Delta x^{-6}{\pi^A_i}^2 + a\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i\right] + 4a^3V_i \right\}.
+%\end{align}
 
 % Equations of motion
 % Defining momenta densities
-The equations of motion on the lattice can be made to more closely resemble the continuum equations of motion by defining the momentum densities
-$\Pi^A_i \equiv \Delta x^{-3}\pi^A_i$ and $\Pi^a \equiv l^{-3}\pi^a$.
-In terms of which the equations of motion become
-\begin{align} %\label{eq:lat eom}
-  & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i\\
-  & \frac{\dd\Pi^A_i}{\dd\tau} = -a^2\nabla^2_\lat(\phi^A_j)_i -a^4\frac{\partial V_i}{\partial \phi^A_i}\\
-  & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a\\
-  & \frac{\dd\Pi^a}{\dd\tau} = -N^{-3}\sum_i\left\{
-  \sum_A\left[-a^{-3}{\Pi^A_i}^2 + a\nabla(\phi^A_j)_i\cdot\nabla(\phi^A_j)_i \right]
-  + 4a^3V_i\right\}.
-\end{align}
+%The equations of motion on the lattice can be made to more closely resemble the continuum equations of motion by defining the momentum densities
+%$\Pi^A_i \equiv \Delta x^{-3}\pi^A_i$ and $\Pi^a \equiv l^{-3}\pi^a$.
+%In terms of which the equations of motion become
+%\begin{align} %\label{eq:lat eom}
+%  & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i\\
+%  & \frac{\dd\Pi^A_i}{\dd\tau} = -a^2\nabla^2_\lat(\phi^A_j)_i -a^4\frac{\partial V_i}{\partial \phi^A_i}\\
+%  & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a\\
+%  & \frac{\dd\Pi^a}{\dd\tau} = -N^{-3}\sum_i\left\{
+%  \sum_A\left[-a^{-3}{\Pi^A_i}^2 + a\nabla(\phi^A_j)_i\cdot\nabla(\phi^A_j)_i \right]
+%  + 4a^3V_i\right\}.
+%\end{align}
 
-\subsection{Operator Splitting}
-The Hamiltonian \eqref{eq:lat ham} can be split into three terms,
-\begin{align} \label{eq:lat ham split}
-  & H_1 = -\frac{1}{12\mpl^2l^3}{\pi^a}^2  \\
-  & H_2 = \frac{1}{2}a^{-2}\Delta x^{-3}\sum_{i,A} {\pi^A_i}^2  \\
-  & H_3 = \sum_i\left[\frac{1}{2}\Delta x^3\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i + a^4\Delta x^3V_i\right].
-\end{align}
-With each of these terms giving seperable equations of motion,
-\begin{align}
-  & \{a,H_1\} = -\frac{1}{6\mpl^2l^3}\pi^a \\
-  & \{\phi^A_i,H_2\} = a^{-2}\Delta x^{-3}\pi^A_i \\
-  & \{\pi^a,H_2\} = \sum_{i,A}a^{-3}\Delta x^3{\pi^A_i}^2 \\
-  & \{\pi^A_i,H_3\} = ... \\
-  & \{\pi^a,H_3\} = -\Delta x^3\sum_i\left\{\sum_A\left[a\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i\right] + 4a^3V_i \right\}
-\end{align}
+%\subsection{Operator Splitting}
+%The Hamiltonian \eqref{eq:lat ham} can be split into three terms,
+%\begin{align} \label{eq:lat ham split}
+%  & H_1 = -\frac{1}{12\mpl^2l^3}{\pi^a}^2  \\
+%  & H_2 = \frac{1}{2}a^{-2}\Delta x^{-3}\sum_{i,A} {\pi^A_i}^2  \\
+%  & H_3 = \sum_i\left[\frac{1}{2}\Delta x^3\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i + a^4\Delta x^3V_i\right].
+%\end{align}
+%With each of these terms giving seperable equations of motion,
+%\begin{align}
+%  & \{a,H_1\} = -\frac{1}{6\mpl^2l^3}\pi^a \\
+%  & \{\phi^A_i,H_2\} = a^{-2}\Delta x^{-3}\pi^A_i \\
+%  & \{\pi^a,H_2\} = \sum_{i,A}a^{-3}\Delta x^3{\pi^A_i}^2 \\
+%  & \{\pi^A_i,H_3\} = ... \\
+%  & \{\pi^a,H_3\} = -\Delta x^3\sum_i\left\{\sum_A\left[a\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i\right] + 4a^3V_i \right\}
+%\end{align}
 
 \subsection{Defining Derivatives on the Lattice}
-The discretization of spatial gradients on the lattice is defined psuedospectrally in a Fourier basis.
-The procedure is to first transform the discretized field using a fast Fourier transform (FFT), then take the derivative analytically and invert the FFT to find the gradient of the field at each lattice site.
-We denote the operator defined by this procedure as $\nabla_\lat$.
-So long as a field $\phi^A$ is periodic with its FFT resolved on the lattice, the continuum gradient and the discrete gradient will agree in the sense that $\nabla\phi^A(x=x_i) = \nabla_\lat(\phi^A_j)_i$.
+%The discretization of spatial gradients on the lattice is defined psuedospectrally in a Fourier basis.
+%The procedure is to first transform the discretized field using a fast Fourier transform (FFT), then take the derivative analytically and invert the FFT to find the gradient of the field at each lattice site.
+%We denote the operator defined by this procedure as $\nabla_\lat$.
+%So long as a field $\phi^A$ is periodic with its FFT resolved on the lattice, the continuum gradient and the discrete gradient will agree in the sense that $\nabla\phi^A(x=x_i) = \nabla_\lat(\phi^A_j)_i$.
 % Technically I have put this is in terms of the DFT and not the FFT.
-\begin{align}
-  &\phi^A_i = \frac{1}{N^3}\sum_n\tilde{\phi}^A_n e^{i\frac{2\pi}{N}i\cdot n} \\
-  &\tilde{\phi}^A_n = \sum_i\phi^A_i e^{-i\frac{2\pi}{N}i\cdot n} 
-\end{align}
-\begin{align}
-  \nabla_\lat(\phi^C_j)_k &= \frac{1}{N^3}\sum_n k_n \tilde{\phi}^C_i e^{i\frac{2\pi}{N}i\cdot n}\\
-  & = \frac{1}{N^3}\sum_n k_n \sum_j\phi^C_j e^{-i\frac{2\pi}{N}(j-k)\cdot n}
-\end{align}
+%\begin{align}
+%  &\phi^A_i = \frac{1}{N^3}\sum_n\tilde{\phi}^A_n e^{i\frac{2\pi}{N}i\cdot n} \\
+%  &\tilde{\phi}^A_n = \sum_i\phi^A_i e^{-i\frac{2\pi}{N}i\cdot n} 
+%\end{align}
+%\begin{align}
+%  \nabla_\lat(\phi^C_j)_k &= \frac{1}{N^3}\sum_n k_n \tilde{\phi}^C_i e^{i\frac{2\pi}{N}i\cdot n}\\
+%  & = \frac{1}{N^3}\sum_n k_n \sum_j\phi^C_j e^{-i\frac{2\pi}{N}(j-k)\cdot n}
+%\end{align}
 % Check that these limits are correct.
-Here $N$ is the number of points along one dimension of the lattice, $i,j \in [0,N-1]\otimes[0,N-1]\otimes[0,N-1]$ are lattice indices,  $n,m \in [0,N-1]\otimes[0,N-1]\otimes[0,N-1]$ are wave numbers with corresponding frequencies $k_n,k_m \in \delta k [-N/2+1,N/2] \otimes \Delta k [-N/2+1,N/2] \otimes \Delta k [-N/2+1,N/2]$.
+%Here $N$ is the number of points along one dimension of the lattice, $i,j \in [0,N-1]\otimes[0,N-1]\otimes[0,N-1]$ are lattice indices,  $n,m \in [0,N-1]\otimes[0,N-1]\otimes[0,N-1]$ are wave numbers with corresponding frequencies $k_n,k_m \in \delta k [-N/2+1,N/2] \otimes \Delta k [-N/2+1,N/2] \otimes \Delta k [-N/2+1,N/2]$.
 
-We will also use a discretized Laplacian which is also define pseudospectrally and denote $\nabla^2_\lat$.
-\begin{align}
-  \nabla^2_\lat(\phi^C_j)_i \equiv \frac{1}{N^3} \sum_{m,n} -|k_m|^2 \tilde{\phi}^A_m e^{-i\frac{2\pi}{N}i\cdot n}
-\end{align}
+%We will also use a discretized Laplacian which is also define pseudospectrally and denote $\nabla^2_\lat$.
+%\begin{align}
+%  \nabla^2_\lat(\phi^C_j)_i \equiv \frac{1}{N^3} \sum_{m,n} -|k_m|^2 \tilde{\phi}^A_m e^{-i\frac{2\pi}{N}i\cdot n}
+%\end{align}
 
-In deriving the equations of motion \eqref{eq:lat eom} we have assumed consistency relation between $\nabla_\lat$ and $\nabla^2_\lat$. This consistency can be verified as follows
-\begin{align}
-  \sum_{k,C}\nabla_\lat(\phi^C_j)_k \cdot \frac{\partial\nabla_\lat(\phi^C_j)_k}{\partial\phi^A_i}
-  &= \frac{1}{N^6} \sum_{k,m,n,C} k_m\cdot k_n \tilde{\phi}^C_m e^{i\frac{2\pi}{N}(k)\cdot m} e^{-i\frac{2\pi}{N}(i-k)\cdot n} \delta^{AC} \\
+%In deriving the equations of motion \eqref{eq:lat eom} we have assumed consistency relation between $\nabla_\lat$ and $\nabla^2_\lat$. This consistency can be verified as follows
+%\begin{align}
+%  \sum_{k,C}\nabla_\lat(\phi^C_j)_k \cdot \frac{\partial\nabla_\lat(\phi^C_j)_k}{\partial\phi^A_i}
+%  &= \frac{1}{N^6} \sum_{k,m,n,C} k_m\cdot k_n \tilde{\phi}^C_m e^{i\frac{2\pi}{N}(k)\cdot m} e^{-i\frac{2\pi}{N}(i-k)\cdot n} \delta^{AC} \\
 %  &= \frac{1}{N^6} \sum_{m,n} k_m\cdot k_n \tilde{\phi}^A_m e^{-i\frac{2\pi}{N}i\cdot n}\sum_{k}e^{i\frac{2\pi}{N}k\cdot(m+n)} \\
 %  &= \frac{1}{N^3} \sum_{m,n} k_m\cdot k_n \tilde{\phi}^A_m e^{-i\frac{2\pi}{N}i\cdot n}\delta_{m,-n} \\
-  &= \frac{1}{N^3} \sum_{m,n} -|k_m|^2 \tilde{\phi}^A_m e^{-i\frac{2\pi}{N}i\cdot n} \\
-  &= \nabla^2_\lat(\phi^A_j)_i.
+%  &= \frac{1}{N^3} \sum_{m,n} -|k_m|^2 \tilde{\phi}^A_m e^{-i\frac{2\pi}{N}i\cdot n} \\
+%  &= \nabla^2_\lat(\phi^A_j)_i.
+%\end{align}
+
+% to do: discrete lattice definitions
+% to do: put in DFT convensions
+% to do: define grad dot grad
+% to do: define laplacian
+% to do: lattice equations of motion
+% to do: dimensionless quantities
+% to do:
+
+\marginpar{
+  Makes sense to start this section with defining the lattice.
+  I need to do some editing to make the appendix flow more smoothly.
+}
+
+Translating a system of fields from the continuum onto the lattice requires defining discrete differential operators.
+We define spatial differential operators pseudospectrally using a Fourier basis.
+The procedure is to first transform the discretized fields using a fast Fourier transform (FFT), then take the derivatives analytically and invert the FFT.
+Differential operators defined in this manner will agree with the continuum operators as long as the lattice resolution is sufficient to avoid aliasing and the fields are periodic on the lattice.
+We will define two such operators corresponding to $\nabla\phi^A\cdot\nabla\phi^B$ and $\nabla^2\phi^A$ in the continuum
+\begin{align}
+  & \nabla\phi^A\cdot\nabla\phi^B(x=x_i) \to \nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^B_j)_i \\
+  & \nabla^2\phi^A(x=x_i) \to \nabla^2_\lat(\phi^A_j)_i.
 \end{align}
+
+Using the discrete Fourier transform convension
+\begin{align}
+  &\phi^A_i = \frac{1}{N^3}\sum_n\tilde{\phi}^A_n e^{i\frac{2\pi}{N}i\cdot n} \\
+  &\tilde{\phi}^A_n = \sum_i\phi^A_i e^{-i\frac{2\pi}{N}i\cdot n}.
+\end{align}
+\marginpar{
+  fit somewhere in the text that here $N$ is the number of points along one dimension of the lattice, $i,j \in [0,N-1]\otimes[0,N-1]\otimes[0,N-1]$ is a lattice indicies,  $n,m \in [0,N-1]\otimes[0,N-1]\otimes[0,N-1]$ are wave numbers with corresponding frequencies $k_n,k_m \in \delta k [-N/2+1,N/2] \otimes \Delta k [-N/2+1,N/2] \otimes \Delta k [-N/2+1,N/2]$.
+}
+We define $\nabla^2_\lat(\phi^A_j)_i$ by
+\begin{align} \label{eq:laplacian}
+  \nabla^2_\lat(\phi^A_j)_i \equiv \frac{1}{N^3} \sum_{m,n} -|k_m|^2 \tilde{\phi}^A_m e^{-i\frac{2\pi}{N}i\cdot n}.
+\end{align}
+And $\nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^B_j)_i$ by 
+\begin{align} \label{eq:grad dot grad}
+  \nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^B_j)_k \equiv
+  \frac{1}{N^6}\sum_nik_n\tilde{\phi}^A_ne^{i\frac{2\pi}{N}k\cdot n}\cdot\sum_mik_m\tilde{\phi}^A_me^{i\frac{2\pi}{N}k\cdot m}
+\end{align}
+which is a single operator acting on a pair of fields.
+\marginpar{
+  We also need the $\nabla\dot{\phi}\nabla\phi$ term, which is similarly defined. Might be more clear to just use $F$ and $G$ as the fields and leave the definition more general.
+}
+
+\subsection{Equations of Motion of the Lattice}
+Our method is to derive the equiations of motion from \eqref{eq:action FRW} in a Hamiltonian form and then discretize the equations on the lattice.
+
+The Hamiltonian is given by
+\begin{equation}
+  H = \int\left\{
+    - \frac{1}{12\mpl^2}{\Pi^a}^2
+    + \frac{1}{2}\sum_A\left[a^{-2}{\Pi^A}^2 + \nabla\phi^A\cdot\nabla\phi^A\right]
+    + a^4V
+    \right\}\dd^3x
+\end{equation}
+with the momenta densities
+\begin{align}
+  & \Pi^a = -\frac{6}{\mpl^2}a'\\
+  & \Pi^A = a^2{\phi^A}'
+\end{align}
+
+The equations of motion in the continuum are
+\begin{align}
+  & \frac{\dd\phi^A}{\dd\tau} = a^{-2}\Pi^A \label{eq:eom phi} \\
+  & \frac{\dd\Pi^A}{\dd\tau} = a^2\nabla^2\phi^A + a^4V_{,\phi^A} \\
+  & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a \\
+  & \frac{\dd\Pi^a}{\dd\tau} = -l^{-3}\int\left\{
+  \sum_A\left[-a^{-3}{\Pi^A}^2 \nabla\phi^A\cdot\nabla\phi^A \right] +4a^3V
+  \right\}\dd^3x \label{eq:eom pi a}
+\end{align}
+\marginpar{
+  Need to mention this is for periodic fields in an $l^3$ volume.
+}
+
+To solve the system \eqref{eq:eom phi}-\eqref{eq:eom pi a} we construct a cubic lattice of side length $l$ with $N$ equally spaced lattice sites along each dimension and label the points on this lattice $x_i$ with the index $i\in[0,N-1]\otimes[0,N-1]\otimes[0,N-1]$.
+The lattice spacing is $\Delta x \equiv l/N$ and the fundamental mode frequency is $\Delta k \equiv 2\pi/l$.
+By restricting the system onto the lattice sites and making the substitutions
+\begin{align}
+  & x \to x_i \label{eq:lat sub1}\\
+  & \int\dd^3x \to \sum_{x_i}\Delta x^3 \\
+  & \phi^A(x=x_i) \to \phi^A_i \\
+  & \Pi^A(x=x_i) \to \Pi^A_i \\
+  & \nabla\phi^A\cdot\nabla\phi^A(x=x_i) \to \nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^A_j)_i \\
+  & \nabla^2\phi^A(x=x_i) = \nabla^2_\lat(\phi^A_j)_i \\
+  & V(\phi^A(x=x_i)) \to V_i \label{eq:lat sub7}
+\end{align}
+the equations of motion are discretized into a system of ordinary differential equations which can be integrated numerically
+\begin{align}
+  & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i \label{eq:lat eom phi} \\
+  & \frac{\dd\Pi^A_i}{\dd\tau} = a^2\nabla^2_\lat\phi^A_i + a^4V_{i,\phi^A_i} \\
+  & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a \\
+  & \frac{\dd\Pi^a}{\dd\tau} = -l^{-3}\sum_i\left\{
+  \sum_A\left[-a^{-3}{\Pi^A_i}^2 \nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^A_j)_i \right] +4a^3V_i
+  \right\}\Delta x^3 \label{eq:lat eom pi a}
+\end{align}
+
+The direct discretization of the equations of motion \eqref{eq:lat eom phi}-\eqref{eq:lat eom pi a} gives an energy conserving system only if a consistancy relation between $\nabla^2_\lat(\phi^A_j)_i$ and $\nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^B_j)_i$ holds.
+They must follow the same product rule as the continuum operators which allowed for the integration by parts in deriving the equations of motion in the form \eqref{eq:eom phi}-\eqref{eq:eom pi a}.
+This relation holds and \eqref{eq:lat eom phi}-\eqref{eq:lat eom pi a} define an energy conserving system provided the operators are resolved on the lattice.
+In practice conservation of energy on the lattice can be checked by computing the Hamiltonian directly.
+\marginpar{
+  Also requires periodic fields, but that is already mentioned in the derivative definition section.
+}
+
+\subsection{Operator Splitting}
+We solve for the time evolution of the system using a symplectic operator splitting method known as a Yoshida symplectic integrator.
+
+The Hamiltonian \eqref{eq:lat ham} can be split into three terms,
+\begin{align} 
+  & H_1 = \int-\frac{1}{12\mpl^2}{\Pi^a}^2\dd^3x  \label{eq:ham split1}  \\
+  & H_2 = \int\frac{1}{2}\sum_Aa^{-2}{\Pi^A}^2\dd^3x  \label{eq:ham split2}  \\
+  & H_3 = \int\left\{\frac{1}{2}\nabla\phi^A\cdot\nabla\phi^A + a^4V\right\}\dd^3x. \label{eq:ham split3}
+\end{align}
+With each of these terms giving exactly solvable equations of motion which after the substitutions \eqref{eq:lat sub7}-\eqref{eq:lat sub7} are given by
+\begin{align}
+  H_1 \text{ equations of motion: }
+  & \begin{cases}
+      & \frac{\dd\phi^A_i}{\dd\tau} = 0 \\
+      & \frac{\dd\Pi^A_i}{\dd\tau} = 0 \\
+      & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a \\
+      & \frac{\dd\Pi^a}{\dd\tau} = 0
+    \end{cases} \\
+  H_2 \text{ equations of motion: }
+  & \begin{cases}
+      & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i \\
+      & \frac{\dd\Pi^A_i}{\dd\tau} = 0 \\
+      & \frac{\dd a}{\dd\tau} = 0 \\
+      & \frac{\dd\Pi^a}{\dd\tau} = l^{-3}\sum_i\sum_Aa^{-3}{\Pi^A_i}^2\Delta x^3
+    \end{cases} \\
+  H_3 \text{ equations of motion: }
+  & \begin{cases}
+      & \frac{\dd\phi^A_i}{\dd\tau} = 0 \\
+      & \frac{\dd\Pi^A_i}{\dd\tau} = a^2\nabla^2_\lat\phi^A_i + a^4V_{i,\phi^A_i} \\
+      & \frac{\dd a}{\dd\tau} = 0 \\
+      & \frac{\dd\Pi^a}{\dd\tau} = -l^{-3}\sum_i\left\{
+      \sum_Aa\nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^A_j)_i +4a^3V_i
+      \right\}\Delta x^3
+    \end{cases}.
+\end{align}
+\marginpar{
+  Put some words about how being able to solve the eom for the split Hamiltonians is used in the Yoshida integrator.
+}
 
 \subsection{Conversion to Dimensionless Quantities}
