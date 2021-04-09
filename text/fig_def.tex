@@ -22,7 +22,7 @@
       \includegraphics[width=\textwidth]{\FFpotentialD}
       \caption{Potential gradients}
     \end{subfigure}
-    \caption{Place holder potential figures. Would be more clear if there was a plot showing several transverse slices through the potential.}
+    \caption{Place holder potential figures. Would be more clear if there was a plot showing several transverse slices through the potential. Need to update this plot for the potential form being used}
     \label{fig:potential}
   \end{figure}
 }
@@ -31,8 +31,15 @@
 \newcommand{\Fspec}{
   \begin{figure}
     \centering
-
-    \caption{Place holder figure}
+    \begin{subfigure}[a]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{\FFspecA}
+        \caption{$\phi$ and $\Pi^\phi$ (cross)spectra}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{\FFspecB}
+        caption{$\chi$ and $\Pi^\chi$ (cross)spectra}
+    \end{subfigure}
+    \caption{Spectra and cross-spectra for the fields. The dashed vertical green lines are positonaed and the start, centre, and end of $\Delta V$. The blue line is $k=aH$. Negative values of the cross-spectra are plotted with dotted contours. \\ This figure still needs to be connected to the main text. The main point is to see where the instability bands are located and to note $\phi$ has an instability near the end of $\Delta V$ which would not be predicted by linear theory around a background with $\chi=0$. There are still some mysteries about the secondary bands.\\ Place holder figure. Some things to change: should do this for a run with more superhorizon modes, Should use some normalizing factor (maybe Hawking temperature) for the spectra and label contours.}
     \label{fig:spec}
   \end{figure}
 }
@@ -49,7 +56,7 @@
       \includegraphics[width=\textwidth]{\FFspecdetB}
       \caption{}
     \end{subfigure}
-    \caption{Determinant of of the fluctuation correlation matrix as function of time (clocked by $\alpha$). This quantity is conserved whenever the systems dynamics are linear.}
+    \caption{Determinant of of the fluctuation correlation matrix $C(\phi^A,\Pi^A)$ as function of time (clocked by $\alpha$). This quantity is conserved whenever the systems dynamics are linear. \\ Place holder figure. It is probably more clear to use a contour plot here instead of a plethera of sampled $k$.}
     \label{fig:specdet}
   \end{figure}
 }

@@ -1,14 +1,30 @@
 % Document for results section
 
 \section{Results} \label{sec:results}
+We can think of this system as an in/out process experiencing an interaction as the fields pass through the nonzero region of $\Delta V$.
+The in state has the system is evolving in the $V_0$ potential with trajectories tracking towards the attractor on superhorizon scales.
+With the transverse symmetry breaking the system departs the attractor, trajectories diverge and pick up differring inflationary histories as they pass through $\Delta V$.
+The out state has the transverse symmetry restored, trajectories displaced by $\Delta V$ again track towards the attractor.
 
-\subsection{Field Dynamics}
+The effect of this process is to leave an imprint of the local variations to the inflationary history of trajectories passing through $\Delta V$, which we measure by integrating $\zeta$ along each trajectories.
+The effect can be isolated by comparing to $\zeta$ integrated along each trajectory for an identical in state which is not subject to the symmetry breaking, but is allowed to follow the attractor directly to the out state.
+We call the difference of $\zeta$ between these two systems $\Delta \zeta$.
+\marginpar{
+  Check about how the attractor is defined, ie as a single trajectory or as a field configuration.
+}
+\marginpar{
+  Should things be worded in terms of trajectories picking up differing $\epsilon$ histories as they pass through $\Delta V$? We only have $\epsilon$ (in terms of $-\dd \ln(H)/\dd \alpha$ directly) as an average over the lattice.
+}
+
+The remainder of this section discusses the details of this in more detail in terms of field dynamics, modification to the mean inflation parameters, sourcing of $\zeta$, and the NG of $\Delta\zeta$.
+
+\subsection{Field Dynamics} \label{sec:field dynanics}
 % Start by explaining in broad terms the field dynamics
 % Key points in field dynamics:
 % symmetry breaking with initial linear growth of transverse fluctuations (squeezed state)
 % effective horizon receives an effective mass correction and forms a condensate
 % nonlinear $\chi$ - $\phi$ interactions have statistical homogeneity broken by the condensate realization
-% particle production (still need to check if this is +k-k pairs or Bremstung)
+% particle production
 
 % Plots to include:
 % (Cross)Spectra: plot of the spectra and cross spectra vs time. overplot with the instability band and horizon.
@@ -16,56 +32,107 @@
 % Real space slices: show surface plots of 2d slices of the fields at the times picked out in the fluctuation operator determinant plots.
 % Phase space projections: show projections of the phase space corresponding to the same time slices
 
+% Talk about the linear instability and the break down with the formation of the condensate
+% Give spectrum plot to show linstability band (compare to linear instability band)
+% Give C plot to show when nonlinearity occurs (mark the nonlinearity times)
+% Discuss particle production.
+% Give realspace slices of fields at marked times. Here talk about the formation of the condensate and the idea of fluctuation condensate split.
+% Phase space projections: show projections of the phase space corresponding to the same time slices. This shows the correlations that build up during the nonlinear interactions.
+
+
+
+%Summary paragraph about linear instability, onset of nonlinearity with the formation of the $\chi$ condensate, and backreaction onto $\phi$.
+
+When the symmetry breaking term in the potential $\Delta V$ turns on there is a transverse instabilty around $\chi=0$.
+%The initial consequence being exponential growth of $\chi$ fluctuations within the instability band.
+%Initially this growth can is described by the linear theory, however as fluctuations continue to grow they will experience nonlinear effects.
+Within the instability band the growth of $\chi$ fluctuations is initially linear, however as fluctuations continue to amplify the system experiences the onset of nonlinearity.
+
+\marginpar{
+  I'm not sure of the best way to explain the transition between linear and nonlinear evolution. The straight forward answer is linear evolution is seperable in terms of Fourier modes, and as the modes grow mode-mode coupling becomes significant.
+  We are seeing the the breakdown of linearity with the formation of a $\chi$ condensate that carries fluctuations into regions of field space where potential interactions are not dominated by the interaction with the mean field. 
+}
+
+\marginpar{
+  Talk about how until the onset of nonlinearity the field is Gaussian and the (cross)spectra is all that is needed to describe it and present the spectra plots.
+}
+%The initial conditions for the simulation are set where $\Delta V=0$ and the potential is given by the quadratic $V_0$.
+%Initially the evolution of the fields is very nearly linear, the only deviation from linearity being due to coupling through $H$.
+%When the symmetry breaking term in the potential $\Delta V$ turns on there is a transient period during which the dynamics are described by the linear instability.
+%When the symmetry breaking term in the potential $\Delta V$ turns on fluctuations in the $\chi$ direction grow exponentially.
+%As fluctuations in the $\chi$ field are amplified by the transverse instability the system experiences the onset of nonlinearity.
+%When symmetry is restored the system returns to the attractor.
+
+% How to talk about the $\chi$ condensate
+The large amplitude of the $\chi$ condensate allows the fluctuations to explore nonlinear parts of the potential.
+A course graining of the $\chi$ fluctuations can be viewed as a condensate which carries fluctuations into nonlinear portions of the potential.
+\marginpar{
+The realization of the condensate breaks the statistical homogeneity of the system so leads to a breakdown of the assumptions in perturbations around a homogeneous background.
+The consensate is a real space feature (features amplitude growth and decay as opposed to wavelike behaviour).
+}
+
+(Part about the back reaction on $\phi$)
+
+(Part about the phase space and relate to figure)
+
+\Fspec
+
 \Fspecdet
 
 % Identifying non-linearity
-We would like to establish a test to determine when the system is undergoing nonlinear evolution.
-This will allow us to determine what times are of interest.
-To do this we start with the observation that if the dynamics of a system are linear, then the system is seperable in terms of it's Fourier modes.
-So when the dynamics are linear Louville's theorem can be applied to each Fourier individually.
-Meaning for linear dynamics the phase space volume for each fourier mode of the system is conserved.
-This implies the following quantity is conserved during linear evolution of the system
+We would like to construct a test for the onset on nonlinearity.
+To do this we start with the observation that for linear dynamics a system is seperable in terms of it's Fourier modes.
+This allows Louville's theorem can be applied to each Fourier individually, so for linear dynamics the phase space volume for each Fourier mode is conserved.
+This implies the following quantity is conserved during linear evolution.
 \begin{equation}
+  C(\phi^A,\Pi^A) =
   \det\Re\left[
     \begin{matrix}
-      |\phi_k^2| & \phi_k^*\Pi_{\phi, k} & \phi_k^*\chi_k & \phi_k^*\Pi_{\chi, k} \\
-      \Pi_{\phi,k}^*\phi_k & |\Pi_{\phi, k}|^2 & \Pi_{\phi,k}^*\chi_k & \Pi_{\phi,k}^*\Pi_{\chi, k} \\
-      \chi_k^*\phi_k & \chi_k^*\Pi_{\phi, k} & |\chi_k|^2 & \phi_k^*\Pi_{\chi, k} \\
-      \Pi_{\chi,k}^*\phi_k & \Pi_{\chi, k}^*\Pi_{\phi, k} & \Pi_{\chi,k}^*\chi_k & |\Pi_{\chi, k}|^2
-    \end{matrix}
-    \right]
-\end{equation}
-%\begin{equation}
+      |\tilde{\phi}_k^2| & \tilde{\phi}_k^*\tilde{\Pi_{\phi, k}} & \tilde{\phi}_k^*\tilde{\chi}_k & \tilde{\phi}_k^*\tilde{\Pi}_{\chi, k} \\
+      \tilde{\Pi}_{\phi,k}^*\tilde{\phi}_k & |\tilde{\Pi}_{\phi, k}|^2 & \tilde{\Pi}_{\phi,k}^*\tilde{\chi}_k & \tilde{\Pi}_{\phi,k}^*\tilde{\Pi}_{\chi, k} \\
+      \tilde{\chi}_k^*\tilde{\phi}_k & \tilde{\chi}_k^*\tilde{\Pi}_{\phi, k} & |\tilde{\chi}_k|^2 & \tilde{\phi}_k^*\tilde{\Pi}_{\chi, k} \\
+      \tilde{\Pi}_{\chi,k}^*\tilde{\phi}_k & \tilde{\Pi}_{\chi, k}^*\tilde{\Pi}_{\phi, k} & \tilde{\Pi}_{\chi,k}^*\tilde{\chi}_k & |\tilde{\Pi}_{\chi, k}|^2
+    \end{matrix}.
+  \right]
 %  \det\Re\left[
 %    \begin{matrix}
-%      |\tilde{\phi}_k^2| & \tilde{\phi}_k^*\tilde{\Pi_{\phi, k}} & \tilde{\phi}_k^*\tilde{\chi}_k & \tilde{\phi}_k^*\tilde{\Pi}_{\chi, k} \\
-%      \tilde{\Pi}_{\phi,k}^*\tilde{\phi}_k & |\tilde{\Pi}_{\phi, k}|^2 & \tilde{\Pi}_{\phi,k}^*\tilde{\chi}_k & \tilde{\Pi}_{\phi,k}^*\tilde{\Pi}_{\chi, k} \\
-%      \tilde{\chi}_k^*\tilde{\phi}_k & \tilde{\chi}_k^*\tilde{\Pi}_{\phi, k} & |\tilde{\chi}_k|^2 & \tilde{\phi}_k^*\tilde{\Pi}_{\chi, k} \\
-%      \tilde{\Pi}_{\chi,k}^*\tilde{\phi}_k & \tilde{\Pi}_{\chi, k}^*\tilde{\Pi}_{\phi, k} & \tilde{\Pi}_{\chi,k}^*\tilde{\chi}_k & |\tilde{\Pi}_{\chi, k}|^2
+%      |\phi_k^2| & \phi_k^*\Pi_{\phi, k} & \phi_k^*\chi_k & \phi_k^*\Pi_{\chi, k} \\
+%      \Pi_{\phi,k}^*\phi_k & |\Pi_{\phi, k}|^2 & \Pi_{\phi,k}^*\chi_k & \Pi_{\phi,k}^*\Pi_{\chi, k} \\
+%      \chi_k^*\phi_k & \chi_k^*\Pi_{\phi, k} & |\chi_k|^2 & \phi_k^*\Pi_{\chi, k} \\
+%      \Pi_{\chi,k}^*\phi_k & \Pi_{\chi, k}^*\Pi_{\phi, k} & \Pi_{\chi,k}^*\chi_k & |\Pi_{\chi, k}|^2
 %    \end{matrix}
 %    \right]
-%\end{equation}
-\marginpar{
-  This equation is awkwardly busy, write this in a simpler form
-}
+\end{equation}
+
+Figure \ref{fig:specdet} shows a plot of $C(\phi^A,\Pi^A)$ which can be used to identify characteristic times during the evolution.
+With the onset of nonlinearity the fields are no longer completely described, in the statistical sense, by the (cross)spectra.
+The nonlinear interactions can be visualized by the correlations they impose in phase space, see figure \ref{fig:phasespace}.
+When we consider the NG of $\zeta$ sourced during this process it will also be informative to view the evolution of the fields in real space, see figure \ref{fig:slice}.
 
 \Fphasespace
-\marginpar{
-  I've scaled the axes and colour in each subplot to fit the particular probability density being shown.
-}
+
 \Fslice
 
+\marginpar{
+  Still need some words explaining the significance of figures \ref{fig:phasespace} and \ref{fig:slice}.
+  I think the things to point out are the squeezing of $P(\chi,\Pi^\chi)$, the particle production, and the back reaction in $P(\phi,\chi)$.
+  And the formation of the $\chi$ condensate with the realspace backreaction onto $\phi$.
+}
 
-
-\subsection{Average Inflation parameters}
+\subsection{Average Inflation parameters} \label{sec:infl}
 % Discuss things like energy fractions and the slow roll parameters here.
 
-\subsection{Sourcing $\zeta$}
+\subsection{Sourcing $\zeta$} \label{sec:sourcing zeta}
 % Explain the regimes of what source term is active
 
 % Plots to include:
 % Have the fluctuation determinant with verical lines denoting time slices before, during, and after nonlinearity.
 % For each of those time slices show a $\dot{\zeta}$ vs fld histogram.
+\marginpar{
+The structure formation in $\phi$ will prove to be an important part in generating the $\Delta\zeta$ signal.
+This sources spatially localized modification to the $\epsilon$ history of the trajectory
+(The whole story is about modifying the $\epsilon$ history of the trajectories, so should emphasis this point in the $\Delta\zeta$)
+}
 
-\subsection{$\zeta$ NG}
+\subsection{$\zeta$ NG} \label{sec:zeta ng}
 % This section will cover the peak statistics and realspace plots of $\Delta\zeta$
