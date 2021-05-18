@@ -22,7 +22,7 @@
       \includegraphics[width=\textwidth]{\FFpotentialD}
       \caption{Potential gradients}
     \end{subfigure}
-    \caption{Place holder potential figures. Would be more clear if there was a plot showing several transverse slices through the potential. Need to update this plot for the potential form being used}
+    \caption{Place holder potential figures. Would be more clear if there was a plot showing several transverse slices through the potential. Need to update this plot for the potential form being used. I also like the idea of a two panel figure that shows that shows our potential feature as part of some more complicated potential in one panel and then embeded in $V_0$ in the second panel to make the point that we are trying to constrain features in the potential as opposed to the potential as a whole.}
     \label{fig:potential}
   \end{figure}
 }
@@ -72,34 +72,136 @@
 }
 
 % Figure of phase space projection of the fields and momenta at times before, during, and after nonlineraity as identified in \ref{fig:spec det} showing the correlations that arise.
-\newcommand{\Fphasespace}{
+\newcommand{\Fphasespaceold}{
   \begin{figure}
     \centering
     \begin{subfigure}[a]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{\FFphasespaceA}
+      \includegraphics[width=\textwidth]{\FFphasespaceAold}
       \caption{}
     \end{subfigure}
     \begin{subfigure}[a]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{\FFphasespaceB}
+      \includegraphics[width=\textwidth]{\FFphasespaceBold}
       \caption{}
     \end{subfigure}
     \begin{subfigure}[a]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{\FFphasespaceC}
+      \includegraphics[width=\textwidth]{\FFphasespaceCold}
       \caption{}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{\FFphasespaceD}
+      \includegraphics[width=\textwidth]{\FFphasespaceDold}
       \caption{}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{\FFphasespaceE}
+      \includegraphics[width=\textwidth]{\FFphasespaceEold}
       \caption{}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{\FFphasespaceF}
+      \includegraphics[width=\textwidth]{\FFphasespaceFold}
       \caption{}
     \end{subfigure}
     \caption{Phase space projections of the fields and their momenta shown athe the time slices identified in figure \ref{fig:specdet}.}
     \label{fig:phasespace}
+  \end{figure}
+}
+
+\newcommand{\Fphasespace}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceA}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceB}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceC}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceD}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[c]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceE}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[c]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFphasespaceF}
+      \caption{}
+    \end{subfigure}
+    \caption{Phase space projections of the fields and their momenta shown at the time slices identified in figure \ref{fig:specdet}.}
+    \label{fig:phasespace}
+  \end{figure}
+}
+
+% Figure of real space slices of $\Delta\zeta$ at specified times.
+\newcommand{\Fzetaslice}{
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{\FFzetaslice}
+    \caption{Real space slice of $\Delta\zeta$ at specified times. The scale bar in the lower left of each panel shows the horizon scale $(aH)^{-1}$. The formation of peaks is clearly visible.}
+    \label{fig:zetaslice}
+  \end{figure}
+}
+
+% Figure of relative abundance of peaks in $\Delta\zeta$ with smoothin at horizon scale at end of sim.
+\newcommand{\Fzetapeak}{
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{\FFzetapeak}
+    \caption{Relative abunance of positive (blue) and negative (red) peaks in $\Delta\zeta$ on the final time step of the simulation filtered at the horizon scale $(aH)^{-1}$ plotted as a function of $\nu$.}
+    \label{fig:zetapeak}
+  \end{figure}
+}
+
+% Figure for 2d histograms of $\dd\zeta/\dd\alpha$ against $\phi^A$, $\Pi^A$.
+\newcommand{\Fdzetaphasespace}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFdzetaphasespaceA}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFdzetaphasespaceB}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFdzetaphasespaceC}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFdzetaphasespaceD}
+      \caption{}
+    \end{subfigure}
+    \caption{Histograms of $P(\frac{\dd\Delta\zeta}{\dd\alpha},\phi^A)$ and $P(\frac{\dd\Delta\zeta}{\dd\alpha},\Pi^A)$ at specified times are plotted in gray contours $P(\frac{\dd\Delta\zeta}{\dd\alpha},\phi^A|\Delta\zeta_{\mathrm{final}}>5\sigma)$ and $P(\frac{\dd\Delta\zeta}{\dd\alpha},\Pi^A|\Delta\zeta_{\mathrm{final}}>5\sigma)$ are overlayed in colour. The probability density spacing between contours is equivalent to a $0.5\sigma$ step for a Gaussian PDF matching the mode of the measured historgram.}
+    \label{fig:dzetaphasespace}
+  \end{figure}
+}
+
+% Figure for 2d histogram of $\phi^A$, $\Pi^A$ conditioned on $\Delta\zeta$.
+\newcommand{\Fzetacondps}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetacondpsA}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetacondpsB}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetacondpsC}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetacondpsD}
+      \caption{}
+    \end{subfigure}
+    \caption{Histograms of phase space projections at specified times. The gray contours are for the whole field, colour contours are conditioned on $\Delta\zeta_{\mathrm{final}}>5\sigma$. The probability density spacing between contours is equivalent to a $0.5\sigma$ step for a Gaussian PDF matching the mode of the measured historgram.}
+    \label{fig:zetacondps}
   \end{figure}
 }
