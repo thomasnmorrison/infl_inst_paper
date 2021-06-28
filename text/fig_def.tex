@@ -22,13 +22,13 @@
       \includegraphics[width=\textwidth]{\FFpotentialD}
       \caption{Potential gradients}
     \end{subfigure}
-    \caption{Place holder potential figures. Would be more clear if there was a plot showing several transverse slices through the potential. Need to update this plot for the potential form being used. I also like the idea of a two panel figure that shows that shows our potential feature as part of some more complicated potential in one panel and then embeded in $V_0$ in the second panel to make the point that we are trying to constrain features in the potential as opposed to the potential as a whole.}
+    \caption{[Place holder potential figures. Would be more clear if there was a plot showing several transverse slices through the potential. Need to update this plot for the potential form being used. I also like the idea of a two panel figure that shows that shows our potential feature as part of some more complicated potential in one panel and then embeded in $V_0$ in the second panel to make the point that we are trying to constrain features in the potential as opposed to the potential as a whole.]}
     \label{fig:potential}
   \end{figure}
 }
 
 % Figure of the field and momenta spectra and cross-spectra
-\newcommand{\Fspec}{
+\newcommand{\Fspecold}{
   \begin{figure}
     \centering
     \begin{subfigure}[a]{0.45\textwidth}
@@ -37,9 +37,48 @@
     \end{subfigure}
     \begin{subfigure}[a]{0.45\textwidth}
         \includegraphics[width=\textwidth]{\FFspecB}
-        caption{$\chi$ and $\Pi^\chi$ (cross)spectra}
+        \caption{$\chi$ and $\Pi^\chi$ (cross)spectra}
     \end{subfigure}
     \caption{Spectra and cross-spectra for the fields. The dashed vertical green lines are positonaed and the start, centre, and end of $\Delta V$. The blue line is $k=aH$. Negative values of the cross-spectra are plotted with dotted contours. \\ This figure still needs to be connected to the main text. The main point is to see where the instability bands are located and to note $\phi$ has an instability near the end of $\Delta V$ which would not be predicted by linear theory around a background with $\chi=0$. There are still some mysteries about the secondary bands.\\ Place holder figure. Some things to change: should do this for a run with more superhorizon modes, Should use some normalizing factor (maybe Hawking temperature) for the spectra and label contours.}
+    \label{fig:spec}
+  \end{figure}
+}
+
+% Figure of the field and momenta spectra and cross-spectra
+\newcommand{\Fspec}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{\FFspecA}
+        \caption{$\frac{k^3}{2\pi^2}\langle |\phi_k|^2 \rangle$}
+        \label{fig:specA}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{\FFspecB}
+        \caption{$\frac{k^3}{2\pi^2}\langle a^{-6}|\Pi^\phi_k|^2 \rangle$}
+        \label{fig:specB}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{\FFspecC}
+        \caption{$\frac{k^3}{2\pi^2}\mathrm{Re}\langle a^{-3}\phi_k^*\Pi^\phi_k \rangle$}
+        \label{fig:specC}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{\FFspecD}
+        \caption{$\frac{k^3}{2\pi^2}\langle |\chi_k|^2 \rangle$}
+        \label{fig:specD}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{\FFspecE}
+        \caption{$\frac{k^3}{2\pi^2}\langle a^{-6}|\Pi^\chi_k|^2 \rangle$}
+        \label{fig:specE}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{\FFspecF}
+        \caption{$\frac{k^3}{2\pi^2}\mathrm{Re}\langle a^{-3}\chi_k^*\Pi^\chi_k \rangle$}
+        \label{fig:specF}
+    \end{subfigure}
+    \caption{Contour plots of the power in some of the auto/cross-spectra, contours are spaced logrithmically with dotted lines indicating negative values. The horizontal axis $\alpha$ measures time and on the vertical axis $k/(aH)$ measures the wavenumber relative to the horizon. The diagonal dashed blue lines indicate the band in which modes are initially populated on the lattice. The vertical dashed green lines indicate the times when $\Delta V$ is activate/deactivated and its midpoint.}% \\ In the second row panels (d) and (e) show, with the activation of $\Delta V$, the power of $\chi$ and $\Pi^\chi$ rise across the linear instability band and panel (f) shows they become positively correlated. In the first row the panels (a) and (b) show the power of $\phi$ and $\Pi^\phi$ initially match the the behaviour expected from linear theory, but some time after the midpoint of $\Delta V$ when $\alpha \approx 0.8$ there is a sudden growth in power and panel (c) shows a change in sign of the cross-spectrum. This effect is not predicted from linear theory taking $\langle \phi \rangle_\lat$ and $\langle \chi \rangle_\lat$ as the background fields}
     \label{fig:spec}
   \end{figure}
 }
@@ -66,7 +105,8 @@
   \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{\FFslice}
-    \caption{Real space field fluctuations $\delta\phi$, $\chi$ and their time derivatives $\delta\dot{\phi}$, $\dot{\chi}$ on a two dimensional slice of a three dimensional lattice, shown at the times slices identidied in figure \ref{fig:specdet}.}
+    %\caption{Real space field fluctuations $\delta\phi$, $\chi$ and their time derivatives $\delta\dot{\phi}$, $\dot{\chi}$ on a two dimensional slice of a three dimensional lattice, shown at the times slices identidied in figure \ref{fig:specdet}.}
+    \caption{Cross-sections of the lattice showing field fluctuations $\delta\phi$ and $\chi$, and the time derivatives $\frac{\dd\delta\phi}{\dd\alpha}$ and $\frac{\dd\chi}{\dd\alpha}$ (related to the momenta by $\frac{\dd\phi^A}{\dd\alpha} = a^{-3}H^{-1}\Pi^A$). The same time slices are shown as in figure \ref{fig:phasespace}, with the addition of two additional intermediate slices. On each panel a white scale bar indicates the horizon scale $(aH)^{-1}$.}
     \label{fig:slice}
   \end{figure}
 }
@@ -100,7 +140,7 @@
       \caption{}
     \end{subfigure}
     \caption{Phase space projections of the fields and their momenta shown athe the time slices identified in figure \ref{fig:specdet}.}
-    \label{fig:phasespace}
+%    \label{fig:phasespace}
   \end{figure}
 }
 
@@ -109,29 +149,29 @@
     \centering
     \begin{subfigure}[a]{0.45\textwidth}
       \includegraphics[width=\textwidth]{\FFphasespaceA}
-      \caption{}
+      \caption{$P(\phi,\Pi^\phi)$}
     \end{subfigure}
     \begin{subfigure}[a]{0.45\textwidth}
       \includegraphics[width=\textwidth]{\FFphasespaceB}
-      \caption{}
+      \caption{$P(\chi,\Pi^\chi)$}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
       \includegraphics[width=\textwidth]{\FFphasespaceC}
-      \caption{}
+      \caption{$P(\phi,\chi)$}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
       \includegraphics[width=\textwidth]{\FFphasespaceD}
-      \caption{}
+      \caption{$P(\Pi^\phi,\Pi^\chi)$}
     \end{subfigure}
-    \begin{subfigure}[c]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{\FFphasespaceE}
-      \caption{}
-    \end{subfigure}
-    \begin{subfigure}[c]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{\FFphasespaceF}
-      \caption{}
-    \end{subfigure}
-    \caption{Phase space projections of the fields and their momenta shown at the time slices identified in figure \ref{fig:specdet}.}
+    %\begin{subfigure}[c]{0.45\textwidth}
+    %  \includegraphics[width=\textwidth]{\FFphasespaceE}
+    %  \caption{}
+    %\end{subfigure}
+    %\begin{subfigure}[c]{0.45\textwidth}
+    %  \includegraphics[width=\textwidth]{\FFphasespaceF}
+    %  \caption{}
+    %\end{subfigure}
+    \caption{Distributions of phase space projections for various combinations fields and momenta. Each set of three panels shows the distribution at three characteristic times: before the onset of nonlinearity, when nonlinearity fully develops, and during the relaxation of the system after $\Delta V$ has turned off. For each panel the axes have been scaled relative to the amplitude of fluctuations. The probablity density spaceing between contours is equivalent to a $0.5\sigma$ step for a Gaussian PDF matching the mode of the measured histogram.}
     \label{fig:phasespace}
   \end{figure}
 }
@@ -141,7 +181,7 @@
   \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{\FFzetaslice}
-    \caption{Real space slice of $\Delta\zeta$ at specified times. The scale bar in the lower left of each panel shows the horizon scale $(aH)^{-1}$. The formation of peaks is clearly visible.}
+    \caption{Several time slices of a cross-section of $\Delta\zeta$ through the lattice. The time slices and cross-section are matched to those of figure \ref{fig:slice}. The formation of peaks of $\Delta\zeta$ is apparent. Comparing with figure \ref{fig:slice} shows these peaks are formed at locations where $\phi$ and $\chi$ interact nonlinearly. The white scale bar in each panel shows the horizon scale $(aH)^{-1}$.}
     \label{fig:zetaslice}
   \end{figure}
 }
@@ -151,7 +191,7 @@
   \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{\FFzetapeak}
-    \caption{Relative abunance of positive (blue) and negative (red) peaks in $\Delta\zeta$ on the final time step of the simulation filtered at the horizon scale $(aH)^{-1}$ plotted as a function of $\nu$.}
+    \caption{[Place-holder figure. I'd like to make a figure which plots the positive and negative peak counts as a fraction of the expected peak count for a Gaussian field matching the measured power spectrum of $\Delta\zeta$ and do a number of runs which sample over random seed to get some uncertainty contours.] Relative abunance of positive (blue) and negative (red) peaks in $\Delta\zeta$ on the final time step of the simulation filtered at the horizon scale $(aH)^{-1}$ plotted as a function of $\nu$.}
     \label{fig:zetapeak}
   \end{figure}
 }
@@ -203,5 +243,53 @@
     \end{subfigure}
     \caption{Histograms of phase space projections at specified times. The gray contours are for the whole field, colour contours are conditioned on $\Delta\zeta_{\mathrm{final}}>5\sigma$. The probability density spacing between contours is equivalent to a $0.5\sigma$ step for a Gaussian PDF matching the mode of the measured historgram.}
     \label{fig:zetacondps}
+  \end{figure}
+}
+
+% Figure of $\phi^A$, $\Pi^A$ trajectory contours with post selected trajectories shown in colour.
+\newcommand{\Fzetacondfldtraj}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetacondfldtrajA}
+      \caption{}
+      \label{fig:zetacondfldtrajA}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetacondfldtrajB}
+      \caption{}
+      \label{fig:zetacondfldtrajB}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetacondfldtrajC}
+      \caption{}
+      \label{fig:zetacondfldtrajC}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetacondfldtrajD}
+      \caption{}
+      \label{fig:zetacondfldtrajD}
+    \end{subfigure}
+    \caption{Distribution of trajectories for \ref{fig:zetacondfldtrajA} $\phi$, \ref{fig:zetacondfldtrajB} $\chi$, \ref{fig:zetacondfldtrajC} $\frac{\dd\delta\phi}{\dd\alpha}$, \ref{fig:zetacondfldtrajD} $\frac{\dd\delta\chi}{\dd\alpha}$. Gray scale contours are for all trajectories, coloured contours are for trajectories post selected with asypmtotic $\Delta\zeta > 5\sigma$. Contours are drawn relative to the maximum probablity density for a given field on each time slice and spaced at intervals of $\exp(-n^2/8)$ for $n=1,2,...$, corresponding to one contour per $\sigma/2$ for a Gaussian distribution. \\ The extreme trajectories are found to be those which undergo the largest excursions in the $\chi$ direction during the instability and interact nonlinearly into $\phi$ and $\Pi_\phi$.}
+    \label{fig:zetacondfldtraj}
+  \end{figure}
+}
+
+% Figure of $\Delta\zeta$ and $\dd\zeta_A/\dd\alpha$ trajectory contours with post selected trajectories shown in colour.
+\newcommand{\Fzetacondzetatraj}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetacondzetatrajA}
+      \caption{}
+      \label{fig:zetacondzetatrajA}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetacondzetatrajB}
+      \caption{}
+      \label{fig:zetacondzetatrajB}
+    \end{subfigure}
+    \caption{Distribution of trajectories for \ref{fig:zetacondzetatrajA} $\Delta\zeta$, \ref{fig:zetacondzetatrajB} $\frac{\dd\zeta_{\phi^A}}{\dd\alpha}$. Gray scale contours are for all trajectories, coloured contours are for trajectories post selected with asypmtotic $\Delta\zeta > 5\sigma$. Contour spacing is determined similarly to figure \ref{fig:zetacondfldtraj}. \\ The extreme trajectories show a reversal in the sign of $\Delta\zeta$. Examining the $\Delta\zeta$ production via the $\frac{\dd\zeta_\phi}{\dd\alpha}$ and $\frac{\dd\zeta_\chi}{\dd\alpha}$ channels shows two distinct pulses of production. In the first pulse the post selected trajectories undergo a negative production of $\Delta\zeta$ through the $\frac{\dd\zeta_\chi}{\dd\alpha}$ channel. In the second pulse these trajectories undergo positive production through the $\frac{\dd\zeta_\phi}{\dd\alpha}$ channel.}
+    \label{fig:zetacondzetatraj}
   \end{figure}
 }
