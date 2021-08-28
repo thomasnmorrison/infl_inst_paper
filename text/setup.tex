@@ -1,6 +1,7 @@
 % Setting up the problem
 
 \section{Setup} \label{sec:setup}
+% This would fit more in the potential subsection
 We are interested in studying the effects of a localized feature in the inflationary potential.
 To this end it will prove useful to split the potential as a sum of two terms $V(\phi^A) = V_0(\phi^A) + \Delta V(\phi^A)$.
 This split can be though of as starting with a baseline system and applying a stimulus by deforming the potential, $V_0$ being the baseline and $\Delta V$ being the stimulus.
@@ -8,43 +9,48 @@ The system's response can be calculated by taking the difference between two lat
 Of particular interest in the cosmological context is the NG component of $\zeta$ sourced by this response.
 
 In this section we setup our system detailing the equations of motion, setting of initial conditions, the form of the potential, and the source terms for $\zeta$.
-%It will prove useful to write the potential as a sum of two terms $V = V_0 + \Delta V$.
-%This split can be though of as starting with a baseline system and applying a stimulus by deforming the potential, $V_0$ being the baseline and $\Delta V$ being the stimulus.
 
 \subsection{Equations of Motion}
-% Talk about by convention we will choose $\phi$ displaced from the origin and driving inflation
-% Define $H$, $a$, $\alpha$, $M_{Pl}$
-% Define the naming convention $\phi_A$, $A=1,2$ as $\phi$, $\chi$.
+% Open with introduction to lattice sims
+% Say that $\phi^A$, $A=1,2,...,n$ are $n$ scalar fields 
+% Put the sum over fields into \ref{eq:action}
+% Define $a$ $M_{Pl}$
 
 The action for a set of scalar fields minimally coupled to gravity is given by
 \begin{equation} \label{eq:action}
   S = \int \sqrt{-g}\left\{\frac{R}{2\mpl^2} - \frac{1}{2}g^{\mu\nu}\partial_\mu\phi^A\partial_\nu\phi^A - V \right\}\dd^4x.
 \end{equation} 
 Substuting the ansatz of a Friedman-Robertson-Walker (FRW) metric $\dd s^2 = -a^2(\tau)\left( \dd\tau^2 + \delta_{ij}\dd x^i\dd x^j \right)$ into \eqref{eq:action} and integrating by parts we arrive at the action
-\begin{equation} \label{eq:actionFRW}
-  S_{\mathrm{FRW}} = \int a^4\left\{
-  - \frac{3}{\mpl^2}a'^2
-  + \frac{1}{2}a^{-2}\sum_A\left[{{\phi^A}'}^2
-  - \nabla\phi^A\cdot\nabla\phi^A\right]
-  - V
-  \right\}\dd\tau\dd^3x,
-\end{equation}
+\begin{align} \label{eq:actionFRW}
+  \begin{split}
+    S_{\mathrm{FRW}} = &\int \dd\tau\dd^3xa^4\left\{
+    - \frac{3}{\mpl^2}a'^2 \vphantom{\sum_A}\right. \\
+    & + \left.\frac{1}{2}a^{-2}\sum_A\left[{{\phi^A}'}^2
+      - \nabla\phi^A\cdot\nabla\phi^A\right]
+    - V \right\}
+    \end{split}
+\end{align}
 where ${}' \equiv \frac{\dd}{\dd\tau}$ is the conformal time derivative.
-\marginpar{
-  Here we need to discuss using the FRW anzats and what that will leave out in terms of metric fluctuations, gauge etc.
-  What we can do is compute the sourced metric fluctuations with no back reaction.
-}
+%\marginpar{
+%  Here we need to discuss using the FRW anzats and what that will leave out in terms of metric fluctuations, gauge etc.
+%  What we can do is compute the sourced metric fluctuations with no back reaction.
+%}
   
 Discretizing this action on a cubic lattice with $N$ equally space points along each dimension leads to the equations of motion
 \begin{align}
-  & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i  \label{eq:lat eom a}\\
-  & \frac{\dd\Pi^A_i}{\dd\tau} = -a^2\nabla^2_\lat(\phi^A_j)_i -a^4\frac{\partial V_i}{\partial \phi^A_i}  \label{eq:lat eom pi a}\\
-  & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a  \label{eq:lat eom phi}\\
-  & \frac{\dd\Pi^a}{\dd\tau} = -N^{-3}\sum_i\left\{
-  \sum_A\left[-a^{-3}{\Pi^A_i}^2 + a\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i \right]
-  + 4a^3V_i\right\}.  \label{eq:lat eom pi phi}  
+  & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i,  \label{eq:lat eom a}\\
+  & \frac{\dd\Pi^A_i}{\dd\tau} = -a^2\nabla^2_\lat(\phi^A_j)_i -a^4\frac{\partial V_i}{\partial \phi^A_i},  \label{eq:lat eom pi a}\\
+  & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a,  \label{eq:lat eom phi}
 \end{align}
-Here the subscripts $i$ and $j$ run over lattice sites, $\Pi^A_i \equiv a^2{\phi^a_i}'$ and $\Pi^a \equiv -6\mpl^2a'$ are the momentum densities, and $\nabla_\lat()\cdot\nabla_\lat()$ and $\nabla^2_\lat$ are discrete gradient squared and Laplacian operators defined pseudospectrally.
+\begin{align}
+  \begin{split}
+    \frac{\dd\Pi^a}{\dd\tau} = &-N^{-3}\sum_i\left\{
+    \sum_A\left[-a^{-3}{\Pi^A_i}^2 + \right.\right. \\
+    &  \left.\left. a\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i \right]
+    + 4a^3V_i\vphantom{\sum_A}\right\}.
+  \end{split} \label{eq:lat eom pi phi}  
+\end{align}
+Here the subscripts $i$ and $j$ run over lattice sites, $\Pi^A_i \equiv a^2{\phi^A_i}'$ and $\Pi^A \equiv -6\mpl^2a'$ are the momentum densities, and $\nabla_\lat()\cdot\nabla_\lat()$ and $\nabla^2_\lat$ are discrete gradient squared and Laplacian operators defined pseudospectrally.
 For bevity we will supress the subscripts $i,j$ and $\lat$ except where they are necessary to avoid confusion.
 Full details of the discretization proceedure as well as conversion to dimensionless units can be found in the appendix.
 
@@ -69,6 +75,17 @@ With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} we have arrived at a Hamilto
 Splitting the Hamiltoniam into three terms, each with seperable equations of motion, the system can be solved using a Yoshida symplectic integration scheme.
 Details of the Hamiltonian splitting can be found in the appendix.
 
+\subsection{Relation of the Semiclassical Lattice to Quantum Mechanics}
+\textcolor{red}{[Here's the outline of what I think should go in this section:]}
+\begin{itemize}
+  \color{red}
+  \item Expectation value of an operator in terms of the Wigner function.
+  \item Equation of motion of the Wigner function as the Louisville equation plus order $\hbar^2$ corrections.
+  \item Dropping order $\hbar^2$ terms and solution to the Louisville equation in terms of solving the classical equations of motion point-by-point from the initial phase space distribution.
+  \item A single realization of the lattice corresponds to one of these classical paths.
+  \item Drawing initial conditions from a distribution matching the Wigner function of the intial state (implicit assumption here that the Wigner function of the initial state is everywhere non-negative, I think we satisfy this by assuming an initial coherent state) and performing ensemble averages we reproduce the quantum result up to order $\hbar^2$ corrections.
+\end{itemize}
+  
 \subsection{Initial Conditions}
 In order to evolve the system \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} forward in time we must specify initial conditions.
 % What should I be talking about here?
@@ -85,53 +102,11 @@ The initial condition for the scale factor $a=1$ is used by convension.
   
 \begin{equation} \label{eq:energy constraint}
   H^2 = \frac{1}{3M_{Pl}}\langle \rho \rangle_\lat,
-\end{equation} 
-
-\subsection{Potential}
-\Fpotential
-
-\marginpar{
-  I should give some motivation of looking at instabilities for generating NG.
-}
-
-\marginpar{
-  Mention somewhere that by convension we take $\dot{\phi}<0$, ie inlation proceeds towards smaller values of $\phi$. 
-}
-
-We will consider a model with two fields $\phi$ and $\chi$ and by convention choose $\phi$ to be longitudinal, in the direction by which inflation proceeds, and $\chi$ to be transverse.
-We write the potential as a sum of a baseline and stimulus term $V = V_0 + \Delta V$ with the form of $\Delta V$ chosen to model the phenomenology of a potential feature breaking and restoring symmetry in the transverse direction.
-The baseline $V_0$ is taken to be quadratic in order to avoid nonlinearities in the baseline case.
-\marginpar{
-  Our labelling of $\phi$ and $\chi$ as being the longitudinal and transverse direction respectively should be interpretted loosely. We note the divegerence of trajectories during the instability requires a more accurate description of the longitudinal and transverse directions to be spatially dependent.
-  Should put this in a footnote, or paranthetically.
-}
-
-The functional forms we have chosen for $V_0$ and $\Delta V$ are given by
-\begin{align} \label{eq:potential}
-  &V_0(\phi,\chi) = \frac{1}{2}m^2_\phi\phi^2 + \frac{1}{2}m^2_\chi\chi^2 \\
-  &\Delta V(\phi,\chi) = \frac{1}{4}\lambda(\phi)\left[ (\chi^2-v^2)^2 - v^4 \right]. \label{eq:potential feature}
-  %&\Delta V(\phi,\chi) = \frac{1}{2}\mu^2(\phi)\chi^2 + \frac{1}{4}\lambda_\chi\chi^4,
-\end{align} 
-It can be seen this form of $\Delta V$ is a symmetry breaking potential in the transverse field $\chi$ with term $\lambda(\phi)$ using the longitudinal field $\phi$ as a clock to turn the symmetry breaking term on or off and $v$ setting the positions of the minima in the transverse direction.
-
-For computational simplicity $\lambda(\phi)$ is parameterized as a piece-wise polynomial and given compact support to allow for a more straight forward comparison to the baseline case
-\begin{equation} \label{eq:lambda}
-  \lambda(\phi) =
-  \begin{cases}
-    0 & \quad \text{if } |\phi-\phi_p|\ge\phi_w \\
-    \lambda_\chi\left[\left(\frac{\phi-\phi_p}{\phi_w}\right)^2 - 1 \right]^2 & \quad \text{if  } |\phi-\phi_p|<\phi_w
-  \end{cases}.
 \end{equation}
-The parameters $\phi_p$ and $\phi_w$ control the placement and duration of the symmetry breaking along the longitudinal field and $\lambda_\chi$ scales its strength.
-[Some reference to figure \ref{fig:potential} and general features of the potential.]
-
-There are regions of parameter space for which the potential [reference potential equations] has pair of local minima. These local minima give rise to the possibility of trapping the fields. While this is an interesting case we will focus in this paper on the altenative case where the fields do not become trapped and leave the trapped case to future work. 
 
 \subsection{Sourcing $\zeta$}
+\textcolor{red}{[Start with some general remarks about $\zeta$.]}
 
-\marginpar{
-  I think this subsection should start with some general remarks about $\zeta$ before giving the $\zeta$ source on the lattice.
-}
 We take $\zeta$ to be defined by the differential
 \begin{equation} \label{eq:zeta differential}
   \delta\zeta = \frac{\delta\rho}{3(\rho + P)} + \delta\alpha
@@ -140,7 +115,7 @@ where $\rho$ and $P$ are the energy density and pressure respectively, and $\alp
 Applying the continuity equation we can then arrive at an expression for the sourcing of $\zeta$
 \begin{equation} \label{eq:zeta source T}
   \dot{\zeta} = \frac{\partial_iT^i_0}{3(\rho+P)} + \delta H. % check that this is correct
-\end{equation} 
+\end{equation}
 
 Computing \eqref{eq:zeta source T} for the fields on our lattice with $H$ spatially homogeneous we arrive at the following source equation for $\zeta'$ on the lattice
 \begin{equation} \label{eq:zeta source fld}
@@ -170,13 +145,76 @@ The $\zeta'$ source \eqref{eq:zeta source fld} can be divided into channels in a
 \end{align}
 The details of the contribution of these terms is discussed in section \ref{sec:zeta production}.
 However, it can be noted immediately that only $\zeta_\phi'$ contributes to sourcing $\zeta$ at the linear level in field fluctuations and only through the $\Pi^\phi\nabla^2\phi$ term.
-\marginpar{
-  I've combined the usual four channels we've discussed down into two. The $\nabla\Pi^\phi\cdot\nabla\phi$ channel has only $\mathscr{O}(10{-2})$ contribution relative to the other channels. The $\nabla\Pi^\chi\cdot\nabla\chi$ seems to not be important at the peaks, but does matter for some trajectories so might be important for peak profile or something.
-}
+%\marginpar{
+%  I've combined the usual four channels we've discussed down into two. The $\nabla\Pi^\phi\cdot\nabla\phi$ channel has only $\mathscr{O}(10{-2})$ contribution relative to the other channels. The $\nabla\Pi^\chi\cdot\nabla\chi$ seems to not be important at the peaks, but does matter for some trajectories so might be important for peak profile or something.
+%}
 
 [It is worthwhile to note the form of NG and what measure will be sensitive to it are not always known a priori.
 It is for this reason that the ability to make comparisons to a baseline potential on a realization by realization basis proves to be a major advantage of performing these calculations using lattice simulations. - move this to the $\zeta$ NG section]
 
-\marginpar{
-  I think we should give some emphasis to the idea that the form of NG that will be produced by a given physical mechanism is not known prior to a full calculation and so in order to properly measure NG the first step is to determine the informative statistics to measure.
-}
+%\marginpar{
+%  I think we should give some emphasis to the idea that the form of NG that will be produced by a given physical mechanism is not known prior to a full calculation and so in order to properly measure NG the first step is to determine the informative statistics to measure.
+%}
+
+\subsection{Potential}
+Up to this point our description of the lattice simulation has been kept general and is applicable to a wide range of inflationary scenarios which are differentiated by the choice of potential. The particular scenario we study here has inflation proceeding through an incomplete phase transition of the transverse field. 
+
+Write the potential as a sum of two parts $V = V_0 + \Delta V$, where $V_0$ acts as a baseline contributing the majority of the energy density driving inflation and $\Delta V$ is a feature ontop of $V_0$, allows us to choose enforce a region of broken symmetry for the transverse field through our choice of $\Delta V$. We have chosen the functional forms
+\textcolor{red}{[Should probably say a few words about how the general picture of forming concentrations of NG is insensitive to the particular functional form. Also that the effect persists over a wide range of parameters (growth of fluctuations being exponentially sensitive to $\sqrt{|m^2_{eff}|}$ and duration of instability, but also the displacement of the new minima can be very large compared to the initial size of fluctuations).]}
+\begin{align}
+  &V_0(\phi,\chi) = \frac{1}{2}m^2_\phi\phi^2 + \frac{1}{2}m^2_\chi\chi^2, \label{eq:V0} \\
+  &\Delta V(\phi,\chi) = \frac{1}{4}\lambda(\phi)\left[ (\chi^2-v^2)^2 - v^4 \right]. \label{eq:DeltaV}
+\end{align}
+For convinience, the fields $\phi^A$ have been renamed $\phi$ and $\chi$ in this two field model. By convention we choose \textcolor{red}{[describe how $\phi$ is the main driver of inflation with $\chi$ initially fluctuations around the trough]}. The function $\lambda(\phi)$ controls where along the potential the transverse field $\chi$ has its symmetry broken and restored, with the longitudinal field $\phi$ acting as a clock and the parameter $v$ setting the positions of the new transverse minima. The potential surfaces of $V$ and $V_0$ are shown in Fig. \ref{fig:potential} where the potential parameters have be scaled arbitrarily for visual clarity.
+
+For computational simplicity we have parameterized $\lambda(\phi)$ as a piece-wise polynomial. given compact support to allow for a more straight forward comparison to the baseline case
+\begin{equation} \label{eq:lambda}
+  \lambda(\phi) =
+  \begin{cases}
+    0 & \quad \text{if } |\phi-\phi_p|\ge\phi_w \\
+    \lambda_\chi\left[\left(\frac{\phi-\phi_p}{\phi_w}\right)^2 - 1 \right]^2 & \quad \text{if  } |\phi-\phi_p|<\phi_w
+  \end{cases}.
+\end{equation}
+The parameters $\phi_p$ and $\phi_w$ control the placement and duration of the symmetry breaking along the longitudinal field and $\lambda_\chi$ scales the strength of the associated instability around $\chi=0$. While not strictly necessary choosing $\lambda(\phi)$ with compact support has the advantage of \textcolor{red}{[stuff about easier to compare to the baseline case and allowing us to set fluctuations from linear theory by starting the sim where $\Delta V=0$]}.
+
+\Fpotential
+
+While our focus in this paper is on inflation proceeding through an incomplete phase transition the same form of $\Delta V$ can be used to study the case where $\chi$ fluctuations undergo sufficient growth to reach the new transverse minima of the symmetry broken potential and complete the phase transition. The case of inflation proceeding through a completed phase transition proves interesting, we leave its discussion to a dedicated future paper.
+
+\Fpotparam
+
+\textcolor{red}{[Here put the potential parameters for the run and reference to Fig. \ref{fig:potparam} of $\Delta V(\phi=\phi_p,\chi)$ and $V_{,\chi\chi}(\phi,\chi=0)$. Mention what is bounding these choices, ie. not trapping the fields, ending inflation, or completing the phase transition]}
+
+%\marginpar{
+%  I should give some motivation of looking at instabilities for generating NG.
+%}
+
+%We will consider a model with two fields $\phi$ and $\chi$ and by convention choose $\phi$ to be longitudinal, in the direction by which inflation proceeds, and $\chi$ to be transverse.
+%We write the potential as a sum of a baseline and stimulus term $V = V_0 + \Delta V$ with the form of $\Delta V$ chosen to model the phenomenology of a potential feature breaking and restoring symmetry in the transverse direction.
+%The baseline $V_0$ is taken to be quadratic in order to avoid nonlinearities in the baseline case.
+%\marginpar{
+%  Our labelling of $\phi$ and $\chi$ as being the longitudinal and transverse direction respectively should be interpretted loosely. We note the divegerence of trajectories during the instability requires a more accurate description of the longitudinal and transverse directions to be spatially dependent.
+%  Should put this in a footnote, or paranthetically.
+%}
+
+%The functional forms we have chosen for $V_0$ and $\Delta V$ are given by
+%\begin{align} \label{eq:potential}
+%  &V_0(\phi,\chi) = \frac{1}{2}m^2_\phi\phi^2 + \frac{1}{2}m^2_\chi\chi^2 \\
+%  &\Delta V(\phi,\chi) = \frac{1}{4}\lambda(\phi)\left[ (\chi^2-v^2)^2 - v^4 \right]. \label{eq:potential feature}
+%  %&\Delta V(\phi,\chi) = \frac{1}{2}\mu^2(\phi)\chi^2 + \frac{1}{4}\lambda_\chi\chi^4,
+%\end{align} 
+%It can be seen this form of $\Delta V$ is a symmetry breaking potential in the transverse field $\chi$ with term $\lambda(\phi)$ using the longitudinal field $\phi$ as a clock to turn the symmetry breaking term on or off and $v$ setting the positions of the minima in the transverse direction.
+
+%For computational simplicity $\lambda(\phi)$ is parameterized as a piece-wise polynomial and given compact support to allow for a more straight forward comparison to the baseline case
+%\begin{equation} \label{eq:lambda}
+%  \lambda(\phi) =
+%  \begin{cases}
+%    0 & \quad \text{if } |\phi-\phi_p|\ge\phi_w \\
+%    \lambda_\chi\left[\left(\frac{\phi-\phi_p}{\phi_w}\right)^2 - 1 \right]^2 & \quad \text{if  } |\phi-\phi_p|<\phi_w
+%  \end{cases}.
+%\end{equation}
+%The parameters $\phi_p$ and $\phi_w$ control the placement and duration of the symmetry breaking along the longitudinal field and $\lambda_\chi$ scales its strength.
+%[Some reference to figure \ref{fig:potential} and general features of the potential.]
+
+%There are regions of parameter space for which the potential [reference potential equations] has pair of local minima. These local minima give rise to the possibility of trapping the fields. While this is an interesting case we will focus in this paper on the altenative case where the fields do not become trapped and leave the trapped case to future work. 
+

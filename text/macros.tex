@@ -2,88 +2,79 @@
 \newcommand{\dd}{\mathrm{d}\,}
 \newcommand{\mpl}{M_{\mathrm{Pl}}}
 \newcommand{\lat}{\mathrm{Lat}}
-%\newcommand{\i}{\mathrm{i}}
-%\newcommand{\j}{\mathrm{j}}
-%\newcommand{\k}{\mathrm{k}}
-%\newcommand{\n}{\mathrm{n}}
-%\newcommand{\m}{\mathrm{m}}
 
 % Figure Files
-\newcommand{\runident}{_128_5_401}
+\newcommand{\runident}{_128_5_403}
+\newcommand{\figdir}{fig\runident/}
+\newcommand{\psdir}{phase_space_figs/}
+\newcommand{\potdir}{potential_figs/}
+\newcommand{\trajdir}{trajectory_figs/}
+\newcommand{\slicedir}{slice_figs/}
+\newcommand{\specdir}{spec_figs/}
 
 % fig:potential
-\newcommand{\FFpotentialA}{potential_plt1_128_2_401.png}
-\newcommand{\FFpotentialB}{potential_plt4_128_2_401.png}
-\newcommand{\FFpotentialC}{potential_plt3_128_2_401.png}
-\newcommand{\FFpotentialD}{potential_plt5_128_2_401.png}
+\newcommand{\FFpotentialA}{potential_plt2.png}  % general $V_0$ fig
+\newcommand{\FFpotentialB}{potential_plt1.png}  % general $\Delta V$ fig
 
-% fig:spec
-\newcommand{\FFspecoldA}{spec_plt10\runident.png}
-\newcommand{\FFspecoldB}{spec_plt11\runident.png}
-
-\newcommand{\FFspecA}{spec_plt8\runident.png}
-\newcommand{\FFspecB}{spec_plt10\runident.png}
-\newcommand{\FFspecC}{spec_plt9\runident.png}
-\newcommand{\FFspecD}{spec_plt11\runident.png}
-\newcommand{\FFspecE}{spec_plt13\runident.png}
-\newcommand{\FFspecF}{spec_plt12\runident.png}
-
-% fig:specdet
-\newcommand{\FFspecdetA}{spec_det_plt2\runident.png}
-\newcommand{\FFspecdetB}{spec_det_plt3\runident.png}
-
-% fig:slice
-\newcommand{\FFslice}{fld_slice_plt1\runident.png}
-
-% fig:phasespace
-\newcommand{\FFphasespaceAold}{fld_ps_plt1-0\runident.pdf}
-\newcommand{\FFphasespaceBold}{fld_ps_plt1-1\runident.pdf}
-\newcommand{\FFphasespaceCold}{fld_ps_plt1-2\runident.pdf}
-\newcommand{\FFphasespaceDold}{fld_ps_plt1-3\runident.pdf}
-\newcommand{\FFphasespaceEold}{fld_ps_plt1-4\runident.pdf}
-\newcommand{\FFphasespaceFold}{fld_ps_plt1-5\runident.pdf}
-
-%\newcommand{\FFphasespaceA}{fld_phase_space_plt1\runident.png}
-%\newcommand{\FFphasespaceB}{fld_phase_space_plt2\runident.png}
-%\newcommand{\FFphasespaceC}{fld_phase_space_plt3\runident.png}
-%\newcommand{\FFphasespaceD}{fld_phase_space_plt4\runident.png}
-\newcommand{\FFphasespaceE}{fld_phase_space_plt5\runident.png}
-\newcommand{\FFphasespaceF}{fld_phase_space_plt6\runident.png}
-
-\newcommand{\FFphasespaceA}{dzeta_ps_hist_plt1\runident.png}
-\newcommand{\FFphasespaceB}{dzeta_ps_hist_plt2\runident.png}
-\newcommand{\FFphasespaceC}{dzeta_ps_hist_plt3\runident.png}
-\newcommand{\FFphasespaceD}{dzeta_ps_hist_plt4\runident.png}
-
-% fig:zetadiff
-\newcommand{\FFzetadiffA}{zeta_slice_plt3\runident.png}
-\newcommand{\FFzetadiffB}{zeta_slice_plt4\runident.png}
-\newcommand{\FFzetadiffC}{zeta_slice_plt2\runident.png}
+% fig:potparam
+\newcommand{\FFpotparamA}{potential_run_compare_plt1.png}  % this is a place holder fig
+%\newcommand{\FFpotparamA}{\figdir\potdir deltav_plt1\runident.png}  % $\Delta V_{,\chi,chi}(\chi=0)$
+%\newcommand{\FFpotparamB}{\figdir\potdir deltav_plt2\runident.png}  % $\Delta V(\phi=\phi_p)$
 
 % fig:zetaslice
-\newcommand{\FFzetaslice}{zeta_slice_plt1\runident.png}
+\newcommand{\FFzetasliceA}{\figdir\slicedir slice_plt11\runident.png}  % $\zeta$
+\newcommand{\FFzetasliceB}{\figdir\slicedir slice_plt10\runident.png}  % $\zeta_0$
+\newcommand{\FFzetasliceC}{\figdir\slicedir slice_plt9\runident.png}  % $\Delta\zeta$
 
 % fig:zetapeak
-\newcommand{\FFzetapeak}{zeta_peak_plt3\runident.png}
+\newcommand{\FFzetapeakA}{}  % max peaks
+\newcommand{\FFzetapeakB}{}  % min peaks
 
-% fig:dzetaphasespace
-\newcommand{\FFdzetaphasespaceA}{dzeta_ps_hist_plt5\runident.png}
-\newcommand{\FFdzetaphasespaceB}{dzeta_ps_hist_plt6\runident.png}
-\newcommand{\FFdzetaphasespaceC}{dzeta_ps_hist_plt7\runident.png}
-\newcommand{\FFdzetaphasespaceD}{dzeta_ps_hist_plt8\runident.png}
+% fig:spec
+\newcommand{\FFspecA}{\figdir\specdir spec_plt2\runident.png}  % $\phi,\phi$
+\newcommand{\FFspecB}{\figdir\specdir spec_plt3\runident.png}  % $\Pi_\phi,\Pi_\phi$
+\newcommand{\FFspecC}{\figdir\specdir spec_plt4\runident.png}  % $\Pi_phi,\phi$
+\newcommand{\FFspecD}{\figdir\specdir spec_plt5\runident.png}  % $\chi,\chi$
+\newcommand{\FFspecE}{\figdir\specdir spec_plt6\runident.png}  % $\Pi_\chi,\Pi_\chi$
+\newcommand{\FFspecF}{\figdir\specdir spec_plt7\runident.png}  % $\Pi_chi,\chi$
 
-% fig:zetacondps
-\newcommand{\FFzetacondpsA}{dzeta_ps_hist_plt9\runident.png}
-\newcommand{\FFzetacondpsB}{dzeta_ps_hist_plt10\runident.png}
-\newcommand{\FFzetacondpsC}{dzeta_ps_hist_plt11\runident.png}
-\newcommand{\FFzetacondpsD}{dzeta_ps_hist_plt12\runident.png}
+% fig:specdet
+\newcommand{\FFspecdet}{}
 
-% fig:zetacondfldtraj
-\newcommand{\FFzetacondfldtrajA}{traj_plt3\runident.png}
-\newcommand{\FFzetacondfldtrajB}{traj_plt4\runident.png}
-\newcommand{\FFzetacondfldtrajC}{traj_plt5\runident.png}
-\newcommand{\FFzetacondfldtrajD}{traj_plt6\runident.png}
+% fig:traj
+\newcommand{\FFtrajA}{\figdir\trajdir traj_plt2\runident.png}  % $\phi$
+\newcommand{\FFtrajB}{\figdir\trajdir traj_plt4\runident.png}  % $\Pi_\phi$
+\newcommand{\FFtrajC}{\figdir\trajdir traj_plt6\runident.png}  % $\chi$
+\newcommand{\FFtrajD}{\figdir\trajdir traj_plt8\runident.png}  % $\Pi_\chi$
+\newcommand{\FFtrajE}{\figdir\trajdir traj_plt1\runident.png}  % $\phi$ extreme
+\newcommand{\FFtrajF}{\figdir\trajdir traj_plt3\runident.png}  % $\Pi_\phi$ extreme
+\newcommand{\FFtrajG}{\figdir\trajdir traj_plt5\runident.png}  % $\chi$ extreme
+\newcommand{\FFtrajH}{\figdir\trajdir traj_plt7\runident.png}  % $\Pi_\chi$ extreme
 
-% fig:zetacondzetatraj
-\newcommand{\FFzetacondzetatrajA}{traj_plt1\runident.png}
-\newcommand{\FFzetacondzetatrajB}{traj_plt8\runident.png}
+% fig:slice
+\newcommand{\FFsliceA}{\figdir\slicedir slice_plt1\runident.png}  % $\phi$
+\newcommand{\FFsliceB}{\figdir\slicedir slice_plt2\runident.png}  % $\Pi_\phi$
+\newcommand{\FFsliceC}{\figdir\slicedir slice_plt3\runident.png}  % $\chi$
+\newcommand{\FFsliceD}{\figdir\slicedir slice_plt4\runident.png}  % $\Pi_chi$
+
+% fig:phasespace
+\newcommand{\FFphasespaceA}{\figdir\psdir ps_plt2\runident.png}  % $\phi,\Pi_\phi$
+\newcommand{\FFphasespaceB}{\figdir\psdir ps_plt4\runident.png}  % $\chi,\Pi_\chi$
+\newcommand{\FFphasespaceC}{\figdir\psdir ps_plt6\runident.png}  % $\phi,\chi$
+\newcommand{\FFphasespaceD}{\figdir\psdir ps_plt8\runident.png}  % $\Pi_\phi,\Pi_\chi$
+\newcommand{\FFphasespaceE}{\figdir\psdir ps_plt1\runident.png}  % $\phi,\Pi_\phi$ extreme
+\newcommand{\FFphasespaceF}{\figdir\psdir ps_plt3\runident.png}  % $\chi,\Pi_\chi$ extreme
+\newcommand{\FFphasespaceG}{\figdir\psdir ps_plt5\runident.png}  % $\phi,\chi$ extreme
+\newcommand{\FFphasespaceH}{\figdir\psdir ps_plt7\runident.png}  % $\Pi_\phi,\Pi_\chi$ extreme
+
+% fig:deltaps
+\newcommand{\FFdeltapsA}{}  % $\Delta\phi,\chi$
+\newcommand{\FFdeltapsB}{}  % $\Delta\phi,Delta\zeta$
+
+% fig:zetatraj
+\newcommand{\FFzetatrajA}{\figdir\trajdir traj_plt10\runident.png}  % $\Delta\zeta$
+\newcommand{\FFzetatrajB}{}  % $\dot{\Delta\zeta_\phi}$
+\newcommand{\FFzetatrajC}{}  % $\dot{\Delta\zeta_\chi}$
+\newcommand{\FFzetatrajD}{\figdir\trajdir traj_plt9\runident.png}  % $\Delta\zeta$ extreme
+\newcommand{\FFzetatrajE}{}  % $\dot{\Delta\zeta_\phi}$ extreme
+\newcommand{\FFzetatrajF}{}  % $\dot{\Delta\zeta_\chi}$ extreme
