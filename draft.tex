@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[10pt,twocolumn]{article}
 \usepackage{./text/draft_style}
 
 \input{./text/macros.tex}
@@ -6,15 +6,17 @@
 
 \begin{document}
 
-\input{./text/abstract.tex}
+\twocolumn[
+  \begin{@twocolumnfalse}
+    \input{./text/abstract.tex}
+  \end{@twocolumnfalse}
+]
 
-%\begin{multicols}{2}
 \input{./text/intro.tex}
 \input{./text/setup.tex}
 \input{./text/results.tex}
 \input{./text/conclusion.tex}
-\newpage
-\input{./text/appendix.tex}
-%\end{multicols}{2}
-
+%\newpage
+%\input{./text/appendix.tex}
+    
 \end{document}

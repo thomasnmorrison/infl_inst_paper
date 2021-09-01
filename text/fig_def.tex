@@ -69,7 +69,7 @@
       \includegraphics[width=\textwidth]{\FFzetapeakB}
       \caption{}
     \end{subfigure}
-    \caption{}
+    \caption{Peak counts for maximum and minimum peaks of $\zeta$ (red), $\zeta_0$ (blue), and $\Delta\zeta$ (green) smoothed with a Gaussian filter at $k=aH$ at \textcolor{red}{[mention time slice (same as for Fig. \ref{fig:zetaslice})]}. The solid line are the mean peak counts over an ensemble of 32 simulations, the light and dark shaded regions are 90\% and 50\% contours over the ensemble. The dashed lines are the expected peak counts for Gaussian fields with matching spectra.}
     \label{fig:zetapeak}
   \end{figure*}
 }
@@ -102,7 +102,7 @@
       \includegraphics[width=\textwidth]{\FFspecF}
       \caption{}
     \end{subfigure}
-    \caption{\textcolor{red}{[Place holder figure, the plan is to redo these as filled contours with levels scaled to the result for massless free fields in de Sitter.]}}
+    \caption{\textcolor{red}{[Place holder figure, the plan is to redo these as filled contours with levels scaled to the result for massless free fields in de Sitter and over plot with the linear calculation of the spectra.]}}
     \label{fig:spec}
   \end{figure*}
 }
@@ -153,7 +153,7 @@
       \includegraphics[width=\textwidth]{\FFtrajH}
       \caption{}
     \end{subfigure}
-    \caption{}
+    \caption{Density contours of trajectories of $\phi$, $\frac{\dd\phi}{\dd\alpha}$, $\chi$, and $\frac{\dd\chi}{\dd\alpha}$ marginalized for position. Grey contours are level sets of the distribution over the whole lattice. Red contours for points where $\Delta\zeta_\mathrm{end}$ gives $\nu>5$. Blue dashed lines bound the region where $\Delta V$ is nonzero. Comparing the red and grey contours we see the trajectories which lead to large concentrations of $\Delta\zeta$ are exactly those which udergo the largest excursions during the instability and for which $\frac{\dd\phi}{\dd\alpha}$ is most strongly deviated with the onset of nonlinearity.}
     \label{fig:traj}
   \end{figure*}
 }
@@ -178,7 +178,7 @@
       \includegraphics[width=\textwidth]{\FFsliceD}
       \caption{}
     \end{subfigure}
-    \caption{}
+    \caption{Two dimensional slices throught a three dimensional lattice showing $\phi$, $\frac{\dd\phi}{\dd\alpha}$, $\chi$, and $\frac{\dd\chi}{\dd\alpha}$ \textcolor{red}{[mention time slice is when $\Delta V \to 0$]}. The instabilty induced by $\Delta V$ has caused a large amplification of $\chi$ and $\frac{\dd\chi}{\dd\alpha}$ fluctuations on scales within the instability band. In the $\phi$ and $\frac{\dd\phi}{\dd\alpha}$ slices nonlinear interactions have formed a numbre of prominent peaks which, refering to Fig. \ref{fig:zetaslice}, are located where $\Delta\zeta$ will be concentrated.}
     \label{fig:slice}
   \end{figure*}
 }
@@ -219,7 +219,7 @@
       \includegraphics[width=\textwidth]{\FFphasespaceH}
       \caption{}
     \end{subfigure}
-    \caption{Projections of the position marginalized phase space taken on a \textcolor{red}{[mention time slice at the end of $\Delta V$]} time slice. \textcolor{red}{[Mention this is for the same run as shown in the other plots.]} \textcolor{red}{[Explain the difference between the grey and red contours.]}}
+    \caption{Density contours for projections of the position marginalized phase space distributions taken on a \textcolor{red}{[mention time slice at the end of $\Delta V$]} time slice. \textcolor{red}{[Mention this is for the same run as shown in the other plots.]} Grey contours are level sets of the distribution over the whole lattice. Red contours for only those points where $\Delta\zeta_\mathrm{end}$ gives $\nu>5$ \textcolor{red}{[I don't think I've yet defined $\Delta\zeta_\mathrm{end}$]}.}
     \label{fig:phasespace}
   \end{figure*}
 }
@@ -245,31 +245,31 @@
 \newcommand{\Fzetatraj}{
   \begin{figure*}
     \centering
+    %\begin{subfigure}[a]{0.3\textwidth}
+    %  \includegraphics[width=\textwidth]{\FFzetatrajA}
+    %  \caption{}
+    %\end{subfigure}
+    %\begin{subfigure}[a]{0.3\textwidth}
+    %  \includegraphics[width=\textwidth]{\FFzetatrajB}
+    %  \caption{}
+    %\end{subfigure}
+    %\begin{subfigure}[a]{0.3\textwidth}
+    %  \includegraphics[width=\textwidth]{\FFzetatrajC}
+    %  \caption{}
+    %\end{subfigure}
     \begin{subfigure}[a]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{\FFzetatrajA}
-      \caption{}
-    \end{subfigure}
-    \begin{subfigure}[a]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{\FFzetatrajB}
-      \caption{}
-    \end{subfigure}
-    \begin{subfigure}[a]{0.3\textwidth}
-      \includegraphics[width=\textwidth]{\FFzetatrajC}
-      \caption{}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
       \includegraphics[width=\textwidth]{\FFzetatrajD}
       \caption{}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[a]{0.3\textwidth}
       \includegraphics[width=\textwidth]{\FFzetatrajE}
       \caption{}
     \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[a]{0.3\textwidth}
       \includegraphics[width=\textwidth]{\FFzetatrajF}
       \caption{}
     \end{subfigure}
-    \caption{}
+    \caption{Density contours for trajectories of $\Delta\zeta$, $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$, and $\frac{\dd\Delta\zeta_\chi}{\dd\alpha}$. Contour colours as are in Fig. \ref{fig:traj}. Dashed blue lines bound the region where $\Delta V$ is nonzero. Two distinct bursts of $\Delta\zeta$ production are involved in producing $\Delta\zeta$ concentrations. The first burst of production comes through the $\frac{\dd\Delta\zeta_\chi}{\dd\alpha}$ channel \textcolor{red}{[some words about this]}. The second burst of production comes through the $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$ channel and is of opposite sign to the first.}
     \label{fig:zetatraj}
   \end{figure*}
 }

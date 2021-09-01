@@ -2,24 +2,9 @@
 
 \section{Results} \label{sec:results}
 
-In this section we present the lattice simulation results for inflation proceeding through an incomplete phase transition paying particular attention to the generation of $\zeta$ NG. In Sec \ref{sec:zeta ng} we calculate $\Delta\zeta$, the $\zeta$ response to the potential feature $\Delta V$, and find the NG to be spatially concentrated into peaks. We then compute the $\zeta$ peak statistics as a measure of NG. In Sec. \ref{sec:field dynanics} we give an account of the field dynamics of the system \textcolor{red}{[give the executice summary of the field dynamics here]}. Finally, in Sec. \ref{sec:sourcing zeta} we examine the relation between the field dynamics and sourcing of $\Delta\zeta$. Using the asymptotic $\Delta\zeta$ to perform a post-selection of lattice sites we isolate the production of the NG concentrations of $\Delta\zeta$ to those trajectories which undergo the most extreme excursions during the $\Delta V$ instability and subsiquently back-react on $\phi$.
+In this section we present the lattice simulation results for inflation proceeding through an incomplete phase transition paying particular attention to the generation of $\zeta$ NG. In Sec \ref{sec:zeta ng} we calculate $\Delta\zeta$, the $\zeta$ response to the potential feature $\Delta V$, and find the NG to be spatially concentrated into peaks. We then compute the $\zeta$ peak statistics as a measure of NG. In Sec. \ref{sec:field dynamics} we give an account of the field dynamics of the system \textcolor{red}{[give the executice summary of the field dynamics here]}. Finally, in Sec. \ref{sec:zeta production} we examine the relation between the field dynamics and sourcing of $\Delta\zeta$. Using the asymptotic $\Delta\zeta$ to perform a post-selection of lattice sites we isolate the production of the NG concentrations of $\Delta\zeta$ to those trajectories which undergo the most extreme excursions during the $\Delta V$ instability and subsiquently back-react on $\phi$.
 
 \textcolor{red}{[Part about the potential parameters we used, and mention how the concentrated NG is a general feature over a range of parameters].}
-
-%\marginpar{
-%  Should things be worded in terms of an $\epsilon$ histories, ie trajectories picking up differing $\epsilon$ histories as they are kicked off and return to the attractor? We only have $\epsilon$ (in terms of $-\dd \ln(H)/\dd \alpha$ directly) as an average over the lattice.
-
-%  There is also the particle creation perspective which is more or less direct: start with free field, turn interaction on/off, compare result to free field. 
-%}
-
-%We can think of this system as an in/out process experiencing an interaction as the fields pass through the nonzero region of $\Delta V$.
-%The in state has the system evolving in the $V_0$ potential with trajectories tracking towards the attractor.% on superhorizon scales.
-%With the transverse symmetry breaking the system departs the attractor, trajectories diverge and pick up differring inflationary histories as they pass through $\Delta V$.
-%The out state has the transverse symmetry restored, trajectories displaced by $\Delta V$ again track towards the attractor.
-
-%The effect of this process is to leave an imprint of the local variations to the inflationary history of trajectories passing through $\Delta V$, which we measure by integrating $\zeta$ along each trajectories.
-%The effect can be isolated by comparing to $\zeta$ for an identical in state which is not subject to the symmetry breaking, but instead is allowed to follow the attractor directly to the out state.
-%The difference of $\zeta$ between these two systems $\Delta\zeta$ partially isolates the NG.
 
 \subsection{$\zeta$ NG} \label{sec:zeta ng}
 While $\zeta$ as sourced by \eqref{eq:zeta source fld} can be integrated terms of quantities known on the lattice, the result is the sum of both a Gaussian and NG component, $\zeta_\mathrm{G}$ and $\zeta_\mathrm{NG}$ respectively. For the purpose of characterizing $\zeta_\mathrm{NG}$ we would like to subtract off $\zeta_\mathrm{G}$, effectively increasing the signal to noise on the NG part of the singal. However, since $\zeta_\mathrm{G}$ is unkown we cannot subtract it from $\zeta$ directly, we can however construct a correleated quantity.
@@ -36,15 +21,15 @@ Here it is worth pointing out that in calculating $\Delta\zeta$ we are deriving 
 %The real space picture shows $\Delta\zeta$ forms spatially localized prominences, suggesting peak statistics to be a suitable (though not necessarily optimal) measure for the NG.
 
 \Fzetaslice
-%\Fzetapeak % add this fig
+\Fzetapeak
 
 
 \subsection{Field Dynamics} \label{sec:field dynamics}
 % Intro paragraph
-Anologous to an in-out process ...
-initially linear growth of transverse fluctuations
-onset of nonlinearity
-system relaxes
+% Anologous to an in-out process ...
+% initially linear growth of transverse fluctuations
+% onset of nonlinearity
+% system relaxes
 
 % Linear evolution and spectra
 At the linear level the mean field $\langle\phi\rangle$ provides a clock which modulates the effective mass of the $\chi$ field, with $m^2_\mathrm{eff}$ becoming negative as $\langle\phi\rangle$ crosses $\Delta V$ as seen in Fig. \ref{fig:potparam}. While $m^2_\mathrm{eff}<0$, $\tilde{\chi}_k$ and $\tilde{\Pi}^\chi_k$ fluctuations within the instabilty band undergo exponential growth, building the correlation $\langle\tilde{\chi}^*_k\tilde{\Pi}^\chi_k\rangle$ as as the system within the instability band approaches the growing mode. In Fig. \ref{fig:spec} we plot \textcolor{red}{[some of the spectra and real parts of cross-spectra]} both as calculated by linear theory and measured from a lattice simulation.
@@ -64,8 +49,8 @@ Eventually the growth of fluctuation will lead to the onset of nonlinearity and 
     \end{matrix}
   \right].
 \end{equation}
-As a linear system is seperable in terms of its Fouriers modes the phase space volume $\det(C(\phi^A,\Pi^A;k))$ for a system undergoing linear evolution is conserved $k-\text{by}-k$. The onset of nonlinearity is thus signalled by the a breakdown in the $k-\text{by}-k$ conservation of $\det(C(\phi^A,\Pi^A;k))$. In Fig. \ref{fig:specdet} we measure $\det(C(\phi^A,\Pi^A;k))$ on the lattice and \textcolor{red}{[summary of Fig. \ref{fig:specdet}].}
-\textcolor{red}{[Relate this to a particle production event.]}
+As a linear system is seperable in terms of its Fouriers modes the phase space volume $\det(C(\phi^A,\Pi^A;k))$ for a system undergoing linear evolution is conserved $k-\text{by}-k$. The onset of nonlinearity is thus signalled by the a breakdown in the $k-\text{by}-k$ conservation of $\det(C(\phi^A,\Pi^A;k))$. In Fig. \ref{fig:specdet} we measure $\det(C(\phi^A,\Pi^A;k))$ on the lattice and \textcolor{red}{[summary of Fig. \ref{fig:specdet}, still need to add the figure].}
+\textcolor{red}{[Relate this to a particle production event?]}
 
 %\Fspecdet
 
@@ -75,6 +60,18 @@ As a linear system is seperable in terms of its Fouriers modes the phase space v
 % What we learn is: 
 % Forward reference that a post selection or the lattice sites will be done in the next section
 
+\textcolor{red}{[I think the main line I want to follow for the nonlinear part goes something like:}
+  \begin{itemize}
+    \color{red}
+    \item nonlinearity sets up some nonGaussian correlations in the system
+    \item we can solve the system numerically, but a priori don't know the natural basis for the correlations
+    \item we look at the correlations in real space (one-point), because $\Delta\zeta$ concentrates in real space
+    \item doing this in real space will be useful in identifying what leads to the $\Delta\zeta$ concentrations since their positions can be isolated in real space and used to make a post selection on the lattice
+  \end{itemize}
+      
+In Sec. \ref{sec:zeta ng} we learned that $\Delta\zeta$ is concentrated in real space, this suggests the real space description of the fields may be more useful than the Fourier space one for this system once it has become nonlinear. In Fig. \ref{fig:slice} we plot two dimensional slices through a three dimensional lattice of the fields and their momenta \textcolor{red}{[mention time slice is constant $\tau_\mathrm{FRW}$ where $\langle\phi\rangle=\phi_p-\phi_w$]}. Comparing Fig. \ref{fig:slice} back to Fig. \ref{fig:zetaslice} we can see the same pattern of $\Delta\zeta$ concentrations are already imprinted on $\delta\phi$ at the earlier time (similarly with $\Pi^\phi$), we will investigate this correlation further in Sec. \ref{sec:zeta production}.
+\textcolor{red}{[Effective description point by point, relate to separate universe approximation and adjustment to the fluctation condensate split.]}
+
 \Fslice
 
 % Phase space
@@ -83,113 +80,31 @@ As a linear system is seperable in terms of its Fouriers modes the phase space v
 
 % The interpretation is those trajectories which undergo the most growth in terms of $\chi$ fluctuations interact nonlinearly to slow $\Pi^\phi$.
 
+\textcolor{red}{[Put in some connection to the previous paragraph.]}
 In principle the phase space on the lattice is very high dimensional, with each lattice site hosting it's own degrees of freedom. \textcolor{red}{[Technically not all of these degrees of freedom are independent since the lattice is initialized with a $k$ space cutoff below the Nyquist, but I'm not sure if that is relevant here.]} A complete phase space distribution would have to be built up from a large number of simulations, each sampling a single tajectory through this phase space. Here, rather than dealing with the full phase space we will build a distribution by stacking the degrees of each lattice site, effectively substituting a volume for an ensemble while marginalizing over position.
 
-Our aim in considering phase space has been to uncover the correlations ...  Plotted in Fig. \ref{fig:phasespace} are several projections of this position marginalized phase space taken at fixed time \textcolor{red}{[mention the time slice for this phase space]}. As can be seen in the figure, the onset of nonlinearity has ...
+In Fig. \ref{fig:phasespace} we plot several projections of this position marginalized phase space taken at fixed time \textcolor{red}{[mention the time slice for this phase space is constant $\tau_\mathrm{FRW}$ where $\langle\phi\rangle=\phi_p-\phi_w$]}.
 
-\textcolor{red}{[Put in a part about how the changing $\Delta V$ creates a stressed system and when $\Delta V \to 0$ this built up strain in the system is allowed to relax.]}
+% A long tail in $P(\phi,\Pi^\phi)$, consistent with the nonlinear correlations in $P(\phi,\chi)$ and $P(\Pi^\phi,\Pi^\chi)$ as well as the correlation in $P(\chi,\Pi^\chi)$, will play an important role in sourcing $\zeta$ NG.
+
+% Might want to look at the spatial derivative quantities as well.
+% Should probably do fitting or something for the $\phi$, $\chi$ phase space projection plot.
+
+\textcolor{red}{[Put in a part about how the changing $\Delta V$ creates a stressed system and when $\Delta V \to 0$ this built up strain in the system is allowed to relax. Is that the way to think about this?]}
 
 \Fphasespace
 
 % Pointwise trajectories
 % Provide supplimental information about time dependence
 % I should maybe mark the onset of nonlinearity on the trajectory plots
-% What we learn is: The time dependence of ...
+% What we learn is: The time dependence of the fields and momenta
 
-
+\textcolor{red}{[Connect the text to Fig. \ref{fig:traj} in terms of time dependence of the fields and momenta, basically just supplimental information to Fig. \ref{fig:phasespace}.]}
 
 \Ftraj
 
-We will examine the field dynamics in a number of different ways:
-in Fourier space, which gives a simple description of the linear dynamics as well as an indicator for the onset of non-linearity;
-in real space, instructive for the formation of structure;
-and in projections of phase space, in which the effects of nonlinear interactions are most clearly visible. 
-In section \ref{sec:zeta production} we will also examine the distribution of point-by-point trajectories of the fields.
-
-The appearance of nonlinear effects signals to us that there is information in the fields which is not captured by the summary statistics of the spectra.
-We will try to access some of the information missing from the spectra by examining the fields in two other ways: first we will examine projections of the phase space distribution, which can encode nonlinear correlations; second we will simply view the field in real space, which combined with the insights we can gain from the phase space distribution will give us a map of where nonlinearity is occurring locally.
-But first we will address the question of how do we identify the onset of nonlinearity.
-
-% Identifying non-linearity
-%In figure \ref{fig:spec} the simplicity of the evolution of the $\phi$ field as predicted by linear theory meant some aspects of nonlinearity were clearly visible in the its spectrum. This is however not the general case and comes with no guarantee that some other nonlinearity, less obvious from examining the spectra, has not been overlooked.
-%To this end we would like to construct a test for the onset on nonlinearity.
-%To do this we start with the observation that for linear dynamics a system is separable in terms of it's Fourier modes.
-%This allows Louisville's theorem can be applied to each Fourier individually, so for linear dynamics the phase space volume for each Fourier mode is conserved.
-%This implies the following quantity is conserved during linear evolution.
-%\begin{equation}
-%  C(\phi^A,\Pi^A) =
-%  \det\mathrm{Re}\left[
-%    \begin{matrix}
-%      |\tilde{\phi}_k^2| & \tilde{\phi}_k^*\tilde{\Pi}^\phi_k & \tilde{\phi}_k^*\tilde{\chi}_k & \tilde{\phi}_k^*\tilde{\Pi}^\chi_k \\
-%      \tilde{\Pi}^{\phi *}_k\tilde{\phi}_k & |\tilde{\Pi}^\phi_k|^2 & \tilde{\Pi}^{\phi *}_k\tilde{\chi}_k & \tilde{\Pi}^{\phi *}_k\tilde{\Pi}^\chi_k \\
-%      \tilde{\chi}_k^*\tilde{\phi}_k & \tilde{\chi}_k^*\tilde{\Pi}^\phi_k & |\tilde{\chi}_k|^2 & \tilde{\phi}_k^*\tilde{\Pi}^\chi_k \\
-%      \tilde{\Pi}^{\chi *}_k\tilde{\phi}_k & \tilde{\Pi}^{\chi *}_k\tilde{\Pi}^\phi_k & \tilde{\Pi}^{\chi *}_k\tilde{\chi}_k & |\tilde{\Pi}^\chi_k|^2
-%    \end{matrix}
-%  \right].
-%  \det\Re\left[
-%    \begin{matrix}
-%      |\phi_k^2| & \phi_k^*\Pi_{\phi, k} & \phi_k^*\chi_k & \phi_k^*\Pi_{\chi, k} \\
-%      \Pi_{\phi,k}^*\phi_k & |\Pi_{\phi, k}|^2 & \Pi_{\phi,k}^*\chi_k & \Pi_{\phi,k}^*\Pi_{\chi, k} \\
-%      \chi_k^*\phi_k & \chi_k^*\Pi_{\phi, k} & |\chi_k|^2 & \phi_k^*\Pi_{\chi, k} \\
-%      \Pi_{\chi,k}^*\phi_k & \Pi_{\chi, k}^*\Pi_{\phi, k} & \Pi_{\chi,k}^*\chi_k & |\Pi_{\chi, k}|^2
-%    \end{matrix}
-%    \right]
-%\end{equation}
-
-%Figure \ref{fig:specdet} shows a plot of $C(\phi^A,\Pi^A)$ which can be used to identify characteristic times during the evolution.
-With the onset of nonlinearity the fields are no longer completely described, in the statistical sense, by the (cross)spectra.
-The nonlinear interactions can be visualized by the correlations they impose in phase space, see figure \ref{fig:phasespace}.
-When we consider the NG of $\zeta$ sourced during this process it will also be informative to view the evolution of the fields in real space, see figure \ref{fig:slice}.
-
-%\marginpar{
-%  We are seeing the the breakdown of linearity with the formation of a $\chi$ condensate that carries fluctuations into regions of field space where potential interactions are not dominated by the interaction with the mean field. 
-%}
-
-%\marginpar{
-%  The realization of the condensate breaks the statistical homogeneity of the system so leads to a breakdown of the assumptions in perturbations around a homogeneous background.
-%  The condensate is a real space feature (features amplitude growth and decay as opposed to wavelike behaviour), so nonlinearity in this system will tend to show up in localized regions where the condensate has brought the fluctuations out of the linear regime.
-%}
-
-% Phase space discussion
-The phase space of this system is of very high dimension with each lattice site hosting its own degrees of freedom.
-Because of this it is infeasible to try and visualize the entire phase space, we can however visualize certain projections of the phase space.
-As always there is the question of which basis should be used when performing a projection.
-We choose a local basis, which serve adequately, but it should not be inferred that the local basis is ideal (this is particularly true when the interactions between lattice sites are important to the dynamics, as is the case for wavelike behaviour).
-A distribution of phase space projections can be made for $\phi$ and $\Pi^\phi$ by, for each point $i$ on the lattice, projecting phase space onto the $\phi_i$, $\Pi^\phi_i$ axes, superimposing these projections gives a scatter of points, the histogram of which we use to estimate a distribution.
-This procedure can be repeated for any pair of fields and/or momenta.
-
-In figure \ref{fig:phasespace} we plot the distributions for various phase space projections at several characteristic times.
-The elongation of $P(\chi,\Pi^\chi)$ caused by the transverse instability is clearly visible, as are nonlinear correlations in $P(\phi,\chi)$ and $P(\Pi^\phi,\Pi^\chi)$.
-A long tail in $P(\phi,\Pi^\phi)$, consistent with the nonlinear correlations in $P(\phi,\chi)$ and $P(\Pi^\phi,\Pi^\chi)$ as well as the correlation in $P(\chi,\Pi^\chi)$, will play an important role in sourcing $\zeta$ NG.
-
-%\marginpar{
-%  With the elongation of $P(\chi,\Pi^\chi)$ we should probably give some interpretation, that is nominally a Fourier space effect, but is showing up in real space.
-%}
-
-%\marginpar{
-%  Might want to look at the spatial derivative quantities as well.
-%}
-%\marginpar{
-%  Should probably do fitting or something for the $\phi$, $\chi$ phase space projection plot.
-%}
-
-
-% Real space discussion
-The correlations we have seen in figure \ref{fig:phasespace} are between local variables, this leads us to consider what structures emerge from these correlations in real space.
-In figure \ref{fig:slice} we plot two-dimensional cross-sections of the fields on the lattice at some characteristic times.
-The first observation to make is that there is an emergence structure, particularly visible in the $\chi$ field, that forms while crossing $\Delta V$.
-
-The structure of $\chi$ is transferred onto $\phi$ with both positive and negative fluctuations of $\chi$ resulting in positive fluctuations of $\phi$, consistent with the nonlinear correlation of $P(\phi,\chi)$ seen in figure \ref{fig:phasespace}.
-This is the real space picture of the nonlinear effect that caused the sudden growth of power in figures \ref{fig:specA}, \ref{fig:specB}, and \ref{fig:specC}.
-By going to real space we have gained the additional insight that nonlinearity in this system spatially intermittent and highly localized.
-This localization of nonlinearity will prove to be important to the form of $\zeta$ NG sourced by the system.
-
-%\marginpar{
-%  Might want to remind the reader of the convention to take $\langle \dot{\phi} \rangle$ means $\delta\phi>0$ is up the background potential.
-%}
-
 % Summary of field dynamics section
-[Put in a summary paragraph for the field dynamics.]
+\textcolor{red}{[Put in a summary paragraph for the field dynamics.]}
 
 % How to talk about the $\chi$ condensate
 % From the phase space figure we know there is nonlinearity between $\phi$ and $\chi$ which is strongest at large $|\chi|$ as measured locally.
@@ -197,19 +112,9 @@ This localization of nonlinearity will prove to be important to the form of $\ze
 %The large amplitude of the $\chi$ condensate allows the fluctuations to explore nonlinear parts of the potential.
 %A course graining of the $\chi$ fluctuations can be viewed as a condensate which carries fluctuations into nonlinear portions of the potential.
 
-% In figure \ref{fig:slice} we plot real space slices of the fields.
-% Looking at $\chi$ it is apparent that in real space the effect of the transverse instability is to
-
-
 
 %\subsection{Average Inflation parameters} \label{sec:infl}
 % Discuss things like energy fractions and the slow roll parameters here.
-
-%\marginpar{
-%The structure formation in $\phi$ will prove to be an important part in generating the $\Delta\zeta$ signal.
-%This sources spatially localized modification to the $\epsilon$ history of the trajectory
-%(The whole story is about modifying the $\epsilon$ history of the trajectories, so should emphasis this point in the $\Delta\zeta$)
-%}
 
 \subsection{Sourcing NG} \label{sec:zeta production}
 % This subsection is to tie together the field dynamics and NG of $\Delta\zeta$.
@@ -238,21 +143,35 @@ The most prominent features of NG being localized suggests post selecting trajec
 
 We post select lattice sites where the asymptotic $\Delta\zeta$ deviates by $\nu \ge 5$ standard deviations from the mean and will refer to their trajectories as `extreme trajectories'.
 The dynamics of the extreme trajectories forms a subset of the field dynamics of as a whole.
-In figure \ref{fig:zetacondps} we compare distributions of phase space projections of the whole field to those of the extreme trajectories.
-This shows the extreme trajectories, post selected on $\Delta\zeta$, are exactly those trajectories which are driven to the largest excursion away from $\chi=0$ during the transverse instability.
-% something about $\phi$ back reaction.
-[Reference to figure \ref{fig:zetacondfldtraj}, similar to figure \ref{fig:zetacondps} marginalized distributions, but has the scale of fluctuations and time evolution more clearly visible.]
 
-%\marginpar{Focus on the trajectory of an individual lattice site is similar to applying the separate universe approximation on subhorizon scales. Should mention when this does and does not provide a meaningful separation for the dynamics. ie breaks down when gradients are important, relates to the ballistic approximation. Should be able to relate the usefulness of a position basis to $\sqrt{k^2/a^2 + m^2_\mathrm{eff} - 9/4H^2}$ becoming imaginary during the instability.}
+In Fig. \ref{fig:traj} we compare trajectory distributions of the whole field to those of the extreme trajectories, colouring the latter in red. This shows the extreme trajectories, post selected on $\Delta\zeta$, are exactly those trajectories which are driven to the largest excursion away from $\chi=0$ during the transverse instability.
+Likewise, in Fig. \ref{fig:phasespace} we compare distributions of phase space projections of the whole field to those of the extreme trajectories.
+Nonlinear efects on the extreme trajectories have built NG correlations in the $(\phi,\chi)$ plane (likewise with the momenta) and to populate the extended tail of the $\langle\phi\Pi^\phi\rangle$ correlation.
 
-The production of $\Delta\zeta$ along the extreme trajectories is shown in figure \ref{fig:zetacondzetatraj}.
-These trajectories experience a reversal in the sign of $\Delta\zeta$.
-This sign change can be traced to a two stage production process: initial negative production through the $\frac{\dd\Delta\zeta_\chi}{\dd\alpha}$ channel, followed by a delayed positive production through the $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$ channel.
-In order for the $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$ channel to be activated there must be sufficient growth in the $\chi$ fluctuations to interact nonlinearly with $\phi$.
-Because of this, for sufficiently weak instabilities the sign change of $\Delta\zeta$ is absent.
-The case of instabilities sufficiently weak to not activate the $\frac{\dd\zeta_\phi}{\dd\alpha}$ production channel is left to future work along with a thorough exploration of the parameter space.
+Time dependence for the production of $\Delta\zeta$ is shown in Fig. \ref{fig:zetatraj}. The extreme trajectories undergo a sign change in $\Delta\zeta$. This sign change can be traced to a two stage production process: initial negative production through the $\frac{\dd\Delta\zeta_\chi}{\dd\alpha}$ channel, followed by a delayed positive production through the $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$ channel.
+\textcolor{red}{[Discuss how broadly applicable this picute is, ie what about very weak or very strong instabilities.]}
 
-%\Fdzetaphasespace
-%\Fzetacondps
-%\Fzetacondfldtraj
-%\Fzetacondzetatraj
+\Fzetatraj
+
+\textcolor{red}{[Discuss sourcing through the $\frac{\dd\Delta\zeta_\chi}{\dd\alpha}$]}
+\begin{itemize}
+  \color{red}
+  \item Has no contribution at the linear level since $\langle\dot{\chi}\rangle=0$.
+  \item Sourcing through this channel is due to the instability building up a $\dot{\chi}$ condensate, so the local inflaton direction picks up a $\dot{\chi}$ contribution (I think we can support this).
+\end{itemize}
+
+\textcolor{red}{[Discuss sourcing through the $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$]}
+\begin{itemize}
+  \color{red}
+  \item At the linear level $\zeta$ is sourced through the $\dot{\phi}\nabla^2\phi$ term.
+  \item Sourcing $\Delta\zeta$ through this channel means $\phi$ has been deviated from its baseline trajectory, in this system that is a nonlinear effect.
+  \item Because of this, this channel turns on nonlinearly with the strength of the instability.
+  \item For sufficiently weak instabilities this channel is subdominant in the sourcing of $\Delta\zeta$.
+\end{itemize}
+
+%In order for the $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$ channel to be activated there must be sufficient growth in the $\chi$ fluctuations to interact nonlinearly with $\phi$.
+%Because of this, for sufficiently weak instabilities the sign change of $\Delta\zeta$ is absent.
+%The case of instabilities sufficiently weak to not activate the $\frac{\dd\zeta_\phi}{\dd\alpha}$ production channel is left to future work along with a thorough exploration of the parameter space.
+
+
+\textcolor{red}{[Put in a part comparing with $\Delta\phi$ since this provides a tighter correlation.]}

@@ -132,10 +132,7 @@
 % to do: dimensionless quantities
 % to do:
 
-\marginpar{
-  Makes sense to start this section with defining the lattice.
-  I need to do some editing to make the appendix flow more smoothly.
-}
+\textcolor{red}{[I need to do some editing to make the appendix flow more smoothly]}
 
 Translating a system of fields from the continuum onto the lattice requires defining discrete differential operators.
 We define spatial differential operators pseudospectrally using a Fourier basis.
@@ -152,9 +149,8 @@ Using the discrete Fourier transform convension
   &\phi^A_i = \frac{1}{N^3}\sum_n\tilde{\phi}^A_n e^{i\frac{2\pi}{N}i\cdot n} \\
   &\tilde{\phi}^A_n = \sum_i\phi^A_i e^{-i\frac{2\pi}{N}i\cdot n}.
 \end{align}
-\marginpar{
-  fit somewhere in the text that here $N$ is the number of points along one dimension of the lattice, $i,j \in [0,N-1]\otimes[0,N-1]\otimes[0,N-1]$ is a lattice indicies,  $n,m \in [0,N-1]\otimes[0,N-1]\otimes[0,N-1]$ are wave numbers with corresponding frequencies $k_n,k_m \in \delta k [-N/2+1,N/2] \otimes \Delta k [-N/2+1,N/2] \otimes \Delta k [-N/2+1,N/2]$.
-}
+\textcolor{red}{[Fit somewhere in the text that here $N$ is the number of points along one dimension of the lattice, $i,j \in [0,N-1]\otimes[0,N-1]\otimes[0,N-1]$ is a lattice indicies,  $n,m \in [0,N-1]\otimes[0,N-1]\otimes[0,N-1]$ are wave numbers with corresponding frequencies $k_n,k_m \in \delta k [-N/2+1,N/2] \otimes \Delta k [-N/2+1,N/2] \otimes \Delta k [-N/2+1,N/2]$.]}
+
 We define $\nabla^2_\lat(\phi^A_j)_i$ by
 \begin{align} \label{eq:laplacian}
   \nabla^2_\lat(\phi^A_j)_i \equiv \frac{1}{N^3} \sum_{m,n} -|k_m|^2 \tilde{\phi}^A_m e^{-i\frac{2\pi}{N}i\cdot n}.
@@ -165,9 +161,7 @@ And $\nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^B_j)_i$ by
   \frac{1}{N^6}\sum_nik_n\tilde{\phi}^A_ne^{i\frac{2\pi}{N}k\cdot n}\cdot\sum_mik_m\tilde{\phi}^A_me^{i\frac{2\pi}{N}k\cdot m}
 \end{align}
 which is a single operator acting on a pair of fields.
-\marginpar{
-  We also need the $\nabla\dot{\phi}\nabla\phi$ term, which is similarly defined. Might be more clear to just use $F$ and $G$ as the fields and leave the definition more general.
-}
+\textcolor{red}{[We also need the $\nabla\dot{\phi}\nabla\phi$ term, which is similarly defined. Might be more clear to just use $F$ and $G$ as the fields and leave the definition more general.]}
 
 \subsection{Equations of Motion of the Lattice}
 Our method is to derive the equiations of motion from \eqref{eq:action FRW} in a Hamiltonian form and then discretize the equations on the lattice.
@@ -225,9 +219,6 @@ The direct discretization of the equations of motion \eqref{eq:lat eom phi}-\eqr
 They must follow the same product rule as the continuum operators which allowed for the integration by parts in deriving the equations of motion in the form \eqref{eq:eom phi}-\eqref{eq:eom pi a}.
 This relation holds and \eqref{eq:lat eom phi}-\eqref{eq:lat eom pi a} define an energy conserving system provided the operators are resolved on the lattice.
 In practice conservation of energy on the lattice can be checked by computing the Hamiltonian directly.
-\marginpar{
-  Also requires periodic fields, but that is already mentioned in the derivative definition section.
-}
 
 \subsection{Operator Splitting}
 We solve for the time evolution of the system using a symplectic operator splitting method known as a Yoshida symplectic integrator.
@@ -264,8 +255,7 @@ With each of these terms giving exactly solvable equations of motion which after
       \right\}\Delta x^3
     \end{cases}.
 \end{align}
-\marginpar{
-  Put some words about how being able to solve the eom for the split Hamiltonians is used in the Yoshida integrator.
-}
+
+\textcolor{red}{[Put some words about how being able to solve the eom for the split Hamiltonians is used in the Yoshida integrator.]}
 
 \subsection{Conversion to Dimensionless Quantities}

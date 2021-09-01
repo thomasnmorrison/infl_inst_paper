@@ -97,15 +97,22 @@ Setting initial conditions begins with a perturbative calculation of the (cross)
 Mean values of $\phi^A$ and $\Pi^A$ are set on the lattice by matching the background values of the perturbative calculation.
 And fluctuations by realizing Fourier modes as Gaussian random variables which match the calculated (cross)spectra in the ensemble.
 
-With the $\phi^A$ and $\Pi^A$ realized on the lattice, $\Pi^A$ is set to satisfy a lattice averaged version of the energy constraint [put in equation].
+With the $\phi^A$ and $\Pi^A$ realized on the lattice, $\Pi^A$ is set to satisfy a lattice averaged version of the energy constraint
+\begin{equation} \label{eq:energy constraint}
+  H^2 = \frac{1}{3M_{Pl}}\langle \rho \rangle_\lat.
+\end{equation}
 The initial condition for the scale factor $a=1$ is used by convension.
   
 \begin{equation} \label{eq:energy constraint}
   H^2 = \frac{1}{3M_{Pl}}\langle \rho \rangle_\lat,
 \end{equation}
 
-\subsection{Sourcing $\zeta$}
-\textcolor{red}{[Start with some general remarks about $\zeta$.]}
+\subsection{$\zeta$ Source Equation}
+\textcolor{[I haven't revised this section yet.]}
+
+\textcolor{red}{[Start with some general remarks about $\zeta$ and relate what we are doing here with the perturbative definition.]}
+
+\textcolor{red}{[I've moved this section to before Sec. \ref{sec:potential}, so needs some edits as I haven't yet introduced $\phi$ and $\chi$.]}
 
 We take $\zeta$ to be defined by the differential
 \begin{equation} \label{eq:zeta differential}
@@ -156,7 +163,7 @@ It is for this reason that the ability to make comparisons to a baseline potenti
 %  I think we should give some emphasis to the idea that the form of NG that will be produced by a given physical mechanism is not known prior to a full calculation and so in order to properly measure NG the first step is to determine the informative statistics to measure.
 %}
 
-\subsection{Potential}
+\subsection{Potential} \label{sec:potential}
 Up to this point our description of the lattice simulation has been kept general and is applicable to a wide range of inflationary scenarios which are differentiated by the choice of potential. The particular scenario we study here has inflation proceeding through an incomplete phase transition of the transverse field. 
 
 Write the potential as a sum of two parts $V = V_0 + \Delta V$, where $V_0$ acts as a baseline contributing the majority of the energy density driving inflation and $\Delta V$ is a feature ontop of $V_0$, allows us to choose enforce a region of broken symmetry for the transverse field through our choice of $\Delta V$. We have chosen the functional forms
