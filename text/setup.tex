@@ -11,32 +11,33 @@ Of particular interest in the cosmological context is the NG component of $\zeta
 In this section we setup our system detailing the equations of motion, setting of initial conditions, the form of the potential, and the source terms for $\zeta$.
 
 \subsection{Equations of Motion}
-% Open with introduction to lattice sims
-% Say that $\phi^A$, $A=1,2,...,n$ are $n$ scalar fields 
-% Put the sum over fields into \ref{eq:action}
-% Define $a$ $M_{Pl}$
+% Open with introduction to lattice sims 
+% Define $a$, $R$, $g$
 
 The action for a set of scalar fields minimally coupled to gravity is given by
 \begin{equation} \label{eq:action}
-  S = \int \sqrt{-g}\left\{\frac{R}{2\mpl^2} - \frac{1}{2}g^{\mu\nu}\partial_\mu\phi^A\partial_\nu\phi^A - V \right\}\dd^4x.
-\end{equation} 
+  S = \int \sqrt{-g}\left\{\frac{R}{2\mpl^2} - \frac{1}{2}\sum_Ag^{\mu\nu}\partial_\mu\phi^A\partial_\nu\phi^A - V \right\}\dd^4x.
+\end{equation}
+Where $\phi^A$, $A=1,2,...,N_\mathrm{fld}$ are scalar fields minimally coupled to gravity and $\mpl$ is the reduced Planck mass. 
 Substuting the ansatz of a Friedman-Robertson-Walker (FRW) metric $\dd s^2 = -a^2(\tau)\left( \dd\tau^2 + \delta_{ij}\dd x^i\dd x^j \right)$ into \eqref{eq:action} and integrating by parts we arrive at the action
 \begin{align} \label{eq:actionFRW}
   \begin{split}
     S_{\mathrm{FRW}} = &\int \dd\tau\dd^3xa^4\left\{
     - \frac{3}{\mpl^2}a'^2 \vphantom{\sum_A}\right. \\
     & + \left.\frac{1}{2}a^{-2}\sum_A\left[{{\phi^A}'}^2
-      - \nabla\phi^A\cdot\nabla\phi^A\right]
-    - V \right\}
+      + \phi^A\nabla^2\phi^A\right] %- \nabla\phi^A\cdot\nabla\phi^A\right]
+      - V \right\}
     \end{split}
 \end{align}
 where ${}' \equiv \frac{\dd}{\dd\tau}$ is the conformal time derivative.
+
+\textcolor{red}{[By making the FRW ansatz we are neglecting the the role of metric fluctuations. In particular this ansatz leads to us dropping a term in the equations of motion for the fields.]}
 %\marginpar{
 %  Here we need to discuss using the FRW anzats and what that will leave out in terms of metric fluctuations, gauge etc.
 %  What we can do is compute the sourced metric fluctuations with no back reaction.
 %}
-  
-Discretizing this action on a cubic lattice with $N$ equally space points along each dimension leads to the equations of motion
+
+Varying the action \eqref{eq:actionFRW} leads to the continuum equations of motion. Next we discretize the equations of motion onto a cubic lattice. The fields and momenta are discetized, volume integrals replaced by sums over lattice sites, and spatial derivatives in the continuum replaced by pseudospectral derivatives on the lattice. The equations of motion on a cubic lattice with $N$ equally spaced points along each dimension read
 \begin{align}
   & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i,  \label{eq:lat eom a}\\
   & \frac{\dd\Pi^A_i}{\dd\tau} = -a^2\nabla^2_\lat(\phi^A_j)_i -a^4\frac{\partial V_i}{\partial \phi^A_i},  \label{eq:lat eom pi a}\\
@@ -45,14 +46,14 @@ Discretizing this action on a cubic lattice with $N$ equally space points along 
 \begin{align}
   \begin{split}
     \frac{\dd\Pi^a}{\dd\tau} = &-N^{-3}\sum_i\left\{
-    \sum_A\left[-a^{-3}{\Pi^A_i}^2 + \right.\right. \\
-    &  \left.\left. a\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i \right]
+    \sum_A\left[-a^{-3}{\Pi^A_i}^2 \right.\right. \\
+    &  \left.\left. + a\phi^A_i\nabla^2_\lat(\phi^A_j)_i \right]%\left.\left. a\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i \right]
     + 4a^3V_i\vphantom{\sum_A}\right\}.
   \end{split} \label{eq:lat eom pi phi}  
 \end{align}
-Here the subscripts $i$ and $j$ run over lattice sites, $\Pi^A_i \equiv a^2{\phi^A_i}'$ and $\Pi^A \equiv -6\mpl^2a'$ are the momentum densities, and $\nabla_\lat()\cdot\nabla_\lat()$ and $\nabla^2_\lat$ are discrete gradient squared and Laplacian operators defined pseudospectrally.
+Here the subscripts $i$ and $j$ run over lattice sites, $\Pi^A_i \equiv a^2{\phi^A_i}'$ and $\Pi^A \equiv -6\mpl^2a'$ are the momentum densities, and $\nabla^2_\lat()$ is the pseudospectrally defined Laplacian operator.
 For bevity we will supress the subscripts $i,j$ and $\lat$ except where they are necessary to avoid confusion.
-Full details of the discretization proceedure as well as conversion to dimensionless units can be found in the appendix.
+Full details of the discretization proceedure and as well as the definition of the pseudospectral Laplacian and conversion to dimensionless units can be found in the appendix.
 
 %This leads to the cannonically conjugate pairs $(a,\Pi_a)$ and $(\phi_A,\Pi_{\phi_A})$ where $\Pi_a = -6a'/\mpl^2$. This gives the Hamiltonian density
 %\begin{equation} \label{eq:hamiltonian}
@@ -70,10 +71,7 @@ Full details of the discretization proceedure as well as conversion to dimension
 %  &\frac{\dd\Pi_{\phi_A}}{\dd\tau}  = a^2\nabla^2\phi_A - a^4V_{,\phi_A}.
 %\end{align}
 
-With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} we have arrived at a Hamiltonian system which can be integrated froward from intial conditions.
-%The system can be solved with an operator splitting method, the Hamiltonian can be split into three terms each with seperable equations of motion which can be integrated by a Yoshida symplectic integration scheme.
-Splitting the Hamiltoniam into three terms, each with seperable equations of motion, the system can be solved using a Yoshida symplectic integration scheme.
-Details of the Hamiltonian splitting can be found in the appendix.
+With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} we have arrived at a Hamiltonian system which can be integrated froward from intial conditions. To do so we use a Yoshida symplectic integration scheme, details of the Hamiltonian splitting we use for this scheme can be found in the appendix.
 
 \subsection{Relation of the Semiclassical Lattice to Quantum Mechanics}
 \textcolor{red}{[Here's the outline of what I think should go in this section:]}
@@ -87,32 +85,35 @@ Details of the Hamiltonian splitting can be found in the appendix.
 \end{itemize}
   
 \subsection{Initial Conditions}
-In order to evolve the system \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} forward in time we must specify initial conditions.
-% What should I be talking about here?
-% Assumption that perturbation theory can be used to set initial conditons for the lattice sim
-% Setting via spectra or convolution
-% Linear calculation
+In order to evolve the system \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} forward in time we must specify initial conditions. This is done in three parts: setting the homogeneous component of the scalar fields and their momenta, initializing a realization of the fluctuations, and setting $\Pi^a$ so that the Hubble parameter obeys a lattice averaged version of the energy constraint. How each of these parts is accomplished is described below.
 
-Setting initial conditions begins with a perturbative calculation of the (cross)spectra of the fields and momenta which are evolve forward from well within the horizon.
-Mean values of $\phi^A$ and $\Pi^A$ are set on the lattice by matching the background values of the perturbative calculation.
-And fluctuations by realizing Fourier modes as Gaussian random variables which match the calculated (cross)spectra in the ensemble.
+%Setting the initial conditions is done in three parts. The homogeneous parts of the fields and momenta are set on the attractor solution of the homogeneous system. Fluctuations in the fields and momenta are set in Fourier space, each mode being drawn from a multivariate Gaussian distribution matching the symmetric part of the fluctuation correlation matrix as determined by linear theory. Initial conditions for $\Pi^a$ are set so that, given the particular realization of the fluctuations on the lattice, the Hubble parameter obeys a lattice averaged version of the energy constraint. 
 
-With the $\phi^A$ and $\Pi^A$ realized on the lattice, $\Pi^A$ is set to satisfy a lattice averaged version of the energy constraint
+% Homogeneous component
+The homogeneous component of the fields and momenta are set on the attractor solution of the homogeneous system. To find the attractor solution we start with an initial estimate well back from the point we intend to initialize the lattice. Evolving the system with the homogeneous equations of motion this initial estimate will rapidly approach the attractor.
+
+% Fluctuations
+Fluctuations in the fields and momenta are set in Fourier space, each mode being drawn from a multivariate Gaussian distribution matching the symmetric part of the fluctuation correlation matrix as determined by linear theory.
+
+With the homogeneous attractor solution in hand, we perform a calculation of the 2-point correlation matrix in linear perturbation theory along the attractor to the point where the lattice will be initialized. The calculation is done on a radial profile of Fourier modes, over sampled relative to fundamental mode $\Delta k$ on the lattice, with each mode being intialized well within the horizon where it can be matched to the Minkowski space solution \textcolor{red}{[I need to double check this, the choice of variables may mean this is actually being matched onto the WKB solution]}. Each mode is then evolved forward along the attractor solution using a fast/slow split of the system which supresses the oscillations of the mode, but still allows the symmetric part of the 2-point correlation matrix to be recovered from the calculation.
+
+Once the symmetric part of the 2-point correlation matrix has been calculated on the radial profile of Fourier modes, this profile is interpolated for each mode on the lattice. The `square root' of the interpolated correlation matrix is calculated by Choleski decomposition, and a vector of $2N_\mathrm{fld}$ complex standard normal deviates is generated. Multiplying the two gives a vector of $2N_\mathrm{fld}$ complex Gaussian variables drawn from a multivariate Gaussian distribution matching the computed symmetric part of the 2-point correlation matrix. In particular modes crossing the horizon are initialize with the proper cross correlation between the fields and their momenta. \text{red}{[Should mention the initialized modes are cut below Nyquist.]} Performing the inverse Fourier transforms then initializes the fluctuations on the lattice.
+
+% Hubble
+With scalar fields and momenta realized on the lattice, $\Pi^A$ is set to satisfy a lattice averaged version of the energy constraint
 \begin{equation} \label{eq:energy constraint}
   H^2 = \frac{1}{3M_{Pl}}\langle \rho \rangle_\lat.
 \end{equation}
-The initial condition for the scale factor $a=1$ is used by convension.
-  
-\begin{equation} \label{eq:energy constraint}
-  H^2 = \frac{1}{3M_{Pl}}\langle \rho \rangle_\lat,
-\end{equation}
+% put this in terms of $\Pi^A$
 
-\subsection{$\zeta$ Source Equation}
+By convesion we set $a=1$ at the start of the lattice simulation.
+
+\textcolor{red}{[Two subtleties with this proceedure: i) this is matching the spectra instead of the real space two-point, ii) the homogeneous calculation is not using a renormalized potential, so there is a slight mismatch when we initialize onto the lattice.]}
+
+\subsection{$\zeta$ Source Equation} \label{sec:zeta source}
 \textcolor{red}{[I haven't revised this section yet.]}
 
 \textcolor{red}{[Start with some general remarks about $\zeta$ and relate what we are doing here with the perturbative definition.]}
-
-\textcolor{red}{[I've moved this section to before Sec. \ref{sec:potential}, so needs some edits as I haven't yet introduced $\phi$ and $\chi$.]}
 
 We take $\zeta$ to be defined by the differential
 \begin{equation} \label{eq:zeta differential}
@@ -124,40 +125,35 @@ Applying the continuity equation we can then arrive at an expression for the sou
   \dot{\zeta} = \frac{\partial_iT^i_0}{3(\rho+P)} + \delta H. % check that this is correct
 \end{equation}
 
+% fix this to match with the reworked \eqref{eg:zeta source T}
 Computing \eqref{eq:zeta source T} for the fields on our lattice with $H$ spatially homogeneous we arrive at the following source equation for $\zeta'$ on the lattice
+%
+\textcolor{red}{[Revised section starts here.]}
 \begin{equation} \label{eq:zeta source fld}
-  %\dot{\zeta} = \frac{\nabla\cdot(\dot{\phi})\nabla\phi + \nabla\cdot(\dot{\chi})\nabla\chi}{3a^2(\dot{\phi}^2+\dot{\chi}^2 +\frac{1}{3a^2}(\nabla\phi)^2 +\frac{1}{3a^2}(\nabla\chi)^2)}.
-  %\dot{\zeta} = \frac{}{3a^2(\dot{\phi_A}\dot{\phi_A} +\frac{1}{3a^2}\nabla\phi_A\cdot\nabla\phi_A)}.
-  \zeta' = \frac{\Pi^A\nabla^2\phi^A + \nabla\Pi^A\cdot\nabla\phi^A}{3a^2\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)}.
+  \zeta' = \frac{\sum_A\left(\Pi^A\nabla^2\phi^A + \nabla\Pi^A\cdot\nabla\phi^A\right)}{3a^2\sum_A\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)}.
 \end{equation}
-%In our lattice simulations the source equation \eqref{eq:zeta source fld} is integrated alongside the field dynamics to compute the quantity $\zeta(t) - \zeta(\tau_0)$.
-In our lattice simulations the source \eqref{eq:zeta source fld} is integrated alongside the fields to compute the quantity $\zeta(t) - \zeta(\tau_0)$.
-The initial condition $\zeta(\tau_0)$ can be set perturbatively, but in the present work it will not be required as the quantity we are consider is only the excess production of $\zeta$ as compared to a baseline case run from identical initial conditions, see section \ref{sec:zeta ng} for further detatils.
+In our lattice simulations the source \eqref{eq:zeta source fld} is integrated alongside the fields to compute the quantity $\zeta(\tau) - \zeta(\tau_0)$.
+We set the initial condition $\zeta(\tau_0)$ pertubatively from the initial conditions of the fields
+\begin{equation}
+  \zeta(\tau_0) = \frac{\rho(\tau_0)-\langle\rho(\tau_0)\rangle_\lat}{3\langle\rho(\tau_0)+P(\tau_0)\rangle_\lat}.
+\end{equation}
+%As we will see in Sec. \ref{sec:zeta ng} it is the excess produduction of $\zeta$ as compared to a baseline case  which will be of interest.
 
-%The $\dot{\zeta}$ source \eqref{eq:zeta source fld} can be further divided into four terms
-%\begin{align}
-%  \dot{\zeta}_{\dot{\phi}\nabla^2\phi} & = \frac{\dot{\phi}\nabla^2\phi}{3a^2(\dot{\phi^A}\dot{\phi^A} +\frac{1}{3a^2}\nabla\phi_A\cdot\nabla\phi_A)}, \\
-%  \dot{\zeta}_{\nabla\dot{\phi}\cdot\nabla\phi} & = \frac{\nabla\dot{\phi}\cdot\nabla\phi}{3a^2(\dot{\phi_A}\dot{\phi_A} +\frac{1}{3a^2}\nabla\phi_A\cdot\nabla\phi_A)}, \\
-%  \dot{\zeta}_{\dot{\chi}\nabla^2\chi} & = \frac{\dot{\chi}\nabla^2\chi}{3a^2(\dot{\phi_A}\dot{\phi_A} +\frac{1}{3a^2}\nabla\phi_A\cdot\nabla\phi_A)}, \\
-%  \dot{\zeta}_{\nabla\dot{\chi}\cdot\nabla\chi} & = \frac{\nabla\dot{\chi}\cdot\nabla\chi}{3a^2(\dot{\phi_A}\dot{\phi_A} +\frac{1}{3a^2}\nabla\phi_A\cdot\nabla\phi_A)}.
-%\end{align}
-The details of each of these term contributes to the total $\dot{\zeta}$ will be discussed in detail in section \ref{sec:results}.
-%However, it can be noted immediately that of these four terms only $\dot{\zeta}_{\dot{\phi}\nabla^2\phi}$ contributes at the linear level in field fluctuations. % should have a reminder that inflation is along the \phi direction.
-% Mention how the $\dot{\zeta}_{\dot{\phi}\nabla^2\phi}$ is the stocastic inflation term.
+\textcolor{red}{[Mention the reason why we are bothering with the source term instead of setting $\zeta$ perturbatively throughout. We are interested in hysteristis effects which are present when integrating along physical trajectories, by abscent if setting $\zeta$ perturbatively.]}
+\textcolor{red}{[Also, need to address droping the $\delta\alpha$ term with the FRW ansatz. The idea being the $\delta\rho/(3(\rho+P))$ term gives the dominant contribution on scales the size of the lattice. On scales larger than the lattice $\delta\alpha$ is aliased to the zero mode, so can be is a constant offset on the lattice that can be measured with comparisons between realizations. On scales smaller than the lattice we can quantify the error by calculating $H(x,t)$ assuming the FRW ansatz on each time slice. Integrating $H(x,t)$ without back reaction give a $\delta\alpha$ term that can be compared to $\zeta$ as integrated with our method (should do this test and put it in the appendix with convergence tests).]}
 
-The $\zeta'$ source \eqref{eq:zeta source fld} can be divided into channels in a number of ways, one useful division being as follows
+Although $\zeta$ is blind to the distinction between the various fields $\phi^A$, with only components of the total stress energy tensor appearing in the source term, splitting the source term into channels can be useful for relating the sourcing of $\zeta$ to the field dynamics. The choice of how to split the source term into channels is not unique, but we have found it useful to consider the split
 \begin{align}
-  \zeta_\phi' = \frac{\Pi^\phi\nabla^2\phi + \nabla\Pi^\phi\cdot\nabla\phi}{3a^2\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)} \\
-  \zeta_\chi' = \frac{\Pi^\chi\nabla^2\chi + \nabla\Pi^\chi\cdot\nabla\chi}{3a^2\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)}.
+  \zeta_{\Pi^A\nabla^2\phi^A}' = \frac{\Pi^A\nabla^2\phi^A}{3a^2\sum_A\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)}, \\
+  \zeta_{\nabla\Pi^A\cdot\nabla\phi^A}' = \frac{\nabla\Pi^A\cdot\nabla\phi^A}{3a^2\sum_A\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)}.
 \end{align}
-The details of the contribution of these terms is discussed in section \ref{sec:zeta production}.
-However, it can be noted immediately that only $\zeta_\phi'$ contributes to sourcing $\zeta$ at the linear level in field fluctuations and only through the $\Pi^\phi\nabla^2\phi$ term.
+The details of the contribution of these terms is discussed in section \ref{sec:zeta production} \textcolor{red}{[for the particular scenario of an incomplete phase transition]}.
+However, it can be noted immediately that at the linear level the contribution comes from the $\zeta_{\Pi^A\nabla^2\phi^A}'$ channel for the inflaton. By including the other channels we are including nonlinear sourcing for $\zeta$ from what would be considered isocurvature modes in linear theory.
 %\marginpar{
 %  I've combined the usual four channels we've discussed down into two. The $\nabla\Pi^\phi\cdot\nabla\phi$ channel has only $\mathscr{O}(10{-2})$ contribution relative to the other channels. The $\nabla\Pi^\chi\cdot\nabla\chi$ seems to not be important at the peaks, but does matter for some trajectories so might be important for peak profile or something.
 %}
 
-[It is worthwhile to note the form of NG and what measure will be sensitive to it are not always known a priori.
-It is for this reason that the ability to make comparisons to a baseline potential on a realization by realization basis proves to be a major advantage of performing these calculations using lattice simulations. - move this to the $\zeta$ NG section]
+%[It is worthwhile to note the form of NG and what measure will be sensitive to it are not always known a priori. It is for this reason that the ability to make comparisons to a baseline potential on a realization by realization basis proves to be a major advantage of performing these calculations using lattice simulations. - move this to the $\zeta$ NG section]
 
 %\marginpar{
 %  I think we should give some emphasis to the idea that the form of NG that will be produced by a given physical mechanism is not known prior to a full calculation and so in order to properly measure NG the first step is to determine the informative statistics to measure.
