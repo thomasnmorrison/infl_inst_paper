@@ -18,7 +18,7 @@ The action for a set of scalar fields minimally coupled to gravity is given by
 \begin{equation} \label{eq:action}
   S = \int \sqrt{-g}\left\{\frac{R}{2\mpl^2} - \frac{1}{2}\sum_Ag^{\mu\nu}\partial_\mu\phi^A\partial_\nu\phi^A - V \right\}\dd^4x.
 \end{equation}
-Where $\phi^A$, $A=1,2,...,N_\mathrm{fld}$ are scalar fields minimally coupled to gravity and $\mpl$ is the reduced Planck mass. 
+Where $\phi^A$, $A=1,2,...,N_\mathrm{fld}$ are scalar fields and $\mpl$ is the reduced Planck mass. 
 Substuting the ansatz of a Friedman-Robertson-Walker (FRW) metric $\dd s^2 = -a^2(\tau)\left( \dd\tau^2 + \delta_{ij}\dd x^i\dd x^j \right)$ into \eqref{eq:action} and integrating by parts we arrive at the action
 \begin{align} \label{eq:actionFRW}
   \begin{split}
@@ -37,7 +37,9 @@ where ${}' \equiv \frac{\dd}{\dd\tau}$ is the conformal time derivative.
 %  What we can do is compute the sourced metric fluctuations with no back reaction.
 %}
 
-Varying the action \eqref{eq:actionFRW} leads to the continuum equations of motion. Next we discretize the equations of motion onto a cubic lattice. The fields and momenta are discetized, volume integrals replaced by sums over lattice sites, and spatial derivatives in the continuum replaced by pseudospectral derivatives on the lattice. The equations of motion on a cubic lattice with $N$ equally spaced points along each dimension read
+Varying the action \eqref{eq:actionFRW} leads to the equations of motion in the continuum.
+
+In the continuum the equations of motion form a set of nonlinear partial differential equations. Disretizing these equations onto a lattice transforms them into a set of ordinary differential equations which can be integrated numerically. To do this the fields and momenta are discetized, volume integrals replaced by sums over lattice sites, and spatial derivatives in the continuum replaced by pseudospectral derivatives on the lattice. Applying this proceedure the equations of motion on a cubic lattice with $N$ equally spaced points along each dimension read
 \begin{align}
   & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i,  \label{eq:lat eom a}\\
   & \frac{\dd\Pi^A_i}{\dd\tau} = -a^2\nabla^2_\lat(\phi^A_j)_i -a^4\frac{\partial V_i}{\partial \phi^A_i},  \label{eq:lat eom pi a}\\
@@ -53,7 +55,7 @@ Varying the action \eqref{eq:actionFRW} leads to the continuum equations of moti
 \end{align}
 Here the subscripts $i$ and $j$ run over lattice sites, $\Pi^A_i \equiv a^2{\phi^A_i}'$ and $\Pi^A \equiv -6\mpl^2a'$ are the momentum densities, and $\nabla^2_\lat()$ is the pseudospectrally defined Laplacian operator.
 For bevity we will supress the subscripts $i,j$ and $\lat$ except where they are necessary to avoid confusion.
-Full details of the discretization proceedure and as well as the definition of the pseudospectral Laplacian and conversion to dimensionless units can be found in the appendix.
+Full details of the discretization proceedure as well as the definition of the pseudospectral Laplacian and conversion to the dimensionless units used in the code can be found in the appendix.
 
 %This leads to the cannonically conjugate pairs $(a,\Pi_a)$ and $(\phi_A,\Pi_{\phi_A})$ where $\Pi_a = -6a'/\mpl^2$. This gives the Hamiltonian density
 %\begin{equation} \label{eq:hamiltonian}
@@ -84,36 +86,36 @@ With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} we have arrived at a Hamilto
   \item Drawing initial conditions from a distribution matching the Wigner function of the intial state (implicit assumption here that the Wigner function of the initial state is everywhere non-negative, I think we satisfy this by assuming an initial coherent state) and performing ensemble averages we reproduce the quantum result up to order $\hbar^2$ corrections.
 \end{itemize}
   
-\subsection{Initial Conditions}
+\subsection{Initial Conditions} \label{sec:ICs}
 In order to evolve the system \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} forward in time we must specify initial conditions. This is done in three parts: setting the homogeneous component of the scalar fields and their momenta, initializing a realization of the fluctuations, and setting $\Pi^a$ so that the Hubble parameter obeys a lattice averaged version of the energy constraint. How each of these parts is accomplished is described below.
 
-%Setting the initial conditions is done in three parts. The homogeneous parts of the fields and momenta are set on the attractor solution of the homogeneous system. Fluctuations in the fields and momenta are set in Fourier space, each mode being drawn from a multivariate Gaussian distribution matching the symmetric part of the fluctuation correlation matrix as determined by linear theory. Initial conditions for $\Pi^a$ are set so that, given the particular realization of the fluctuations on the lattice, the Hubble parameter obeys a lattice averaged version of the energy constraint. 
-
 % Homogeneous component
-The homogeneous component of the fields and momenta are set on the attractor solution of the homogeneous system. To find the attractor solution we start with an initial estimate well back from the point we intend to initialize the lattice. Evolving the system with the homogeneous equations of motion this initial estimate will rapidly approach the attractor.
+The homogeneous component of the fields and momenta are set on the attractor solution of the homogeneous system. To find the attractor, we start with an initial estimate well back from the point we intend to initialize the lattice. Evolving the system with the homogeneous equations of motion this initial estimate rapidly approaches the attractor.
 
 % Fluctuations
-Fluctuations in the fields and momenta are set in Fourier space, each mode being drawn from a multivariate Gaussian distribution matching the symmetric part of the fluctuation correlation matrix as determined by linear theory.
+Fluctuations in the fields and momenta are set in Fourier space, each mode being drawn from a multivariate Gaussian distribution matching the symmetric part of the 2-point correlation matrix as determined by linear theory. \textcolor{red}{[Should make it clear that this is matching spectra, not real space 2-point.]}
 
-With the homogeneous attractor solution in hand, we perform a calculation of the 2-point correlation matrix in linear perturbation theory along the attractor to the point where the lattice will be initialized. The calculation is done on a radial profile of Fourier modes, over sampled relative to fundamental mode $\Delta k$ on the lattice, with each mode being intialized well within the horizon where it can be matched to the Minkowski space solution \textcolor{red}{[I need to double check this, the choice of variables may mean this is actually being matched onto the WKB solution]}. Each mode is then evolved forward along the attractor solution using a fast/slow split of the system which supresses the oscillations of the mode, but still allows the symmetric part of the 2-point correlation matrix to be recovered from the calculation.
+With the homogeneous attractor solution in hand, we perform a calculation of the 2-point correlation matrix in linear perturbation theory, evolving the system along the attractor to the point where the lattice will be initialized. The calculation is done on a radial profile of Fourier modes, over sampled relative to fundamental mode $\Delta k$ on the lattice, with each mode being intialized well within the horizon where it can be matched to the Minkowski space solution \textcolor{red}{[I need to double check this, the choice of variables may mean this is actually being matched onto the WKB solution]}. The evolution of each mode is calculated using a fast/slow split of the system which supresses the oscillations of the mode, but still allows for calculation of the symmetric part of the 2-point correlation matrix.
 
-Once the symmetric part of the 2-point correlation matrix has been calculated on the radial profile of Fourier modes, this profile is interpolated for each mode on the lattice. The `square root' of the interpolated correlation matrix is calculated by Choleski decomposition, and a vector of $2N_\mathrm{fld}$ complex standard normal deviates is generated. Multiplying the two gives a vector of $2N_\mathrm{fld}$ complex Gaussian variables drawn from a multivariate Gaussian distribution matching the computed symmetric part of the 2-point correlation matrix. In particular modes crossing the horizon are initialize with the proper cross correlation between the fields and their momenta. \text{red}{[Should mention the initialized modes are cut below Nyquist.]} Performing the inverse Fourier transforms then initializes the fluctuations on the lattice.
+Once the symmetric part of the 2-point correlation matrix has been calculated on the radial profile of Fourier modes, this profile is interpolated for each mode on the lattice. The `square root' of the interpolated correlation matrix is calculated by Choleski decomposition, and a vector of $2N_\mathrm{fld}$ complex standard normal deviates is generated. Multiplying the two gives a vector of $2N_\mathrm{fld}$ complex Gaussian variables drawn from a multivariate Gaussian distribution matching the computed symmetric part of the 2-point correlation matrix. In particular, modes crossing the horizon are initialize with the proper cross correlation between the fields and their momenta. \textcolor{red}{[Should mention the initialized modes are cut below Nyquist.]} Performing the inverse Fourier transforms then initializes the fluctuations on the lattice.
 
 % Hubble
 With scalar fields and momenta realized on the lattice, $\Pi^A$ is set to satisfy a lattice averaged version of the energy constraint
 \begin{equation} \label{eq:energy constraint}
   H^2 = \frac{1}{3M_{Pl}}\langle \rho \rangle_\lat.
 \end{equation}
-% put this in terms of $\Pi^A$
+\textcolor{red}{[Put this in terms of $\Pi^A$.]}
 
 By convesion we set $a=1$ at the start of the lattice simulation.
 
 \textcolor{red}{[Two subtleties with this proceedure: i) this is matching the spectra instead of the real space two-point, ii) the homogeneous calculation is not using a renormalized potential, so there is a slight mismatch when we initialize onto the lattice.]}
 
 \subsection{$\zeta$ Source Equation} \label{sec:zeta source}
-\textcolor{red}{[I haven't revised this section yet.]}
+\textcolor{red}{[Still revising this section.]}
 
 \textcolor{red}{[Start with some general remarks about $\zeta$ and relate what we are doing here with the perturbative definition.]}
+
+\textcolor{red}{[Need to point to the appendix for the $\nabla()\cdot\nabla()$ definition.]}
 
 We take $\zeta$ to be defined by the differential
 \begin{equation} \label{eq:zeta differential}
@@ -126,7 +128,7 @@ Applying the continuity equation we can then arrive at an expression for the sou
 \end{equation}
 
 % fix this to match with the reworked \eqref{eg:zeta source T}
-Computing \eqref{eq:zeta source T} for the fields on our lattice with $H$ spatially homogeneous we arrive at the following source equation for $\zeta'$ on the lattice
+Computing \eqref{eq:zeta source T} for the fields on our lattice we arrive at the following source equation for $\zeta'$ on the lattice
 %
 \textcolor{red}{[Revised section starts here.]}
 \begin{equation} \label{eq:zeta source fld}
@@ -142,16 +144,14 @@ We set the initial condition $\zeta(\tau_0)$ pertubatively from the initial cond
 \textcolor{red}{[Mention the reason why we are bothering with the source term instead of setting $\zeta$ perturbatively throughout. We are interested in hysteristis effects which are present when integrating along physical trajectories, by abscent if setting $\zeta$ perturbatively.]}
 \textcolor{red}{[Also, need to address droping the $\delta\alpha$ term with the FRW ansatz. The idea being the $\delta\rho/(3(\rho+P))$ term gives the dominant contribution on scales the size of the lattice. On scales larger than the lattice $\delta\alpha$ is aliased to the zero mode, so can be is a constant offset on the lattice that can be measured with comparisons between realizations. On scales smaller than the lattice we can quantify the error by calculating $H(x,t)$ assuming the FRW ansatz on each time slice. Integrating $H(x,t)$ without back reaction give a $\delta\alpha$ term that can be compared to $\zeta$ as integrated with our method (should do this test and put it in the appendix with convergence tests).]}
 
-Although $\zeta$ is blind to the distinction between the various fields $\phi^A$, with only components of the total stress energy tensor appearing in the source term, splitting the source term into channels can be useful for relating the sourcing of $\zeta$ to the field dynamics. The choice of how to split the source term into channels is not unique, but we have found it useful to consider the split
+Although $\zeta$ is blind to the distinction between the various fields $\phi^A$, with only components of the total stress energy tensor appearing in the source term, splitting the source $\zeta'$ into channels can be useful for relating the sourcing of $\zeta$ to the field dynamics. The choice of how to split the source term is not unique, however we have found considering the split defined by
 \begin{align}
-  \zeta_{\Pi^A\nabla^2\phi^A}' = \frac{\Pi^A\nabla^2\phi^A}{3a^2\sum_A\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)}, \\
-  \zeta_{\nabla\Pi^A\cdot\nabla\phi^A}' = \frac{\nabla\Pi^A\cdot\nabla\phi^A}{3a^2\sum_A\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)}.
+  \zeta_{\Pi^A\nabla^2\phi^A}' = \frac{\Pi^A\nabla^2\phi^A}{3a^2\sum_A\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)}, \label{eq:zeta source lap}\\
+  \zeta_{\nabla\Pi^A\cdot\nabla\phi^A}' = \frac{\nabla\Pi^A\cdot\nabla\phi^A}{3a^2\sum_A\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)} \label{eq:zeta source gdg}
 \end{align}
-The details of the contribution of these terms is discussed in section \ref{sec:zeta production} \textcolor{red}{[for the particular scenario of an incomplete phase transition]}.
-However, it can be noted immediately that at the linear level the contribution comes from the $\zeta_{\Pi^A\nabla^2\phi^A}'$ channel for the inflaton. By including the other channels we are including nonlinear sourcing for $\zeta$ from what would be considered isocurvature modes in linear theory.
-%\marginpar{
-%  I've combined the usual four channels we've discussed down into two. The $\nabla\Pi^\phi\cdot\nabla\phi$ channel has only $\mathscr{O}(10{-2})$ contribution relative to the other channels. The $\nabla\Pi^\chi\cdot\nabla\chi$ seems to not be important at the peaks, but does matter for some trajectories so might be important for peak profile or something.
-%}
+is useful in the context of inflation proceeding through an incomplete phase transition.
+
+The details of the contribution of the terms \eqref{eq:zeta source lap}, \eqref{eq:zeta source gdg} are discussed in section \ref{sec:zeta production}. However, it can be noted immediately that at the linear level the contribution comes from the $\zeta_{\Pi^A\nabla^2\phi^A}'$ channel for the inflaton. With the inclusion of the  other channels we are including nonlinear sourcing for $\zeta$ from what would be considered isocurvature modes in linear theory.
 
 %[It is worthwhile to note the form of NG and what measure will be sensitive to it are not always known a priori. It is for this reason that the ability to make comparisons to a baseline potential on a realization by realization basis proves to be a major advantage of performing these calculations using lattice simulations. - move this to the $\zeta$ NG section]
 
@@ -162,15 +162,26 @@ However, it can be noted immediately that at the linear level the contribution c
 \subsection{Potential} \label{sec:potential}
 Up to this point our description of the lattice simulation has been kept general and is applicable to a wide range of inflationary scenarios which are differentiated by the choice of potential. The particular scenario we study here has inflation proceeding through an incomplete phase transition of the transverse field. 
 
-Write the potential as a sum of two parts $V = V_0 + \Delta V$, where $V_0$ acts as a baseline contributing the majority of the energy density driving inflation and $\Delta V$ is a feature ontop of $V_0$, allows us to choose enforce a region of broken symmetry for the transverse field through our choice of $\Delta V$. We have chosen the functional forms
-\textcolor{red}{[Should probably say a few words about how the general picture of forming concentrations of NG is insensitive to the particular functional form. Also that the effect persists over a wide range of parameters (growth of fluctuations being exponentially sensitive to $\sqrt{|m^2_{eff}|}$ and duration of instability, but also the displacement of the new minima can be very large compared to the initial size of fluctuations).]}
+In what follows we write the potential as a sum of two parts $V = V_0 + \Delta V$, where $V_0$ acts as a baseline contributing the majority of the energy density driving inflation and $\Delta V$ is a feature ontop of $V_0$, allows us to choose enforce a region of broken symmetry for the transverse field through our choice of $\Delta V$.
+
+To parameterize the potential of an incomplete phase transition we have chosen the functional forms
 \begin{align}
   &V_0(\phi,\chi) = \frac{1}{2}m^2_\phi\phi^2 + \frac{1}{2}m^2_\chi\chi^2, \label{eq:V0} \\
   &\Delta V(\phi,\chi) = \frac{1}{4}\lambda(\phi)\left[ (\chi^2-v^2)^2 - v^4 \right]. \label{eq:DeltaV}
 \end{align}
-For convinience, the fields $\phi^A$ have been renamed $\phi$ and $\chi$ in this two field model. By convention we choose \textcolor{red}{[describe how $\phi$ is the main driver of inflation with $\chi$ initially fluctuations around the trough]}. The function $\lambda(\phi)$ controls where along the potential the transverse field $\chi$ has its symmetry broken and restored, with the longitudinal field $\phi$ acting as a clock and the parameter $v$ setting the positions of the new transverse minima. The potential surfaces of $V$ and $V_0$ are shown in Fig. \ref{fig:potential} where the potential parameters have be scaled arbitrarily for visual clarity.
+For convinience, the fields $\phi^A$ have been renamed $\phi$ and $\chi$ in this two field model. By convention we have chosen to align $\phi$ with the direction of inflation, at the level of homogeneous fields.
 
-For computational simplicity we have parameterized $\lambda(\phi)$ as a piece-wise polynomial. given compact support to allow for a more straight forward comparison to the baseline case
+% move to field dynamics section
+%Then at the linear level $\phi$ plays the role of the inflaton and $chi$ is a spectator field with an effective mass squared which becomes negative as it is modulated by the rolling of $\phi$. Although as we will see, nonlinear effects will play an important role in sourcing $\Delta\zeta$.
+
+We will informally refer to the $\phi$ and $\chi$ field space directions respectively as being longitudinal and transverse, but it should be noted we are applying this notation somewhat loosely as this association does not account for the inhomogenous state of the fields and their momenta.
+
+% Part about not getting overly focused on the explicit potential form
+Recall our goal in setting the potential is to study the phenomenology of a potential feature. The chosen form of the potential given in \eqref{eq:V0} and \eqref{eq:DeltaV} should be thought of only as a parameterization of the full inflationary potential within some small region surrounding the feature of interest, and not as a full theory of inflation in its own right. So by choosing to aligning $\phi$ with the direction of inflation what we are doing is setting the orienting of $\Delta V$, our parameterization of the potential feature, relative to the direction of flow taken by inflation as it passes this feature, smoothed in a region on the scale of the lattice.
+
+The function $\lambda(\phi)$ controls where along the potential the transverse field $\chi$ has its symmetry broken and restored, with the longitudinal field $\phi$ acting as a clock and the parameter $v$ setting the positions of the new transverse minima. The potential surfaces of $V$ and $V_0$ are shown in Fig. \ref{fig:potential} with the potential parameters scaled arbitrarily for visual clarity.
+
+For computational simplicity we have parameterized $\lambda(\phi)$ as a piece-wise polynomial
 \begin{equation} \label{eq:lambda}
   \lambda(\phi) =
   \begin{cases}
@@ -178,7 +189,11 @@ For computational simplicity we have parameterized $\lambda(\phi)$ as a piece-wi
     \lambda_\chi\left[\left(\frac{\phi-\phi_p}{\phi_w}\right)^2 - 1 \right]^2 & \quad \text{if  } |\phi-\phi_p|<\phi_w
   \end{cases}.
 \end{equation}
-The parameters $\phi_p$ and $\phi_w$ control the placement and duration of the symmetry breaking along the longitudinal field and $\lambda_\chi$ scales the strength of the associated instability around $\chi=0$. While not strictly necessary choosing $\lambda(\phi)$ with compact support has the advantage of \textcolor{red}{[stuff about easier to compare to the baseline case and allowing us to set fluctuations from linear theory by starting the sim where $\Delta V=0$]}.
+The parameters $\phi_p$ and $\phi_w$ control the placement and duration of the symmetry breaking along the longitudinal field and $\lambda_\chi$ scales the strength of the associated instability around $\chi=0$.
+
+While it is not strictly necessary to choose $\lambda(\phi)$ with compact support doing has the advantage of allowing us to initialize the simulation in a region where $\Delta V=0$. Doing so allows fluctuations to be initialized using the baseline potential $V_0$, the form of which \eqref{eq:V0} has been chosen so as to avoid any strong nonlinearities, allowing us to use the linear calculation described in Sec. \ref{sec:ICs} to calculate the initial fluctuation statistics. As an added benifit the compact support of $\lambda(\phi)$ facilitates the comparison to the baseline case as described in Sec. \ref{sec:results}.
+
+It should be mentioned that while in \eqref{eq:DeltaV} we have specified a functional form of $\Delta V$, our exploration of incomplete phase transition using other functional forms of $\Delta V$ \textcolor{red}{[which were likewise broke/restored symmetry in the transverse direction and were $\pm\chi$ symmetric]} have yielded NG following the same general picture of forming concentrations of NG uncorrelated with the Gaussian part of the field. \textcolor{red}{[Also that the effect persists over a wide range of parameters (growth of fluctuations being exponentially sensitive to $\sqrt{|m^2_{eff}|}$ and duration of instability, but also the displacement of the new minima can be very large compared to the initial size of fluctuations).]}
 
 \Fpotential
 
