@@ -27,8 +27,6 @@ Here it is worth pointing out that in calculating $\Delta\zeta$ we are deriving 
 
 \subsection{Field Dynamics} \label{sec:field dynamics}
 % definition of $\delta$
-% Intro paragraph
-% Anologous to an in-out process ...
 % initially linear growth of transverse fluctuations
 % onset of nonlinearity
 % system relaxes
@@ -125,15 +123,10 @@ In Fig. \ref{fig:traj} density contours of the trajectories of the fields margin
 \subsection{Sourcing NG} \label{sec:zeta production}
 % This subsection is to tie together the field dynamics and NG of $\Delta\zeta$.
 
-% Give a name to the post selected trajectories, maybe "extreme excursions" or "extreme trajectories".
-
 % Things I want to cover:
 % The idea that trajectories through a deformed potential pick up different $\epsilon$ histories
 % $\Delta\zeta$ is produced most strongly along those trajectories which undergo the largest $\chi$ excursions
 % There are two main phases in the $\Delta\zeta$ production: when the trajectory goes through the $\chi$ excursion, and when $\dot{\phi}$ is slowed with the symmetry restoration
-
-% Figures I want to include:
-% 2d historgam showing $\dd\Delta\zeta/\dd\alpha$ vs $\phi^A$ and $\Pi^A$.
 
 Having seen both the field dynamics and $\Delta\zeta$ in this system we now turn to the relation between the two.
 We have seen $\Delta\zeta$ is dominated by localized features where deviations from Gaussianity are much greater than in the surrounding field, the story of NG in this system is about outliers rather than averages.
@@ -144,43 +137,49 @@ We have seen $\Delta\zeta$ is dominated by localized features where deviations f
 
 To focus on those parts of the system which lead to the most prominent features of NG we perform a post selection based on the asymptotic $\Delta\zeta$.
 Ideally this post selection would be done in a basis which optimally encodes all information relevant to the formation of NG in this system.
-However, construction of such a basis is elusive and practical terms, although not optimal, the bases of position space or Fourier space are the available options. 
+However, construction of such a basis is elusive and in practical terms, although not optimal, the bases of position space or Fourier space are the available options. 
 The most prominent features of NG being localized suggests post selecting trajectories in position space will be more useful, as a Fourier basis encodes localization in the phase coherence between a possibly large number of modes.
 
 We post select lattice sites where the asymptotic $\Delta\zeta$ deviates by $\nu \ge 5$ standard deviations from the mean and will refer to their trajectories as `extreme trajectories'.
 The dynamics of the extreme trajectories forms a subset of the field dynamics of as a whole.
 
-In Fig. \ref{fig:traj} we compare trajectory distributions of the whole field to those of the extreme trajectories, colouring the latter in red. This shows the extreme trajectories, post selected on $\Delta\zeta$, are exactly those trajectories which are driven to the largest excursion away from $\chi=0$ during the transverse instability.
-Likewise, in Fig. \ref{fig:phasespace} we compare distributions of phase space projections of the whole field to those of the extreme trajectories.
-Nonlinear efects on the extreme trajectories have built NG correlations in the $(\phi,\chi)$ plane (likewise with the momenta) and to populate the extended tail of the $\langle\phi\Pi^\phi\rangle$ correlation.
+In Fig. \ref{fig:traj} we compare trajectory distributions of the whole field to those of the extreme trajectories, colouring the latter in red. This shows the extreme trajectories, post selected on $\Delta\zeta$, have two clearly distinguishable features: they are exactly those trajectories for which $\chi$ is driven through the largest excursions away from $\chi=0$ by the transverse instability, and $\Pi^\phi$ recieves the strongest nonlinear kick in the positive direction as the field pass through the end of $\Delta V$ (our convension of choosing and initial state with $\langle\phi\rangle$ positive and decreasing during inflation means a kick to $\Pi^\phi$ in the positive direction has the effect of slowing the local roll of $\phi$ down the potential). Likewise, in Fig. \ref{fig:phasespace} we compare distributions of phase space projections of the whole field to those of the extreme trajectories \textcolor{red}{[on a timeslice of uniform $\tau$ when $\langle\phi\rangle$ crosses the point where $\Delta V$ turns off]}.
+Nonlinear effects on the extreme trajectories have built NG correlations in the $(\phi,\chi)$ plane (likewise with the momenta) and populated an extended tail in the $\langle\phi\Pi^\phi\rangle$ correlation.
 
-Time dependence for the production of $\Delta\zeta$ is shown in Fig. \ref{fig:zetatraj}. The extreme trajectories undergo a sign change in $\Delta\zeta$. This sign change can be traced to a two stage production process: initial negative production through the $\frac{\dd\Delta\zeta_\chi}{\dd\alpha}$ channel, followed by a delayed positive production through the $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$ channel.
-\textcolor{red}{[Discuss how broadly applicable this picute is, ie what about very weak or very strong instabilities.]}
+Time dependence for the production of $\Delta\zeta$ is shown in Fig. \ref{fig:zetatraj}. The extreme trajectories undergo a sign change in $\Delta\zeta$. This sign change can be traced to a two stage production process: initial negative production through the $\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel, followed by a delayed positive production through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel. Sourcing through the $\frac{\dd\Delta\zeta_{\nabla\dot{\phi}\cdot\nabla\phi}}{\dd\alpha}$ and $\frac{\dd\Delta\zeta_{\nabla\dot{\phi}\cdot\nabla\phi}}{\dd\alpha}$ channels gives a subdominant contribution to the peaks.
 
 \Fzetatraj
 
-\textcolor{red}{[Discuss sourcing through the $\frac{\dd\Delta\zeta_\chi}{\dd\alpha}$]}
-\begin{itemize}
-  \color{red}
-  \item Has no contribution at the linear level since $\langle\dot{\chi}\rangle=0$.
-  \item Sourcing through this channel is due to the instability building up a $\dot{\chi}$ condensate, so the local inflaton direction picks up a $\dot{\chi}$ contribution (I think we can support this).
-\end{itemize}
+The production of $\Delta\zeta$ sourced through the $\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel, with $\langle\dot{\chi}\rangle = 0$, has no contribution at the linear level, the leading order contribution being quadratice in the fluctuations of $\chi$. Never the less, the exponential growth of $\chi$ fluctuations during the transverse instability mean the contribution through this channel is non-negliable.
+\textcolor{red}{[This is sourcing $\zeta$ NG through a nonlinear source term, present even if considering only linear dynamics and Gaussian fluctuations of the fields.]}
 
-\textcolor{red}{[Discuss sourcing through the $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$]}
-\begin{itemize}
-  \color{red}
-  \item At the linear level $\zeta$ is sourced through the $\dot{\phi}\nabla^2\phi$ term.
-  \item Sourcing $\Delta\zeta$ through this channel means $\phi$ has been deviated from its baseline trajectory, in this system that is a nonlinear effect.
-  \item Because of this, this channel turns on nonlinearly with the strength of the instability.
-  \item For sufficiently weak instabilities this channel is subdominant in the sourcing of $\Delta\zeta$.
-\end{itemize}
+Sourcing through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel is activated when the evolution of $\phi$ and $\Pi^\phi$ deviate from the baseline case run in the $V_0$ potential (or by modifications to $\rho + P$ which may be due to $\chi$ and $\Pi^\chi$ at nonlinear level). This deviation from the baseline case is due to the nonlinear interaction with the $\chi$ field.
+\textcolor{red}{[This is sourcing $\zeta$ NG through NG fluctuations of the fields, present even if considering only the linear contribution of the source term.]}
 
-%In order for the $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$ channel to be activated there must be sufficient growth in the $\chi$ fluctuations to interact nonlinearly with $\phi$.
-%Because of this, for sufficiently weak instabilities the sign change of $\Delta\zeta$ is absent.
-%The case of instabilities sufficiently weak to not activate the $\frac{\dd\zeta_\phi}{\dd\alpha}$ production channel is left to future work along with a thorough exploration of the parameter space.
+This simplified narrative of a two stage production process of $\Delta\zeta$ highlights the two effects which become most significant to the production of peaks as the strength of the instability is increased. It does not however furnish a complete description of the production of $\Delta\zeta$ in this system for which we must still rely on the full simulation. In particular as the strength of the instability is decreased the contribution to $\Delta\zeta$ sourced by these effects likewise decrease in significance, and for sufficiently weak instabilities becomes comparable to the contribution from other effects. At this point, while $\Delta\zeta$ can still be calculated from the full numerical solution, the simple two stage production process we have described will no longer provide a useful description. Further exploration of the parameter space bounding the region of applicability for the two stage production process described is left to future work.
+\textcolor{red}{[Define what is meant by increasing/decreasing the stength of the instablity in terms of $u\Delta V$.]}
+
+\Fzetaslicemulti
+
+% Move this to fit more with the flow, maybe before the zeta traj figure where the two stages of production are identified.
+A sequence of two dimensional slices through the lattice in Fig. \ref{fig:zetaslicemulti} shows the spatial dependence of the evolution of $\Delta\zeta$. Initially the production of $\Delta\zeta$ forms a set of negative peaks, as the system continues to evolve and $\Delta\zeta$ approaches its asymptotic state these negative peaks are replaced by positive peaks at the same locations. Comparison to Fig. \ref{fig:zetatraj} shows the negative peaks correspond to the first stage of production through the $\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel while the change of sign to positive peaks corresponds to the second stage of production through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel.
+
+From Fig. \ref{fig:zetatraj} we can also see that a portion of the production of $\Delta\zeta$ occurs after the fields have passed through $\Delta V$ and are again feeling the effects of only of the $V_0$ part of the potential \textcolor{red}{[point this out in the Fig. \ref{fig:zetatraj} caption]}. This portion of the production occurs as the state of the system, being deformed by having passed through $\Delta V$, is allowed to relax to the attractor of the baseline potential. For this reason we will refer to it as the `relaxation stage'.
+
+During the relaxation stage the sole role of $\Delta V$ is to generate an initial state which it deforms away from the attractor of the baseline potential, playing the role only of setting an initial condition. Once this initial state has been generated the relaxation stage can be studied without reference to the details of how it was generated.
+
+Although the details of how this initial state is prepared may be nontrivial and may involve its own generation of NG, the relaxation stage is decoupled from these details and ...
+
+% talk about generating $\zeta$ in the relaxation stage.
+% define what is meant by the relaxation stage
+% discuss how this is part of a more generally applicable framework. While the specifics of the generation of $\Delta\zeta$ during $\Delta V$ may be complicated by model dependent details, the relaxation stage is
+% I think we can say the relaxation stage holds some memory of the state of the system after the potential feature.
+% How we deal with the relaxation stage is agnostic to how the stressed state was produced (I still am not sure exactly how to define a stressed state in this context).
+
+% The key points are that the generation of $\Delta\zeta$ during the relaxation phase is generic. In this system the relaxation is fairly simple, the prepared state has a nonlinear correlation of peaks which translate to peaks in $\Delta\zeta$.
 
 
 \textcolor{red}{[Put in a part comparing with $\Delta\phi$ since this provides a tighter correlation.]}
 \Fdeltaps
 \Fdeltaphizetacorr
-\Fzetaslicemulti
+
