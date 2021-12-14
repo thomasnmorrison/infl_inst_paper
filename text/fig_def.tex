@@ -78,6 +78,35 @@
 \newcommand{\Fspec}{
   \begin{figure*}
     \centering
+      \begin{subfigure}[a]{\textwidth}
+        \includegraphics[width=\textwidth]{\FFspecB}
+        \caption{}
+      \end{subfigure}
+    \caption{Spectra and cross-spectra real parts from a run using the full potential $V=V_0+\Delta V$. From left to right on the top row are $\langle|\tilde{\phi}_k|^2\rangle$, $\mathrm{Re}\langle\tilde{\phi}^*_k\tilde{\Pi}^\phi_k\rangle $, $\langle|\tilde{\Pi}^\phi_k|^2\rangle$, and from felt to right on the bottom row are $\langle|\tilde{\chi}_k|^2\rangle$, $\mathrm{Re}\langle\tilde{\chi}^*_k\tilde{\Pi}^\chi_k\rangle $, $\langle|\tilde{\Pi}^\chi_k|^2\rangle$. The axes and scaling are as in Fig. \ref{fig:specbl}, the vertical dashed blue lines bound the region where $\Delta V$ is nonzero. \\
+In comparison to the baseline case shown in Fig. \ref{fig:specbl} the growth of $\langle|\tilde{\chi}_k|^2\rangle$ within the instability band of $\Delta V$ is clearly visible, also associated with this instablity is the growth of $\langle|\tilde{\Pi}^\chi_k|^2\rangle$ and the positive correlation of $\mathrm{Re}\langle\tilde{\chi}^*_k\tilde{\Pi}^\chi_k\rangle$ \textcolor{red}{[part about the growth of $\mathrm{Re}\langle\tilde{\chi}^*_k\tilde{\Pi}^\chi_k\rangle$ being due to matching onto the `growing mode' of this instability]}.
+\textcolor{red}{[Stuff about coherent oscillations and the banded structure after $\Delta V$.]} \\
+The deviationof $\langle|\tilde{\phi}_k|^2\rangle$, $\mathrm{Re}\langle\tilde{\phi}^*_k\tilde{\Pi}^\phi_k\rangle $, and $\langle|\tilde{\Pi}^\phi_k|^2\rangle$ from the baseline case shown in Fig. \ref{fig:specbl} is an effect not predicted by linear theory around a $\langle\chi\rangle=0$ background. We find the origins of this nonlinear effect are more readily exlained in real space rather than Fourier space.}
+    \label{fig:spec}
+  \end{figure*}
+}
+
+% fig:specbl
+\newcommand{\Fspecbl}{
+  \begin{figure*}
+    \centering
+      \begin{subfigure}[a]{\textwidth}
+        \includegraphics[width=\textwidth]{\FFspecA}
+        \caption{}
+      \end{subfigure}
+    \caption{Spectra and cross-spectra real parts from a baseline run using the potential $V=V_0$. From left to right on the top row are $\langle|\tilde{\phi}_{0k}|^2\rangle$, $\mathrm{Re}\langle\tilde{\phi}^*_{0k}\tilde{\Pi}^\phi_{0k}\rangle $, $\langle|\tilde{\Pi}^\phi_{0k}|^2\rangle$, and from felt to right on the bottom row are $\langle|\tilde{\chi}_{0k}|^2\rangle$, $\mathrm{Re}\langle\tilde{\chi}^*_{0k}\tilde{\Pi}^\chi_{0k}\rangle $, $\langle|\tilde{\Pi}^\chi_{0k}|^2\rangle$. On the horizontal axis time is measured by $\alpha$. The verical axis measures the logarithm of the wavenumber normalized to the Hubble scale $\ln(k/(aH))$. The colour bar measures spectra/cross-spectra (labelled as a component of $C(\phi^A,\Pi^A;k)$ as defined in \textcolor{red}{[equation reference]}). In the normalization $k^3/(2\pi^2)$ is a volume factor, $H^2/(2\pi)^2$ is the Hawking temperature, and $a^{3N_\Pi}H^{N_\Pi}$ is a scaling factor chosen to simplify the evolution of the baseline case with $N_\Pi$ being the number of momentum factors in $C_{ij}$. The diagonal dashed green lines indicate the initialized band of $k$-modes, and the vertical dashed blue lines bound the region where $\Delta V$ is nonzero \textcolor{red}{[remove the dashed blue lines for the baseline case]}\textcolor{red}{[Add a footnote that $\mathrm{symln}(x)\equiv\mathrm{sign}(x)\ln(1+|x|)$].}}
+    \label{fig:specbl}
+  \end{figure*}
+}
+
+% fig:spec
+\newcommand{\Fspecold}{
+  \begin{figure*}
+    \centering
     \begin{subfigure}[a]{0.3\textwidth}
       \includegraphics[width=\textwidth]{\FFspecA}
       \caption{}
@@ -102,8 +131,8 @@
       \includegraphics[width=\textwidth]{\FFspecF}
       \caption{}
     \end{subfigure}
-    \caption{\textcolor{red}{[Place holder figure, the plan is to redo these as filled contours with levels scaled to the result for massless free fields in de Sitter and over plot with the linear calculation of the spectra.]}}
-    \label{fig:spec}
+    \caption{Spectra and real part of cross-spectra \textcolor{red}{[some of the cross-spectra]}. The vertical dashed blue lines indicate the region where $\Delta V$ is nonzero. The diagonal dashed green lines indicate the initialized band of $k$-modes. Contours are logrithmically spaced. Negative regions are hashed and plotted in absolute value. \textcolor{red}{[Mention normalization of $H^2/(2\pi^2)$, $a^3H^3/(2\pi^2)$, $2a^6H^4/(2\pi^2)$.]}}
+    \label{fig:specold}
   \end{figure*}
 }
 
@@ -111,8 +140,10 @@
 \newcommand{\Fspecdet}{
   \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{\FFspecdet}
-    \caption{}
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFspecdet}
+    \end{subfigure}
+    \caption{\textcolor{red}{[Place holder for the $\mathrm{det}C(\phi^A,\Pi^A;k)$ figure. This is not actually $\mathrm{det}C(\phi^A,\Pi^A;k)$.]}}
     \label{fig:specdet}
   \end{figure}
 }
@@ -228,23 +259,30 @@
 \newcommand{\Fdeltaps}{
   \begin{figure}
     \centering
-    \begin{subfigure}[a]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{\FFdeltapsA}
-      \caption{}
-    \end{subfigure}
-    \begin{subfigure}[a]{0.45\textwidth}
-      \includegraphics[width=\textwidth]{\FFdeltapsB}
-      \caption{}
-    \end{subfigure}
-    \caption{}
+      \begin{subfigure}[a]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{\FFdeltapsA}
+        \end{subfigure}
+      \caption{\textcolor{red}{[Here $\delta\phi$ has been replaced by $\Delta\phi$ (defined analogously to $\Delta\zeta$ as the point by point difference of $\phi$ as calculated using the full potential $V=V_0 + \Delta V$ and the baseline potential $V_0$ alone). Compare to Fig. \ref{fig:phasespace}. Descirbe in terms of an equation of state.]}}
     \label{fig:deltaps}
   \end{figure}
 }
 
-% fig:zetatraj
-\newcommand{\Fzetatraj}{
-  \begin{figure*}
+% fig:deltaphizetacorr
+\newcommand{\Fdeltaphizetacorr}{
+  \begin{figure}
     \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFdeltaphizetacorr}
+    \end{subfigure}
+    \caption{\textcolor{red}{[Place holder caption for the unequal time correlation between $\Delta\zeta_f$ and $\Delta\phi_{\Delta V \mathrm{off}}$.]}}
+    \label{fig:deltaphizetacorr} 
+  \end{figure}
+}
+
+% fig:zetatraj
+\newcommand{\Fzetatrajold}{
+  \begin{figure*}
+      \centering
     %\begin{subfigure}[a]{0.3\textwidth}
     %  \includegraphics[width=\textwidth]{\FFzetatrajA}
     %  \caption{}
@@ -270,9 +308,84 @@
       \caption{}
     \end{subfigure}
     \caption{Density contours for trajectories of $\Delta\zeta$, $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$, and $\frac{\dd\Delta\zeta_\chi}{\dd\alpha}$. Contour colours as are in Fig. \ref{fig:traj}. Dashed blue lines bound the region where $\Delta V$ is nonzero. Two distinct bursts of $\Delta\zeta$ production are involved in producing $\Delta\zeta$ concentrations. The first burst of production comes through the $\frac{\dd\Delta\zeta_\chi}{\dd\alpha}$ channel \textcolor{red}{[some words about this]}. The second burst of production comes through the $\frac{\dd\Delta\zeta_\phi}{\dd\alpha}$ channel and is of opposite sign to the first.}
+    \label{fig:zetatrajold}
+  \end{figure*}
+}
+
+% fig:dzetatraj
+\newcommand{\Fzetatraj}{
+  \begin{figure*}
+    \centering
+    \begin{subfigure}[a]{0.225\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetatrajA}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.225\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetatrajB}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.225\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetatrajC}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.225\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetatrajD}
+      \caption{}
+    \end{subfigure}
+    \caption{Density contours for trajectories of $\Delta\zeta$, $\frac{\dd\Delta\zeta}{\dd\alpha}$, and two of the sourcing channels \eqref{eq:zeta source lap}, $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ and $\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ (the sourcing channels \eqref{eq:zeta source gdg} give a subdominatnt contribution to the peaks of $\Delta\zeta$). Contour colours as are in Fig. \ref{fig:traj}. Dashed blue lines bound the region where $\Delta V$ is nonzero. Two distinct bursts of $\Delta\zeta$ production are involved in producing $\Delta\zeta$ concentrations. The first burst is negative and sourced through the $\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel. The second burst of production comes through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel and is of opposite sign to the first. \textcolor{red}{[Link this caption to the real space picture of Fig. \ref{fig:zetaslicemulti}.]}}
     \label{fig:zetatraj}
   \end{figure*}
 }
+
+% fig:zetaslicemulti
+\newcommand{\Fzetaslicemulti}{
+  \begin{figure*}
+    \centering
+    \includegraphics[width=0.9\textwidth]{\FFzetaslicemulti}
+    \caption{A two dimensional slice through a three dimensional lattice showing $\Delta\zeta$ at \textcolor{red}{[time slices]}. The two stage production process of $\Delta\zeta$ shown in Fig. \ref{fig:zetatraj} can be seen here to first generate a set of negative $\Delta\zeta$ peaks in the first stage of production which change sign during the second stage of production to become positive peaks in the asymptotic $\Delta\zeta$.}
+    \label{fig:zetaslicemulti}
+  \end{figure*}
+}
+
+% fig:potparamu
+%\newcommand{\Fpotparamu}{
+  %\begin{figure}
+    %\centering
+    % include graphics
+    %\caption{}
+    %\label{fig:potparamu}
+  %\end{figure}
+%}
+
+% fig:uzetagallery
+%\newcommand{/Fuzetagallery}{
+  %\begin{figure}
+    %\centering
+    % include graphics
+    %\caption{}
+    %\label{fig:uzetagallery}
+  %\end{figure}
+%}
+
+% fig:uresponsemag
+%\newcommand{/Furesonsemag}{
+  %\begin{figure}
+    %\centering
+    % include graphics
+    %\caption{\textcolor{red}{[This will be a figure showing how changing $u$ changes the height of $\zeta$ peaks. Do something like what is the 0.01 highest fraction of $\Delta\zeta$ as a function of $u$.]}}
+    %\label{fig:uresponsemag}
+  %\end{figure}
+%}
+
+% fig:uresponseratio
+%\newcommand{/Furesponseratio}{
+  %\begin{figure}
+    %\centering
+    % include graphics
+    %\caption{\textcolor{red}{[This will be a figure comparing the ratio between different $\Delta\zeta_{part}$ as a function of $u$.]}}
+    %\label{fig:uresponseratio}
+  %\end{figure}
+%}
 
 % Figure of the field and momenta spectra and cross-spectra
 %\newcommand{\Fspec}{

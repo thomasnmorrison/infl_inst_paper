@@ -164,34 +164,44 @@ which is a single operator acting on a pair of fields.
 \textcolor{red}{[We also need the $\nabla\dot{\phi}\nabla\phi$ term, which is similarly defined. Might be more clear to just use $F$ and $G$ as the fields and leave the definition more general.]}
 
 \subsection{Equations of Motion of the Lattice}
-Our method is to derive the equiations of motion from \eqref{eq:action FRW} in a Hamiltonian form and then discretize the equations on the lattice.
+%The equations of motion we solve on the lattice are derived by applying a discretization proceedure to the continuum equations of motion derive which follow from the Hamiltonian density \eqref{eq:hamFRW}
+The equations of motion we solve on the lattice are derived by applying the an FRW ansatz to the metric, then deriving the equation of motion in the continuum, and finally applying a discretization proceedure on the lattice. 
+
+Starting from the full action \eqref{eq:action}, applying the FRW metric ansatz gives the Ricci scalar $R=6\frac{a''}{a^3}$ which is only a function of time. Performing two integrations by parts, the first using $R=(aa')'-{a'}^2$ and the second using $\nabla\phi^A\cdot\nabla\phi^A = \nabla\cdot(\phi^A\nabla\phi^A) - \phi^A\nabla^2\phi^A$, and dropping the total derivative terms gives \eqref{eq:actionFRW}.
+
+Having taken the ansatz that $a=a(\tau)$ is only a function of time and not of position, we have the situation that \eqref{eq:actionFRW} couples a set of local variables $\phi^A$ to a global variable $a$. The equations of motion that result from such a coupling involve a volume average of local variables, which in turn requires us to choose a volume in which to consider the system, which we call $\mathcal{V}$. 
+\textcolor{red}{[Check if periodicity needs to be imposed on the volume to get the integration by parts to work.]}
 
 The Hamiltonian is given by
-\begin{equation}
-  H = \int\left\{
-    - \frac{1}{12\mpl^2}{\Pi^a}^2
-    + \frac{1}{2}\sum_A\left[a^{-2}{\Pi^A}^2 + \nabla\phi^A\cdot\nabla\phi^A\right]
+\begin{align} \label{eq:hamFRW finite volume}
+  \begin{split}
+  H = & - \frac{1}{12\mathcal{V}\mpl^2}{\pi^a}^2 \\
+    & + \int_\mathcal{V} \left\{ \frac{1}{2}\sum_A\left[a^{-2}{\Pi^A}^2 + \nabla\phi^A\cdot\nabla\phi^A\right]
     + a^4V
     \right\}\dd^3x
-\end{equation}
-with the momenta densities
-\begin{align}
-  & \Pi^a = -\frac{6}{\mpl^2}a'\\
-  & \Pi^A = a^2{\phi^A}'
+  \end{split}
 \end{align}
+with the momentum $\pi^a = -6\mathcal{V}\mpl^2a'$ and momentum density $\Pi^A = a^2{\phi^A}'$. The Hamiltonian density \eqref{eq:hamFRW} is then found by indentifying the momentum density $\Pi^a=\pi^a\mathcal{V}^{-1}$.
 
-The equations of motion in the continuum are
+The equations motion within a volume $\mathcal{V}$ are
 \begin{align}
   & \frac{\dd\phi^A}{\dd\tau} = a^{-2}\Pi^A \label{eq:eom phi} \\
   & \frac{\dd\Pi^A}{\dd\tau} = a^2\nabla^2\phi^A + a^4V_{,\phi^A} \\
   & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a \\
-  & \frac{\dd\Pi^a}{\dd\tau} = -l^{-3}\int\left\{
-  \sum_A\left[-a^{-3}{\Pi^A}^2 \nabla\phi^A\cdot\nabla\phi^A \right] +4a^3V
+  & \frac{\dd\Pi^a}{\dd\tau} = -\mathcal{V}^{-1}\int\left\{
+  \sum_A\left[-a^{-3}{\Pi^A}^2 \right. \right. \\
+    & \left. \left. + a\phi^A\nabla^2\phi^A \right] +4a^3V
   \right\}\dd^3x \label{eq:eom pi a}
 \end{align}
-\marginpar{
-  Need to mention this is for periodic fields in an $l^3$ volume.
-}
+or removing direct reference to the chosen volume $\mathcal{V}$ from \eqref{eq:eom pi a}
+\begin{align}
+  \frac{\dd\Pi^a}{\dd\tau} = -\left\langle
+  \sum_A\left[-a^{-3}{\Pi^A}^2 + a\phi^A\nabla^2\phi^A \right] +4a^3V
+  \right\rangle_\mathrm{vol}
+\end{align}
+%\marginpar{
+%  Need to mention this is for periodic fields in an $l^3$ volume.
+%}
 
 To solve the system \eqref{eq:eom phi}-\eqref{eq:eom pi a} we construct a cubic lattice of side length $l$ with $N$ equally spaced lattice sites along each dimension and label the points on this lattice $x_i$ with the index $i\in[0,N-1]\otimes[0,N-1]\otimes[0,N-1]$.
 The lattice spacing is $\Delta x \equiv l/N$ and the fundamental mode frequency is $\Delta k \equiv 2\pi/l$.
@@ -211,7 +221,8 @@ the equations of motion are discretized into a system of ordinary differential e
   & \frac{\dd\Pi^A_i}{\dd\tau} = a^2\nabla^2_\lat\phi^A_i + a^4V_{i,\phi^A_i} \\
   & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a \\
   & \frac{\dd\Pi^a}{\dd\tau} = -l^{-3}\sum_i\left\{
-  \sum_A\left[-a^{-3}{\Pi^A_i}^2 \nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^A_j)_i \right] +4a^3V_i
+  \sum_A\left[-a^{-3}{\Pi^A_i}^2 \right. \right. \\
+    & \left. \left. + a\phi^A_i\nabla^2_\lat(\phi^A_j)_i \right] +4a^3V_i
   \right\}\Delta x^3 \label{eq:lat eom pi a}
 \end{align}
 

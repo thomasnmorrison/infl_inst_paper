@@ -5,10 +5,10 @@
 We are interested in studying the effects of a localized feature in the inflationary potential.
 To this end it will prove useful to split the potential as a sum of two terms $V(\phi^A) = V_0(\phi^A) + \Delta V(\phi^A)$.
 This split can be though of as starting with a baseline system and applying a stimulus by deforming the potential, $V_0$ being the baseline and $\Delta V$ being the stimulus.
-The system's response can be calculated by taking the difference between two lattice simulations, one run with the deformed potential $V_0+\Delta V$ and the other with the baseline potential $V_0$, both starting from identical initial conditions.
+The system's response can be calculated by taking the difference between two lattice simulations, one run with the deformed potential $V_0+\Delta V$ and the other with the baseline potential $V_0$, with both runs starting from identical initial conditions.
 Of particular interest in the cosmological context is the NG component of $\zeta$ sourced by this response.
 
-In this section we setup our system detailing the equations of motion, setting of initial conditions, the form of the potential, and the source terms for $\zeta$.
+In this section we setup our system detailing the equations of motion solved on the lattice, the setting of initial conditions, the sourcing of $zeta$, and the form of the potential considered.
 
 \subsection{Equations of Motion}
 % Open with introduction to lattice sims 
@@ -16,9 +16,9 @@ In this section we setup our system detailing the equations of motion, setting o
 
 The action for a set of scalar fields minimally coupled to gravity is given by
 \begin{equation} \label{eq:action}
-  S = \int \sqrt{-g}\left\{\frac{R}{2\mpl^2} - \frac{1}{2}\sum_Ag^{\mu\nu}\partial_\mu\phi^A\partial_\nu\phi^A - V \right\}\dd^4x.
+  S = \int \sqrt{-g}\left\{\frac{1}{2}\mpl^2R - \frac{1}{2}\sum_Ag^{\mu\nu}\partial_\mu\phi^A\partial_\nu\phi^A - V \right\}\dd^4x.
 \end{equation}
-Where $\phi^A$, $A=1,2,...,N_\mathrm{fld}$ are scalar fields and $\mpl$ is the reduced Planck mass. 
+Where $\phi^A$ for $A=1,2,...,N_\mathrm{fld}$ are scalar fields and $\mpl$ is the reduced Planck mass. 
 Substuting the ansatz of a Friedman-Robertson-Walker (FRW) metric $\dd s^2 = -a^2(\tau)\left( \dd\tau^2 + \delta_{ij}\dd x^i\dd x^j \right)$ into \eqref{eq:action} and integrating by parts we arrive at the action
 \begin{align} \label{eq:actionFRW}
   \begin{split}
@@ -31,15 +31,19 @@ Substuting the ansatz of a Friedman-Robertson-Walker (FRW) metric $\dd s^2 = -a^
 \end{align}
 where ${}' \equiv \frac{\dd}{\dd\tau}$ is the conformal time derivative.
 
-\textcolor{red}{[By making the FRW ansatz we are neglecting the the role of metric fluctuations. In particular this ansatz leads to us dropping a term in the equations of motion for the fields.]}
-%\marginpar{
-%  Here we need to discuss using the FRW anzats and what that will leave out in terms of metric fluctuations, gauge etc.
-%  What we can do is compute the sourced metric fluctuations with no back reaction.
-%}
+Having constructed the action \eqref{eq:actionFRW} using the FRW metric ansatz we arrive at an action from which we can derive a self-consistent set of equations of motion. However, these equations will, by their construction, neglect the role played by metric fluctuations in the system corresponding to the full action $S$. In particular this leads to neglecting the terms which include the metric perturbations from the equations of motion of the fields. So although metric perturbation source terms can be calculated on the lattice, they do not include back-reaction onto the fields.
 
-Varying the action \eqref{eq:actionFRW} leads to the equations of motion in the continuum.
+%Varying the action \eqref{eq:actionFRW} leads to the equations of motion in the continuum.
+From the action \eqref{eq:actionFRW} we derive the momentum densities $\Pi^a=-6\mpl^2a'$ and $\Pi^A=a^2{\phi^A}'$, and the Hamiltonian density
+\begin{align} \label{eq:hamFRW}
+  \begin{split}
+    \mathcal{H}_\mathrm{FRW} = &-\frac{1}{12\mpl^2}{\Pi^a}^2 \\
+    &+ \frac{1}{2}\sum_A\left[ a^{-2}{\Pi^A}^2 -a^2\phi^A\nabla^2\phi^A \right] +a^4V
+    \end{split}
+\end{align}
+from which we derive the continuum equations of motion.
 
-In the continuum the equations of motion form a set of nonlinear partial differential equations. Disretizing these equations onto a lattice transforms them into a set of ordinary differential equations which can be integrated numerically. To do this the fields and momenta are discetized, volume integrals replaced by sums over lattice sites, and spatial derivatives in the continuum replaced by pseudospectral derivatives on the lattice. Applying this proceedure the equations of motion on a cubic lattice with $N$ equally spaced points along each dimension read
+In the continuum the equations of motion form a set of nonlinear partial differential equations. Discretizing these equations onto a lattice transforms them into a set of ordinary differential equations which can be integrated numerically. To do this the fields and momenta are discetized, volume integrals replaced by sums over lattice sites, and spatial derivatives in the continuum replaced by pseudospectral derivatives on the lattice. After applying this proceedure the equations of motion on a cubic lattice with $N$ equally spaced points along each dimension, the disrcete equations of motion read
 \begin{align}
   & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i,  \label{eq:lat eom a}\\
   & \frac{\dd\Pi^A_i}{\dd\tau} = -a^2\nabla^2_\lat(\phi^A_j)_i -a^4\frac{\partial V_i}{\partial \phi^A_i},  \label{eq:lat eom pi a}\\
@@ -53,27 +57,11 @@ In the continuum the equations of motion form a set of nonlinear partial differe
     + 4a^3V_i\vphantom{\sum_A}\right\}.
   \end{split} \label{eq:lat eom pi phi}  
 \end{align}
-Here the subscripts $i$ and $j$ run over lattice sites, $\Pi^A_i \equiv a^2{\phi^A_i}'$ and $\Pi^A \equiv -6\mpl^2a'$ are the momentum densities, and $\nabla^2_\lat()$ is the pseudospectrally defined Laplacian operator.
+Here the subscripts $i$ and $j$ run over lattice sites, and $\nabla^2_\lat()$ is the pseudospectrally defined Laplacian operator.
 For bevity we will supress the subscripts $i,j$ and $\lat$ except where they are necessary to avoid confusion.
 Full details of the discretization proceedure as well as the definition of the pseudospectral Laplacian and conversion to the dimensionless units used in the code can be found in the appendix.
 
-%This leads to the cannonically conjugate pairs $(a,\Pi_a)$ and $(\phi_A,\Pi_{\phi_A})$ where $\Pi_a = -6a'/\mpl^2$. This gives the Hamiltonian density
-%\begin{equation} \label{eq:hamiltonian}
-%  \mathscr{H}(a,\Pi_a; \phi_A,\nabla\phi_A,\Pi_{\phi_A}) =
-%  - \frac{\mpl^2}{12}\Pi_a^2
-%  + \frac{1}{2}a^{-2}\Pi_{\phi_A}\Pi_{\phi_A}
-%  + \frac{1}{2}a^2\nabla\phi_A\cdot\nabla\phi_A
-%  + a^4V
-%\end{equation}
-%and the equations of motion
-%\begin{align} \label{eq:eom}
-%  &\frac{\dd a}{\dd\tau} = -\frac{\mpl^2}{6}\Pi_a \\
-%  &\frac{\dd\Pi_a}{\dd\tau}  = -a^{-3}\Pi_{\phi_A}\Pi_{\phi_A} - a\nabla\phi_A\cdot\nabla\phi_A -4a^3V \\
-%  &\frac{\dd\phi_A}{\dd\tau}  = a^{-2}\Pi_{\phi_A} \\
-%  &\frac{\dd\Pi_{\phi_A}}{\dd\tau}  = a^2\nabla^2\phi_A - a^4V_{,\phi_A}.
-%\end{align}
-
-With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} we have arrived at a Hamiltonian system which can be integrated froward from intial conditions. To do so we use a Yoshida symplectic integration scheme, details of the Hamiltonian splitting we use for this scheme can be found in the appendix.
+With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} we have arrived at a Hamiltonian system which can be integrated forward from intial conditions. To do so we use a Hamiltonian splitting scheme, the details of which can also be found in the appendix.
 
 \subsection{Relation of the Semiclassical Lattice to Quantum Mechanics}
 \textcolor{red}{[Here's the outline of what I think should go in this section:]}

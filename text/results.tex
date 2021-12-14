@@ -131,22 +131,19 @@ In Fig. \ref{fig:traj} density contours of the trajectories of the fields margin
 Having seen both the field dynamics and $\Delta\zeta$ in this system we now turn to the relation between the two.
 We have seen $\Delta\zeta$ is dominated by localized features where deviations from Gaussianity are much greater than in the surrounding field, the story of NG in this system is about outliers rather than averages.
 
-%A complete description of the system can be supplied both Fourier and position space (along with any number of other bases), the basis that is chosen makes no difference to the dynamics.
-%However, when post selecting trajectories we project out elements of whichever basis we choose to use, the system will no longer be complete.
-%In order to be of practical use we must perform the post selection in a basis which preserves the information relavent to the formation of NG.
-
 To focus on those parts of the system which lead to the most prominent features of NG we perform a post selection based on the asymptotic $\Delta\zeta$.
 Ideally this post selection would be done in a basis which optimally encodes all information relevant to the formation of NG in this system.
 However, construction of such a basis is elusive and in practical terms, although not optimal, the bases of position space or Fourier space are the available options. 
 The most prominent features of NG being localized suggests post selecting trajectories in position space will be more useful, as a Fourier basis encodes localization in the phase coherence between a possibly large number of modes.
 
-We post select lattice sites where the asymptotic $\Delta\zeta$ deviates by $\nu \ge 5$ standard deviations from the mean and will refer to their trajectories as `extreme trajectories'.
+We post select lattice sites where the asymptotic $\Delta\zeta$ deviates by $\nu \ge 5 \sigma$ from the mean and will refer to their trajectories as `extreme trajectories'.
 The dynamics of the extreme trajectories forms a subset of the field dynamics of as a whole.
 
 In Fig. \ref{fig:traj} we compare trajectory distributions of the whole field to those of the extreme trajectories, colouring the latter in red. This shows the extreme trajectories, post selected on $\Delta\zeta$, have two clearly distinguishable features: they are exactly those trajectories for which $\chi$ is driven through the largest excursions away from $\chi=0$ by the transverse instability, and $\Pi^\phi$ recieves the strongest nonlinear kick in the positive direction as the field pass through the end of $\Delta V$ (our convension of choosing and initial state with $\langle\phi\rangle$ positive and decreasing during inflation means a kick to $\Pi^\phi$ in the positive direction has the effect of slowing the local roll of $\phi$ down the potential). Likewise, in Fig. \ref{fig:phasespace} we compare distributions of phase space projections of the whole field to those of the extreme trajectories \textcolor{red}{[on a timeslice of uniform $\tau$ when $\langle\phi\rangle$ crosses the point where $\Delta V$ turns off]}.
 Nonlinear effects on the extreme trajectories have built NG correlations in the $(\phi,\chi)$ plane (likewise with the momenta) and populated an extended tail in the $\langle\phi\Pi^\phi\rangle$ correlation.
 
 Time dependence for the production of $\Delta\zeta$ is shown in Fig. \ref{fig:zetatraj}. The extreme trajectories undergo a sign change in $\Delta\zeta$. This sign change can be traced to a two stage production process: initial negative production through the $\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel, followed by a delayed positive production through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel. Sourcing through the $\frac{\dd\Delta\zeta_{\nabla\dot{\phi}\cdot\nabla\phi}}{\dd\alpha}$ and $\frac{\dd\Delta\zeta_{\nabla\dot{\phi}\cdot\nabla\phi}}{\dd\alpha}$ channels gives a subdominant contribution to the peaks.
+\textcolor{red}{[Put in a reference to the sourcing equations \eqref{eq:zeta source lap} and \eqref{eq:zeta source gdg}.]}
 
 \Fzetatraj
 
@@ -156,19 +153,32 @@ The production of $\Delta\zeta$ sourced through the $\frac{\dd\Delta\zeta_{\dot{
 Sourcing through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel is activated when the evolution of $\phi$ and $\Pi^\phi$ deviate from the baseline case run in the $V_0$ potential (or by modifications to $\rho + P$ which may be due to $\chi$ and $\Pi^\chi$ at nonlinear level). This deviation from the baseline case is due to the nonlinear interaction with the $\chi$ field.
 \textcolor{red}{[This is sourcing $\zeta$ NG through NG fluctuations of the fields, present even if considering only the linear contribution of the source term.]}
 
-This simplified narrative of a two stage production process of $\Delta\zeta$ highlights the two effects which become most significant to the production of peaks as the strength of the instability is increased. It does not however furnish a complete description of the production of $\Delta\zeta$ in this system for which we must still rely on the full simulation. In particular as the strength of the instability is decreased the contribution to $\Delta\zeta$ sourced by these effects likewise decrease in significance, and for sufficiently weak instabilities becomes comparable to the contribution from other effects. At this point, while $\Delta\zeta$ can still be calculated from the full numerical solution, the simple two stage production process we have described will no longer provide a useful description. Further exploration of the parameter space bounding the region of applicability for the two stage production process described is left to future work.
-\textcolor{red}{[Define what is meant by increasing/decreasing the stength of the instablity in terms of $u\Delta V$.]}
-
 \Fzetaslicemulti
 
 % Move this to fit more with the flow, maybe before the zeta traj figure where the two stages of production are identified.
 A sequence of two dimensional slices through the lattice in Fig. \ref{fig:zetaslicemulti} shows the spatial dependence of the evolution of $\Delta\zeta$. Initially the production of $\Delta\zeta$ forms a set of negative peaks, as the system continues to evolve and $\Delta\zeta$ approaches its asymptotic state these negative peaks are replaced by positive peaks at the same locations. Comparison to Fig. \ref{fig:zetatraj} shows the negative peaks correspond to the first stage of production through the $\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel while the change of sign to positive peaks corresponds to the second stage of production through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel.
 
+% Relaxation response
 From Fig. \ref{fig:zetatraj} we can also see that a portion of the production of $\Delta\zeta$ occurs after the fields have passed through $\Delta V$ and are again feeling the effects of only of the $V_0$ part of the potential \textcolor{red}{[point this out in the Fig. \ref{fig:zetatraj} caption]}. This portion of the production occurs as the state of the system, being deformed by having passed through $\Delta V$, is allowed to relax to the attractor of the baseline potential. For this reason we will refer to it as the `relaxation stage'.
 
 During the relaxation stage the sole role of $\Delta V$ is to generate an initial state which it deforms away from the attractor of the baseline potential, playing the role only of setting an initial condition. Once this initial state has been generated the relaxation stage can be studied without reference to the details of how it was generated.
 
-Although the details of how this initial state is prepared may be nontrivial and may involve its own generation of NG, the relaxation stage is decoupled from these details and ...
+The production of $\Delta\zeta$ during the relaxation stage can be written as a response function to the deformed state $Z_{off}$,
+\begin{equation}
+  \Delta\zeta_f = R[Z_{off};V_0] + \Delta\zeta_{off}.
+\end{equation}
+\textcolor{red}{[The argument is a set of fields not numbers, so I guess it's a response functional.]}
+\textcolor{red}{[I'm using ${}_{off}$ for the initial state, which may be somewhat confusing notation.]}
+\textcolor{red}{[Do I actually need $V_0$ here? What really matters is the attractor and how trajectories approach it.]}
+This is a generic description ...
+
+Although the details of how this initial state is prepared may be nontrivial and may involve its own generation of NG, the relaxation stage is decoupled from these details and can be treated separately.
+
+% This part is still rough
+While this is a generic description, a response functional which depends on the complete description of a set of fields which must be measured from simulations does nothing to provide a simplified description... To gain a simplified view we would like to expand $Z$ into a basis set and project ... transforming the response functional into a response function on a finite (and ideally small) number of variables.
+\textcolor{red}{[Part about this projection introducing variance into the response]}
+
+Being a functional over fields $R[Z_{off};V_0]$ is impractical... A more manageble quantity can be obtained by projecting to the response of a single variable. In Fig. \ref{fig:deltaphizetacorr} we measure the response of $\Delta\zeta$ to $\Delta\phi$ on the lattice ... In doing so we have (stuff about going from a field to a single local variable in the response function) reduced the number of variables in the response function and as a result introduced variance into the relationship.
 
 % talk about generating $\zeta$ in the relaxation stage.
 % define what is meant by the relaxation stage
@@ -178,6 +188,8 @@ Although the details of how this initial state is prepared may be nontrivial and
 
 % The key points are that the generation of $\Delta\zeta$ during the relaxation phase is generic. In this system the relaxation is fairly simple, the prepared state has a nonlinear correlation of peaks which translate to peaks in $\Delta\zeta$.
 
+% Use the language of response functions. Specifically the asymptotic $\Delta\zeta - Delta\zeta_{off}$ is a response function to the deformed state $z_{off}$. That is a general description in which the role of $\Delta V$ is to prodive a distribution of deformed states $z_{off}$. What we do here is to project that response function onto a single variable (reducing the number of DoF while introducing a variance to the response).
+% The other response function we bring up is $\Delta\phi_{off}(\chi_{off})$.
 
 \textcolor{red}{[Put in a part comparing with $\Delta\phi$ since this provides a tighter correlation.]}
 \Fdeltaps
