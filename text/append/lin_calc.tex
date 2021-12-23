@@ -1,0 +1,49 @@
+% lin_calc.tex
+
+% .tex document for an appendix on the linear calculation used when setting initial conditions on the lattice.
+
+\section{Background Equations}
+The background equations used to solve for the attractor
+
+Done in cosmic time using the variables $\alpha$, $H$, $\phi^A$, $\dot{\phi}^A$
+
+Equations of motion are
+\begin{align}
+  \frac{\dd\alpha}{\dd t} &= H, \\
+  \frac{\dd H}{\dd t} &= -\frac{1}{2}\sum_A{\dot{\phi}^A}^2, \\
+  \frac{\dd\phi^A}{\dd t} &= \dot{\phi}^A, \\
+  \frac{\dd\dot{\phi}^A}{\dd t} &= -3H\dot{\phi}^A - \frac{\partial V}{\partial\phi^A}.
+\end{align}
+When perfoming the background calculation we use the same potential parameters as for the lattice calculation, and so our background calculation does not account for any renormalization.
+
+% part about initial estimate for the attractor and constraint on $\chi$.
+% part about integration scheme.
+
+\section{Calculation of 2pt Functions}
+We define $a\mathcal{N}\tilde{\phi}^A = L_{AB}x_B$ with $\mathcal{N}$ being a constant factor, by enforcing the constraint $\langle x_Ax_B \rangle = \delta_{AB}$ we can interpret $L_{AB}$.
+
+The calculation is done alongside the background calculation using the variables $\L_{AB}$, $\dot{L}_{AB}$, $\langle x_A\dot{x}_B \rangle$, and $(\langle \dot{x}_A\dot{x}_B \ranlge - k^2/a^2\delta{AB})$.
+
+The equations of motion are
+\begin{align}
+  \frac{\dd}{\dd t} L_{AB} &= \dot{L}_{AB}, \\
+  \frac{\dd}{\dd t} \dot{L}_{AB} &= L_{AC}A_{CB} - B_{AB} + C_{AC}\langle x_C\dot{x}_B \rangle
+  + L_{AC}(\langle \dot{x}_C\dot{x}_B \ranlge - k^2/a^2), \\
+  \frac{\dd}{\dd t} \langle x_A\dot{x}_B \rangle &= A_{AB}, \\
+  \frac{\dd}{\dd t} (\langle \dot{x}_A\dot{x}_B \ranlge - k^2/a^2\delta_{AB}) &=
+       [\delta_{AC}\delta_{BD} + \delta_{BC}\delta_{AD}]
+       [-\langle x_C\dot{x}_E \rangleA_{ED}
+         - (L^{-1})_{CE}C_{EF}\langle x_F\dot{x}_G \rangle\langle x_G\dot{x}_D \rangle
+         + (\langle x_C\dot{x}_F \rangle - (L^{-1})_{CE}C_{EF})(\langle \dot{x}_F\dot{x}_F \ranlge - k^2/a^2\delta_{FD})
+         + (\langle x_C\dot{x}_D \rangle - (L^{-1})_{CE}C_{ED} + H\delta_{CD})k^2/a^2].
+\end{align}
+Where the matricies $A_{AB}$, $B_{AB}$, $C_{AB}$ are given by
+\begin{align}
+  A_{AB} & = \\
+  B_{AB} &= -(\dot{H} + 2H^2)L_{AB} + \frac{\partial^2V}{\partial\phi^A\partial\phi^C}L_{CB} + H\dot{L}_{AB}, \\
+  C_{AB} &= 2\dot{L}_{AB} + Hl_{AB}.
+\end{align}
+
+Intitial conditions are set by ...
+
+The 2-pt correlations of the lattice variables are set by ...
