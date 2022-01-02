@@ -6,17 +6,16 @@
 The numerical quantities calculated within the simulation are dimensionless. And so in order to numerically solve physical equations they must first be brought into a dimensionless form. The familiar means by which this is achieved is to reduce form a system's physical quantities to dimensionless ratios taken with respect to a set of dimensional units. In this section we use an overbar $\bar{}$ to signify qunatities with have been so reduced.
 
 Taking $\hbar=c=1$ all remaining physical quantities can be reduced to dimensionless ratios with respect to appropriate powers of a specified mass scale. We will however introduce a pair of mass scales, which we call $Lambda$ and $\mu$, to keep our numerical solutions better conditioned. The mass scales appearing in our system relate to $\mpl$, the Hubble, and the inverse dynamical time of the fields. To accomidate these scales we choose $\Lambda = \mathcal{O}(\mpl)$ and $\mu = \mathcal{O}(\sqrt{|m^2_\mathrm{eff}|})$, where $m^2_\mathrm{eff}$ are eigenvalues of $\frac{\partial^2 V}{\partial\phi^A\partial\phi^B}$.
-% check hubble scaling
 
 Reducing physical quantities to the dimensionsless ones used in the simulation is done with the scalings
 \begin{align}
   & \bar{\tau} = \mu\tau, \\
-  & \bar{x}^i = \mu x^i, \\
+  & \bar{x}^i = \mu x^i, \\ 
   & \bar{\phi}^A = \Lambda^{-1}\phi^A, \\
   & \bar{\Pi}^A = \mu^{-1}\Lambda^{-1}\Pi^A, \\
   & \bar{\Pi}^a = \mu^{-1}\Pi^a, \\
-  & \bar{V} = \mu^{-2}\Lambda^{-2}V
+  & \bar{V} = \mu^{-2}\Lambda^{-2}V.
 \end{align}
+With these scalings the equations of motion for the dimensionless quantities are identical in form to those for the dimensionful quantities, with all dimensionful quantities being replaced by their dimensionless counterparts.
 
-Both of these mass scales can likewise be expressed in terms of $\mpl$ giving the dimensionless ratios $\bar{\Lambda} = \Lambda/\mpl$ and $\bar{\mu} = \mu/\mpl$. In this work we have used $\bar{\lambda} = 1$ and $\bar{\mu} = 10^{-5}$.
-
+The mass scales $Lambda$ and $\mu$ can likewise be expressed in terms of $\mpl$ giving the dimensionless ratios $\bar{\Lambda} = \Lambda/\mpl$ and $\bar{\mu} = \mu/\mpl$. In this work we have used $\bar{\lambda} = 1$ and $\bar{\mu} = 10^{-5}$.
