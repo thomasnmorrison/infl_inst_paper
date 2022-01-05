@@ -8,7 +8,7 @@ This split can be though of as starting with a baseline system and applying a st
 The system's response can be calculated by taking the difference between two lattice simulations, one run with the deformed potential $V_0+\Delta V$ and the other with the baseline potential $V_0$, with both runs starting from identical initial conditions.
 Of particular interest in the cosmological context is the NG component of $\zeta$ sourced by this response.
 
-In this section we setup our system detailing the equations of motion solved on the lattice, the setting of initial conditions, the sourcing of $zeta$, and the form of the potential considered.
+In this section we setup our system, detailing the equations of motion solved on the lattice, the setting of initial conditions, the sourcing of $\zeta$, and the form of the potential considered.
 
 \subsection{Equations of Motion}
 % Open with introduction to lattice sims 
@@ -19,7 +19,7 @@ The action for a set of scalar fields minimally coupled to gravity is given by
   S = \int \sqrt{-g}\left\{\frac{1}{2}\mpl^2R - \frac{1}{2}\sum_Ag^{\mu\nu}\partial_\mu\phi^A\partial_\nu\phi^A - V \right\}\dd^4x.
 \end{equation}
 Where $\phi^A$ for $A=1,2,...,N_\mathrm{fld}$ are scalar fields and $\mpl$ is the reduced Planck mass. 
-Substuting the ansatz of a Friedman-Robertson-Walker (FRW) metric $\dd s^2 = -a^2(\tau)\left( \dd\tau^2 + \delta_{ij}\dd x^i\dd x^j \right)$ into \eqref{eq:action} and integrating by parts we arrive at the action
+Substuting the ansatz of a Friedman-Robertson-Walker (FRW) metric $\dd s^2 = a^2(\tau)\left( -\dd\tau^2 + \delta_{ij}\dd x^i\dd x^j \right)$ into \eqref{eq:action} and integrating by parts we arrive at the action
 \begin{align} \label{eq:actionFRW}
   \begin{split}
     S_{\mathrm{FRW}} = &\int \dd\tau\dd^3xa^4\left\{
@@ -31,7 +31,8 @@ Substuting the ansatz of a Friedman-Robertson-Walker (FRW) metric $\dd s^2 = -a^
 \end{align}
 where ${}' \equiv \frac{\dd}{\dd\tau}$ is the conformal time derivative.
 
-Having constructed the action \eqref{eq:actionFRW} using the FRW metric ansatz we arrive at an action from which we can derive a self-consistent set of equations of motion. However, these equations will, by their construction, neglect the role played by metric fluctuations in the system corresponding to the full action $S$. In particular this leads to neglecting the terms which include the metric perturbations from the equations of motion of the fields. So although metric perturbation source terms can be calculated on the lattice, they do not include back-reaction onto the fields.
+Having constructed the action \eqref{eq:actionFRW} using the FRW metric ansatz we arrive at an action from which we can derive a self-consistent set of equations of motion. However, these equations will, by their construction, neglect the role played by metric fluctuations in the system corresponding to the full action \eqref{eq:action}.%$S$.
+In particular this leads to neglecting the terms which include the metric perturbations from the equations of motion of the fields. So although metric perturbation source terms can be calculated on the lattice, they do not include back-reaction onto the fields.
 
 %Varying the action \eqref{eq:actionFRW} leads to the equations of motion in the continuum.
 From the action \eqref{eq:actionFRW} we derive the momentum densities $\Pi^a=-6\mpl^2a'$ and $\Pi^A=a^2{\phi^A}'$, and the Hamiltonian density
@@ -58,7 +59,7 @@ In the continuum the equations of motion form a set of nonlinear partial differe
   \end{split} \label{eq:lat eom pi phi}  
 \end{align}
 Here the subscripts $i$ and $j$ run over lattice sites, and $\nabla^2_\lat()$ is the pseudospectrally defined Laplacian operator.
-For bevity we will supress the subscripts $i,j$ and $\lat$ except where they are necessary to avoid confusion.
+For bevity we will supress the subscripts $i,j$, and $\lat$ except where they are necessary to avoid confusion.
 Full details of the discretization proceedure as well as the definition of the pseudospectral Laplacian and conversion to the dimensionless units used in the code can be found in the appendix.
 
 With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} we have arrived at a Hamiltonian system which can be integrated forward from intial conditions. To do so we use a Hamiltonian splitting scheme, the details of which can also be found in the appendix.
@@ -78,21 +79,29 @@ With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} we have arrived at a Hamilto
 In order to evolve the system \eqref{eq:lat eom a}-\eqref{eq:lat eom pi phi} forward in time we must specify initial conditions. This is done in three parts: setting the homogeneous component of the scalar fields and their momenta, initializing a realization of the fluctuations, and setting $\Pi^a$ so that the Hubble parameter obeys a lattice averaged version of the energy constraint. How each of these parts is accomplished is described below.
 
 % Homogeneous component
-The homogeneous component of the fields and momenta are set on the attractor solution of the homogeneous system. To find the attractor, we start with an initial estimate well back from the point we intend to initialize the lattice. Evolving the system with the homogeneous equations of motion this initial estimate rapidly approaches the attractor.
+The homogeneous component of the fields and momenta are set on the attractor solution of the homogeneous system. To find the attractor, we start with an initial estimate well back from the point we intend to initialize the lattice. Evolving the system with the homogeneous equations of motion this initial estimate rapidly approaches the attractor. 
 
 % Fluctuations
-Fluctuations in the fields and momenta are set in Fourier space, each mode being drawn from a multivariate Gaussian distribution matching the symmetric part of the 2-point correlation matrix as determined by linear theory. \textcolor{red}{[Should make it clear that this is matching spectra, not real space 2-point.]}
+Fluctuations in the fields and momenta are set in Fourier space, each mode being drawn from a multivariate Gaussian distribution with variance set to match the symmetric part of the 2-point correlation matrix in Fourier space. This is done mode-by-mode using a Choleski decomposition to take the `square root' of the correlation matrix which then multiplies a vector of $2N_\mathrm{fld}$ complex standard normal deviates. A low pass filter is applied to smooth the fields at a scale below that of the lattice Nyquist. Performing the inverse Fourier transforms then initializes the fluctuations on the lattice.
 
-With the homogeneous attractor solution in hand, we perform a calculation of the 2-point correlation matrix in linear perturbation theory, evolving the system along the attractor to the point where the lattice will be initialized. The calculation is done on a radial profile of Fourier modes, over sampled relative to fundamental mode $\Delta k$ on the lattice, with each mode being intialized well within the horizon where it can be matched to the Minkowski space solution \textcolor{red}{[I need to double check this, the choice of variables may mean this is actually being matched onto the WKB solution]}. The evolution of each mode is calculated using a fast/slow split of the system which supresses the oscillations of the mode, but still allows for calculation of the symmetric part of the 2-point correlation matrix.
+The symmetric part of the correlation matrix is calculated from linear theory for modes along a radial profile which is over sampled relative to the fundamental mode $\Delta k$ on the lattice with modes on the lattice being interpolated from this profile. The calculation is done with modes initialized well within the horizon where they can be matched to the Minkowski space solution. The system is then evolved along the attractor to the point where the lattice will be initialized. In particular this method properly accounts for the cross correlation between fields and momenta as they cross the horizon. Details of the linear calculation can be found in the appendix.
 
-Once the symmetric part of the 2-point correlation matrix has been calculated on the radial profile of Fourier modes, this profile is interpolated for each mode on the lattice. The `square root' of the interpolated correlation matrix is calculated by Choleski decomposition, and a vector of $2N_\mathrm{fld}$ complex standard normal deviates is generated. Multiplying the two gives a vector of $2N_\mathrm{fld}$ complex Gaussian variables drawn from a multivariate Gaussian distribution matching the computed symmetric part of the 2-point correlation matrix. In particular, modes crossing the horizon are initialize with the proper cross correlation between the fields and their momenta. \textcolor{red}{[Should mention the initialized modes are cut below Nyquist.]} Performing the inverse Fourier transforms then initializes the fluctuations on the lattice.
+%With the homogeneous attractor solution in hand, we perform a calculation of the symmetric part of the 2-point correlation matrix in linear perturbation theory. The calculation is done on a radial profile of Fourier modes, over sampled relative to fundamental mode $\Delta k$ on the lattice, with each mode being intialized well within the horizon where it can be matched to the Minkowski space solution. The system is then evolved along the attractor to the point where the lattice will be initialized. Details of the linear calculation can be found in the appendix.
+
+%evolving the system along the attractor to the point where the lattice will be initialized. The calculation is done on a radial profile of Fourier modes, over sampled relative to fundamental mode $\Delta k$ on the lattice, with each mode being intialized well within the horizon where it can be matched to the Minkowski space solution.
+%\textcolor{red}{[I need to double check this, the choice of variables may mean this is actually being matched onto the WKB solution]}.
+%Details of the linear calculation can be found in the appendix.
+
+%The evolution of each mode is calculated using a fast/slow split of the system which supresses the oscillations of the mode, but still allows for calculation of the symmetric part of the 2-point correlation matrix.
+
+%Once the symmetric part of the 2-point correlation matrix has been calculated on the radial profile of Fourier modes, this profile is interpolated for each mode on the lattice. The `square root' of the interpolated correlation matrix is calculated by Choleski decomposition, and a vector of $2N_\mathrm{fld}$ complex standard normal deviates is generated. Multiplying the two gives a vector of $2N_\mathrm{fld}$ complex Gaussian variables drawn from a multivariate Gaussian distribution matching the computed symmetric part of the 2-point correlation matrix. In particular, modes crossing the horizon are initialize with the proper cross correlation between the fields and their momenta. \textcolor{red}{[Should mention the initialized modes are cut below Nyquist.]} Performing the inverse Fourier transforms then initializes the fluctuations on the lattice.
 
 % Hubble
-With scalar fields and momenta realized on the lattice, $\Pi^A$ is set to satisfy a lattice averaged version of the energy constraint
+With scalar fields and momenta realized on the lattice, $\Pi^a$ is set to satisfy a lattice averaged version of the energy constraint
 \begin{equation} \label{eq:energy constraint}
-  H^2 = \frac{1}{3M_{Pl}}\langle \rho \rangle_\lat.
+  %H^2 = \frac{1}{3M_{Pl}}\langle \rho \rangle_\lat.
+  {\Pi^a}^2 = 12\mpl^2a^4\langle \rho \rangle_\lat.
 \end{equation}
-\textcolor{red}{[Put this in terms of $\Pi^A$.]}
 
 By convesion we set $a=1$ at the start of the lattice simulation.
 
@@ -148,24 +157,24 @@ The details of the contribution of the terms \eqref{eq:zeta source lap}, \eqref{
 %}
 
 \subsection{Potential} \label{sec:potential}
-Up to this point our description of the lattice simulation has been kept general and is applicable to a wide range of inflationary scenarios which are differentiated by the choice of potential. The particular scenario we study here has inflation proceeding through an incomplete phase transition of the transverse field. 
+Up to this point our description of the lattice simulation has been kept general and is applicable to a wide range of inflationary scenarios which are differentiated by the choice of potential. Here we introduce a form of potential which will focus our scope onto the scenario of inflation proceeding through an incomplete phase transition of the transverse field. 
 
-In what follows we write the potential as a sum of two parts $V = V_0 + \Delta V$, where $V_0$ acts as a baseline contributing the majority of the energy density driving inflation and $\Delta V$ is a feature ontop of $V_0$, allows us to choose enforce a region of broken symmetry for the transverse field through our choice of $\Delta V$.
+In what follows we write the potential as a sum of two parts $V = V_0 + \Delta V$, where $V_0$ acts as a baseline contributing the majority of the energy density driving inflation and $\Delta V$ is a feature ontop of $V_0$, which allows us to choose a region of field space to break the symmetry in the transverse field.
 
-To parameterize the potential of an incomplete phase transition we have chosen the functional forms
+We have chosen a parameterization of $\Delta V$ in the familiar form of a Landau-Ginzburg potential, with an overall amplitude modulated by the longitudinal field. And $V_0$ to be quadratic which provides a clean baseline as any nonlinearity of the field dynamics (up to coupling through the Hubble parameter) will be due solely to the $\Delta V$ part of the potential.
 \begin{align}
   &V_0(\phi,\chi) = \frac{1}{2}m^2_\phi\phi^2 + \frac{1}{2}m^2_\chi\chi^2, \label{eq:V0} \\
   &\Delta V(\phi,\chi) = \frac{1}{4}\lambda(\phi)\left[ (\chi^2-v^2)^2 - v^4 \right]. \label{eq:DeltaV}
 \end{align}
-For convinience, the fields $\phi^A$ have been renamed $\phi$ and $\chi$ in this two field model. By convention we have chosen to align $\phi$ with the direction of inflation, at the level of homogeneous fields.
+For convinience, the fields $\phi^A$ have been renamed $\phi$ and $\chi$ in this two field model. With $\phi$ being aligned with the direction of inflation at the level of homogeneous fields.
 
 % move to field dynamics section
 %Then at the linear level $\phi$ plays the role of the inflaton and $chi$ is a spectator field with an effective mass squared which becomes negative as it is modulated by the rolling of $\phi$. Although as we will see, nonlinear effects will play an important role in sourcing $\Delta\zeta$.
 
-We will informally refer to the $\phi$ and $\chi$ field space directions respectively as being longitudinal and transverse, but it should be noted we are applying this notation somewhat loosely as this association does not account for the inhomogenous state of the fields and their momenta.
+We will informally refer to the $\phi$ and $\chi$ field space directions respectively as being longitudinal and transverse, but it should be noted we are applying this notation somewhat loosely as this association does not account for the inhomogenous state of the fields and their momenta. \textcolor{red}{[Make this a footnote]}
 
 % Part about not getting overly focused on the explicit potential form
-Recall our goal in setting the potential is to study the phenomenology of a potential feature. The chosen form of the potential given in \eqref{eq:V0} and \eqref{eq:DeltaV} should be thought of only as a parameterization of the full inflationary potential within some small region surrounding the feature of interest, and not as a full theory of inflation in its own right. So by choosing to aligning $\phi$ with the direction of inflation what we are doing is setting the orienting of $\Delta V$, our parameterization of the potential feature, relative to the direction of flow taken by inflation as it passes this feature, smoothed in a region on the scale of the lattice.
+Recall our goal in setting the potential is to study the phenomenology of $\zeta$ NG generated by a potential feature. The chosen form of the potential given in \eqref{eq:V0} and \eqref{eq:DeltaV} should not be thought of only as a defining a complete inflationary potential, but only as a parameterization within some small region around a feature of interest. So by choosing to aligning $\phi$ with the direction of inflation what we are doing is setting the orienting of $\Delta V$, our parameterization of the potential feature, relative to the direction of flow taken by inflation as it passes this feature, smoothed in a region on the scale of the lattice. \textcolor{red}{[Forward reference to figure exploring other potential forms for transverse symmetry breaking]}
 
 The function $\lambda(\phi)$ controls where along the potential the transverse field $\chi$ has its symmetry broken and restored, with the longitudinal field $\phi$ acting as a clock and the parameter $v$ setting the positions of the new transverse minima. The potential surfaces of $V$ and $V_0$ are shown in Fig. \ref{fig:potential} with the potential parameters scaled arbitrarily for visual clarity.
 
