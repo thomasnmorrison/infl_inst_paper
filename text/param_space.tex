@@ -1,41 +1,61 @@
 % Document for section discussing parameter space.
 
-\section{Parameterization of Instability Strength} \label{sec:params}
-% The objective for this section is to layout the regime of validity for the picture of $\Delta\zeta$ given in the results section and to point out directions of future work.
-% Introduce the $V = V_0 + u\Delta V$ parameterization as a deformation of the potential with a continuous parameterization.
-% Discuss how varying $u$ increases/decreases the strength of the instability.
-% Discuss how when the strength of the instability is increased/decreased the character of the asymptotic $\Delta\zeta$ divides the parameter space into regimes (eg. weak, strong, and domain).
-% Discuss future work into the other dimensions of parameter space (ie) width measurement and how long the instability is turned on.
-% Discuss the qualitative similarity of results for other forms of potential with tachyonic instabilities.
+\section{Parameterization of the Instability} \label{sec:params}
+% Two subsections, one for instability strength, and one for $\Delta V$ functional form.
+
+\textcolor{blue}{[Point for discussion: This section is supposed to be about checking how representative are the results we show in the rest of the paper, so we should be clear about what exactly it means for those results to be representative. I think three (related) aspects of this are: the excess of positive peaks in $\Delta\zeta$, the $(\Delta\phi, \chi)$ correlation and production of $\Delta\zeta$ from the relaxation of this state, and the relative contribution to $\Delta\zeta$ coming from the different production channels ie. the two stage production.]}
+
+In the previous section we analysed simulations run for a single set of potential parameters for the potential given by \eqref{eq:V0} and \eqref{eq:DeltaV}. We found the resulting $\Delta\zeta$ to be spatially coherent, characterized by an excess of positive peaks and related the formation of these peaks to a two step production process. In this section we will discuss the range of parameter space over which the discussion of the previous section can be considered a representative description. \textcolor{red}{[This is done in two parts, first by varying the strength of the instability with $V=V_0 + u\Delta V$, and second by running different forms of $\Delta V$ which also parameterize a transverse Tachyonic instability.]}
+
+\textcolor{red}{[Here give a basic summary what we find in this section, ie. the regimes we find by varying $u$ and the similarities between different forms of $\Delta V$ with transverse Tachyonic instabilites. Point to the areas of parameter space where the discussion we did in Sec. \ref{sec:results} is not representitive, specifically with the formation of domain walls and point to further discussion in future work]}.
 
 % Figures to make/include:
 % Make a figure of $m^2_{eff}(\phi)$ and $u\Delta V(\phi_p,\chi)$ for some sampled values. It could also be useful to put curves for the values of $u$ delineating the different regimes (ie weak, strong, domain).
 % Make a rogue's gallery of different runs spanning from small to large values of $u$ showing maps of $\Delta\zeta$
 % Make a figure with $u$ along one axis and $\Delta\zeta_\phi/\Delta\zeta_\chi$ along the other.
-% Make a figure with $u$ along one axis and a measure of $\Delta\zeta$ amplitude olong the other.
+% Make a figure with $u$ along one axis and a measure of $\Delta\zeta$ amplitude along the other.
 
-% Things I still need to figure out and do:
 
-%This simplified narrative of a two stage production process of $\Delta\zeta$ highlights the two effects which become most significant to the production of peaks as the strength of the instability is increased. It does not however furnish a complete description of the production of $\Delta\zeta$ in this system for which we must still rely on the full simulation.
-In particular as the strength of the instability is decreased the contribution to $\Delta\zeta$ sourced by these effects likewise decrease in significance, and for sufficiently weak instabilities becomes comparable to the contribution from other effects. At this point, while $\Delta\zeta$ can still be calculated from the full numerical solution, the simple two stage production process we have described will no longer provide a useful description. Further exploration of the parameter space bounding the region of applicability for the two stage production process described is left to future work.
-\textcolor{red}{[Define what is meant by increasing/decreasing the stength of the instablity in terms of $u\Delta V$.]}
+\subsection{Potential Parameters}
+% The objective for this section is to layout the regime of validity for the picture of $\Delta\zeta$ given in the results section and to point out directions of future work.
+% Introduce the $V = V_0 + u\Delta V$ parameterization as a deformation of the potential with a continuous parameterization.
+% Discuss how when the strength of the instability is increased/decreased the character of the asymptotic $\Delta\zeta$ divides the parameter space into regimes (eg. weak, strong, and domain).
+% Discuss future work into the other dimensions of parameter space (ie) width measurement and how long the instability is turned on.
 
-In Sec. \ref{sec:results} we analysed the results of lattice simulations run for a particular set of parameters of $\Delta V$. We found $\Delta\zeta$ to be spatially coherent and characterized by an excess of positive peaks and related the formation of these peaks to a two step production process. % awkward, rework
-This simplified narrative of a two stage production process for $\Delta\zeta$ highlights the two effects which become most significant to the production of peaks as the strength of the instability is increased \textcolor{red}{[part about not increasing so much that the phase transition completes]}.
-It does not however furnish a complete description of the production of $\Delta\zeta$ in this system for which we must still rely on the full simulation.
-
-In this section we perform a partial survey of parameter space to determine the regime over which the results of the previous section can be considered representative. We will find \textcolor{red}{[basic summary of the regimes we find by varying $u$, situate the results from this paper and point to the areas of parameter space which we will cover in future work]}.
-
-% subsection about ...
-
-% Introduce $u$
-% Discuss $u$ in terms of a one dimensional parameterization which continuously deforms the potential between the baseline for $u=0$ and the fiducial for $u=1$ and stronger instabilities for $u>1$.
-We extend the potential $V(\phi^A) = V_0(\phi^A) + \Delta V(\phi^A)$ by introducing a single parameter $u$ and defining the parameterized family of potentials
+To start we will perform a partial survey of parameter space. We extend the potential $V(\phi^A) = V_0(\phi^A) + \Delta V(\phi^A)$ by introducing a single new parameter $u$ which we use to construct the parameterized family of potentials
 \begin{equation}
   V(\phi^A;u) = V_0(\phi^A) + u\Delta V(\phi^A).
 \end{equation}
-When $u=0$ we recover the baseline potential $V_0$, taking $u>0$ continuously deforms the potential...
-For convieneonce we have chosen to use a parameterization where $u=1$ corresponds to the potential we studied in Sec. \ref{sec:results}...
+Varying the parameter $u$ continuously deforms the potential from the baseline potential $V_0$ at $u=0$ through increasingly strong instability as $u$ is increased with the potential parameters we used in Sec. \ref{sec:results} at $u=1$. \textcolor{red}{[Should also comment about the duration and width of the instability, but I don't think we need the full parameter space exploration here.]}
+
+A collection of simulations runs over a span of $u$ values is shown in Fig. \ref{fig:zetasliceu}.
+\textcolor{red}{[Comment on the breakdown of picture of $\Delta\zeta$ being dominated by peaks with the formation of domain walls and how this is an area for future study.]}
+
+\Fzetasliceu
+
+\Fpotparamu
+
+\textcolor{red}{[Part about $\ln|m^2_\mathrm{eff}|$ giving a measure of parameter space more relevant to the dynamics than $u$.]}
+
+\textcolor{red}{[Add figures and text for whatever we decide is representative that we should compare.]}
+
+%This simplified narrative of a two stage production process of $\Delta\zeta$ highlights the two effects which become most significant to the production of peaks as the strength of the instability is increased. It does not however furnish a complete description of the production of $\Delta\zeta$ in this system for which we must still rely on the full simulation.
+%In particular as the strength of the instability is decreased the contribution to $\Delta\zeta$ sourced by these effects likewise decrease in significance, and for sufficiently weak instabilities becomes comparable to the contribution from other effects. At this point, while $\Delta\zeta$ can still be calculated from the full numerical solution, the simple two stage production process we have described will no longer provide a useful description. Further exploration of the parameter space bounding the region of applicability for the two stage production process described is left to future work.
+
+% This part belongs in the section on sourcing $\Delta\zeta$.
+%This simplified narrative of a two stage production process for $\Delta\zeta$ highlights the two effects which become most significant to the production of peaks as the strength of the instability is increased \textcolor{red}{[part about not increasing so much that the phase transition completes]}.
+%It does not however furnish a complete description of the production of $\Delta\zeta$ in this system for which we must still rely on the full simulation.
 
 % Figure of potentials for various values of $u$
-%\Fpotparamu
+
+
+\subsection{Alternate Forms of $\Delta V$}
+\textcolor{red}{[Place holder. In this section I will discuss alternate forms of $\Delta V$ that could be used be used to parameterize an incomplete phase transition in the transverse direction. The main goal being to demonstrate the broad similarities in the forms of NG generated.]}
+
+\Fzetaslicepotform
+
+\textcolor{red}{[Give equations for a few alternate forms of $\Delta V$. Discuss Fig. \ref{fig:zetaslicepotform} which will display $\Delta\zeta$ slices for the alternate forms of $\Delta V$ given.]}
+
+\Fdeltapspotform
+
+\textcolor{red}{[Discuss similarities in $\Delta\zeta$ in terms of the relaxation stage of production from a deformed state with reference to Fig. \ref{fig:deltapspotform}. (I haven't actually checked this for the other potential forms we've looked at, but it would be nice to show if it works.)]}
