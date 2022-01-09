@@ -19,7 +19,7 @@ The action for a set of scalar fields minimally coupled to gravity is given by
   S = \int \sqrt{-g}\left\{\frac{1}{2}\mpl^2R - \frac{1}{2}\sum_Ag^{\mu\nu}\partial_\mu\phi^A\partial_\nu\phi^A - V \right\}\dd^4x.
 \end{equation}
 Where $\phi^A$ for $A=1,2,...,N_\mathrm{fld}$ are scalar fields, $R$ is the Ricci scalar, and $\mpl$ is the reduced Planck mass. 
-Substuting the ansatz of a Friedman-Robertson-Walker (FRW) metric $\dd s^2 = a^2(\tau)\left( -\dd\tau^2 + \delta_{ij}\dd x^i\dd x^j \right)$ into \eqref{eq:action} and integrating by parts we arrive at the action
+Substituting the ansatz of a Friedman-Robertson-Walker (FRW) metric $\dd s^2 = a^2(\tau)\left( -\dd\tau^2 + \delta_{ij}\dd x^i\dd x^j \right)$ into \eqref{eq:action} and integrating by parts we arrive at the action
 \begin{align} \label{eq:actionFRW}
   \begin{split}
     S_{\mathrm{FRW}} = &\int \dd\tau\dd^3xa^4\left\{
@@ -44,7 +44,7 @@ From the action \eqref{eq:actionFRW} we derive the momentum densities $\Pi^a=-6\
 \end{align}
 from which we derive the continuum equations of motion.
 
-In the continuum the equations of motion form a set of nonlinear partial differential equations. Discretizing these equations onto a lattice transforms them into a set of ordinary differential equations which can be integrated numerically. To do this the fields and momenta are discetized, volume integrals replaced by sums over lattice sites, and spatial derivatives in the continuum replaced by pseudospectral derivatives on the lattice. After applying this proceedure the equations of motion on a cubic lattice with $N$ equally spaced points along each dimension, the disrcete equations of motion read
+In the continuum the equations of motion form a set of nonlinear partial differential equations. Discretizing these equations onto a lattice transforms them into a set of ordinary differential equations which can be integrated numerically. To do this the fields and momenta are discetized, volume integrals replaced by sums over lattice sites, and spatial derivatives in the continuum replaced by pseudospectral derivatives on the lattice. After applying this procedure the equations of motion on a cubic lattice with $N$ equally spaced points along each dimension, the discrete equations of motion read
 \begin{align}
   & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i,  \label{eq:lat eom a}\\
   & \frac{\dd\Pi^A_i}{\dd\tau} = -a^2\nabla^2_\lat(\phi^A_j)_i -a^4\frac{\partial V_i}{\partial \phi^A_i},  \label{eq:lat eom pi phi}\\
@@ -53,13 +53,13 @@ In the continuum the equations of motion form a set of nonlinear partial differe
     & \hphantom{\frac{\dd\Pi^a}{\dd\tau} = } \left.\left. + a\phi^A_i\nabla^2_\lat(\phi^A_j)_i \right] + 4a^3V_i\vphantom{\sum_A}\right\}. \label{eq:lat eom pi a}  
 \end{align}
 Here the subscripts $i$ and $j$ run over lattice sites, and $\nabla^2_\lat()$ is the pseudospectrally defined Laplacian operator.
-For bevity we will supress the subscripts $i,j$, and $\lat$ except where they are necessary to avoid confusion.
-Full details of the discretization proceedure as well as the definition of the pseudospectral Laplacian and conversion to the dimensionless units used in the code can be found in the appendix.
+For brevity we will suppress the subscripts $i,j$, and $\lat$ except where they are necessary to avoid confusion.
+Full details of the discretization procedure as well as the definition of the pseudospectral Laplacian and conversion to the dimensionless units used in the code can be found in the appendix.
 
-With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi a} we have arrived at a Hamiltonian system which can be integrated forward from intial conditions. To do so we use a Hamiltonian splitting scheme, the details of which can also be found in the appendix.
+With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi a} we have arrived at a Hamiltonian system which can be integrated forward from initial conditions. To do so we use a Hamiltonian splitting scheme, the details of which can also be found in the appendix.
 
 \subsection{Relation of the Semiclassical Lattice to Quantum Mechanics}
-\textcolor{red}{[The point of this section is not to go throught the full theory of semiclassical/quantum, but just to say enough that it isn't left as magic to the reader.]}
+\textcolor{red}{[The point of this section is not to go through the full theory of semiclassical/quantum, but just to say enough that it isn't left as magic to the reader.]}
 \textcolor{red}{[Here's the outline of what I think should go in this section:]}
 \begin{itemize}
   \color{red}
@@ -67,7 +67,7 @@ With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi a} we have arrived at a Hamiltoni
   \item Equation of motion of the Wigner function as the Louisville equation plus order $\hbar^2$ corrections.
   \item Dropping order $\hbar^2$ terms and solution to the Louisville equation in terms of solving the classical equations of motion point-by-point from the initial phase space distribution.
   \item A single realization of the lattice corresponds to one of these classical paths.
-  \item Drawing initial conditions from a distribution matching the Wigner function of the intial state (implicit assumption here that the Wigner function of the initial state is everywhere non-negative, I think we satisfy this by assuming an initial coherent state) and performing ensemble averages we reproduce the quantum result up to order $\hbar^2$ corrections.
+  \item Drawing initial conditions from a distribution matching the Wigner function of the initial state (implicit assumption here that the Wigner function of the initial state is everywhere non-negative, I think we satisfy this by assuming an initial coherent state) and performing ensemble averages we reproduce the quantum result up to order $\hbar^2$ corrections.
 \end{itemize}
   
 \subsection{Initial Conditions} \label{sec:ICs}
@@ -88,9 +88,9 @@ Finally with the scalar fields and momenta realized on the lattice, $\Pi^a$ is s
   {\Pi^a}^2 = 12\mpl^2a^4\langle \rho \rangle_\lat.
 \end{equation}
 
-By convension we set $a=1$ at the start of the lattice simulation.
+By convention we set $a=1$ at the start of the lattice simulation.
 
-\textcolor{red}{[Two subtleties with this proceedure: i) this is matching the spectra instead of the real space two-point, ii) the homogeneous calculation is not using a renormalized potential, so there is a slight mismatch when we initialize onto the lattice.]}
+\textcolor{red}{[Two subtleties with this procedure: i) this is matching the spectra instead of the real space two-point, ii) the homogeneous calculation is not using a renormalized potential, so there is a slight mismatch when we initialize onto the lattice.]}
 
 \subsection{$\zeta$ Source Equation} \label{sec:zeta source}
 \textcolor{red}{[Start with some general remarks about $\zeta$ and relate what we are doing here with the perturbative definition.]}
@@ -131,11 +131,11 @@ The initial condition $\zeta(\tau_0)$ is set pertubatively from the initial cond
   \zeta(\tau_0) = \frac{\rho(\tau_0)-\langle\rho(\tau_0)\rangle_\lat}{3\langle\rho(\tau_0)+P(\tau_0)\rangle_\lat}.
 \end{equation}
 
-\textcolor{red}{[Paragraph on why we are calculating $\zeta$ from an integrated source term instead of calculating perturbatively. We are interested in hysteresis effects which are present when integrating along physical trajectories, which are abscent if setting $\zeta$ perturbatively.]}
+\textcolor{red}{[Paragraph on why we are calculating $\zeta$ from an integrated source term instead of calculating perturbatively. We are interested in hysteresis effects which are present when integrating along physical trajectories, which are absent if setting $\zeta$ perturbatively.]}
 
-\textcolor{red}{[Also, need to address droping the $\delta\alpha$ term with the FRW ansatz.]}
+\textcolor{red}{[Also, need to address dropping the $\delta\alpha$ term with the FRW ansatz.]}
 
-\textcolor{red}{[Point of discussion: dropping the $\delta\alpha$ term in $\delta\zeta = \frac{\delta\rho}{3(\rho + P)} + \delta\alpha$ and then integrating $\zeta$ from a source is not equivalent to dropping the $\delta\alpha$ term and then setting $\zeta$ perturbatively. This is most obvious when as $\delta\rho \to 0$ then $\zeta$ set perturbatively vanishes, but integrating $\zeta$ from a source picks up a finite value due to the $(\rho+P)$ denominator time dependence.
+\textcolor{blue}{[Point of discussion: dropping the $\delta\alpha$ term in $\delta\zeta = \frac{\delta\rho}{3(\rho + P)} + \delta\alpha$ and then integrating $\zeta$ from a source is not equivalent to dropping the $\delta\alpha$ term and then setting $\zeta$ perturbatively. This is most obvious when as $\delta\rho \to 0$ then $\zeta$ set perturbatively vanishes, but integrating $\zeta$ from a source picks up a finite value due to the $(\rho+P)$ denominator time dependence.
     The question is how does one compare between the perturbative and integrated $\zeta$? Should we consider the integrated $\zeta$ as recovering part of the $\delta\alpha$ term dropped from the perturbative $\zeta$, and is there a way to make this rigorous?]}
 
 %\textcolor{red}{[The idea being the $\delta\rho/(3(\rho+P))$ term gives the dominant contribution on scales the size of the lattice. On scales larger than the lattice $\delta\alpha$ is aliased to the zero mode, so can be is a constant offset on the lattice that can be measured with comparisons between realizations (I no longer think that is a valid line of thinking due to how we are now thinking about the integrated vs perturbative $\zeta$). On scales smaller than the lattice we can quantify the error by calculating $H(x,t)$ assuming the FRW ansatz on each time slice. Integrating $H(x,t)$ without back reaction give a $\delta\alpha$ term that can be compared to $\zeta$ as integrated with our method (should do this test and put it in the appendix with convergence tests).]}
@@ -156,24 +156,17 @@ The details of the contribution of the terms \eqref{eq:zeta source lap}, \eqref{
 %}
 
 \subsection{Potential} \label{sec:potential}
-Up to this point our description of the lattice simulation has been kept general and is applicable to a wide range of inflationary scenarios which are differentiated by the choice of potential. Here we introduce a form of potential which will focus our scope onto the scenario of inflation proceeding through an incomplete phase transition of the transverse field. 
+Up to this point our description of the lattice simulation has been kept general and is applicable to a wide range of inflationary scenarios which are differentiated by the choice of potential.
+We will now focus our scope onto the scenario of inflation proceeding through an incomplete phase transition of the transverse field and introduce a form of potential for this scenario.
 
-In what follows we write the potential as a sum of two parts $V = V_0 + \Delta V$, where $V_0$ acts as a baseline contributing the majority of the energy density driving inflation and $\Delta V$ is a feature ontop of $V_0$, which allows us to choose a region of field space to break the symmetry in the transverse field.
+In what follows we write the potential as a sum of two parts $V = V_0 + \Delta V$, where $V_0$ acts as a baseline contributing the majority of the energy density driving inflation and $\Delta V$ is a feature on top of $V_0$, which allows us to choose a region of field space to break the symmetry in the transverse field.
 
-We have chosen a parameterization of $\Delta V$ in the familiar form of a Landau-Ginzburg potential, with an overall amplitude modulated by the longitudinal field. And $V_0$ to be quadratic which provides a clean baseline as any nonlinearity of the field dynamics (up to coupling through the Hubble parameter) will be due solely to the $\Delta V$ part of the potential.
+We have chosen a parameterization of $\Delta V$ in the familiar form of a Landau-Ginzburg potential, with an overall amplitude modulated by the longitudinal field. We have chosen $V_0$ to be quadratic which provides a clean baseline as any nonlinearity of the field dynamics (up to coupling through the Hubble parameter) will be due solely to the $\Delta V$ part of the potential.
 \begin{align}
   &V_0(\phi,\chi) = \frac{1}{2}m^2_\phi\phi^2 + \frac{1}{2}m^2_\chi\chi^2, \label{eq:V0} \\
   &\Delta V(\phi,\chi) = \frac{1}{4}\lambda(\phi)\left[ (\chi^2-v^2)^2 - v^4 \right]. \label{eq:DeltaV}
 \end{align}
-For convinience, the fields $\phi^A$ have been renamed $\phi$ and $\chi$ in this two field model. With $\phi$ being aligned with the direction of inflation at the level of homogeneous fields.
-
-% move to field dynamics section
-%Then at the linear level $\phi$ plays the role of the inflaton and $chi$ is a spectator field with an effective mass squared which becomes negative as it is modulated by the rolling of $\phi$. Although as we will see, nonlinear effects will play an important role in sourcing $\Delta\zeta$.
-
-We will informally refer to the $\phi$ and $\chi$ field space directions respectively as being longitudinal and transverse, but it should be noted we are applying this notation somewhat loosely as this association does not account for the inhomogenous state of the fields and their momenta. \textcolor{red}{[Make this a footnote]}
-
-% Part about not getting overly focused on the explicit potential form
-Recall our goal in setting the potential is to study the phenomenology of $\zeta$ NG generated by a potential feature. The chosen form of the potential given in \eqref{eq:V0} and \eqref{eq:DeltaV} should not be thought of only as a defining a complete inflationary potential, but only as a parameterization within some small region around a feature of interest. So by choosing to aligning $\phi$ with the direction of inflation what we are doing is setting the orienting of $\Delta V$, our parameterization of the potential feature, relative to the direction of flow taken by inflation as it passes this feature, smoothed in a region on the scale of the lattice. \textcolor{red}{[Forward reference to figure exploring other potential forms for transverse symmetry breaking]}
+For convenience, the fields $\phi^A$ have been renamed $\phi$ and $\chi$ in this two field model, with $\phi$ being aligned with the direction of inflation at the level of homogeneous fields \footnote{We will informally refer to the $\phi$ and $\chi$ field space directions as being longitudinal and transverse respectively, but it should be noted we are applying this notation somewhat loosely as this association does not account for the inhomogenous state of the fields and their momenta.}.
 
 The function $\lambda(\phi)$ controls where along the potential the transverse field $\chi$ has its symmetry broken and restored, with the longitudinal field $\phi$ acting as a clock and the parameter $v$ setting the positions of the new transverse minima. The potential surfaces of $V$ and $V_0$ are shown in Fig. \ref{fig:potential} with the potential parameters scaled arbitrarily for visual clarity.
 
@@ -187,48 +180,20 @@ For computational simplicity we have parameterized $\lambda(\phi)$ as a piece-wi
 \end{equation}
 The parameters $\phi_p$ and $\phi_w$ control the placement and duration of the symmetry breaking along the longitudinal field and $\lambda_\chi$ scales the strength of the associated instability around $\chi=0$.
 
-While it is not strictly necessary to choose $\lambda(\phi)$ with compact support doing has the advantage of allowing us to initialize the simulation in a region where $\Delta V=0$. Doing so allows fluctuations to be initialized using the baseline potential $V_0$, the form of which \eqref{eq:V0} has been chosen so as to avoid any strong nonlinearities, allowing us to use the linear calculation described in Sec. \ref{sec:ICs} to calculate the initial fluctuation statistics. As an added benifit the compact support of $\lambda(\phi)$ facilitates the comparison to the baseline case as described in Sec. \ref{sec:results}.
+While it is not strictly necessary to choose $\lambda(\phi)$ with compact support, but doing has the advantage of allowing us to initialize the simulation in a region where $\Delta V=0$. % Doing so allows fluctuations to be initialized using the baseline potential $V_0$, the form of which \eqref{eq:V0} has been chosen so as to avoid any strong nonlinearities, allowing us to use the linear calculation described in Sec. \ref{sec:ICs} to calculate the initial fluctuation statistics.
+This facilitates the comparison between a simulation run in the potential $V=V_0+\Delta V$ to a baseline simulation run using only the $V_0$ portion of the potential by allowing initial conditions of the two simulations to be matched with identical realizations of field fluctuations. Matching simulations will be explored in detail in Sec. \ref{sec:results}.
 
-It should be mentioned that while in \eqref{eq:DeltaV} we have specified a functional form of $\Delta V$, our exploration of incomplete phase transition using other functional forms of $\Delta V$ \textcolor{red}{[which were likewise broke/restored symmetry in the transverse direction and were $\pm\chi$ symmetric]} have yielded NG following the same general picture of forming concentrations of NG uncorrelated with the Gaussian part of the field. \textcolor{red}{[Also that the effect persists over a wide range of parameters (growth of fluctuations being exponentially sensitive to $\sqrt{|m^2_{eff}|}$ and duration of instability, but also the displacement of the new minima can be very large compared to the initial size of fluctuations).]}
+% Part about not getting overly focused on the explicit potential form
+Recall our goal in setting the potential is to study the phenomenology of $\zeta$ NG generated by a potential feature. The chosen form of the potential given in \eqref{eq:V0} and \eqref{eq:DeltaV} should not be thought of only as a defining a complete inflationary potential, but only as a parameterization within some small region around a feature of interest, in this specific case a feature which breaks symmetry in the transverse direction. So by choosing to aligning $\phi$ with the direction of inflation what we are doing is setting the orienting of $\Delta V$, our parameterization of the potential feature, relative to the direction of flow taken by inflation as it passes this feature, smoothed in a region on the scale of the lattice. %\textcolor{red}{[Reference to figure exploring other potential forms for transverse symmetry breaking]}
+
+%It should be mentioned that while in \eqref{eq:DeltaV} we have specified a functional form of $\Delta V$, our exploration of incomplete phase transition using other functional forms of $\Delta V$ \textcolor{red}{[which were likewise broke/restored symmetry in the transverse direction and were $\pm\chi$ symmetric]} have yielded NG following the same general picture of forming concentrations of NG uncorrelated with the Gaussian part of the field. \textcolor{red}{[Also that the effect persists over a wide range of parameters (growth of fluctuations being exponentially sensitive to $\sqrt{|m^2_{eff}|}$ and duration of instability, but also the displacement of the new minima can be very large compared to the initial size of fluctuations).]}
+
+While in \eqref{eq:DeltaV} we have specified a functional form of $\Delta V$, our exploration of incomplete phase transition using other functional forms of $\Delta V$ parameterizating of a region where symmetry is broken in the transverse direction have yielded NG following the same general picture as \eqref{eq:DeltaV}. That being forming concentrations of NG uncorrelated with the Gaussian part of the field. We will return to alternate paramterizations of a potential yielding an incomplete phase transition in the transverse direction in Sec. \ref{sec:params}. 
 
 \Fpotential
 
-While our focus in this paper is on inflation proceeding through an incomplete phase transition the same form of $\Delta V$ can be used to study the case where $\chi$ fluctuations undergo sufficient growth to reach the new transverse minima of the symmetry broken potential and complete the phase transition. The case of inflation proceeding through a completed phase transition proves interesting, we leave its discussion to a dedicated future paper.
+As a final note on this form of potential, although our focus in this paper is on inflation proceeding through an incomplete phase transition the same form of $\Delta V$ can be used to study the case where $\chi$ fluctuations undergo sufficient growth to reach the new transverse minima of the symmetry broken potential and complete the phase transition. The case of inflation proceeding through a completed phase transition proves interesting and we leave its discussion to a dedicated future paper.
 
 \Fpotparam
 
-\textcolor{red}{[Here put the potential parameters for the run and reference to Fig. \ref{fig:potparam} of $\Delta V(\phi=\phi_p,\chi)$ and $V_{,\chi\chi}(\phi,\chi=0)$. Mention what is bounding these choices, ie. not trapping the fields, ending inflation, or completing the phase transition]}
-
-%\marginpar{
-%  I should give some motivation of looking at instabilities for generating NG.
-%}
-
-%We will consider a model with two fields $\phi$ and $\chi$ and by convention choose $\phi$ to be longitudinal, in the direction by which inflation proceeds, and $\chi$ to be transverse.
-%We write the potential as a sum of a baseline and stimulus term $V = V_0 + \Delta V$ with the form of $\Delta V$ chosen to model the phenomenology of a potential feature breaking and restoring symmetry in the transverse direction.
-%The baseline $V_0$ is taken to be quadratic in order to avoid nonlinearities in the baseline case.
-%\marginpar{
-%  Our labelling of $\phi$ and $\chi$ as being the longitudinal and transverse direction respectively should be interpretted loosely. We note the divegerence of trajectories during the instability requires a more accurate description of the longitudinal and transverse directions to be spatially dependent.
-%  Should put this in a footnote, or paranthetically.
-%}
-
-%The functional forms we have chosen for $V_0$ and $\Delta V$ are given by
-%\begin{align} \label{eq:potential}
-%  &V_0(\phi,\chi) = \frac{1}{2}m^2_\phi\phi^2 + \frac{1}{2}m^2_\chi\chi^2 \\
-%  &\Delta V(\phi,\chi) = \frac{1}{4}\lambda(\phi)\left[ (\chi^2-v^2)^2 - v^4 \right]. \label{eq:potential feature}
-%  %&\Delta V(\phi,\chi) = \frac{1}{2}\mu^2(\phi)\chi^2 + \frac{1}{4}\lambda_\chi\chi^4,
-%\end{align} 
-%It can be seen this form of $\Delta V$ is a symmetry breaking potential in the transverse field $\chi$ with term $\lambda(\phi)$ using the longitudinal field $\phi$ as a clock to turn the symmetry breaking term on or off and $v$ setting the positions of the minima in the transverse direction.
-
-%For computational simplicity $\lambda(\phi)$ is parameterized as a piece-wise polynomial and given compact support to allow for a more straight forward comparison to the baseline case
-%\begin{equation} \label{eq:lambda}
-%  \lambda(\phi) =
-%  \begin{cases}
-%    0 & \quad \text{if } |\phi-\phi_p|\ge\phi_w \\
-%    \lambda_\chi\left[\left(\frac{\phi-\phi_p}{\phi_w}\right)^2 - 1 \right]^2 & \quad \text{if  } |\phi-\phi_p|<\phi_w
-%  \end{cases}.
-%\end{equation}
-%The parameters $\phi_p$ and $\phi_w$ control the placement and duration of the symmetry breaking along the longitudinal field and $\lambda_\chi$ scales its strength.
-%[Some reference to figure \ref{fig:potential} and general features of the potential.]
-
-%There are regions of parameter space for which the potential [reference potential equations] has pair of local minima. These local minima give rise to the possibility of trapping the fields. While this is an interesting case we will focus in this paper on the altenative case where the fields do not become trapped and leave the trapped case to future work. 
-
+\textcolor{red}{[Here put the potential parameters for the run and reference to Fig. \ref{fig:potparam} of $\Delta V(\phi=\phi_p,\chi)$ and $V_{,\chi\chi}(\phi,\chi=0)$. Mention what is bounding these choices, ie. not trapping the fields, ending inflation, or completing the phase transition.]}
