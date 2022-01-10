@@ -5,10 +5,10 @@
 \subsection{Background Equations}
 We use a set of background equations to solve for the attractor solution before initializing the perturbative calculation for the spectra from which the lattice is initialized. These equations are solved in cosmic time using the variables $\alpha$, $H$, $\phi^A$, $\dot{\phi}^A$, for which the equations of motion are
 \begin{align}
-  \frac{\dd\alpha}{\dd t} &= H, \\
-  \frac{\dd H}{\dd t} &= -\frac{1}{2}\sum_A\dot{\phi}^{A^2}, \\
-  \frac{\dd\phi^A}{\dd t} &= \dot{\phi}^A, \\
-  \frac{\dd\dot{\phi}^A}{\dd t} &= -3H\dot{\phi}^A - \frac{\partial V}{\partial\phi^A}.
+  & \frac{\dd\alpha}{\dd t} = H, \\
+  & \frac{\dd H}{\dd t} = -\frac{1}{2}\sum_A\dot{\phi}^{A^2}, \\
+  & \frac{\dd\phi^A}{\dd t} = \dot{\phi}^A, \\
+  & \frac{\dd\dot{\phi}^A}{\dd t} = -3H\dot{\phi}^A - \frac{\partial V}{\partial\phi^A}.
 \end{align}
 These equations differ in two ways from those which describe the evolution of the mean fields on the lattice. First, the value of $H$ used in these equations satisfies a Hubble constraint equation which does not include any contribution from the energy density of fluctuations and so differs from the value used on the lattice. And second, the parameters of the potential used in the background equations are identical to those used on the lattice rather than renormalized values. We have ignored any small corrections to our calculations owing to these effects.
 
@@ -24,7 +24,7 @@ For both the background equations and the perturbative equations detailed in the
 To set the initial conditions for fluctuations of the fields and their momenta on the lattice we realize a set of Gaussian random fields drawn from a distribution which matches the real part of the Fourier space two-point correlation functions as determined by linear theory. In this section we detail linear calculation of these correlations.
 
 % I'm suppressing the fourier mode index, but maybe it makes sense to include.
-To start we define $a\mathcal{N}\tilde{\phi}^A = L_{AB}x_B$, here $x_{B}$ is a vector of operators and $L_{AB}$ is a real valued lower trianglular matrix, $\mathcal{N}$ is a normalization factor. Our goal is now to compute the correlations $\langle\tilde{\phi}^{A*}\tilde{\phi}^B\rangle_\mathrm{Re}$, $\langle\tilde{\Pi}^{A*}\tilde{\phi}^B\rangle_\mathrm{Re}$, and $\langle\tilde{\Pi}^{A*}\tilde{\Pi}^B\rangle_\mathrm{Re}$, where $\langle\cdot\rangle_\mathrm{Re}$ denotes the real part of the correlation. Enforcing the constraint $\langle x_Ax_B \rangle_\mathrm{Re} = \delta_{AB}$ we can write these correlations as
+To start we define $a\mathcal{N}\tilde{\phi}^A = L_{AB}x_B$, here $x_{B}$ is a vector of operators and $L_{AB}$ is a real valued lower triangular matrix, $\mathcal{N}$ is a normalization factor. Our goal is now to compute the correlations $\langle\tilde{\phi}^{A*}\tilde{\phi}^B\rangle_\mathrm{Re}$, $\langle\tilde{\Pi}^{A*}\tilde{\phi}^B\rangle_\mathrm{Re}$, and $\langle\tilde{\Pi}^{A*}\tilde{\Pi}^B\rangle_\mathrm{Re}$, where $\langle\cdot\rangle_\mathrm{Re}$ denotes the real part of the correlation. Enforcing the constraint $\langle x_Ax_B \rangle_\mathrm{Re} = \delta_{AB}$ we can write these correlations as
 \begin{align}
   & \langle\tilde{\phi}^{A*}\tilde{\phi}^B\rangle_\mathrm{Re} =  a^{-2}\mathcal{N}^{-2}[L_{AC}L_{CB}^T], \\
   & \langle\tilde{\Pi}^{A*}\tilde{\phi}^B\rangle_\mathrm{Re} = a\mathcal{N}^{-2}[HL_{AC}L_{CB}^T + L_{AC}\dot{L}_{CB}^T \nonumber \\
@@ -53,7 +53,7 @@ To do this we need, in addition to the background equations of motion \textcolor
     & \hphantom{\frac{\dd}{\dd t} \overline{\langle \dot{x}_A\dot{x}_B \rangle}_\mathrm{Re} =} + (\langle x_C\dot{x}_D \rangle_\mathrm{Re} - (L^{-1})_{CE}C_{ED} + H\delta_{CD}) \nonumber \\
     & \hphantom{\frac{\dd}{\dd t} \overline{\langle \dot{x}_A\dot{x}_B \rangle}_\mathrm{Re} =} k^2/a^2].
 \end{align}
-Where the matricies $A_{AB}$, $B_{AB}$, $C_{AB}$ are given by
+Where the matrices $A_{AB}$, $B_{AB}$, $C_{AB}$ are given by
 \begin{align}
   A_{AB} & =
   \begin{cases}
@@ -66,7 +66,7 @@ Where the matricies $A_{AB}$, $B_{AB}$, $C_{AB}$ are given by
   B_{AB} & = -(\dot{H} + 2H^2)L_{AB} + \frac{\partial^2V}{\partial\phi^A\partial\phi^C}L_{CB} + H\dot{L}_{AB}, \\
   C_{AB} & = 2\dot{L}_{AB} + HL_{AB}.
 \end{align}
-The form of $A_{AB}$ is set by requiring $L_{AB}$ to maintain a lower triangluar form.
+The form of $A_{AB}$ is set by requiring $L_{AB}$ to maintain a lower triangular form.
 
 Returning now to setting the initial conditions to match the Minkoswki space correlations well within the horizon, the correlations we would like to match are, in terms of $\varphi^A \equiv a\phi^A$ and $\Pi_\varphi^A$, 
 \begin{align}
@@ -86,6 +86,6 @@ Or, in terms of the variables $L_{AB}$, $\dot{L}_{AB}$, $\langle x_A\dot{x}_B \r
     & \hphantom{\langle\tilde{\Pi}_\varphi^A\tilde{\Pi}_\varphi^B\rangle_\mathrm{Re} =} + L_{AC}(\overline{\langle \dot{x}_C\dot{x}_D\rangle}_\mathrm{Re} + k^2/a^2\delta_{CD})L_{DB}^T]. \label{eq:mink corr dfdf 2}
 \end{align}
 
-Equations \eqref{eq:mink corr ff 1} and \eqref{eq:mink corr ff 2} are satisfied by setting $L_{AB}$ by Choleski decomposition ot the right hand side of \eqref{eq:mink corr ff 1}. Equations \eqref{eq:mink corr fdf 1} and \eqref{eq:mink corr fdf 2} can be satisified by setting $\dot{L}_{AB} = 0$ and $\langle x_A\dot{x}_B\rangle_\mathrm{Re} = 0$. Then \eqref{eq:mink corr dfdf 1} and \eqref{eq:mink corr dfdf 2} can be satisfied be setting $\overline{\langle \dot{x}_A\dot{x}_B\rangle}_\mathrm{Re} = a^{-2}\mathcal{N}^2(L^{-1})_{AC}\langle\tilde{\Pi}_\varphi^A\tilde{\Pi}_\varphi^B\rangle_\mathrm{Re}(L^{-1})^T_{DB} - k^2/a^2\delta_{AB}$.
+Equations \eqref{eq:mink corr ff 1} and \eqref{eq:mink corr ff 2} are satisfied by setting $L_{AB}$ by Choleski decomposition of the right hand side of \eqref{eq:mink corr ff 1}. Equations \eqref{eq:mink corr fdf 1} and \eqref{eq:mink corr fdf 2} can be satisfied by setting $\dot{L}_{AB} = 0$ and $\langle x_A\dot{x}_B\rangle_\mathrm{Re} = 0$. Then \eqref{eq:mink corr dfdf 1} and \eqref{eq:mink corr dfdf 2} can be satisfied be setting $\overline{\langle \dot{x}_A\dot{x}_B\rangle}_\mathrm{Re} = a^{-2}\mathcal{N}^2(L^{-1})_{AC}\langle\tilde{\Pi}_\varphi^A\tilde{\Pi}_\varphi^B\rangle_\mathrm{Re}(L^{-1})^T_{DB} - k^2/a^2\delta_{AB}$.
 
 

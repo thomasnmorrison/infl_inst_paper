@@ -2,20 +2,20 @@
 
 \section{Results} \label{sec:results}
 
-In this section we present the lattice simulation results for inflation proceeding through an incomplete phase transition paying particular attention to the generation of $\zeta$ NG. In Sec \ref{sec:zeta ng} we calculate $\Delta\zeta$, the $\zeta$ response to the potential feature $\Delta V$, and find the NG to be spatially concentrated into peaks. We then compute the $\zeta$ peak statistics as a measure of NG. In Sec. \ref{sec:field dynamics} we give an account of the field dynamics of the system including a determination for the onset of nonlinearity. Finally, in Sec. \ref{sec:zeta production} we examine the relation between the field dynamics and sourcing of $\Delta\zeta$. Using the asymptotic $\Delta\zeta$ to perform a post-selection of lattice sites we isolate the production of the NG concentrations of $\Delta\zeta$ to those trajectories which undergo the most extreme excursions during the $\Delta V$ instability and subsiquently back-react on $\phi$.
+In this section we present the lattice simulation results for inflation proceeding through an incomplete phase transition paying particular attention to the generation of $\zeta$ NG. In Sec \ref{sec:zeta ng} we calculate $\Delta\zeta$, the $\zeta$ response to the potential feature $\Delta V$, and find the NG to be spatially concentrated into peaks. We then compute the $\zeta$ peak statistics as a measure of NG. In Sec. \ref{sec:field dynamics} we give an account of the field dynamics of the system including a determination for the onset of nonlinearity. Finally, in Sec. \ref{sec:zeta production} we examine the relation between the field dynamics and sourcing of $\Delta\zeta$. Using the asymptotic $\Delta\zeta$ to perform a post-selection of lattice sites we isolate the production of the NG concentrations of $\Delta\zeta$ to those trajectories which undergo the most extreme excursions during the $\Delta V$ instability and subsequently back-react on $\phi$.
 
 %\textcolor{red}{[Part about the potential parameters we used, and mention how the concentrated NG is a general feature over a range of parameters].}
 
 \subsection{$\zeta$ NG} \label{sec:zeta ng}
-While $\zeta$ as sourced by \eqref{eq:zeta source fld} can be integrated terms of quantities known on the lattice, the result is the sum of both a Gaussian and NG component, $\zeta_\mathrm{G}$ and $\zeta_\mathrm{NG}$ respectively. For the purpose of characterizing $\zeta_\mathrm{NG}$ we would like to subtract off $\zeta_\mathrm{G}$, effectively increasing the signal to noise on the NG part of the singal. However, since $\zeta_\mathrm{G}$ is unkown we cannot subtract it from $\zeta$ directly, we can however construct a correleated quantity.
+While $\zeta$ as sourced by \eqref{eq:zeta source fld} can be integrated terms of quantities known on the lattice, the result is the sum of both a Gaussian and NG component, $\zeta_\mathrm{G}$ and $\zeta_\mathrm{NG}$ respectively. For the purpose of characterizing $\zeta_\mathrm{NG}$ we would like to subtract off $\zeta_\mathrm{G}$, effectively increasing the signal to noise on the NG part of the signal. However, since $\zeta_\mathrm{G}$ is unknown we cannot subtract it from $\zeta$ directly, we can however construct a correlated quantity.
 
-To do this we run two simulations from identical initial conditions, one using the full potential $V=V_0+\Delta V$ and the other using the baseline potential $V_0$. We define the difference $\Delta\zeta=\zeta-\zeta_0$ between the to simulations where $\zeta$ is computed using the full potential $V$, and $\zeta_0$ using only the baseline potential $V_0$, with the difference being taken on slices of constant $\tau_\mathrm{FRW}$. To the extent that $\zeta_0$ correlates with $\zeta_\mathrm{G}$ (this correlation relies on the use of identical initial condtions between the runs), subtracting it from the total $\zeta$ will concentrate the NG part into $\Delta\zeta$. This subtraction between paired runs is shown in Fig. \ref{fig:zetaslice} for a two dimensional slice through the lattice. \textcolor{red}{[Could give a teaser of the differential $\dd\zeta/\dd u$, but I think we should leave a full exploration of that to a future paper.]}
+To do this we run two simulations from identical initial conditions, one using the full potential $V=V_0+\Delta V$ and the other using the baseline potential $V_0$. We define the difference $\Delta\zeta=\zeta-\zeta_0$ between the to simulations where $\zeta$ is computed using the full potential $V$, and $\zeta_0$ using only the baseline potential $V_0$, with the difference being taken on slices of constant $\tau_\mathrm{FRW}$. To the extent that $\zeta_0$ correlates with $\zeta_\mathrm{G}$ (this correlation relies on the use of identical initial conditions between the runs), subtracting it from the total $\zeta$ will concentrate the NG part into $\Delta\zeta$. This subtraction between paired runs is shown in Fig. \ref{fig:zetaslice} for a two dimensional slice through the lattice. \textcolor{red}{[Could give a teaser of the differential $\dd\zeta/\dd u$, but I think we should leave a full exploration of that to a future paper.]}
 
-From Fig. \ref{fig:zetaslice} we can see the largest contributions to $\Delta\zeta$ come in the form of local concentrations interspersed over a more uniform field. Although these concentrations of $\Delta\zeta$ are local they represent a radical departure from the perturbative description of local NG $\zeta = \zeta_\mathrm{G} + f_{NL}\zeta^2_\mathrm{G}$. Here the form of NG beign generated is such that $\Delta\zeta$ and $\zeta_0$ are effecively uncorrelated.
+From Fig. \ref{fig:zetaslice} we can see the largest contributions to $\Delta\zeta$ come in the form of local concentrations interspersed over a more uniform field. Although these concentrations of $\Delta\zeta$ are local they represent a radical departure from the perturbative description of local NG $\zeta = \zeta_\mathrm{G} + f_{NL}\zeta^2_\mathrm{G}$. Here the form of NG being generated is such that $\Delta\zeta$ and $\zeta_0$ are effectively uncorrelated.
 
 The local concentration of $\Delta\zeta$ suggests characterizing this form of NG will be more usefully done in real space rather than Fourier space, where the local concentration implies the signal will encoded in the phase correlations of a broad range of Fourier modes. Peak counts, which have well known statistics for Gaussian fields, provide a suitable measure for this form of NG in real space. In Fig. \ref{fig:zetapeak} the peak counts of $\zeta$, $\zeta_0$, and $\Delta\zeta$ are compared to the Gaussian expectation for Gaussian fields with matching spectra. 
 
-Here it is worth pointing out that in calculating $\Delta\zeta$ we are deriving a substantial benifit from the having the full field information on the lattice. It has allowed us to calculate a realization of the NG. So rather than making a blind search for what statistics best characterizes the NG of a particular system we can use the knowledge gained by having realizations of the NG to \textcolor{red}{[part about tailoring NG stats and searches].}
+Here it is worth pointing out that in calculating $\Delta\zeta$ we are deriving a substantial benefit from the having the full field information on the lattice. It has allowed us to calculate a realization of the NG. So rather than making a blind search for what statistics best characterizes the NG of a particular system we can use the knowledge gained by having realizations of the NG to \textcolor{red}{[part about tailoring NG stats and searches].}
 
 \textcolor{red}{[should probably point out peak counts won't be an optimal measure, since information is being discarded about the peak-peak correlation and peak profiles, but in principle a better measure can be constructed using $\Delta\zeta$].}
 
@@ -32,7 +32,7 @@ Here it is worth pointing out that in calculating $\Delta\zeta$ we are deriving 
 % system relaxes
 
 % Linear evolution and spectra
-At the linear level the mean field $\langle\phi\rangle$ provides a clock which modulates the effective mass of the $\chi$ field, with $m^2_\mathrm{eff}$ becoming negative as $\langle\phi\rangle$ crosses $\Delta V$ as seen in Fig. \ref{fig:potparam}. While $m^2_\mathrm{eff}<0$, $\tilde{\chi}_k$ and $\tilde{\Pi}^\chi_k$ fluctuations within the instabilty band undergo exponential growth, building the correlation $\langle\tilde{\chi}^*_k\tilde{\Pi}^\chi_k\rangle$ as the system within the instability band approaches the growing mode.
+At the linear level the mean field $\langle\phi\rangle$ provides a clock which modulates the effective mass of the $\chi$ field, with $m^2_\mathrm{eff}$ becoming negative as $\langle\phi\rangle$ crosses $\Delta V$ as seen in Fig. \ref{fig:potparam}. While $m^2_\mathrm{eff}<0$, $\tilde{\chi}_k$ and $\tilde{\Pi}^\chi_k$ fluctuations within the instability band undergo exponential growth, building the correlation $\langle\tilde{\chi}^*_k\tilde{\Pi}^\chi_k\rangle$ as the system within the instability band approaches the growing mode.
 
 We plot a selection of the spectra and cross-spectra real parts as measured from the lattice for the baseline case of $V=V_0$ and in Fig. \ref{fig:specbl} and for the full potential $V=V_0 + \Delta V$ in Fig. \ref{fig:spec}.
 
@@ -48,9 +48,9 @@ We can construct a test for nonlinearity by considering the phase space density 
   C(\phi^A,\Pi^A;k) =
   \mathrm{Re}\left[\langle\tilde{Z}_k\tilde{Z}_k^\dagger\rangle\right],
 \end{equation}
-where $Z^T=[\phi,\Pi^\phi,\chi,\Pi^\chi]$. Classical evolution of the system, as is done for evolution on the lattice, conseverves phase space density. If the system evolves linearly then each Fourier mode evolves independently and provided the modes of the system are initially independent a stronger statement can be made that the phase space density of the system is conserved mode-by-mode. When the averages in $C(\phi^A,\Pi^A;k)$ are taken over an ensemble of lattice realizations (with Gaussian statistics) the quantity $\sqrt{\mathrm{det}(C(\phi^A,\Pi^A;k))}$ provides a measure of the partial phase space volume for a single mode. So monitoring $\sqrt{\mathrm{det}(C(\phi^A,\Pi^A;k))}$ allows us to detect the onset of nonlinearity via non-conservation of the partial phase space volume of individual modes.
+where $Z^T=[\phi,\Pi^\phi,\chi,\Pi^\chi]$. Classical evolution of the system, as is done for evolution on the lattice, conserves phase space density. If the system evolves linearly then each Fourier mode evolves independently and provided the modes of the system are initially independent a stronger statement can be made that the phase space density of the system is conserved mode-by-mode. When the averages in $C(\phi^A,\Pi^A;k)$ are taken over an ensemble of lattice realizations (with Gaussian statistics) the quantity $\sqrt{\mathrm{det}(C(\phi^A,\Pi^A;k))}$ provides a measure of the partial phase space volume for a single mode. So monitoring $\sqrt{\mathrm{det}(C(\phi^A,\Pi^A;k))}$ allows us to detect the onset of nonlinearity via non-conservation of the partial phase space volume of individual modes.
 
-Although properly the averages in $C(\phi^A,\Pi^A;k)$ should be taken over to an ensemble of lattice realizations, we find that taking the averages over bands of $|k|$ for a single realization of the lattice still allows detection of the onset of nonlinearity \textcolor{red}{[possible caveat for the low statistics of the longwavength modes]}. In Fig. \ref{fig:specdet} we measure $\det(C(\phi^A,\Pi^A;k))$ on the lattice \textcolor{red}{[part about averagin gin $|k|$ bands]} \textcolor{red}{[summary of Fig. \ref{fig:specdet}, still need to add the figure].}
+Although properly the averages in $C(\phi^A,\Pi^A;k)$ should be taken over to an ensemble of lattice realizations, we find that taking the averages over bands of $|k|$ for a single realization of the lattice still allows detection of the onset of nonlinearity \textcolor{red}{[possible caveat for the low statistics of the long wavelength modes]}. In Fig. \ref{fig:specdet} we measure $\det(C(\phi^A,\Pi^A;k))$ on the lattice \textcolor{red}{[part about averaging in $|k|$ bands]} \textcolor{red}{[summary of Fig. \ref{fig:specdet}, still need to add the figure].}
 
 %\Fspecdet
 
@@ -70,7 +70,7 @@ Although properly the averages in $C(\phi^A,\Pi^A;k)$ should be taken over to an
   \end{itemize}
       
 In Sec. \ref{sec:zeta ng} we learned that $\Delta\zeta$ is concentrated in real space, this suggests the real space description of the fields may be more useful than the Fourier space one for this system once it has become nonlinear. In Fig. \ref{fig:slice} we plot two dimensional slices through a three dimensional lattice of the fields and their momenta \textcolor{red}{[mention time slice is constant $\tau_\mathrm{FRW}$ where $\langle\phi\rangle=\phi_p-\phi_w$]}. Comparing Fig. \ref{fig:slice} back to Fig. \ref{fig:zetaslice} we can see the same pattern of $\Delta\zeta$ concentrations are already imprinted on $\delta\phi$ at the earlier time (similarly with $\Pi^\phi$), we will investigate this correlation further in Sec. \ref{sec:zeta production}.
-\textcolor{red}{[Effective description point by point, relate to separate universe approximation and adjustment to the fluctation condensate split.]}
+\textcolor{red}{[Effective description point by point, relate to separate universe approximation and adjustment to the fluctuation condensate split.]}
 
 \Fslice
 
@@ -81,13 +81,13 @@ In Sec. \ref{sec:zeta ng} we learned that $\Delta\zeta$ is concentrated in real 
 % The interpretation is those trajectories which undergo the most growth in terms of $\chi$ fluctuations interact nonlinearly to slow $\Pi^\phi$.
 
 \textcolor{red}{[Put in some connection to the previous paragraph.]}
-In principle the phase space on the lattice is very high dimensional, with each lattice site hosting it's own degrees of freedom (though technically not all independent as initializing the lattice with a $k$ space cutoff below the Nyquist frequency imposes a constraint). A complete phase space distribution would have to be built up from a large number of simulations, each sampling a single tajectory through this phase space. Here, rather than dealing with the full phase space we will build a distribution by stacking the degrees of each lattice site, effectively substituting a volume for an ensemble while marginalizing over position.
+In principle the phase space on the lattice is very high dimensional, with each lattice site hosting it's own degrees of freedom (though technically not all independent as initializing the lattice with a $k$ space cutoff below the Nyquist frequency imposes a constraint). A complete phase space distribution would have to be built up from a large number of simulations, each sampling a single trajectory through this phase space. Here, rather than dealing with the full phase space we will build a distribution by stacking the degrees of each lattice site, effectively substituting a volume for an ensemble while marginalizing over position.
 
 In Fig. \ref{fig:phasespace} we plot several projections of this position marginalized phase space taken at fixed time $\tau_\mathrm{FRW} = \tau_\mathrm{Off}$, when $\langle\phi\rangle = \phi_p - \phi_w$. The $P(\chi,\Pi^\chi)$ projection shows the \textcolor{red}{[stretching out during instability, relate to Fourier modes and frozen phase]}... As the case we are considering is an incomplete phase transition \textcolor{red}{[part about $\chi$, $\Pi^\chi$ correlation becoming bimodal if phase transition completes]}...
 
 For a completed phase transition $P(\chi,\Pi^\chi)$ becomes nonlinear and develops a bimodality as the system organizes into domains. However, in the present case of an incomplete phase transition we are examining a system away from that regime.
 
-The $P(\chi,\phi)$ and $P(\Pi^\chi,\Pi^\phi)$ projections show these correlations between the fields have been made visibly nonlinear. Consistant with the nonlinear correlations of $P(\phi,\chi)$ and $P(\Pi^\phi,\Pi^\chi)$, is the extended tail in $P(\phi,\Pi^\phi)$ towards positive values of $\delta\phi$ and $\delta\Pi^\phi$. Comparison to Fig. \ref{fig:slice}, which shows a real space slice of the fields at the same time, this tail manifests in real space as collection of prominant peaks \textcolor{red}{[we will see in Sec. \ref{sec:zeta production} ... the role these peaks play in $\zeta$ NG]}. 
+The $P(\chi,\phi)$ and $P(\Pi^\chi,\Pi^\phi)$ projections show these correlations between the fields have been made visibly nonlinear. Consistent with the nonlinear correlations of $P(\phi,\chi)$ and $P(\Pi^\phi,\Pi^\chi)$, is the extended tail in $P(\phi,\Pi^\phi)$ towards positive values of $\delta\phi$ and $\delta\Pi^\phi$. Comparison to Fig. \ref{fig:slice}, which shows a real space slice of the fields at the same time, this tail manifests in real space as collection of prominent peaks \textcolor{red}{[we will see in Sec. \ref{sec:zeta production} ... the role these peaks play in $\zeta$ NG]}. 
 
 % Might want to look at the spatial derivative quantities as well.
 % Should probably do fitting or something for the $\phi$, $\chi$ phase space projection plot.
@@ -101,9 +101,9 @@ The $P(\chi,\phi)$ and $P(\Pi^\chi,\Pi^\phi)$ projections show these correlation
 % I should maybe mark the onset of nonlinearity on the trajectory plots
 % What we learn is: The time dependence of the fields and momenta
 
-\textcolor{red}{[Connect the text to Fig. \ref{fig:traj} in terms of time dependence of the fields and momenta, basically just supplimental information to Fig. \ref{fig:phasespace}.]}
+\textcolor{red}{[Connect the text to Fig. \ref{fig:traj} in terms of time dependence of the fields and momenta, basically just supplemental information to Fig. \ref{fig:phasespace}.]}
 
-In Fig. \ref{fig:traj} density contours of the trajectories of the fields marginalized over postion are plotted.  
+In Fig. \ref{fig:traj} density contours of the trajectories of the fields marginalized over position are plotted.  
 
 \Ftraj
 
@@ -139,19 +139,29 @@ The most prominent features of NG being localized suggests post selecting trajec
 We post select lattice sites where the asymptotic $\Delta\zeta$ deviates by $\nu \ge 5 \sigma$ from the mean and will refer to their trajectories as `extreme trajectories'.
 The dynamics of the extreme trajectories forms a subset of the field dynamics of as a whole.
 
-In Fig. \ref{fig:traj} we compare trajectory distributions of the whole field to those of the extreme trajectories, colouring the latter in red. This shows the extreme trajectories, post selected on $\Delta\zeta$, have two clearly distinguishable features: they are exactly those trajectories for which $\chi$ is driven through the largest excursions away from $\chi=0$ by the transverse instability, and $\Pi^\phi$ recieves the strongest nonlinear kick in the positive direction as the field pass through the end of $\Delta V$ (our convension of choosing and initial state with $\langle\phi\rangle$ positive and decreasing during inflation means a kick to $\Pi^\phi$ in the positive direction has the effect of slowing the local roll of $\phi$ down the potential). Likewise, in Fig. \ref{fig:phasespace} we compare distributions of phase space projections of the whole field to those of the extreme trajectories \textcolor{red}{[on a timeslice of uniform $\tau$ when $\langle\phi\rangle$ crosses the point where $\Delta V$ turns off]}.
-Nonlinear effects on the extreme trajectories have built NG correlations in the $(\phi,\chi)$ plane (likewise with the momenta) and populated an extended tail in the $\langle\phi\Pi^\phi\rangle$ correlation.
+In Fig. \ref{fig:traj} we compare trajectory distributions of the whole field to those of the extreme trajectories, colouring the latter in red. This shows the extreme trajectories, post selected on $\Delta\zeta$, have two clearly distinguishable features: they are exactly those trajectories for which $\chi$ is driven through the largest excursions away from $\chi=0$ by the transverse instability, and $\Pi^\phi$ receives the strongest nonlinear kick in the positive direction as the field pass through the end of $\Delta V$ (our convention of choosing and initial state with $\langle\phi\rangle$ positive and decreasing during inflation means a kick to $\Pi^\phi$ in the positive direction has the effect of slowing the local roll of $\phi$ down the potential).
 
-Time dependence for the production of $\Delta\zeta$ is shown in Fig. \ref{fig:zetatraj}. The extreme trajectories undergo a sign change in $\Delta\zeta$. This sign change can be traced to a two stage production process: initial negative production through the $\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel, followed by a delayed positive production through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel. Sourcing through the $\frac{\dd\Delta\zeta_{\nabla\dot{\phi}\cdot\nabla\phi}}{\dd\alpha}$ and $\frac{\dd\Delta\zeta_{\nabla\dot{\phi}\cdot\nabla\phi}}{\dd\alpha}$ channels gives a subdominant contribution to the peaks.
-\textcolor{red}{[Put in a reference to the sourcing equations \eqref{eq:zeta source lap} and \eqref{eq:zeta source gdg}.]}
+Likewise, in Fig. \ref{fig:phasespace} we compare distributions of phase space projections of the whole field to those of the extreme trajectories on a time slice of uniform $\tau$ when $\langle\phi\rangle$ crosses the end of $\Delta V$. There nonlinear effects on the extreme trajectories build NG correlations in the $(\phi,\chi)$ plane (likewise with the momenta) and populate an extended tail in the $\langle\phi\Pi^\phi\rangle$ correlation.
+
+
+The time dependence of the production of $\Delta\zeta$ shows, on the extreme trajectories, it is initially negative before undergoing a sign change in a distinctly two-staged production process. Separating the source term \eqref{eq:zeta source fld} into the channels \eqref{eq:zeta source lap} and \eqref{eq:zeta source gdg} for both $\phi$ and $\chi$ reveals the first stage of production is through the
+%\eqref{eq:zeta source lap} channel for the $\chi$ field,
+$\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel,
+while the second stage of production which reverses the sign of $\Delta\zeta$ is through the
+%\eqref{eq:zeta source lap} channel for the $\phi$ field.
+$\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel.
+Sourcing through the \eqref{eq:zeta source gdg} channels for both fields give subdominant contributions to the peaks. This time dependence is shown in Fig. \ref{fig:zetatraj} where we have plotted $\Delta\zeta$, its derivative, and the \eqref{eq:zeta source lap} production channels for both $\phi$ and $\chi$.
 
 \Fzetatraj
 
-The production of $\Delta\zeta$ sourced through the $\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel, with $\langle\dot{\chi}\rangle = 0$, has no contribution at the linear level, the leading order contribution being quadratice in the fluctuations of $\chi$. Never the less, the exponential growth of $\chi$ fluctuations during the transverse instability mean the contribution through this channel is non-negliable.
-\textcolor{red}{[This is sourcing $\zeta$ NG through a nonlinear source term, present even if considering only linear dynamics and Gaussian fluctuations of the fields.]}
+The production of $\Delta\zeta$ sourced through the
+$\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel
+%\eqref{eq:zeta source lap} channel for the $\chi$ field
+, when $\langle\dot{\chi}\rangle = 0$, has no contribution at the linear level, the leading order contribution being quadratic in the fluctuations of $\chi$. Never the less, the exponential growth of $\chi$ fluctuations during the transverse instability mean the contribution through this channel is non-negligible.
+This is sourcing $\zeta$ NG through a nonlinear source term which is present even if considering only linear dynamics and Gaussian fluctuations of the fields.
 
-Sourcing through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel is activated when the evolution of $\phi$ and $\Pi^\phi$ deviate from the baseline case run in the $V_0$ potential (or by modifications to $\rho + P$ which may be due to $\chi$ and $\Pi^\chi$ at nonlinear level). This deviation from the baseline case is due to the nonlinear interaction with the $\chi$ field.
-\textcolor{red}{[This is sourcing $\zeta$ NG through NG fluctuations of the fields, present even if considering only the linear contribution of the source term.]}
+Sourcing through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel is activated when the evolution of $\phi$ and $\Pi^\phi$ deviate from the baseline case run in the $V_0$ potential (or by modifications to $\rho + P$ which may be due to $\chi$ and $\Pi^\chi$ at nonlinear level). This deviation from the baseline case is due to the nonlinear interactions between the $\phi$ and $\chi$ fields.
+This is sourcing $\zeta$ NG through NG fluctuations of the fields which is present even if considering only the linear contribution of the source term.
 
 \Fzetaslicemulti
 
@@ -159,26 +169,31 @@ Sourcing through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$
 A sequence of two dimensional slices through the lattice in Fig. \ref{fig:zetaslicemulti} shows the spatial dependence of the evolution of $\Delta\zeta$. Initially the production of $\Delta\zeta$ forms a set of negative peaks, as the system continues to evolve and $\Delta\zeta$ approaches its asymptotic state these negative peaks are replaced by positive peaks at the same locations. Comparison to Fig. \ref{fig:zetatraj} shows the negative peaks correspond to the first stage of production through the $\frac{\dd\Delta\zeta_{\dot{\chi}\nabla^2\chi}}{\dd\alpha}$ channel while the change of sign to positive peaks corresponds to the second stage of production through the $\frac{\dd\Delta\zeta_{\dot{\phi}\nabla^2\phi}}{\dd\alpha}$ channel.
 
 % Relaxation response
-From Fig. \ref{fig:zetatraj} we can also see that a portion of the production of $\Delta\zeta$ occurs after the fields have passed through $\Delta V$ and are again feeling the effects of only of the $V_0$ part of the potential \textcolor{red}{[point this out in the Fig. \ref{fig:zetatraj} caption]}. This portion of the production occurs as the state of the system, being deformed by having passed through $\Delta V$, is allowed to relax to the attractor of the baseline potential. For this reason we will refer to it as the `relaxation stage'.
+\subsection{$\zeta$ Production During the Relaxation of the Fields}
+From Fig. \ref{fig:zetatraj} we can also see that a portion of the production of $\Delta\zeta$ occurs after the fields have passed through $\Delta V$ and are again feeling the effects of only of the $V_0$ part of the potential \textcolor{red}{[point this out in the Fig. \ref{fig:zetatraj} caption]}. This portion of the production occurs as the state of the system, being deformed by having passed through $\Delta V$, is allowed to relax to the attractor of the baseline potential. For this reason we will refer to it as the `relaxation stage'. \textcolor{red}{[I should make it clear that the relaxation stage is distinct for the two-stage production that is disussed above.]}
 
-During the relaxation stage the sole role of $\Delta V$ is to generate an initial state which it deforms away from the attractor of the baseline potential, playing the role only of setting an initial condition. Once this initial state has been generated the relaxation stage can be studied without reference to the details of how it was generated.
+During the relaxation stage the sole role of $\Delta V$ is to generate an initial condition by deforming the state away from the attractor of the baseline potential. Once this deformed state has been generated the relaxation stage can be studied without reference to the details of how it was generated. So, although the details of how this initial state is prepared may be nontrivial and may involve its own generation of NG, the relaxation stage is decoupled from these details and can be treated separately.
 
-The production of $\Delta\zeta$ during the relaxation stage can be written as a response function to the deformed state $Z_{off}$,
+\textcolor{red}{[Emphasize the point here that different choices of $\Delta V$ can still have commonality in their relaxation stages if they produce similar deformed states.]}
+
+The production of $\Delta\zeta$ during the relaxation stage can be written as a response function to the deformed state generated by $\Delta V$. Using the subscript `off' to refer to the time at which $\Delta V$ turns off and the system is returned to the $V_0$ potential we call the initial deformed state $Z_\mathrm{off}$. The response function can then be written as 
 \begin{equation}
-  \Delta\zeta_f = R[Z_{off};V_0] + \Delta\zeta_{off}.
+  \Delta\zeta_f = R[Z_{off};V_0] + \Delta\zeta_\mathrm{off}.
 \end{equation}
 \textcolor{red}{[The argument is a set of fields not numbers, so I guess it's a response functional.]}
 \textcolor{red}{[I'm using ${}_{off}$ for the initial state, which may be somewhat confusing notation.]}
 \textcolor{red}{[Do I actually need $V_0$ here? What really matters is the attractor and how trajectories approach it.]}
-This is a generic description ...
-
-Although the details of how this initial state is prepared may be nontrivial and may involve its own generation of NG, the relaxation stage is decoupled from these details and can be treated separately.
 
 % This part is still rough
-While this is a generic description, a response functional which depends on the complete description of a set of fields which must be measured from simulations does nothing to provide a simplified description... To gain a simplified view we would like to expand $Z$ into a basis set and project ... transforming the response functional into a response function on a finite (and ideally small) number of variables.
-\textcolor{red}{[Part about this projection introducing variance into the response]}
 
-Being a functional over fields $R[Z_{off};V_0]$ is impractical... A more manageble quantity can be obtained by projecting to the response of a single variable. In Fig. \ref{fig:deltaphizetacorr} we measure the response of $\Delta\zeta$ to $\Delta\phi$ on the lattice ... In doing so we have (stuff about going from a field to a single local variable in the response function) reduced the number of variables in the response function and as a result introduced variance into the relationship.
+
+While this is a generic description, a response functional which depends on a complete description of a set of fields and must be measured from simulations does little to simplify the description of the production of $\Delta\zeta$.
+%To gain a simplified view we would like to expand $Z$ into a basis set and project ... transforming the response functional into a response function on a finite (and ideally small) number of variables. 
+\textcolor{red}{[Part about projecting the response function onto a smaller basis that the full field to simplify the description (while introducing variance into the response)]}
+
+Being a functional over fields $R[Z_{off};V_0]$ is impractical. A more manageable quantity can be obtained by projecting to the response onto a smaller set of variables. In Fig. \ref{fig:deltaphizetacorr} we measure the response of $\Delta\zeta_f$ to a single variable $\Delta\phi_\mathrm{off}$. In doing so we drastically
+(stuff about going from a field to a single local variable in the response function)
+reduce the number of variables in the response function and as a result introduced variance into the relationship.
 
 % talk about generating $\zeta$ in the relaxation stage.
 % define what is meant by the relaxation stage
