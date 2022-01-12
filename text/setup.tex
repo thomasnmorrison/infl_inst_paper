@@ -46,9 +46,9 @@ from which we derive the continuum equations of motion.
 
 In the continuum the equations of motion form a set of nonlinear partial differential equations. Discretizing these equations onto a lattice transforms them into a set of ordinary differential equations which can be integrated numerically. To do this the fields and momenta are discetized, volume integrals replaced by sums over lattice sites, and spatial derivatives in the continuum replaced by pseudospectral derivatives on the lattice. After applying this procedure the equations of motion on a cubic lattice with $N$ equally spaced points along each dimension, the discrete equations of motion read
 \begin{align}
-  & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i,  \label{eq:lat eom a}\\
+  & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i,  \label{eq:lat eom phi}\\
   & \frac{\dd\Pi^A_i}{\dd\tau} = -a^2\nabla^2_\lat(\phi^A_j)_i -a^4\frac{\partial V_i}{\partial \phi^A_i},  \label{eq:lat eom pi phi}\\
-  & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a,  \label{eq:lat eom phi} \\
+  & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a,  \label{eq:lat eom a} \\
   & \frac{\dd\Pi^a}{\dd\tau} = -N^{-3}\sum_i\left\{ \sum_A\left[-a^{-3}{\Pi^A_i}^2 \right.\right. \nonumber \\
     & \hphantom{\frac{\dd\Pi^a}{\dd\tau} = } \left.\left. + a\phi^A_i\nabla^2_\lat(\phi^A_j)_i \right] + 4a^3V_i\vphantom{\sum_A}\right\}. \label{eq:lat eom pi a}  
 \end{align}
@@ -56,7 +56,7 @@ Here the subscripts $i$ and $j$ run over lattice sites, and $\nabla^2_\lat()$ is
 For brevity we will suppress the subscripts $i,j$, and $\lat$ except where they are necessary to avoid confusion.
 Full details of the discretization procedure as well as the definition of the pseudospectral Laplacian and conversion to the dimensionless units used in the code can be found in the appendix.
 
-With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi a} we have arrived at a Hamiltonian system which can be integrated forward from initial conditions. To do so we use a Hamiltonian splitting scheme, the details of which can also be found in the appendix.
+With \eqref{eq:lat eom phi}-\eqref{eq:lat eom pi a} we have arrived at a Hamiltonian system which can be integrated forward from initial conditions. To do so we use a Hamiltonian splitting scheme, the details of which can also be found in the appendix.
 
 \subsection{Relation of the Semiclassical Lattice to Quantum Mechanics}
 \textcolor{red}{[The point of this section is not to go through the full theory of semiclassical/quantum, but just to say enough that it isn't left as magic to the reader.]}
@@ -71,15 +71,42 @@ With \eqref{eq:lat eom a}-\eqref{eq:lat eom pi a} we have arrived at a Hamiltoni
 \end{itemize}
   
 \subsection{Initial Conditions} \label{sec:ICs}
-In order to evolve the system \eqref{eq:lat eom a}-\eqref{eq:lat eom pi a} forward in time we must specify initial conditions. This is done in three parts: setting the homogeneous component of the scalar fields and their momenta, initializing a realization of the fluctuations, and setting $\Pi^a$ so that the Hubble parameter obeys a lattice averaged version of the energy constraint. How each of these parts is accomplished is described below.
+\textcolor{red}{[Add a part about how the lattice can be initialized at any point prior to the onset of nonlinearity.]}
+In order to evolve the system \eqref{eq:lat eom phi}-\eqref{eq:lat eom pi a} forward in time we must specify initial conditions. This is done in three parts: setting the homogeneous component of the scalar fields and their momenta, initializing a realization of the fluctuations, and setting $\Pi^a$ so that the Hubble parameter obeys a lattice averaged version of the energy constraint. How each of these parts is accomplished is described below.
 
 % Homogeneous component
 The homogeneous component of the fields and momenta are set on the attractor solution of the homogeneous system. To find the attractor, we start with an initial estimate well back from the point we intend to initialize the lattice and evolve the system forward using the homogeneous equations of motion. The initial estimate we provide will then rapidly approaches the attractor. Details of this calculation can be found in the appendix. 
 
 % Fluctuations
-Fluctuations in the fields and momenta are set in Fourier space, each mode being drawn from a multivariate Gaussian distribution with variance set to match the real part of the 2-point correlation matrix in Fourier space. This is done mode-by-mode using a Choleski decomposition to take the `square root' of the correlation matrix which then multiplies a vector of $2N_\mathrm{fld}$ complex standard normal deviates. A low pass filter is applied to smooth the fields at a scale below that of the lattice Nyquist. Performing the inverse Fourier transforms then initializes the fluctuations on the lattice.
+Fluctuations in the fields and momenta are set in Fourier space, each mode being drawn from a multivariate Gaussian distribution with variance set to match the real part of the 2-point correlation matrix in Fourier space \textcolor{red}{[and with uncorrelated and uniformly distributed complex phases]}. This is done mode-by-mode using a Choleski decomposition to take the `square root' of the correlation matrix which then multiplies a vector of $2N_\mathrm{fld}$ complex standard normal deviates. A low pass filter is applied to smooth the fields at a scale below that of the lattice Nyquist. Performing the inverse Fourier transforms then initializes the fluctuations on the lattice.
 
 The real part of the correlation matrix is calculated from linear theory for modes along a radial profile which is over sampled relative to the fundamental mode $\Delta k$ on the lattice with modes on the lattice being interpolated from this profile. The calculation is done with modes initialized well within the horizon where they can be matched to the Minkowski space solution. The system is then evolved along the attractor to the point where the lattice will be initialized. In particular this method properly accounts for the cross correlation between fields and momenta as they cross the horizon. Details of the linear calculation can be found in the appendix.
+
+% Discussion on phases
+% Mention that the initialized Fourier modes are given random phases.
+% Mention that the perturbative calculation does not make reference to phases and why that is okay.
+% Explain why statistically we don't need to track the phases when intiallizing the lattice with Gaussian inital conditions.
+% Explain how initializing at different times with the same generation of random variables is equivalent to resampling the ensemble from the Wigner function.
+
+A few words should be said about how the complex phases are assigned to Fourier modes when initializing fluctuations on the lattice, in particular with respect to the relation between these phases and the time at which the lattice is initialized.
+Using the method we have described, initializing a realization of fluctuations on the lattice and then evolving the lattice forward to a later time using \eqref{eq:lat eom phi}-\eqref{eq:lat eom pi a} is not equivalent to first evolving the perturbative system forward to compute the 2-point at that later time and then initializing a realization of the fluctuations using the evolved 2-point.
+Said another way, the initialization of fluctuations and the evolution of those fluctuations on the lattice do not commute.
+This is true even if the evolution on the lattice is linear and an identical set of random numbers is used for the realization in either case.
+Owing to the fact that the evolution on the lattice evolves the phases of the fluctuations, the evolved phases will mismatch with those of later realized fluctuations as no phase information is carried in the perturbative calculation of the 2-point. 
+\textcolor{red}{[I think techincally I am talking about a realization of a set of random number's not a actual set of random numbers.]}
+
+While it may at first seem concerning that the phases of fluctuations differ depending upon the arbitrary choice of when the lattice is initialized there is in fact no issue.
+From the point of view of sampling the Wigner function any choice of time to initialize the lattice is statistically equivalent. The mismatch of phases when comparing different initalization times corresponds to a change in the mapping between a particular realization of the random numbers used to initialize the fluctuations and a particular element from the ensemble of semi-classical calculations which describe the evolution of the Wigner function.
+
+%For the same reason it is not necessary to track the phases of the modes from past infinity.
+
+% Comment on phase matching an the comparison between runs.
+\textcolor{red}{[Part about matching phases if we want to difference two simulations directly.]}
+
+So long as the evolution of the system remains linear the computationally simpler perturbative calculation is sufficient.
+\textcolor{red}{[There is a caveat here that the Wigner function must be Gaussian to be described by the 2-point, hence the relation to coherent states.]}
+\textcolor{red}{[Second caveat for the possibility of nonlinear sourcing of $\zeta$ from linear field dynamics.]}
+It is when the evolution of the system becomes nonlinear that we must resort to the computationally much more expensive lattice calculation.
 
 % Hubble
 Finally with the scalar fields and momenta realized on the lattice, $\Pi^a$ is set to satisfy a lattice averaged version of the energy constraint

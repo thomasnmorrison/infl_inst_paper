@@ -217,16 +217,16 @@ By restricting the system onto the lattice sites and making the substitutions
 \end{align}
 the equations of motion are discretized into a system of ordinary differential equations which can be integrated numerically
 \begin{align}
-  & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i \label{eq:lat eom phi} \\
+  & \frac{\dd\phi^A_i}{\dd\tau} = a^{-2}\Pi^A_i \label{eq:app lat eom phi} \\
   & \frac{\dd\Pi^A_i}{\dd\tau} = a^2\nabla^2_\lat\phi^A_i + a^4V_{i,\phi^A_i} \\
   & \frac{\dd a}{\dd\tau} = -\frac{1}{6\mpl^2}\Pi^a \\
   & \frac{\dd\Pi^a}{\dd\tau} = -l^{-3}\sum_i\left\{
   \sum_A\left[-a^{-3}{\Pi^A_i}^2 \right. \right. \\
     & \left. \left. + a\phi^A_i\nabla^2_\lat(\phi^A_j)_i \right] +4a^3V_i
-  \right\}\Delta x^3 \label{eq:lat eom pi a}
+  \right\}\Delta x^3 \label{eq:app lat eom pi a}
 \end{align}
 
-The direct discretization of the equations of motion \eqref{eq:lat eom phi}-\eqref{eq:lat eom pi a} gives an energy conserving system only if a consistancy relation between $\nabla^2_\lat(\phi^A_j)_i$ and $\nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^B_j)_i$ holds.
+The direct discretization of the equations of motion \eqref{eq:app lat eom phi}-\eqref{eq:app lat eom pi a} gives an energy conserving system only if a consistancy relation between $\nabla^2_\lat(\phi^A_j)_i$ and $\nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^B_j)_i$ holds.
 They must follow the same product rule as the continuum operators which allowed for the integration by parts in deriving the equations of motion in the form \eqref{eq:eom phi}-\eqref{eq:eom pi a}.
 This relation holds and \eqref{eq:lat eom phi}-\eqref{eq:lat eom pi a} define an energy conserving system provided the operators are resolved on the lattice.
 In practice conservation of energy on the lattice can be checked by computing the Hamiltonian directly.
