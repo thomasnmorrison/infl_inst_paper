@@ -4,15 +4,19 @@
 \newcommand{\lat}{\mathrm{Lat}}
 
 % Figure Files
-\newcommand{\runident}{_128_5_403}
+\newcommand{\runident}{_128_5_501s010}
+\newcommand{\runidentold}{_128_5_403}
 \newcommand{\figdir}{fig\runident/}
+\newcommand{\figolddir}{fig\runidentold/}
 \newcommand{\psdir}{phase_space_figs/}
+\newcommand{\pstrajdir}{ps_traj_figs/}
 \newcommand{\potdir}{potential_figs/}
 \newcommand{\trajdir}{trajectory_figs/}
 \newcommand{\slicedir}{slice_figs/}
 \newcommand{\specdir}{spec_figs/}
 
-\newcommand{\runidentbl}{_128_1_403}
+\newcommand{\runidentbl}{_128_1_501s010}
+\newcommand{\runidentoldbl}{_128_1_403}
 \newcommand{\figdirbl}{fig\runidentbl/}
 
 % fig:potential
@@ -30,8 +34,8 @@
 \newcommand{\FFzetasliceC}{\figdir\slicedir slice_plt9\runident.png}  % $\Delta\zeta$
 
 % fig:zetapeak
-\newcommand{\FFzetapeakA}{\figdir zeta_ens_peak_plt1.png}  % max peaks
-\newcommand{\FFzetapeakB}{\figdir zeta_ens_peak_plt2.png}  % min peaks
+\newcommand{\FFzetapeakA}{\figolddir zeta_ens_peak_plt1.png}  % max peaks
+\newcommand{\FFzetapeakB}{\figolddir zeta_ens_peak_plt2.png}  % min peaks
 
 % fig:spec
 \newcommand{\FFspecA}{\figdirbl\specdir spec_plt12\runidentbl.png}
@@ -87,3 +91,13 @@
 
 % fig:zetaslicemulti
 \newcommand{\FFzetaslicemulti}{\figdir\slicedir slice_plt32\runident.png}  % \Delta\zeta multi slice
+
+% fig:zetapstraj
+\newcommand{\FFzetapstrajA}{\figdir\pstrajdir ps_traj_cont_plt17a\runident.png}  % $\Delta\dot{\zeta}, \Delta\zeta$ regular, zoomed
+\newcommand{\FFzetapstrajB}{\figdir\pstrajdir ps_traj_cont_plt18\runident.png}  % $\Delta\dot{\zeta}, \Delta\zeta$ extreme
+
+% fig:alphatraj
+\newcommand{\FFalphatraj}{\figdir\trajdir traj_plt38\runident.png}  % $\delta\alpha$ trajectory
+
+% fig:rhotraj
+\newcommand{\FFrhotraj}{\figdir\trajdir traj_plt31\runident.png}  % $\delta\ln(\rho)$ trajectory

@@ -1,6 +1,9 @@
 % Define commands for including figures.
 
-\graphicspath{{./figures/}}
+\graphicspath{{../figures/}{./figures/}}
+\captionsetup{parskip=5pt}
+%\captionsetup[figure]{justification=justified}
+%\captionsetup[subfigure]{justification=justified}
 
 % fig:potential
 \newcommand{\Fpotential}{
@@ -261,7 +264,7 @@ The deviationof $\langle|\tilde{\phi}_k|^2\rangle$, $\mathrm{Re}\langle\tilde{\p
     \centering
       \begin{subfigure}[a]{0.45\textwidth}
         \includegraphics[width=\textwidth]{\FFdeltapsA}
-        \end{subfigure}
+      \end{subfigure}
       \caption{\textcolor{red}{[Here $\delta\phi$ has been replaced by $\Delta\phi$ (defined analogously to $\Delta\zeta$ as the point by point difference of $\phi$ as calculated using the full potential $V=V_0 + \Delta V$ and the baseline potential $V_0$ alone). Compare to Fig. \ref{fig:phasespace}. Descirbe in terms of an equation of state.]}}
     \label{fig:deltaps}
   \end{figure}
@@ -345,6 +348,84 @@ The deviationof $\langle|\tilde{\phi}_k|^2\rangle$, $\mathrm{Re}\langle\tilde{\p
     \caption{A two dimensional slice through a three dimensional lattice showing $\Delta\zeta$ at \textcolor{red}{[time slices]}. The two stage production process of $\Delta\zeta$ shown in Fig. \ref{fig:zetatraj} can be seen here to first generate a set of negative $\Delta\zeta$ peaks in the first stage of production which change sign during the second stage of production to become positive peaks in the asymptotic $\Delta\zeta$.}
     \label{fig:zetaslicemulti}
   \end{figure*}
+}
+
+% fig:zetapstraj
+\newcommand{\Fzetapstraj}{
+  \begin{figure*}
+    \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetapstrajA}
+      %\caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetapstrajB}
+      %\caption{}
+    \end{subfigure}
+    \caption[zetapstrajcap]{Trajectories through the $(\Delta\zeta,\frac{\dd\Delta\zeta}{\dd\alpha})$ psuedo phase space for $\alpha \in [0.43,1.99]$ or $\langle\phi\rangle/\mpl \in [8.52,8.15]$, which corresponds to trajectories starting from roughly the midpoint of the instability and running long enough for $\Delta\zeta$ to approach its asymptotic value. Both the time weighted density of trajectories and a sample of individual trajectories are plotted.
+    
+    % Talk about the regular vs extreme trajectories
+    In the left panel the grey contours are plotted for all trajectories, while in the right panel The contours for all trajectories have been overlayed with a set of red contours plotted for only the extreme trajectories. Note also the relative scaling of the axes between the panels with the left panel zoomed in by a factor of four compared to the right panel.
+    % what is plotted by the contours
+    In both panels the contours show the time weighted psuedo phase space density define as $(\alpha_2 - \alpha_1)^{-1}\mathcal{N}\int_{\alpha_1}^{\alpha_2}P(\Delta\zeta,\frac{\dd\Delta\zeta}{\dd\alpha})\dd\alpha$, which we calculate using a two-dimensional histogram to estimate the probablity density and a partial sum to estimate the integral, the normalization factor $\mathcal{N}$ is chosen to scale the maximum of time weighted density to unity.
+    \textcolor{red}{Talk about the low speed vs high density degeneracy in the contour plot and how the arrows on the sampled trajectories help to disentangle the two effects.}
+    
+    % sampled trajectories
+    Plotted over these contours is a sample of trajectories plotted as black curves using various line styles to allow the individual trajectories to be more clearly distinguished. In the left panel these trajectories are sampled from all trajectories on the lattice, while in the right panel they are sampled from the extreme trajectories. The left panel also shows a single extreme trajectory plotted in red.
+    % Talk about the imergence of simplicity in the extreme trajectories
+    Comparison between sampled trajectories in the left and right panels reveals a remarkable simplification in the complexity of trajectories when considering only the extreme trajectories as opposed to all trajectories. % elaborate on this point in the main text
+
+    % the black arrow markers
+    The passage of time along each of the sampled trajetories is marked by four black arrows pointing in the direction of time which, together with the endpoints, divide the trajectories into five segments of equal length as measured by change in $\alpha(\tau)$. Sections of a trajectory which are traversed more quickly have a greater spacing between the black arrows.
+    % approach to an asymptotic $\Delta\zeta$
+    The black arrows pile up as a trajectory approaches its asymptotic value, as can be seen in the right panel along the positve $\frac{\dd\Delta\zeta}{\dd\alpha}=0$ axis as the extreme trajectories approach there respective asymptotic values of $\Delta\zeta$.
+    
+    % the blue arrow marker
+    The blue arrows are placed at $\langle\phi\rangle = \phi_p - \phi_w$ to mark the mean point where $\Delta V$ turns off and the trajectories are returned to the baseline quadratic potential $V_0$. The portion of these trajectories occuring after the blue arrow is the production of $\Delta\zeta$ during the relaxation phase.
+
+    % Talk about plotting artifacts
+    The feathery edge pattern visible on the upper edge of the contours is an artifact caused by binning the discrete time outputs from the lattice simulation. For a given discrete time sampling of the lattice there is a trade-off between the coarseness of the binning and the prominance of this feathery edge artifact. We have adjusted the phase space bin size to balance these two effects in a way which makes the figure clear.    
+    }
+    \label{fig:zetapstraj}
+  \end{figure*}
+}
+
+% fig:alphatraj
+\newcommand{\Falphatraj}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFalphatraj}
+    \end{subfigure}
+    \caption[alphatrajcap]{Contour plot of the distribution of $\delta\alpha(x,\tau)$ trajectories as calculated by integration of the local Hubble as in \eqref{eq:alphaloc}.
+    % reference to similar figure for explanation of how to read figure and exactly what is plotted
+    % reference to sampled trajectories
+    \textcolor{red}{Reference an earlier trajectory figure to explain how to read this plot.}
+
+    % talk about initial condition being set to zero increases variance of initial bundle by ~ a factor of 2
+    The initial transient in the distribution is due to setting the initial condition $\alpha(x,\tau_0)$ to zero over the lattice rather than matching onto linear theory. After phases have mixed, this is equivalent to adding a random field to $\delta\alpha$ with variance accounting for approximately half the variance of the initial bundle of trajectories after the transient behaviour has settled.
+    % reference to $\ln(\rho)$ figure and compare size of effect to justify dropping inhomogeneity in $\delta\alpha$ for the calculation of $\zeta$.
+    This is acceptable as we do not need the precise value of the individual trajectories of $\delta\alpha$, but only an estimate for their distribution to check the validity of neglecting the inhomgeneity of $\alpha$ in our calculation of $\zeta$. Comparision to $\ln(\rho/\langle\rho\rangle)$ shown in Fig. \ref{fig:lnrhotraj}, the distribution of which is approximately two orders of magnitude wider that that of $\delta\alpha$, can be used to verify the validity of this assumption as described in \textcolor{red}{reference to $\zeta$ setup section}.
+    }
+    \label{fig:alphatraj}
+  \end{figure}
+}
+
+\newcommand{\Flnrhotraj}{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFrhotraj}
+    \end{subfigure}
+    \caption[lnrhotrajcap]{Contour plot of the distribution of $\ln(\rho/\langle\rho\rangle)$ trajectories. \textcolor{red}{reference earlier trajectory figure to explain how this figure is read.}
+    % talk about the large variance at the top being due to the subhorizon fluctuations (the window of k modes on the lattice redshifts during the expansion)
+    The initial narrowing of the width of this distribution with time is due to the lattice covering a fixed range of comoving scales rather than physical scales. The redshifting of these comoving scales as the simulation proceeds, means the physical scales to which these fixed comoving scales correspond will redshift during the simulation and $\ln(\rho/\langle\rho\rangle)$ on the lattice will be measured on progressively fewer modes which are subhorizon modes and progressively more superhorizon modes.
+    
+    % Talk about the similarity to one term of $\delta\zeta$ when scaled up by a factor
+    Taken in conjunction with Fig. \ref{fig:alphatraj}, this figure can be used to verify the validity of neglected the $\alpha$ in our calculation of $\zeta$ by having made the FRW anzats.
+    }
+    \label{fig:lnrhotraj}
+  \end{figure}
 }
 
 % fig:zetasliceu
