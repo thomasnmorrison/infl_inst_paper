@@ -119,6 +119,7 @@ By convention we set $a=1$ at the start of the lattice simulation.
 
 \textcolor{red}{[Two subtleties with this procedure: i) this is matching the spectra instead of the real space two-point, ii) the homogeneous calculation is not using a renormalized potential, so there is a slight mismatch when we initialize onto the lattice.]}
 
+% sec:zeta source
 \subsection{$\zeta$ Source Equation} \label{sec:zeta source}
 \textcolor{red}{[Start with some general remarks about $\zeta$ and relate what we are doing here with the perturbative definition.]}
 
@@ -129,44 +130,94 @@ By convention we set $a=1$ at the start of the lattice simulation.
 % some limitations due to FRW ansatz
 % integrated $\zeta$ vs perturbative $\zeta$, specifically with regards to asymptotic behaviour and dropping $\alpha$
 
-We take $\zeta$ to be defined by the differential
-\begin{equation} \label{eq:zeta differential}
-  \delta\zeta = \frac{\delta\rho}{3(\rho + P)} + \delta\alpha
-  %\delta\zeta = \frac{\delta\ln(\rho)}{3(1 + W)} + \delta\alpha
+% $\zeta$ differential
+The defining differential of $\zeta$ is given by
+\begin{equation}
+  \dd\zeta = \dd\alpha + \frac{\dd\ln(\rho)}{3(1+w)} \label{eq:zeta diff w}
 \end{equation}
+where $\alpha \equiv \ln(a)$, and $w \equiv \rho/P$ is the equation of state for energy density $\rho$ and isotropic pressure $P$. 
+
+% $\zeta$ derivative
+From the differential \eqref{eq:zeta diff w} comes the time derivative
+\begin{equation}
+  N_\xi^{-1}\frac{\dd\zeta}{\dd\xi} = H + \frac{1}{3(1 + w)}N_\xi^{-1}\frac{\dd\ln(\rho)}{\dd\xi} \label{eq:zeta der xi}
+\end{equation}
+where $\xi$ is some timelike variable and $N_\xi$ is its shift.
+
+% $\zeta$ derivative on the lattice
+We can evaluate \eqref{eq:zeta der xi} on the lattice in the FRW ansatz using as the timelike variable the conformal time $\tau$. In the FRW ansatz the fields $a$ and $H$ are assumed to be spatially uniform, and the energy density and isotropic pressure become
+\begin{align}
+  & \rho = \frac{1}{2}a^{-2}\sum_A\left[a^{-4}\Pi^A\Pi^A + \nabla\phi^A\cdot\nabla\phi^A \right] + V, \label{eq:rho frw}\\
+  & P = \frac{1}{2}a^{-2}\sum_A\left[a^{-4}\Pi^A\Pi^A - \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right] - V.
+\end{align}
+Substitution of $\rho$ and $P$ in terms of $\phi^A$ and $\Pi^A$ and using either the covariant conservation of the stress-energy tensor or the equations of motion \eqref{eq:lat eom phi}-\eqref{eq:lat eom pi a} to evaulate $\frac{\dd\ln(\rho)}{\dd\alpha}$ then gives a source equation for $\zeta$
+\begin{equation}
+  \frac{\dd\zeta}{\dd\tau} = \frac{\sum_A\left(\Pi^A\nabla^2\phi^A + \nabla\Pi^A\cdot\nabla\phi^A\right)}{3a^2\sum_A\left(a^{-4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)}. \label{eq:zeta source fld}
+\end{equation}
+On the lattice $\nabla()\cdot\nabla()$ is defined psuedospectrally as is detailed in the appendix.% In our lattice simulations we integrate \eqref{eq:zeta source fld} alongside the fields to compute $\zeta(x,\tau) - \zeta(x,\tau_0)$.
+
+% The FRW ansatz
+When applying the FRW ansatz we are making the assumption that, for our system and within the simulation volume, hypersurfaces of uniform $\tau$ are approximately hypersurfaces of uniform $\alpha$. We will need to verify that this approximation leads to a modification of $\zeta$ which is small compared to the size of the effect we measure by integrating \eqref{eq:zeta source fld}. Before turning to the details of how this is done, we will first introduce an approximation to $\zeta$ which will prove useful in making this comparison. 
+
+% $\zeta$ perturbation
+In addition to the derivative description of $\zeta$ given by \eqref{eq:zeta der xi}, the differential \eqref{eq:zeta diff w} can also be used to make a perturbative approximation 
+\begin{equation}
+  \delta\zeta_\mathrm{pert} = \delta\alpha + \frac{\delta\ln(\rho)}{3\langle 1+w \rangle} \label{eq:zeta pert w}
+\end{equation}
+where we use $\delta$ to indicate the perturbations in quantities from which a suitably defined mean has been subtracted and the average $\langle 1+w \rangle$ is taken to keep the approximation first order in perturbations. This perturbative approximation is exact when taken on hypersurfaces of uniform $H$. When taken on another hypersurface its validity can be shown to rely on the existance of a uniform $H$ hypersurface for which the denominator $(3(1+w))^{-1}$ remains approximately constant when measured along the actual trajectories connecting the two hypersurfaces.
+
+The perturbative approximation \eqref{eq:zeta pert w} connects to the familiar definition of $\zeta$ from linear perturbation theory when $\delta\alpha$ and $\delta\ln(\rho)$ are determined by linear theory, and $\langle 1+w \rangle$ is determined by the background cosmology. When going beyond the linear level, \eqref{eq:zeta pert w} differs from the full calculation of integrating \eqref{eq:zeta der xi} when $w$ \textcolor{red}{[or equivalently $\epsilon_\mathrm{free}$?]} follows a different evolution along different trajectories.
+\textcolor{blue}{[I should think of how to write this in terms of the $\epsilon$ formalism. Probably something about path dependence, where trajectories with the same $\epsilon_\mathrm{actual}$ can differ in $\epsilon_\mathrm{free}$. This effect is a qualitative difference between integrating $\zeta$ and the perturbative estimate.]} 
+
+% why we use the integrated $\zeta$ instead of the perturbative one
+\textcolor{red}{[Put in a paragraph explaining why we are using \eqref{eq:zeta source fld} to integrate $\zeta$ rather than using \eqref{eq:zeta pert w}.]}
+%The choice to calculate $\zeta$ on the lattice by integration of a source is in part due to ...
+%In our simulations we use the integrated $\zeta$ from the source \eqref{eq:zeta source fld} rather than the approximation \eqref{eq:zeta pert w} specifically because we are interested in those effects for which 
+
+\textcolor{red}{[Put in paragraph about setting the initial conditions of $\zeta$ on the lattice.]}
+
+% Comments on dropping the fluctuations in $\delta\alpha$
+Returning now to checking the validity of using the FRW ansatz in deriving \eqref{eq:zeta source fld}, our method will be to estimate a characteristic scale for the magnitude of $\delta\alpha$ fluctuations and compare to $\delta\ln(\rho)$ fluctuations on the lattice's integration hypersurfaces. From \eqref{eq:zeta pert w}, the FRW ansatz will be valid when the scale of $\delta\alpha$ does not exceed that of $\delta\ln(\rho)$ by a factor of order $(3(1+w))^{-1}$ \textrm{[barring some nonlinear effect]}. In practice this condition is not difficult to meet throughout much of inflation when $w \approx -1$. In appendix \ref{appendix:frw_zeta} we detail how we have estimated $\delta\alpha$ and verify it is sufficiently small compared to $\delta\ln(\rho)$ for the system we study.
+
+%From \eqref{eq:zeta pert w} and using the fact that $3\langle 1+w \rangle \ll 1$ during our simulations, or $3\langle 1+w \rangle < 2$ throughout inflation, the the FRW ansatz will be valid when $\delta\alpha \ll \delta\ln(\rho)$ \textrm{[barring some nonlinear effect]}. In appendix \ref{appendix:frw_zeta} we detail how we have estimated $\delta\alpha$ and verify it is small compared to $\delta\ln(\rho)$ for the system we study.
+
+%We take $\zeta$ to be defined by the differential
+%\begin{equation} \label{eq:zeta differential}
+%  \delta\zeta = \frac{\delta\rho}{3(\rho + P)} + \delta\alpha
+  %\delta\zeta = \frac{\delta\ln(\rho)}{3(1 + W)} + \delta\alpha
+%\end{equation}
 %where $\rho$ is the energy density, $W$ is the equation of state, and $\alpha \equiv \ln(a)$.
-where $\rho$ and $P$ are the energy density and pressure respectively, and $\alpha \equiv \ln(a)$.
-\textcolor{red}{[Should we be putting $(\rho+P)$ or $\rho(1+W)$ here? I think the physical quantity should be $-\int_{H(x,\langle\alpha\rangle-\delta\alpha)}^{H(x,\langle\alpha\rangle)}\epsilon^{-1}(x,H')\dd\ln(H')$ expressed as a differential, ie $-\epsilon^{-1}\delta\ln(H)$.]}
+%where $\rho$ and $P$ are the energy density and pressure respectively, and $\alpha \equiv \ln(a)$.
+%\textcolor{red}{[Should we be putting $(\rho+P)$ or $\rho(1+W)$ here? I think the physical quantity should be $-\int_{H(x,\langle\alpha\rangle-\delta\alpha)}^{H(x,\langle\alpha\rangle)}\epsilon^{-1}(x,H')\dd\ln(H')$ expressed as a differential, ie $-\epsilon^{-1}\delta\ln(H)$.]}
 
 %The differential \eqref{eq:zeta differential} gives rise to a $\zeta$ source term which on the lattice, after applying the FRW ansatz and the continuity equation, becomes
-The differential \eqref{eq:zeta differential} gives rise to a $\zeta$ source term which on the lattice, after applying the continuity equation, becomes
-\begin{equation} \label{eq:zeta source T}
-  \dot{\zeta} = \frac{\partial_iT^i_0}{3(\rho+P)} + \delta H. % check that this is correct
+%The differential \eqref{eq:zeta differential} gives rise to a $\zeta$ source term which on the lattice, after applying the continuity equation, becomes
+%\begin{equation} \label{eq:zeta source T}
+%  \dot{\zeta} = \frac{\partial_iT^i_0}{3(\rho+P)} + \delta H. % check that this is correct
   %\zeta' = \frac{\partial_iT^i_0}{3(\rho+P)}
-\end{equation}
-\textcolor{red}{[At this point \eqref{eq:zeta source T} is not using the FRW ansatz, so should be using covariant derivative.]}
+%\end{equation}
+%\textcolor{red}{[At this point \eqref{eq:zeta source T} is not using the FRW ansatz, so should be using covariant derivative.]}
 
 %Computing \eqref{eq:zeta source T} for the fields on our lattice we arrive at the following source equation for $\zeta'$ on the lattice
-Computing \eqref{eq:zeta source T} in terms of the fields on the lattice, for which we have taken the ansatz of an FRW metric, we arrive at the following source equation for $\zeta'$ on the lattice
-\begin{equation} \label{eq:zeta source fld}
-  \zeta' = \frac{\sum_A\left(\Pi^A\nabla^2\phi^A + \nabla\Pi^A\cdot\nabla\phi^A\right)}{3a^2\sum_A\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)},
-\end{equation}
-$\nabla()\cdot\nabla()$ being defined psuedospectrally as is detailed in the appendix.
-In our lattice simulations the source \eqref{eq:zeta source fld} is integrated alongside the fields to compute the quantity $\zeta(\tau) - \zeta(\tau_0)$.
-The initial condition $\zeta(\tau_0)$ is set pertubatively from the initial conditions of the fields
-\begin{equation}
-  \zeta(\tau_0) = \frac{\rho(\tau_0)-\langle\rho(\tau_0)\rangle_\lat}{3\langle\rho(\tau_0)+P(\tau_0)\rangle_\lat}.
-\end{equation}
+%Computing \eqref{eq:zeta source T} in terms of the fields on the lattice, for which we have taken the ansatz of an FRW metric, we arrive at the following source equation for $\zeta'$ on the lattice
+%\begin{equation} \label{eq:zeta source fld}
+%  \zeta' = \frac{\sum_A\left(\Pi^A\nabla^2\phi^A + \nabla\Pi^A\cdot\nabla\phi^A\right)}{3a^2\sum_A\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)},
+%\end{equation}
+%$\nabla()\cdot\nabla()$ being defined psuedospectrally as is detailed in the appendix.
+%In our lattice simulations the source \eqref{eq:zeta source fld} is integrated alongside the fields to compute the quantity $\zeta(\tau) - \zeta(\tau_0)$.
+%The initial condition $\zeta(\tau_0)$ is set pertubatively from the initial conditions of the fields
+%\begin{equation}
+%  \zeta(\tau_0) = \frac{\rho(\tau_0)-\langle\rho(\tau_0)\rangle_\lat}{3\langle\rho(\tau_0)+P(\tau_0)\rangle_\lat}.
+%\end{equation}
 
-\textcolor{red}{[Paragraph on why we are calculating $\zeta$ from an integrated source term instead of calculating perturbatively. We are interested in hysteresis effects which are present when integrating along physical trajectories, which are absent if setting $\zeta$ perturbatively.]}
+%\textcolor{red}{[Paragraph on why we are calculating $\zeta$ from an integrated source term instead of calculating perturbatively. We are interested in hysteresis effects which are present when integrating along physical trajectories, which are absent if setting $\zeta$ perturbatively.]}
 
-\textcolor{red}{[Also, need to address dropping the $\delta\alpha$ term with the FRW ansatz.]}
-
-\textcolor{blue}{[Point of discussion: dropping the $\delta\alpha$ term in $\delta\zeta = \frac{\delta\rho}{3(\rho + P)} + \delta\alpha$ and then integrating $\zeta$ from a source is not equivalent to dropping the $\delta\alpha$ term and then setting $\zeta$ perturbatively. This is most obvious when as $\delta\rho \to 0$ then $\zeta$ set perturbatively vanishes, but integrating $\zeta$ from a source picks up a finite value due to the $(\rho+P)$ denominator time dependence.
-    The question is how does one compare between the perturbative and integrated $\zeta$? Should we consider the integrated $\zeta$ as recovering part of the $\delta\alpha$ term dropped from the perturbative $\zeta$, and is there a way to make this rigorous?]}
+%\textcolor{blue}{[Point of discussion: dropping the $\delta\alpha$ term in $\delta\zeta = \frac{\delta\rho}{3(\rho + P)} + \delta\alpha$ and then integrating $\zeta$ from a source is not equivalent to dropping the $\delta\alpha$ term and then setting $\zeta$ perturbatively. This is most obvious when as $\delta\rho \to 0$ then $\zeta$ set perturbatively vanishes, but integrating $\zeta$ from a source picks up a finite value due to the $(\rho+P)$ denominator time dependence.
+%    The question is how does one compare between the perturbative and integrated $\zeta$? Should we consider the integrated $\zeta$ as recovering part of the $\delta\alpha$ term dropped from the perturbative $\zeta$, and is there a way to make this rigorous?]}
 
 %\textcolor{red}{[The idea being the $\delta\rho/(3(\rho+P))$ term gives the dominant contribution on scales the size of the lattice. On scales larger than the lattice $\delta\alpha$ is aliased to the zero mode, so can be is a constant offset on the lattice that can be measured with comparisons between realizations (I no longer think that is a valid line of thinking due to how we are now thinking about the integrated vs perturbative $\zeta$). On scales smaller than the lattice we can quantify the error by calculating $H(x,t)$ assuming the FRW ansatz on each time slice. Integrating $H(x,t)$ without back reaction give a $\delta\alpha$ term that can be compared to $\zeta$ as integrated with our method (should do this test and put it in the appendix with convergence tests).]}
 
+% $\zeta$ source channels on the lattice
 Although $\zeta$ is blind to the distinction between the various fields $\phi^A$, with only components of the total stress energy tensor appearing in the source term, splitting the source \eqref{eq:zeta source fld} into channels can be useful for relating the sourcing of $\zeta$ to field dynamics. The choice of how to split the source term is not unique, however we have found considering the split defined by
 \begin{align}
   \zeta_{\Pi^A\nabla^2\phi^A}' = \frac{\Pi^A\nabla^2\phi^A}{3a^2\sum_A\left(\frac{1}{a^4}\Pi^A\Pi^A + \frac{1}{3}\nabla\phi^A\cdot\nabla\phi^A \right)}, \label{eq:zeta source lap}\\
@@ -176,11 +227,20 @@ to be useful in the context of inflation proceeding through an incomplete phase 
 
 The details of the contribution of the terms \eqref{eq:zeta source lap}, \eqref{eq:zeta source gdg} are discussed in section \ref{sec:zeta production}. However, it can be noted immediately that at the linear level only one of these channels contributes to sourcing $\zeta$, that being the $\zeta_{\Pi^A\nabla^2\phi^A}'$ channel for the inflaton. With the inclusion of the  other channels we are including the nonlinear sourcing for $\zeta$ from what would be considered isocurvature modes in linear theory.
 
-%[It is worthwhile to note the form of NG and what measure will be sensitive to it are not always known a priori. It is for this reason that the ability to make comparisons to a baseline potential on a realization by realization basis proves to be a major advantage of performing these calculations using lattice simulations. - move this to the $\zeta$ NG section]
+\textcolor{blue}{[These next two paragraphs are the alternate formulation of $\zeta$ in terms of $\epsilon$. ]}
+% this bit...
+The differential \eqref{eq:zeta diff w} is alternatively described as
+\begin{equation}
+  \dd\zeta = \dd\alpha + \frac{\dd\ln(\rho)}{2\epsilon_\mathrm{free}} \label{eq:zeta diff eps}
+\end{equation}
+where $\epsilon \equiv -\frac{\dd\ln(H)}{\dd\alpha}$ and the subscripted $\epsilon_\mathrm{free}$ indicates that it is to be evaluated along a free trajectory. \textcolor{red}{[define free trajectories, could be in terms of the HJE equations or $\nabla_iT^i_0 = 0$ (with some stament about zero shift?). Does this depend on defining comoving coordinates on some smoothing scale?]}
 
-%\marginpar{
-%  I think we should give some emphasis to the idea that the form of NG that will be produced by a given physical mechanism is not known prior to a full calculation and so in order to properly measure NG the first step is to determine the informative statistics to measure.
-%}
+From this alternative differential description and by using $\alpha$ as a timelike variable comes the derivative \textcolor{red}{mention this is using the local energy constraint with gradient terms dropped}
+\begin{equation}
+  \frac{\dd\zeta}{\dd\alpha} = 1 - \frac{\epsilon_\mathrm{actual}}{\epsilon_\mathrm{free}} \label{eq:zeta der alpha}
+\end{equation}
+where $\epsilon_\mathrm{actual}$ is distinguished from $\epsilon_\mathrm{free}$ in that it is evaluated along trajectories following the actual evolution of the system rather than along the free trajectories of the system. This form of the derivative leads to the physical interpretation that $\zeta$ is conserved when propagating along free trajectories and $\zeta$ is produced when trajectories propagating along the actual evolution of the system deviate from the free trajectories.
+% ... is out of order.
 
 \subsection{Potential} \label{sec:potential}
 Up to this point our description of the lattice simulation has been kept general and is applicable to a wide range of inflationary scenarios which are differentiated by the choice of potential.

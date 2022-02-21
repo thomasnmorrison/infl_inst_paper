@@ -1,6 +1,6 @@
 % appendix.tex
 
-\section{Appendix}
+\section*{Appendix}
 
 %\subsection{Discretization of the Action}
 %The importance of discretizing the action is to find a self-consistent set of equations of motion which can be solved numerically. 
@@ -92,7 +92,7 @@
 %  & \{\pi^a,H_3\} = -\Delta x^3\sum_i\left\{\sum_A\left[a\nabla_\lat(\phi^A_j)_i\cdot\nabla_\lat(\phi^A_j)_i\right] + 4a^3V_i \right\}
 %\end{align}
 
-\subsection{Defining Derivatives on the Lattice}
+\section{Defining Derivatives on the Lattice}
 %The discretization of spatial gradients on the lattice is defined psuedospectrally in a Fourier basis.
 %The procedure is to first transform the discretized field using a fast Fourier transform (FFT), then take the derivative analytically and invert the FFT to find the gradient of the field at each lattice site.
 %We denote the operator defined by this procedure as $\nabla_\lat$.
@@ -163,7 +163,7 @@ And $\nabla_\lat(\phi^A_j)\cdot\nabla_\lat(\phi^B_j)_i$ by
 which is a single operator acting on a pair of fields.
 \textcolor{red}{[We also need the $\nabla\dot{\phi}\nabla\phi$ term, which is similarly defined. Might be more clear to just use $F$ and $G$ as the fields and leave the definition more general.]}
 
-\subsection{Equations of Motion of the Lattice}
+\section{Equations of Motion of the Lattice}
 %The equations of motion we solve on the lattice are derived by applying a discretization proceedure to the continuum equations of motion derive which follow from the Hamiltonian density \eqref{eq:hamFRW}
 The equations of motion we solve on the lattice are derived by applying the an FRW ansatz to the metric, then deriving the equation of motion in the continuum, and finally applying a discretization proceedure on the lattice. 
 
@@ -231,7 +231,7 @@ They must follow the same product rule as the continuum operators which allowed 
 This relation holds and \eqref{eq:lat eom phi}-\eqref{eq:lat eom pi a} define an energy conserving system provided the operators are resolved on the lattice.
 In practice conservation of energy on the lattice can be checked by computing the Hamiltonian directly.
 
-\subsection{Operator Splitting}
+\section{Operator Splitting}
 We solve for the time evolution of the system using a symplectic operator splitting method known as a Yoshida symplectic integrator.
 
 The Hamiltonian \eqref{eq:lat ham} can be split into three terms,

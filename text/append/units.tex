@@ -2,7 +2,7 @@
 
 % Appendix section for the conversion to machine units.
 
-\subsection{Conversion to Dimensionless Quantities}
+\section{Conversion to Dimensionless Quantities}
 The numerical quantities calculated within the simulation are dimensionless. And so in order to numerically solve physical equations they must first be brought into a dimensionless form. The familiar means by which this is achieved is to reduce form a system's physical quantities to dimensionless ratios taken with respect to a set of dimensional units. In this section we use an overbar $\bar{}$ to signify qunatities with have been so reduced.
 
 Taking $\hbar=c=1$ all remaining physical quantities can be reduced to dimensionless ratios with respect to appropriate powers of a specified mass scale. We will however introduce a pair of mass scales, which we call $Lambda$ and $\mu$, to keep our numerical solutions better conditioned. The mass scales appearing in our system relate to $\mpl$, the Hubble, and the inverse dynamical time of the fields. To accomidate these scales we choose $\Lambda = \mathcal{O}(\mpl)$ and $\mu = \mathcal{O}(\sqrt{|m^2_\mathrm{eff}|})$, where $m^2_\mathrm{eff}$ are eigenvalues of $\frac{\partial^2 V}{\partial\phi^A\partial\phi^B}$.

@@ -1,0 +1,26 @@
+% frw_zeta.tex
+
+% Appendix for testing the assumption of an FRW metric for sourcing $\zeta$.
+
+\section{$\zeta$ with the FRW Ansatz} \label{appendix:frw_zeta}
+In this appendix we continue from Sec. \ref{sec:zeta source} on how to test the validity of applying the FRW ansatz when sourcing $\zeta$ on the lattice and perform this test on a lattice run using the same model parameters for which we discuss results in Sec. \ref{sec:results}. \textcolor{red}{[Restate model parameters here.]}    
+
+To estimate of the inhomogeneity in $\alpha$ we first define a local hubble $H(x,\tau)$ in terms of the energy density $\rho$, from \eqref{eq:rho frw}, and enforcing the local energy constraint
+\begin{equation}
+  H^2(x,\tau) = \frac{1}{3\mpl^2}\rho(x,\tau). \label{eq:hubloc}
+\end{equation}
+Which can then be integrated to find
+\begin{equation}
+  \delta\alpha(x,\tau) = \alpha(x,\tau_0) + \int_{\tau_0}^\tau a(\tau)H(x,\tau)\dd\tau - \alpha(\tau), \label{eq:alphaloc}
+\end{equation}
+where the spatially uniform $a(\tau)$ is the scale factor used in the FRW ansatz on the lattice and $\alpha(\tau) = \ln(a(\tau))$.
+Both the equation we use for $\rho(x,\tau)$ and the form of the energy constraint, \eqref{eq:rho frw} and \eqref{eq:hubloc}, are themselves dropping terms involving the inhomogeneity of $\alpha(x,\tau)$, so this is a perturbative estimate of $\delta\alpha(x,\tau)$ rather than a self consistent calculation.
+
+In Fig. \ref{fig:alphatraj} we show a contour plot of the estimated $\delta\alpha$ trajectories and in Fig. \ref{fig:lnrhotraj} we show a similar plot for trajectories of $\ln(\rho/\langle\rho\rangle)$. 
+
+\textcolor{red}{[State what is $(3(1+w))^{-1}$ for this run.]}
+
+\textcolor{red}{[I need to rewrite the test to include the $(3(1+w))^{-1}$ factor.]}
+
+\Falphatraj
+\Flnrhotraj
