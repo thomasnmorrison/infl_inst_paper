@@ -428,14 +428,48 @@
   \end{figure}
 }
 
-% fig:zetasliceu
-\newcommand{\Fzetasliceu}{
-  \begin{figure}
+% fig:zetaslicecomp
+\newcommand{\Fzetaslicecomp}{
+  \begin{figure*}
     \centering
-    %\includegraphics[width=0.9\textwidth]{}
-    \caption{\textcolor{red}{[Place holder for a figure of $\Delta\zeta$ slices for for various values of $u$ spanning from the weak case to the formation of domain walls.]}}
-    \label{fig:zetasliceu}
-  \end{figure}
+    \begin{subfigure}[a]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetaslicecompA}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetaslicecompB}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetaslicecompC}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetaslicecompD}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetaslicecompE}
+      \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+      \includegraphics[width=\textwidth]{\FFzetaslicecompF}
+      \caption{}
+    \end{subfigure}
+    \caption[zetaslicecompcap]{Two dimensional slices through a set of lattices run with varying the parameters of $\Delta V$ showing the onset of spatially intermittent peaks during the incipient phase transtion and continuing to the eventual breakdown of the effect with the completion of the phase transition and production of domain walls.
+
+    From left to right and top to bottom the simulations are run with increasing values of $\lambda_\chi$ and $\phi_w$, and decreasing values of $v$. This sequence of parameters, as shown in Fig. \ref{fig:potparamcomp}, has been tailored to catch the two extremes of the weak instability in (a), through to the formation of domain walls in (f).
+    \textcolor{red}{[I need to figure out why (a) does not appear as positive peaks and label this reason as the opposite extreme of producing domain walls]}
+
+    The fluctuations in these simulations have been matched at the point that $\Delta V$ turns on so that differences between the slices is attributable as a response to varying the parameters of $\Delta V$.
+
+    We see that those points which spawn the intermitent peaks during the incipient phase go on to seed the formation of domains if the phase transition is allowed to complete. And that there is a regime, covering (b), (c), and (d), where $\Delta\zeta$ remains similar with the variartion of $\Delta V$ up to a scaling of its magnitude. It is to this intermediate regime that the example disscussed in detail in Sec. \ref{sec:results} belongs.
+
+    \textcolor{red}{[In the main text, talk about how by matching the fluctuations at the point $\Delta V$ turns on we can extend the idea of $\Delta\zeta$ to a response function to the parameters of $\Delta V$.]}
+    \textcolor{red}{[This caption is in need of an edit for improved flow.]}
+    }
+    \label{fig:zetaslicecomp}
+  \end{figure*}
 }
 
 % fig:zetaslicepotform
@@ -443,7 +477,8 @@
   \begin{figure}
     \centering
     %\includegraphics[width=0.9\textwidth]{}
-    \caption{\textcolor{red}{[Place holder for a figure of $\Delta\zeta$ slices for instablities using different forms of $\Delta V$ for a few values of instability strengths. Comment on similarities and differences.]}}
+    \caption{
+    \textcolor{red}{[Place holder for a figure of $\Delta\zeta$ slices for instablities using different forms of $\Delta V$ for a few values of instability strengths. Comment on similarities and differences.]}}
     \label{fig:zetaslicepotform}
   \end{figure}
 }
@@ -458,14 +493,29 @@
   \end{figure}
 }
 
-% fig:potparamu
-\newcommand{\Fpotparamu}{
-  \begin{figure}
+% fig:potparamcomp
+\newcommand{\Fpotparamcomp}{
+  \begin{figure*}
     \centering
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFpotparamcompA}
+    \end{subfigure}
+    \begin{subfigure}[a]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{\FFpotparamcompB}
+    \end{subfigure}
     % include graphics
-    \caption{\textcolor{red}{[Place holder figure for $u\Delta V$ for the values of $u$ used in Fig. \ref{fig:zetasliceu}. Show the transverse section $u\Delta V(\phi_p,\chi)$ and $m^2_\mathrm{eff}(\phi,\chi=0)$.]}}
-    \label{fig:potparamu}
-  \end{figure}
+    \caption[potparamcompcap]{% talk about how this sequence is designed to show the onset and breakdown in a single sequence.
+    % Mention that the labels correspond to the runs in Fig. \ref{fig:zetaslicecomp}
+    In the left panel we plot $V_{,\chi\chi}(\phi,0)$, the effective mass squared of the $\chi$ field along the $\chi=0$ centre line of the instability. % discuss the shape of the profile and how $\chi_w$, $\lambda_\chi$, and $\phi_w$ relate.
+    % Mention that effective mass and $\phi_w$ are both increased logrithmically from (a) to (f)
+
+    In the right panel we plot transverse sections of the potential at $\phi=\phi_w$, the point of minimum $V_{,\chi\chi}(\phi,0)$.
+    % Mention that these are offset to lie on (0,0)
+    % Mention that $\chi_w$ is decreased linearly to force the phase transition to complete which a smaller growth of $\chi$ fluctuations.
+
+\textcolor{red}{[Place holder figure for $u\Delta V$ for the values of $u$ used in Fig. \ref{fig:zetasliceu}. Show the transverse section $u\Delta V(\phi_p,\chi)$ and $m^2_\mathrm{eff}(\phi,\chi=0)$.]}}
+    \label{fig:potparamcomp}
+  \end{figure*}
 }
 
 % fig:uzetagallery
