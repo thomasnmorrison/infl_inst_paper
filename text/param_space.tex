@@ -1,70 +1,65 @@
 % Document for section discussing parameter space.
 
 \section{Parameterization of the Instability} \label{sec:params}
-% Two subsections, one for instability strength, and one for $\Delta V$ functional form.
+%
+% Point to a more detailed discussion of parameter space in an upcoming paper and give a brief overview of the differential view of parameter space. Here we just show that the description we give in Sec. \ref{sec:results} is generic for the incipient phase transition and demonstrate where it breaks down ie. domain walls and the weak case.
+%
+% Includes figures for:
+% $\Delta\zeta$ for several sets of $\Delta V$ parameters,
+% Effective mass squared and transverse sections of the potential for several sets of $\Delta V$ parameters.
+%
 
-\textcolor{blue}{[Point for discussion: This section is supposed to be about checking how representative are the results we show in the rest of the paper, so we should be clear about what exactly it means for those results to be representative. I think three (related) aspects of this are: the excess of positive peaks in $\Delta\zeta$, the $(\Delta\phi, \chi)$ correlation and production of $\Delta\zeta$ from the relaxation of this state, and the relative contribution to $\Delta\zeta$ coming from the different production channels ie. the two stage production.]}
+\textcolor{blue}{[The aim of this section is to show that form of $\Delta\zeta$ we have discussed is representitive over some range of parameter space and to show/discuss what happens at the edges of that regime of valitity. I think an extended discussion of varying instability parameters belongs in a separate paper and am leaving two open ends to further papers on:
+\begin{itemize}
+  \item imprinting domain walls on $\zeta$, and
+  \item differential variation of $V$ and differential response of $\zeta$.
+\end{itemize}
+]}
 
-In the previous section we analysed simulations run for a single set of potential parameters for the potential given by \eqref{eq:V0} and \eqref{eq:DeltaV}. We found the resulting $\Delta\zeta$ to be spatially coherent, characterized by an excess of positive peaks and related the formation of these peaks to a two step production process. In this section we will discuss the range of parameter space over which the discussion of the previous section can be considered a representative description. \textcolor{red}{[This is done in two parts, first by varying the strength of the instability with $V=V_0 + u\Delta V$, and second by running different forms of $\Delta V$ which also parameterize a transverse Tachyonic instability.]}
-
-\textcolor{red}{[Here give a basic summary what we find in this section, ie. the regimes we find by varying $u$ and the similarities between different forms of $\Delta V$ with transverse Tachyonic instabilites. Point to the areas of parameter space where the discussion we did in Sec. \ref{sec:results} is not representitive, specifically with the formation of domain walls and point to further discussion in future work]}.
-
-% Figures to make/include:
-% Make a figure of $m^2_{eff}(\phi)$ and $u\Delta V(\phi_p,\chi)$ for some sampled values. It could also be useful to put curves for the values of $u$ delineating the different regimes (ie weak, strong, domain).
-% Make a rogue's gallery of different runs spanning from small to large values of $u$ showing maps of $\Delta\zeta$
-% Make a figure with $u$ along one axis and $\Delta\zeta_\phi/\Delta\zeta_\chi$ along the other.
-% Make a figure with $u$ along one axis and a measure of $\Delta\zeta$ amplitude along the other.
-
-
-\subsection{Potential Parameters}
-% The objective for this section is to layout the regime of validity for the picture of $\Delta\zeta$ given in the results section and to point out directions of future work.
-% Introduce the $V = V_0 + u\Delta V$ parameterization as a deformation of the potential with a continuous parameterization.
-% Discuss how when the strength of the instability is increased/decreased the character of the asymptotic $\Delta\zeta$ divides the parameter space into regimes (eg. weak, strong, and domain).
-% Discuss future work into the other dimensions of parameter space (ie) width measurement and how long the instability is turned on.
+% Intro
+In the previous section we analysed simulations run for a single set of potential parameters for the potential given by \eqref{eq:V0} and \eqref{eq:DeltaV}. We found that a two stage production process resulted in a spatially coherent $\Delta\zeta$ characterized by an excess of positive peaks. In this section we will vary the paramters of the instability and discuss to what degree that can be considered a representitive description.
 
 To start we will perform a partial survey of parameter space with the aim to demonstrate the existance of a regime of parameter space over which the results of Sec. \ref{sec:results} can be considered representitive of transverse instabilities during inflation and to show some of the ways the simplified description we have given in terms of the extreme trajectories can break down as be push out of that descriptions regime of validity.
 
-There are a number of ways ...
-We have focused on the incipient phase transition, that is to say, the case where the growth of fluctuations during the instability is insufficient to populate the new transverse minima. If we instead allow the growth of transverse fluctuations to reach the new minima a quite different form of NG emerges with the formation of domain walls leave a persisting imprint of $\zeta$ even after the symmetry restoration dissolves the domains of the transverse field.
+% Control parameters in $\Delta V$
+The parameterization we have used for the instability \eqref{eq:DeltaV} has three control paramters which vary it's shape. The width in the transverse direction, or displacement of the new transverse minima from the centre line, is controlled by $v$. The length in the longitudinal direction is controlled by $\phi_w$. And the instability's modification to the effective mass squared of the transverse field is controlled by the combination $\lambda_\chi v^2$. One further parameter, $\phi_p$, controls the position along the longitudinal direction of the potential where the instability is placed.
 
-In the opposite extreme, for sufficiently weak or shortlived instabilities, those for which the growth of fluctuations is comparable to their initial variance, the contribution of high frequency effects remains a comparatively large contribution to the dynamics \textcolor{red}{[could be more precise in terms of how much power is stable vs unstable]}.
+% Varying control parameters
+In Fig. \ref{fig:zetaslicecomp} we have varied $v$, $\phi_w$, and $\lambda_\chi v^2$ through a sequence of simulations and plotted the resulting asymptotic $\Delta\zeta$. The sequence of parameters we have chosen has been designed to show at one extreme the weak case of the instability (as discussed below), and at the other extreme the imprinting of domain walls onto $\zeta$. Between these two extremes are several cases of the incipient phase transition for which the discussion of Sec. \ref{sec:results} is representitive.
+\textcolor{red}{[Mention that a thorough exploration of imprinting domain walls is in an upcoming paper.]}
+In Fig. \ref{fig:potparamcomp} we have plotted transverse sections of the potential and longitudinal sections of the effective mass squared during the instability corresponding to the choose of parameters used for the runs shown in Fig. \ref{fig:zetaslicecomp}.
+
+% Discuss the weak case
+For sufficiently weak or shortlived instabilities, those for which the growth of fluctuations is comparable to their initial variance, the contribution of high frequency effects remains a comparatively large contribution to the dynamics \textcolor{red}{[could be more precise in terms of how much power is stable vs unstable]}.
 We call this the `weak case'.
 While some notion of extreme trajectories can be recovered on the smoothed fields, in the weak case their contribution to $\Delta\zeta$ becomes comparable to that of other effects.
 
-\textcolor{red}{[Mention trapping in a false minimum.]}
+% Discuss the domain wall case
+We have focused on the incipient phase transition, that is to say, the case where the growth of fluctuations during the instability is insufficient to populate the new transverse minima. One the opposite extreme to the weak case the growth of transverse fluctuations reaches the new minima and a quite different form of NG emerges with the formation of domain walls leave a persisting imprint of $\zeta$ even after the symmetry restoration dissolves the domains of the transverse field.
 
-\textcolor{red}{[Mention ending inflation, or giving it a temporary pause.]}
-
-The parameterization we have used for the instability \eqref{eq:DeltaV} has three control paramters which vary it's shape. The width in the transverse direction, or displacement of the new transverse minima from the centre line, is controlled by $v$. The length in the longitudinal direction is controlled by $\phi_w$. And the instability's modification to the effective mass squared of the transverse field is controlled by the combination $\lambda_\chi v^2$. One further parameter, $\phi_p$, controls the position along the longitudinal direction of the potential where the instability is placed.
-
-In Fig. \ref{fig:zetaslicecomp} we have varied $v$, $\phi_w$, and $\lambda_\chi v^2$ through a sequence of simulations and plotted the resulting asymptotic $\Delta\zeta$. The sequence of parameters we have chosen has been designed to show at one extreme the case of a weak instability for which \textcolor{red}{[the growth of transverse fluctuations is comparable to their initial variance (think of a smoother way to say this)]}, and at the other extreme the imprinting of domain walls onto $\zeta$. Between these two extremes are several cases of the incipient phase transition for which the discussion of Sec. \ref{sec:results} is representitive.
-\textcolor{red}{[Mention that a thorough exploaration of imprinting domain walls is in an upcoming paper.]}
-In Fig. \ref{fig:potparamcomp} we have plotted ... corresponding to the potential parameters used for the runs shown in Fig. \ref{fig:zetazlicecomp}.
-
-
-% extreme trajectories rapidly oscillating, ie low fraction of power undergoing Jeans instability. Or effect size from extreme trajectories not larger than other effects
-% formation od domains with nonlinearity in the transverse direction
-% Inflation can be ended, either temporarily with a large shift to the equation of state or permanently as in hybrid inflation.
-% 
-
-% Talk about where this can be different
-
-To start we will perform a partial survey of parameter space. We extend the potential $V(\phi^A) = V_0(\phi^A) + \Delta V(\phi^A)$ by introducing a single new parameter $u$ which we use to construct the parameterized family of potentials
-\begin{equation}
-  V(\phi^A;u) = V_0(\phi^A) + u\Delta V(\phi^A).
-\end{equation}
-Varying the parameter $u$ continuously deforms the potential from the baseline potential $V_0$ at $u=0$ through increasingly strong instability as $u$ is increased with the potential parameters we used in Sec. \ref{sec:results} at $u=1$. \textcolor{red}{[Should also comment about the duration and width of the instability, but I don't think we need the full parameter space exploration here.]}
-
-A collection of simulations runs over a span of $u$ values is shown in Fig. \ref{fig:zetasliceu}.
-\textcolor{red}{[Comment on the breakdown of picture of $\Delta\zeta$ being dominated by peaks with the formation of domain walls and how this is an area for future study.]}
+% Discuss trapping, ending, and pausing inflation
+\textcolor{red}{[This part needs more checking.]}
+There are a number of other ways in which a transverse instability can cause the system to depart from the behaviour we have discussed in Sec. \ref{sec:results} if the fraction of energy transferred out of the potential becomes large.
+An instability sufficiently deep to create local minima may trap the fields in a false vacuum.
+Or the instabilty may bring the fields to a global minimum, ending inflation and begining reheating.
+Or if a large enough energy fraction is transferred from the potential into kinetic and gradient terms, $\epsilon$ will be driven to greater values, potentially exceeding unity and bringing a temporary halt to inflation until the redshifting of the kinetic and gradient energy allows inflation to restart.
 
 \Fzetaslicecomp
 
 \Fpotparamcomp
 
-\textcolor{red}{[Part about $\ln|m^2_\mathrm{eff}|$ giving a measure of parameter space more relevant to the dynamics than $u$.]}
+% Future work in parameter space derivatives
+With the sequence of simulations shown in Fig. \ref{fig:zetaslicecomp} we can also observe that with matched realizations of initial fluctuations the NG generated varies continuously as the potential is deformed. In light of this continuity, the $\Delta\zeta$ formalism we have introduced can be extended from the finite difference in $\zeta$ when comparing to a baseline potential to a differential modification to $\zeta$ as the potential is continuously deformed
+\begin{equation}
+  \pder{\zeta}{u}
+\end{equation}
+where $u$ is any one of the potential paramters.
+This derivative then informs us as to which directions in parameter space are most relevant to the production of NG when deforming the potential. An exploration of parameter space for transverse instabilities during inflation taking this view point of the NG response to differential deformations of the potential is the topic of a follow up paper. 
 
-\textcolor{red}{[Add figures and text for whatever we decide is representative that we should compare.]}
+% extreme trajectories rapidly oscillating, ie low fraction of power undergoing Jeans instability. Or effect size from extreme trajectories not larger than other effects
+% formation of domains with nonlinearity in the transverse direction
+% Inflation can be ended, either temporarily with a large shift to the equation of state or permanently as in hybrid inflation.
+%
 
 %This simplified narrative of a two stage production process of $\Delta\zeta$ highlights the two effects which become most significant to the production of peaks as the strength of the instability is increased. It does not however furnish a complete description of the production of $\Delta\zeta$ in this system for which we must still rely on the full simulation.
 %In particular as the strength of the instability is decreased the contribution to $\Delta\zeta$ sourced by these effects likewise decrease in significance, and for sufficiently weak instabilities becomes comparable to the contribution from other effects. At this point, while $\Delta\zeta$ can still be calculated from the full numerical solution, the simple two stage production process we have described will no longer provide a useful description. Further exploration of the parameter space bounding the region of applicability for the two stage production process described is left to future work.
@@ -76,13 +71,9 @@ A collection of simulations runs over a span of $u$ values is shown in Fig. \ref
 % Figure of potentials for various values of $u$
 
 
-\subsection{Alternate Forms of $\Delta V$}
-\textcolor{red}{[Place holder. In this section I will discuss alternate forms of $\Delta V$ that could be used be used to parameterize an incomplete phase transition in the transverse direction. The main goal being to demonstrate the broad similarities in the forms of NG generated.]}
+%\subsection{Alternate Forms of $\Delta V$}
+%\textcolor{red}{[Place holder. In this section I will discuss alternate forms of $\Delta V$ that could be used be used to parameterize an incomplete phase transition in the transverse direction. The main goal being to demonstrate the broad similarities in the forms of NG generated.]}
 
-\Fzetaslicepotform
+%\textcolor{red}{[Give equations for a few alternate forms of $\Delta V$. Discuss Fig. \ref{fig:zetaslicepotform} which will display $\Delta\zeta$ slices for the alternate forms of $\Delta V$ given.]}
 
-\textcolor{red}{[Give equations for a few alternate forms of $\Delta V$. Discuss Fig. \ref{fig:zetaslicepotform} which will display $\Delta\zeta$ slices for the alternate forms of $\Delta V$ given.]}
-
-\Fdeltapspotform
-
-\textcolor{red}{[Discuss similarities in $\Delta\zeta$ in terms of the relaxation stage of production from a deformed state with reference to Fig. \ref{fig:deltapspotform}. (I haven't actually checked this for the other potential forms we've looked at, but it would be nice to show if it works.)]}
+%\textcolor{red}{[Discuss similarities in $\Delta\zeta$ in terms of the relaxation stage of production from a deformed state with reference to Fig. \ref{fig:deltapspotform}. (I haven't actually checked this for the other potential forms we've looked at, but it would be nice to show if it works.)]}
