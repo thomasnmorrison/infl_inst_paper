@@ -1,6 +1,9 @@
 % Define commands for including figures.
 
-\graphicspath{{../figures/}{./figures/}}
+% Figure files can be downloaded from:
+% https://www.cita.utoronto.ca/~morrison/downloads/Paper_figs.tar.gz
+
+\graphicspath{{../figures/}{./figures/}{./Paper_figs}}
 \captionsetup{parskip=5pt}
 %\captionsetup[figure]{justification=justified}
 %\captionsetup[subfigure]{justification=justified}
@@ -28,13 +31,8 @@
     \centering
     \begin{subfigure}[a]{0.45\textwidth}
       \includegraphics[width=\textwidth]{\FFpotparamA}
-      %\caption{}
     \end{subfigure}
-    %\begin{subfigure}[a]{0.45\textwidth}
-    %  \includegraphics[width=\textwidth]{\FFpotparamB}
-    %  \caption{}
-    %\end{subfigure}
-    \caption{\textcolor{red}{[Placeholder figure, here I want these plots for the set of potential parameters that will be used in the next section.]}}
+    \caption{In the left panel we plot $V_{,\chi\chi}(\phi,0)$, the effective mass squared of the $\chi$ field along the $\chi=0$ centre line of the instability. In the right panel we plot transverse sections of the potential at $\phi=\phi_w$, the point of minimum $V_{,\chi\chi}(\phi,0)$ and off-set to pass through zero. The potential parameters used in this figure match those of the example case used in Sec. \ref{sec:results}, \ParamV.}
     \label{fig:potparam}
   \end{figure}
 }
